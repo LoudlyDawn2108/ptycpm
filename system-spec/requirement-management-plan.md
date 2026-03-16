@@ -409,3 +409,5 @@ Cung cấp chế độ xem phân cấp toàn bộ chuỗi truy vết:
 [uc31-42.md](./uc31-42.md)
 
 # V. XÁC ĐỊNH CÁC LỚP, XÂY DỰNG BIỂU ĐỒ LỚP
+
+[class-diagram.md](./class-diagram.md)
