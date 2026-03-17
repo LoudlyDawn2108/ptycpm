@@ -68,13 +68,13 @@ FURPS+ Classification
 
 | Mã | Yêu cầu | Mô tả chi tiết | Ưu tiên |
 |----|----------|-----------------|---------|
-| **SUPL-F01** | Ghi nhật ký hệ thống tự động (Auto Logging) | Hệ thống tự động ghi lại mọi hành động truy cập, thêm/sửa/xóa dữ liệu và thay đổi cấu hình với đầy đủ các thông tin: thời gian, tài khoản, họ tên, vai trò, loại hành động, đối tượng, mã đối tượng, mô tả chi tiết và địa chỉ IP. Tham chiếu FEAT 12.1. | **M** |
+| **SUPL-F01** | Ghi nhật ký hệ thống tự động (Auto Logging) | Hệ thống tự động ghi lại mọi hành động truy cập, thêm mới/cập nhật dữ liệu, thay đổi trạng thái và thay đổi cấu hình với đầy đủ các thông tin: thời gian, tài khoản, họ tên, vai trò, loại hành động, đối tượng, mã đối tượng, mô tả chi tiết và địa chỉ IP. Tham chiếu FEAT 12.1. | **M** |
 | **SUPL-F02** | Tự động sinh mã nhân sự | Khi tạo mới hồ sơ nhân sự, hệ thống tự động cấp một mã cán bộ duy nhất theo mẫu mã đang được cấu hình áp dụng toàn hệ thống tại thời điểm tạo hồ sơ. | **M** |
 | **SUPL-F03** | Tự động đăng xuất phiên không hoạt động | Hệ thống tự động đăng xuất phiên làm việc nếu người dùng không thao tác trong 30 phút. Tham chiếu FEAT 1.3. | **M** |
 | **SUPL-F04** | Tự động khóa tài khoản nhân sự thôi việc | Khi nhân sự được đánh dấu thôi việc (FEAT 7.5/7.6), hệ thống tự động chuyển tài khoản của nhân sự đó sang trạng thái khóa. Tham chiếu FEAT 2.6. | **M** |
 | **SUPL-F05** | Tự động chuyển trạng thái hợp đồng | Hệ thống tự động chuyển trạng thái hợp đồng từ "Còn hiệu lực" sang "Chờ gia hạn" khi thời hạn còn lại nhỏ hơn hoặc bằng ngưỡng chờ gia hạn được cấu hình. | **M** |
 | **SUPL-F06** | Tự động cập nhật trạng thái tham gia đào tạo | Khi khóa đào tạo chuyển từ trạng thái "Đang mở đăng ký" sang trạng thái "Đang đào tạo", hệ thống tự động cập nhật tất cả đăng ký tương ứng từ trạng thái "Đã đăng ký" sang trạng thái "Đang học". | **M** |
-| **SUPL-F07** | Quy tắc nghiệp vụ chung về xóa/thay đổi trạng thái | Danh mục loại phụ cấp và loại hợp đồng chỉ hỗ trợ "Thay đổi trạng thái" (không hỗ trợ "Xóa") để đảm bảo tính toàn vẹn dữ liệu và phục vụ kiểm toán. Hệ số lương cho phép xóa khi chưa được hồ sơ nào sử dụng. | **M** |
+| **SUPL-F07** | Quy tắc nghiệp vụ chung về thay đổi trạng thái | Danh mục loại phụ cấp và loại hợp đồng chỉ hỗ trợ thao tác thay đổi trạng thái theo quy tắc nghiệp vụ để đảm bảo tính toàn vẹn dữ liệu và phục vụ kiểm toán. | **M** |
 | **SUPL-F08** | Bảo vệ mật khẩu lưu trữ | Hệ thống phải lưu trữ mật khẩu người dùng dưới dạng không thể khôi phục nguyên văn và không được lưu mật khẩu ở dạng văn bản thuần. | **M** |
 
 ### 2.2. Usability – Tính dễ sử dụng
@@ -87,7 +87,7 @@ FURPS+ Classification
 | **SUPL-U04** | Hỗ trợ tìm kiếm và lọc đa tiêu chí | Các danh sách dữ liệu (nhân sự, hợp đồng, đơn vị) phải hỗ trợ tìm kiếm theo từ khóa và lọc đa tiêu chí để giảm thời gian thao tác. | **M** |
 | **SUPL-U05** | Hiển thị ổn định trên desktop và tablet | Ở độ phân giải desktop từ 1366×768 trở lên, 100% màn hình phải hiển thị đầy đủ nội dung, không chồng lấn thành phần và không yêu cầu cuộn ngang; trên tablet 1024×768, tối thiểu 80% màn hình phải cho phép thực hiện các thao tác chính mà không cần phóng to. | **E** |
 | **SUPL-U06** | Điều hướng nhanh bằng bàn phím và breadcrumb | Trên ít nhất 90% form nhập liệu, phím Tab phải di chuyển tuần tự giữa các trường có thể nhập; trên 100% form có nút xác nhận mặc định, phím Enter phải kích hoạt nút đó; 100% trang phải hiển thị breadcrumb để người dùng quay lại cấp điều hướng trước. | **N** |
-| **SUPL-U07** | Xác nhận trước thao tác quan trọng | Hệ thống hiển thị hộp thoại xác nhận trước các thao tác quan trọng: xóa dữ liệu, khóa tài khoản, đánh dấu thôi việc, thay đổi trạng thái đơn vị. | **M** |
+| **SUPL-U07** | Xác nhận trước thao tác quan trọng | Hệ thống hiển thị hộp thoại xác nhận trước các thao tác quan trọng: khóa tài khoản, đánh dấu thôi việc, chấm dứt hợp đồng lao động trước hạn, thay đổi trạng thái đơn vị và các thao tác thay đổi trạng thái có rủi ro tương đương. | **M** |
 
 ### 2.3. Reliability – Độ tin cậy
 
@@ -103,7 +103,7 @@ FURPS+ Classification
 
 | Mã | Yêu cầu | Mô tả chi tiết | Ưu tiên |
 |----|----------|-----------------|---------|
-| **SUPL-P01** | Thời gian phản hồi giao diện | Các thao tác CRUD cơ bản (xem danh sách, xem chi tiết, thêm/sửa) trên các màn hình nhân sự, hợp đồng lao động và đánh giá khen thưởng/kỷ luật phải hoàn thành hiển thị trong thời gian phản hồi chấp nhận được tùy số người dùng đồng thời. | **M** |
+| **SUPL-P01** | Thời gian phản hồi giao diện | Các thao tác nghiệp vụ cơ bản (xem danh sách, xem chi tiết, thêm/sửa, thay đổi trạng thái khi được hỗ trợ) trên các màn hình nhân sự, hợp đồng lao động và đánh giá khen thưởng/kỷ luật phải hoàn thành hiển thị trong thời gian phản hồi chấp nhận được tùy số người dùng đồng thời. | **M** |
 | **SUPL-P02** | Số lượng người dùng đồng thời | Hệ thống hỗ trợ tối thiểu 100 người dùng đồng thời mà không suy giảm hiệu năng đáng kể (thời gian phản hồi tăng ≤ 50% so với tải thấp). | **M** |
 | **SUPL-P03** | Thời gian tạo báo cáo thống kê | Dashboard thống kê và báo cáo tổng hợp (FEAT 10.1) phải hoàn thành render trong thời gian chấp nhận được. | **E** |
 | **SUPL-P04** | Hiệu năng tìm kiếm và lọc | Tìm kiếm và lọc danh sách nhân sự, danh sách đánh giá khen thưởng/kỷ luật (FEAT 6.3, FEAT 7.1, FEAT 7.2) trên tập dữ liệu lớn phải trả kết quả nhanh chóng. | **M** |
@@ -155,7 +155,7 @@ FURPS+ Classification
 
 | Mã | Yêu cầu | Mô tả chi tiết | Ưu tiên |
 |----|----------|-----------------|---------|
-| **SUPL-LR01** | Tuân thủ quy định bảo vệ dữ liệu cá nhân | Hệ thống phải hỗ trợ quản lý sự đồng ý thu thập dữ liệu cá nhân và xử lý yêu cầu hợp lệ về ẩn hoặc xóa dữ liệu cá nhân theo Nghị định 13/2023/NĐ-CP. | **M** |
+| **SUPL-LR01** | Tuân thủ quy định bảo vệ dữ liệu cá nhân | Hệ thống phải hỗ trợ quản lý sự đồng ý thu thập dữ liệu cá nhân và xử lý yêu cầu hợp lệ về ẩn dữ liệu cá nhân theo Nghị định 13/2023/NĐ-CP. | **M** |
 | **SUPL-LR02** | Tuân thủ quy chế quản lý nhân sự | Hệ thống phải cho phép cấu hình và sử dụng bộ danh mục loại hợp đồng, phụ cấp và chức danh theo danh mục nhân sự do Trường Đại học Thủy Lợi phê duyệt trên cơ sở quy định hiện hành của Bộ GD&ĐT và Bộ NN&PTNT. | **M** |
 | **SUPL-LR03** | Lưu trữ hồ sơ theo quy định | Hồ sơ nhân sự, hợp đồng lao động và lịch sử đánh giá khen thưởng/kỷ luật phải được lưu trữ tối thiểu theo thời gian quy định của pháp luật lao động Việt Nam và quy chế lưu trữ hiện hành. | **M** |
 
@@ -167,13 +167,13 @@ FURPS+ Classification
 
 | Mã | Yếu tố chất lượng | Độ đo (Metric) | Tiêu chuẩn đáp ứng (Acceptance Criteria) |
 |----|-------------------|----------------|------------------------------------------|
-| **SUPL-F01** | Correctness (Tính đúng đắn) – Khả năng kiểm toán (Auditability) | Tỷ lệ hành động truy cập, CRUD và thay đổi cấu hình được ghi log / Tổng số hành động tương ứng phát sinh trên hệ thống | ≥ 100% các hành động truy cập, CRUD và thay đổi cấu hình đều được ghi log. Log phải bao gồm đầy đủ 9 trường thông tin (thời gian, tài khoản, họ tên, vai trò, loại hành động, đối tượng, mã đối tượng, mô tả, IP). |
+| **SUPL-F01** | Correctness (Tính đúng đắn) – Khả năng kiểm toán (Auditability) | Tỷ lệ hành động truy cập, thêm mới/cập nhật dữ liệu, thay đổi trạng thái và thay đổi cấu hình được ghi log / Tổng số hành động tương ứng phát sinh trên hệ thống | ≥ 100% các hành động truy cập, thêm mới/cập nhật dữ liệu, thay đổi trạng thái và thay đổi cấu hình đều được ghi log. Log phải bao gồm đầy đủ 9 trường thông tin (thời gian, tài khoản, họ tên, vai trò, loại hành động, đối tượng, mã đối tượng, mô tả, IP). |
 | **SUPL-F02** | Correctness (Tính đúng đắn) | Tỷ lệ mã sinh tự động trùng lặp; Tỷ lệ mã tuân thủ mẫu mã đang áp dụng | 0% trùng lặp mã cán bộ. 100% hồ sơ nhân sự mới được cấp mã ngay khi tạo và 100% mã sinh ra tuân thủ mẫu mã đang áp dụng. |
 | **SUPL-F03** | Correctness (Tính đúng đắn) – Tự động hóa | Thời gian phát hiện phiên không hoạt động | Hệ thống phát hiện và đăng xuất chính xác sau 30 phút (±30 giây) không hoạt động. |
 | **SUPL-F04** | Correctness (Tính đúng đắn) – Tự động hóa | Thời gian khóa tài khoản sau khi đánh dấu thôi việc | Tài khoản bị khóa tự động trong ≤ 1 phút sau khi nhân sự được đánh dấu thôi việc. |
 | **SUPL-F05** | Correctness (Tính đúng đắn) – Tự động hóa | Tỷ lệ hợp đồng đủ điều kiện được chuyển sang trạng thái Chờ gia hạn đúng hạn | 100% hợp đồng đủ điều kiện được chuyển trạng thái trong ≤ 24 giờ kể từ thời điểm đủ điều kiện. |
 | **SUPL-F06** | Correctness (Tính đúng đắn) – Tự động hóa | Tỷ lệ bản ghi đăng ký được cập nhật đúng khi khóa đào tạo chuyển trạng thái | 100% bản ghi đăng ký thuộc khóa đào tạo đó được chuyển từ trạng thái "Đã đăng ký" sang "Đang học" trong ≤ 1 phút kể từ khi khóa đào tạo chuyển sang trạng thái "Đang đào tạo". |
-| **SUPL-F07** | Integrity (Tính toàn vẹn) | Số trường hợp mất dữ liệu lịch sử do xóa danh mục | 0 trường hợp. Danh mục đã sử dụng không thể bị xóa, chỉ được thay đổi trạng thái. |
+| **SUPL-F07** | Integrity (Tính toàn vẹn) | Tỷ lệ thao tác thay đổi trạng thái của danh mục loại phụ cấp/loại hợp đồng tuân thủ đúng quy tắc; Số trường hợp thay đổi trạng thái làm sai lệch dữ liệu tham chiếu lịch sử | 100% thao tác thay đổi trạng thái của danh mục loại phụ cấp/loại hợp đồng tuân thủ đúng quy tắc nghiệp vụ. 0 trường hợp thay đổi trạng thái làm sai lệch dữ liệu tham chiếu lịch sử. |
 | **SUPL-F08** | Security (Bảo mật) | Tỷ lệ mật khẩu được lưu ở dạng không thể khôi phục nguyên văn; Số mật khẩu lưu dạng plaintext | 100% mật khẩu được lưu ở dạng không thể khôi phục nguyên văn. 0 mật khẩu lưu dạng plaintext. |
 
 ### 3.2. Usability — Tính dễ sử dụng
@@ -186,7 +186,7 @@ FURPS+ Classification
 | **SUPL-U04** | Usability – Efficiency (Hiệu quả thao tác) | Số bước thao tác để tìm kiếm và xem chi tiết 1 nhân sự | ≤ 3 bước (nhập từ khóa → tìm kiếm → click xem). Bộ lọc đa tiêu chí cho phép kết hợp ≥ 3 tiêu chí đồng thời. |
 | **SUPL-U05** | Usability – Accessibility | Tỷ lệ màn hình không bị cắt nội dung, chồng lấn thành phần hoặc yêu cầu cuộn ngang ở 1366×768; Tỷ lệ màn hình cho phép thực hiện thao tác chính trên tablet 1024×768 mà không cần phóng to | 100% màn hình đạt tiêu chí ở độ phân giải 1366×768. ≥ 80% màn hình đạt tiêu chí trên tablet 1024×768. |
 | **SUPL-U06** | Usability – Efficiency (Hiệu quả thao tác) | Tỷ lệ form hỗ trợ Tab navigation; Tỷ lệ form có nút xác nhận mặc định hỗ trợ phím Enter; Tỷ lệ trang hiển thị breadcrumb | ≥ 90% form nhập liệu hỗ trợ Tab navigation. 100% form có nút xác nhận mặc định hỗ trợ phím Enter. 100% trang có breadcrumb. |
-| **SUPL-U07** | Usability – Error Prevention | Số thao tác quan trọng có hộp thoại xác nhận | 100% thao tác xóa, khóa tài khoản, thôi việc, thay đổi trạng thái đơn vị đều có confirmation dialog. |
+| **SUPL-U07** | Usability – Error Prevention | Số thao tác quan trọng có hộp thoại xác nhận | 100% thao tác khóa tài khoản, thôi việc, chấm dứt hợp đồng trước hạn, thay đổi trạng thái đơn vị và các thao tác thay đổi trạng thái có rủi ro tương đương đều có confirmation dialog. |
 
 ### 3.3. Reliability — Độ tin cậy
 
@@ -202,7 +202,7 @@ FURPS+ Classification
 
 | Mã | Yếu tố chất lượng | Độ đo (Metric) | Tiêu chuẩn đáp ứng (Acceptance Criteria) |
 |----|-------------------|----------------|------------------------------------------|
-| **SUPL-P01** | Speed (Tốc độ phản hồi) | Response time (giây) – P95 response time cho các thao tác CRUD | Theo bảng tải: **0–10 người dùng:** ≤ 1 giây; **11–50 người dùng:** ≤ 2 giây; **51–100 người dùng:** ≤ 5 giây; **>100 người dùng:** ≤ 10 giây. |
+| **SUPL-P01** | Speed (Tốc độ phản hồi) | Response time (giây) – P95 response time cho các thao tác nghiệp vụ cơ bản | Theo bảng tải: **0–10 người dùng:** ≤ 1 giây; **11–50 người dùng:** ≤ 2 giây; **51–100 người dùng:** ≤ 5 giây; **>100 người dùng:** ≤ 10 giây. |
 | **SUPL-P02** | Capacity (Dung lượng / Khả năng chịu tải) | Số người dùng đồng thời tối đa mà hệ thống phục vụ được | ≥ 100 concurrent users. Tại 100 users, response time tăng ≤ 50% so với tải 1 user. Throughput ≥ 50 transactions/second. |
 | **SUPL-P03** | Speed (Tốc độ) – Báo cáo | Thời gian render dashboard/báo cáo | Dashboard: ≤ 5 giây. Báo cáo tổng hợp phức tạp: ≤ 15 giây. Biểu đồ thống kê: ≤ 3 giây/biểu đồ. |
 | **SUPL-P04** | Speed (Tốc độ) – Tìm kiếm | Thời gian trả kết quả tìm kiếm/lọc | ≤ 2 giây trên tập dữ liệu ≤ 10.000 bản ghi. ≤ 5 giây trên tập dữ liệu ≤ 50.000 bản ghi. |
@@ -218,7 +218,7 @@ FURPS+ Classification
 | **SUPL-SE03** | Integrity (Tính toàn vẹn) – Chống brute-force | Số lần đăng nhập sai trước khi khóa; Thời gian khóa | Khóa tài khoản sau 5 lần sai liên tiếp. Thời gian khóa: 15 phút. Ghi log cảnh báo khi phát hiện brute-force. |
 | **SUPL-SE04** | Confidentiality (Bảo mật truyền tải) | Phiên bản TLS; Tỷ lệ kết nối sử dụng HTTPS | TLS ≥ 1.2. 100% kết nối qua HTTPS. 0 kết nối HTTP không mã hóa được phép. |
 | **SUPL-SE05** | Confidentiality (Bảo mật dữ liệu) | Số trường dữ liệu nhạy cảm không được bảo vệ | 0 trường nhạy cảm hiển thị cho vai trò không được phép. 100% truy cập dữ liệu nhạy cảm (CCCD, BHXH, ngân hàng) được ghi audit log. |
-| **SUPL-SE06** | Integrity – Chống tấn công web | Số lỗ hổng tấn công web phát hiện qua kiểm thử bảo mật | 0 lỗ hổng CSRF. 0 lỗ hổng XSS. 100% chức năng POST/PUT/DELETE vượt qua kiểm thử chống CSRF và 100% dữ liệu hiển thị từ input người dùng vượt qua kiểm thử XSS. |
+| **SUPL-SE06** | Integrity – Chống tấn công web | Số lỗ hổng tấn công web phát hiện qua kiểm thử bảo mật | 0 lỗ hổng CSRF. 0 lỗ hổng XSS. 100% chức năng POST/PUT/PATCH và các request thay đổi trạng thái tương đương vượt qua kiểm thử chống CSRF và 100% dữ liệu hiển thị từ input người dùng vượt qua kiểm thử XSS. |
 | **SUPL-SE07** | Integrity – Chống tấn công database | Số lỗ hổng SQL Injection phát hiện qua kiểm thử | 0 lỗ hổng SQL Injection. 100% truy vấn truy cập dữ liệu tách dữ liệu đầu vào khỏi câu lệnh thực thi SQL. |
 | **SUPL-SE08** | Authorization + Auditability (Phân quyền + Kiểm toán) | Số thay đổi cấu hình ẩn/hiện không hợp lệ; Tỷ lệ thay đổi cấu hình được ghi log đầy đủ | 0 thay đổi cấu hình ẩn/hiện do vai trò không được phép thực hiện. 100% thay đổi cấu hình ẩn/hiện khen thưởng/kỷ luật được ghi audit log với user ID, thời gian, giá trị trước/sau. |
 | **SUPL-SE09** | Authorization + Auditability (Phân quyền + Kiểm toán) – Chấm dứt hợp đồng | Số trường hợp chấm dứt hợp đồng trước hạn trái phép; Tỷ lệ thao tác được ghi log đầy đủ | 0 trường hợp chấm dứt hợp đồng trước hạn trái phép. 100% thao tác chấm dứt hợp đồng trước hạn được ghi audit log với mã hợp đồng, mã nhân sự, lý do chấm dứt, người thực hiện, thời gian, giá trị trước/sau. |
@@ -244,7 +244,7 @@ FURPS+ Classification
 | **SUPL-IC02** | Compatibility – Trình duyệt | Số trình duyệt hỗ trợ; Tỷ lệ chức năng hoạt động đúng | ≥ 3 trình duyệt (Chrome, Firefox, Edge). 100% chức năng hoạt động trên Chrome mới nhất. ≥ 95% trên Firefox và Edge. |
 | **SUPL-IC03** | Portability – Mã hóa | Encoding sử dụng | UTF-8 trên toàn bộ hệ thống. 0 lỗi hiển thị Tiếng Việt có dấu. |
 | **SUPL-IC04** | Correctness – File | Định dạng và kích thước file hỗ trợ | PDF và Excel. Kích thước tối đa: 10MB/file. Thông báo lỗi nếu vượt quá. |
-| **SUPL-LR01** | Legal – Bảo vệ dữ liệu | Tỷ lệ trường hợp xử lý dữ liệu có bản ghi đồng ý hợp lệ; Tỷ lệ yêu cầu ẩn/xóa dữ liệu được xử lý đúng | 100% trường hợp thuộc diện phải xin đồng ý có bản ghi đồng ý hợp lệ trước khi xử lý dữ liệu. 100% yêu cầu hợp lệ về ẩn hoặc xóa dữ liệu cá nhân được thực hiện và lưu vết xử lý. |
+| **SUPL-LR01** | Legal – Bảo vệ dữ liệu | Tỷ lệ trường hợp xử lý dữ liệu có bản ghi đồng ý hợp lệ; Tỷ lệ yêu cầu ẩn dữ liệu được xử lý đúng | 100% trường hợp thuộc diện phải xin đồng ý có bản ghi đồng ý hợp lệ trước khi xử lý dữ liệu. 100% yêu cầu hợp lệ về ẩn dữ liệu cá nhân được thực hiện và lưu vết xử lý. |
 | **SUPL-LR02** | Legal – Quy chế nhân sự | Tỷ lệ mục trong bộ danh mục phê duyệt được cấu hình và sử dụng được; Số mục trái danh mục phê duyệt | 100% loại hợp đồng, phụ cấp và chức danh trong bộ danh mục nhân sự phê duyệt được cấu hình và sử dụng được trên hệ thống. 0 mục trái bộ danh mục phê duyệt được đưa vào nghiệm thu. |
 | **SUPL-LR03** | Legal – Lưu trữ | Thời gian lưu trữ tối thiểu | Hồ sơ nhân sự lưu ≥ 75 năm (theo Luật Lưu trữ). Hợp đồng lao động và lịch sử đánh giá khen thưởng/kỷ luật lưu ≥ 10 năm sau khi kết thúc hoặc sau bản ghi cuối cùng. |
 
@@ -260,7 +260,7 @@ FURPS+ Classification
 | | SUPL-F04 | FEAT 2.6, UC 4.8 A2 | System Timer |
 | | SUPL-F05 | FEAT 5.1–5.4, FEAT 7.6; UC 4.22, UC 4.43–4.45 | System Timer, TCCB |
 | | SUPL-F06 | FEAT 8.2, UC 4.34 | System Timer, TCCB |
-| | SUPL-F07 | FEAT 9.3, 9.4, 9.5 | TCCB |
+| | SUPL-F07 | FEAT 9.4, 9.5 | TCCB |
 | | SUPL-F08 | FEAT 1.1, UC 4.1 | Tất cả |
 | **Usability** | SUPL-U01 → U07 | Toàn bộ FEAT/UC | Tất cả |
 | **Reliability** | SUPL-R01 → R05 | Toàn bộ hệ thống | Phòng CNTT |
@@ -300,7 +300,7 @@ FURPS+ Classification
 |-----------|------------|------------|------------|
 | **Bảo mật vs Dễ sử dụng** | Mật khẩu phức tạp + tự động đăng xuất 30 phút | Người dùng phải đăng nhập lại thường xuyên | Ưu tiên bảo mật (M) – bù bằng cảnh báo 5 phút trước khi hết phiên |
 | **Bảo mật vs Hiệu năng** | Kiểm tra quyền trên mọi API request | Tăng overhead cho mỗi request | Ưu tiên bảo mật (M) – tối ưu bằng caching quyền theo phiên |
-| **Toàn vẹn dữ liệu vs Linh hoạt** | Không cho xóa danh mục đã sử dụng | Người dùng muốn dọn dẹp dữ liệu cũ | Ưu tiên toàn vẹn (M) – hỗ trợ "Ngừng sử dụng" thay thế |
+| **Toàn vẹn dữ liệu vs Linh hoạt** | Quản lý danh mục cũ bằng thay đổi trạng thái để giữ nguyên lịch sử | Người dùng muốn tối giản dữ liệu hiển thị trên màn hình | Ưu tiên toàn vẹn (M) – hỗ trợ "Ngừng sử dụng" thay thế |
 | **Audit Log đầy đủ vs Hiệu năng** | Ghi log 100% hành động | Tăng I/O database | Ưu tiên audit (M) – sử dụng async logging hoặc separate log table |
 | **Responsive design vs Thời gian phát triển** | Hỗ trợ đa thiết bị | Tăng effort thiết kế/kiểm thử | Ưu tiên desktop (M) – tablet hỗ trợ cơ bản (E) |
 
@@ -333,7 +333,7 @@ Product Transition (Chuyển đổi sản phẩm)
 
 | # | Quality Factor | Metric | Acceptance Criteria | Priority |
 |---|---------------|--------|---------------------|----------|
-| 1 | **Performance – Speed** | P95 Response time (CRUD) | ≤ 2s (≤50 users), ≤ 5s (≤100 users) | M |
+| 1 | **Performance – Speed** | P95 Response time (xem/thêm/sửa/chuyển trạng thái) | ≤ 2s (≤50 users), ≤ 5s (≤100 users) | M |
 | 2 | **Performance – Capacity** | Concurrent users | ≥ 100 users, throughput ≥ 50 tx/s | M |
 | 3 | **Performance – Search** | Search/filter response time | ≤ 2s (≤10K records) | M |
 | 4 | **Performance – Report** | Dashboard render time | ≤ 5s dashboard, ≤ 15s complex report | E |
@@ -357,15 +357,15 @@ Product Transition (Chuyển đổi sản phẩm)
 | 22 | **Usability – Error Handling** | Vietnamese error messages | 100% with fix suggestions | M |
 | 23 | **Usability – Efficiency** | Steps to search+view employee | ≤ 3 steps | M |
 | 24 | **Usability – Responsive** | Correct display at target resolutions | 100% at ≥1366×768 | E |
-| 25 | **Usability – Confirmation** | Critical actions with dialog | 100% delete/lock/terminate actions | M |
+| 25 | **Usability – Confirmation** | Critical actions with dialog | 100% khóa tài khoản/thôi việc/chấm dứt trước hạn/thay đổi trạng thái | M |
 | 26 | **Supportability – Modularity** | Module coupling | Change in 1 module → ≤ 1 other module affected | M |
 | 27 | **Supportability – Documentation** | API doc coverage | ≥ 90% endpoints documented | E |
 | 28 | **Supportability – Flexibility** | Config categories extendable via UI | ≥ 3 categories, 0 code changes needed | M |
 | 29 | **Supportability – Logging** | Log levels supported | ≥ 4 levels (ERROR/WARN/INFO/DEBUG) | E |
 | 30 | **Supportability – Scalability** | Horizontal scaling support | ≥ 2 instances behind load balancer | N |
-| 31 | **Correctness – Auto Logging** | Action log coverage | 100% CRUD actions logged with 9 fields | M |
+| 31 | **Correctness – Auto Logging** | Action log coverage | 100% hành động truy cập/thêm-sửa/thay đổi trạng thái được ghi log với 9 trường | M |
 | 32 | **Correctness – Auto Processes** | Auto status transition accuracy | 100% correct, ≤ 24h delay | M |
-| 33 | **Integrity – Data Retention** | Catalog deletion prevention | 0 used catalogs deletable | M |
+| 33 | **Integrity – Status Transition Governance** | Catalog status-change rule compliance | 100% đúng quy tắc, 0 sai lệch dữ liệu lịch sử | M |
 | 34 | **Legal – Data Privacy** | Compliance with ND 13/2023 | Full compliance | M |
 | 35 | **Legal – Records Retention** | Retention period for HR/contract/evaluation history | Hồ sơ nhân sự ≥ 75 năm; hợp đồng và lịch sử đánh giá/khen thưởng/kỷ luật ≥ 10 năm | M |
 | 36 | **Compatibility – Browser** | Supported browsers | Chrome + Firefox + Edge, 100% on Chrome | M |

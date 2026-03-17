@@ -830,22 +830,6 @@ Từ các FEAT đã được phân tách và xác định, chi tiết thành cá
 | Luồng sự kiện thay thế  (Alternative Flow) | Không có |
 | Luồng sự kiện ngoại lệ  (Exception Flow) | **E1: Dữ liệu lưu không hợp lệ**   1. Tại bước 5, Hệ thống validate phát hiện lỗi:  * Bậc lương trong cùng ngạch đã tồn tại * Hệ số lương phải là số thực, không được nhỏ hơn 0 * Bậc lương phải là số nguyên * Thông tin bắt buộc đầy đủ  2. Hệ thống báo lỗi 3. Dữ liệu không được lưu   **E2: Danh mục đang ở trạng thái “Ngừng sử dụng”**   1. Tại bước 1, hệ thống phát hiện danh mục hệ số lương đang ở trạng thái “Ngừng sử dụng”. 2. Hệ thống vô hiệu hóa nút “Sửa” hoặc hiển thị thông báo: “Không thể chỉnh sửa danh mục đã ngừng sử dụng.”   **E3: Phòng TCCB hủy thao tác**   1. Tại bước 2, Phòng TCCB nhấn “Hủy” 2. Hệ thống quay lại màn hình danh sách bậc lương   **E4: Hệ số lương đã được hồ sơ nhân sự sử dụng**   1. Tại bước 1, hệ thống phát hiện hệ số lương đã được ít nhất một hồ sơ nhân sự sử dụng. 2. Hệ thống hiển thị thông báo: “Không thể chỉnh sửa hệ số lương đã được sử dụng trong hồ sơ nhân sự.” 3. Hệ thống vô hiệu hóa nút “Sửa”. |
 
-### 4.15. Use Case: Xóa danh mục hệ số lương
-
-|  |  |
-| --- | --- |
-| **Tên use case** | **Xóa danh mục hệ số lương** |
-| Tác nhân chính | Phòng TCCB |
-| Mục đích (mô tả) | Phòng TCCB xóa hệ số lương theo bậc và ngạch phục vụ cho việc quản lý và nhập liệu thông tin nhân sự nếu như nhập liệu sai sót trong trường hợp hệ số lương chưa từng được sử dụng trong hồ sơ nhân sự. |
-| Mức độ ưu tiên  (Priority) | Bắt buộc |
-| Điều kiện kích hoạt  (Trigger) | Tại màn hình danh sách danh mục hệ số lương, Phòng TCCB chọn chức năng “Xóa”. |
-| Điều kiện tiên quyết  (Precondition) | Người dùng đăng nhập với vai trò Phòng TCCB.  Danh mục hệ số lương cần xóa đã tồn tại trong hệ thống.  Danh mục hệ số lương chưa được sử dụng trong bất kỳ hồ sơ nhân sự nào. |
-| Điều kiện thành công  (Post-condition) | Danh mục hệ số lương được xóa hoàn toàn khỏi hệ thống. |
-| Điều kiện thất bại | Danh mục hệ số lương không được xóa. |
-| Luồng sự kiện chính  (Basic Flow) | 1. Phòng TCCB chọn một danh mục hệ số lương trong danh sách.  2. Phòng TCCB chọn chức năng “Xóa”.  3. Hệ thống hiển thị hộp thoại xác nhận xóa.  4. Phòng TCCB xác nhận thao tác xóa.  5. Hệ thống kiểm tra điều kiện sử dụng của hệ số lương.  6. Hệ thống xóa danh mục hệ số lương thành công.  7. Hệ thống lưu lịch sử thay đổi và thông báo xóa thành công. |
-| Luồng sự kiện thay thế  (Alternative Flow) | Không có |
-| Luồng sự kiện ngoại lệ  (Exception Flow) | **E1: Danh mục hệ số lương đã được sử dụng**   1. Tại bước 5, hệ thống phát hiện hệ số lương đã được gán cho ít nhất một hồ sơ nhân sự. 2. Hệ thống thông báo không thể xóa danh mục đã được sử dụng 3. Dữ liệu không bị xóa.   **E2: Hủy thao tác xóa**   1. Tại bước 3, Phòng TCCB chọn “Hủy”. 2. Hệ thống đóng hộp thoại xác nhận và quay lại màn hình danh sách. |
-
 ### 4.16. Use Case: Thay đổi trạng thái danh mục hệ số lương
 
 |  |  |
@@ -2489,15 +2473,15 @@ classDiagram
 | **Lý do chọn độ đo** | Trạng thái đăng ký đào tạo cần gần thời gian thực để danh sách học viên, điểm danh và thống kê không bị lệch so với trạng thái của khóa học. Ngưỡng ≤ 1 phút đủ nhanh cho trải nghiệm người dùng và vẫn phù hợp với cách triển khai event/job bất đồng bộ; tỷ lệ 100% là cần thiết vì chỉ một bản ghi không được cập nhật cũng làm sai sĩ số và lịch sử đào tạo của nhân sự. |
 | **Phương pháp đo** | Tạo khóa đào tạo mẫu với nhiều đăng ký ở trạng thái “Đã đăng ký”, chuyển trạng thái khóa đào tạo và đối chiếu trạng thái của toàn bộ bản ghi đăng ký sau khi hệ thống xử lý. |
 
-#### SUPL-F07: Quy tắc nghiệp vụ chung về xóa/thay đổi trạng thái
+#### SUPL-F07: Quy tắc nghiệp vụ chung về thay đổi trạng thái
 | Thuộc tính | Nội dung |
 |---|---|
 | **Yếu tố chất lượng** | Integrity (Tính toàn vẹn dữ liệu) |
-| **Mô tả yêu cầu** | Danh mục loại phụ cấp và loại hợp đồng chỉ hỗ trợ “Thay đổi trạng thái” (không hỗ trợ “Xóa”) để bảo đảm tính toàn vẹn dữ liệu và phục vụ kiểm toán. Hệ số lương cho phép xóa khi chưa được hồ sơ nào sử dụng. |
-| **Độ đo yêu cầu** | (1) Số trường hợp danh mục đã được sử dụng nhưng vẫn bị xóa; (2) Tỷ lệ danh mục loại phụ cấp/loại hợp đồng đã sử dụng chỉ cho phép đổi trạng thái; (3) Tỷ lệ hệ số lương chưa được sử dụng có thể xóa hợp lệ. |
-| **Tiêu chuẩn đáp ứng** | (1) 0 trường hợp danh mục đã sử dụng bị xóa; (2) 100% loại phụ cấp và loại hợp đồng đã sử dụng chỉ hỗ trợ thay đổi trạng thái; (3) 100% hệ số lương chưa được hồ sơ nào sử dụng có thể xóa thành công. |
-| **Lý do chọn độ đo** | Quy tắc này dựa trên nguyên tắc toàn vẹn tham chiếu và audit trail: dữ liệu master đã được dùng trong hồ sơ thực tế thì không được xóa cứng, nếu không sẽ làm sai lịch sử và đứt liên kết báo cáo. Vì vậy ngưỡng “0 trường hợp xóa sai” và “100% chỉ đổi trạng thái” là ngưỡng nhị phân bắt buộc; riêng hệ số lương chưa được dùng có thể xóa 100% vì chưa tạo ra hệ quả lịch sử dữ liệu. |
-| **Phương pháp đo** | Chuẩn bị các bản ghi danh mục ở cả hai trạng thái đã dùng/chưa dùng, thực hiện kiểm thử âm và dương đối với thao tác xóa/thay đổi trạng thái, sau đó đối chiếu dữ liệu lưu vết trong cơ sở dữ liệu. |
+| **Mô tả yêu cầu** | Danh mục loại phụ cấp và loại hợp đồng chỉ hỗ trợ thao tác thay đổi trạng thái theo quy tắc nghiệp vụ để bảo đảm tính toàn vẹn dữ liệu và phục vụ kiểm toán. |
+| **Độ đo yêu cầu** | (1) Tỷ lệ thao tác thay đổi trạng thái của danh mục loại phụ cấp/loại hợp đồng tuân thủ đúng quy tắc nghiệp vụ; (2) Số trường hợp thay đổi trạng thái làm sai lệch hoặc mất liên kết dữ liệu lịch sử. |
+| **Tiêu chuẩn đáp ứng** | (1) 100% thao tác thay đổi trạng thái của loại phụ cấp và loại hợp đồng tuân thủ đúng quy tắc nghiệp vụ; (2) 0 trường hợp thay đổi trạng thái làm sai lệch hoặc mất liên kết dữ liệu lịch sử. |
+| **Lý do chọn độ đo** | Quy tắc này dựa trên nguyên tắc toàn vẹn tham chiếu và audit trail: dữ liệu master cần được giữ nguyên lịch sử trong cùng bản ghi và được kiểm soát bằng thay đổi trạng thái để tránh sai lệch báo cáo, truy vết và đối soát nghiệp vụ. Vì vậy ngưỡng “100% đúng quy tắc” và “0 trường hợp sai lệch dữ liệu lịch sử” là các ngưỡng nhị phân bắt buộc. |
+| **Phương pháp đo** | Chuẩn bị các bản ghi danh mục ở nhiều trạng thái nghiệp vụ, thực hiện kiểm thử dương và âm đối với thao tác thay đổi trạng thái, sau đó đối chiếu dữ liệu lưu vết và liên kết tham chiếu trong cơ sở dữ liệu. |
 
 #### SUPL-F08: Bảo vệ mật khẩu lưu trữ
 | Thuộc tính | Nội dung |
@@ -2571,11 +2555,11 @@ classDiagram
 | Thuộc tính | Nội dung |
 |---|---|
 | **Yếu tố chất lượng** | Legal – Bảo vệ dữ liệu |
-| **Mô tả yêu cầu** | Hệ thống phải hỗ trợ quản lý sự đồng ý thu thập dữ liệu cá nhân và xử lý yêu cầu hợp lệ về ẩn hoặc xóa dữ liệu cá nhân theo Nghị định 13/2023/NĐ-CP. |
-| **Độ đo yêu cầu** | (1) Tỷ lệ trường hợp xử lý dữ liệu cá nhân thuộc diện phải xin đồng ý có bản ghi đồng ý hợp lệ trước khi xử lý; (2) Tỷ lệ yêu cầu hợp lệ về ẩn/xóa dữ liệu cá nhân được xử lý và lưu vết đầy đủ. |
-| **Tiêu chuẩn đáp ứng** | (1) 100% trường hợp thuộc diện phải xin đồng ý có bản ghi đồng ý hợp lệ trước khi xử lý dữ liệu; (2) 100% yêu cầu hợp lệ về ẩn hoặc xóa dữ liệu cá nhân được thực hiện và có lưu vết xử lý. |
+| **Mô tả yêu cầu** | Hệ thống phải hỗ trợ quản lý sự đồng ý thu thập dữ liệu cá nhân và xử lý yêu cầu hợp lệ về ẩn dữ liệu cá nhân theo Nghị định 13/2023/NĐ-CP. |
+| **Độ đo yêu cầu** | (1) Tỷ lệ trường hợp xử lý dữ liệu cá nhân thuộc diện phải xin đồng ý có bản ghi đồng ý hợp lệ trước khi xử lý; (2) Tỷ lệ yêu cầu hợp lệ về ẩn dữ liệu cá nhân được xử lý và lưu vết đầy đủ. |
+| **Tiêu chuẩn đáp ứng** | (1) 100% trường hợp thuộc diện phải xin đồng ý có bản ghi đồng ý hợp lệ trước khi xử lý dữ liệu; (2) 100% yêu cầu hợp lệ về ẩn dữ liệu cá nhân được thực hiện và có lưu vết xử lý. |
 | **Lý do chọn độ đo** | Nghị định 13/2023/NĐ-CP đặt ra nghĩa vụ tuân thủ theo kiểu “có hoặc không”, không có khái niệm tuân thủ một phần đối với sự đồng ý hợp lệ và quyền của chủ thể dữ liệu. Vì vậy ngưỡng 100% được chọn cho cả hai chỉ số; đồng thời yêu cầu “có lưu vết xử lý” được thêm vào để chứng minh được việc tuân thủ khi thanh tra hoặc khi chủ thể dữ liệu khiếu nại. |
-| **Phương pháp đo** | Kiểm tra hồ sơ đồng ý của chủ thể dữ liệu, đối chiếu nhật ký xử lý yêu cầu ẩn/xóa với các yêu cầu hợp lệ và rà soát mẫu dữ liệu cá nhân trước/sau xử lý. |
+| **Phương pháp đo** | Kiểm tra hồ sơ đồng ý của chủ thể dữ liệu, đối chiếu nhật ký xử lý yêu cầu ẩn dữ liệu với các yêu cầu hợp lệ và rà soát mẫu dữ liệu cá nhân trước/sau xử lý. |
 
 #### SUPL-LR02: Tuân thủ quy chế quản lý nhân sự
 | Thuộc tính | Nội dung |
@@ -2685,11 +2669,11 @@ classDiagram
 | Thuộc tính | Nội dung |
 |---|---|
 | **Yếu tố chất lượng** | Usability – Ngăn ngừa lỗi (Error Prevention) |
-| **Mô tả yêu cầu** | Hệ thống hiển thị hộp thoại xác nhận trước các thao tác quan trọng như xóa dữ liệu, khóa tài khoản, đánh dấu thôi việc, thay đổi trạng thái đơn vị và các thao tác thay đổi trạng thái có rủi ro tương đương. |
+| **Mô tả yêu cầu** | Hệ thống hiển thị hộp thoại xác nhận trước các thao tác quan trọng như khóa tài khoản, đánh dấu thôi việc, thay đổi trạng thái đơn vị và các thao tác thay đổi trạng thái có rủi ro tương đương. |
 | **Độ đo yêu cầu** | Tỷ lệ thao tác quan trọng có hộp thoại xác nhận trước khi hệ thống thực thi thao tác. |
-| **Tiêu chuẩn đáp ứng** | 100% thao tác quan trọng có confirmation dialog; tối thiểu bao gồm: xóa dữ liệu, khóa tài khoản, đánh dấu thôi việc, thay đổi trạng thái đơn vị và chấm dứt hợp đồng lao động trước hạn (nếu chức năng được cung cấp trên hệ thống). |
+| **Tiêu chuẩn đáp ứng** | 100% thao tác quan trọng có confirmation dialog; tối thiểu bao gồm: khóa tài khoản, đánh dấu thôi việc, thay đổi trạng thái đơn vị và chấm dứt hợp đồng lao động trước hạn (nếu chức năng được cung cấp trên hệ thống). |
 | **Phương pháp đo** | Lập danh sách thao tác quan trọng theo nghiệp vụ, kích hoạt từng thao tác trên môi trường kiểm thử và kiểm tra sự xuất hiện của hộp thoại xác nhận trước khi dữ liệu bị thay đổi. |
-| **Lý do chọn độ đo** | Theo heuristic **Error Prevention** của Nielsen và hướng dẫn của NN/g về **confirmation dialog**, xác nhận chỉ nên dùng cho hành động có hậu quả nghiêm trọng và khó hoàn tác. Các thao tác như xóa, khóa tài khoản, thôi việc hoặc đổi trạng thái đơn vị đều có rủi ro cao đối với dữ liệu nhân sự, nên ngưỡng **100%** là phù hợp vì đây là yêu cầu kiểu “sharp”: thiếu xác nhận ở một trường hợp cũng có thể gây lỗi nghiệp vụ lớn. |
+| **Lý do chọn độ đo** | Theo heuristic **Error Prevention** của Nielsen và hướng dẫn của NN/g về **confirmation dialog**, xác nhận chỉ nên dùng cho hành động có hậu quả nghiêm trọng và khó hoàn tác. Các thao tác như khóa tài khoản, thôi việc hoặc đổi trạng thái đơn vị đều có rủi ro cao đối với dữ liệu nhân sự, nên ngưỡng **100%** là phù hợp vì đây là yêu cầu kiểu “sharp”: thiếu xác nhận ở một trường hợp cũng có thể gây lỗi nghiệp vụ lớn. |
 | **Đại lượng thay thế (nếu cần)** | Không cần, vì có thể kiểm thử trực tiếp theo từng thao tác trọng yếu. |
 
 ## 6.5. Yêu cầu về Hỗ trợ (Supportability)

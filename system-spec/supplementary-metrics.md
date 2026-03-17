@@ -4,13 +4,13 @@
 
 > Tài liệu này trình bày chi tiết việc **thiết lập độ đo** (Metrics), **xác định yếu tố chất lượng** (Quality Factors) và **tiêu chuẩn đáp ứng** (Acceptance Criteria) cho từng yêu cầu bổ sung/phi chức năng đã được liệt kê trong [supplementary-requirements.md](./supplementary-requirements.md). Khi NFR khó đo trực tiếp, sử dụng **đại lượng thay thế** (Proxy).
 >
-> **Ghi chú cập nhật phạm vi:** Các độ đo có phạm vi áp dụng kiểu **toàn bộ FEAT/UC**, **toàn bộ hệ thống**, hoặc **mọi hành động CRUD và truy cập** mặc nhiên bao phủ cả các use case được bổ sung sau mở rộng phạm vi, bao gồm **UC 4.43 – UC 4.48** tương ứng **FEAT 5.2 – 5.4, FEAT 6.2 – 6.3, FEAT 7.9**. Với các độ đo đang tham chiếu FEAT/UC cụ thể, phạm vi áp dụng được cập nhật tường minh trong tài liệu này để tránh thiếu bao phủ truy vết.
+> **Ghi chú cập nhật phạm vi:** Các độ đo có phạm vi áp dụng kiểu **toàn bộ FEAT/UC**, **toàn bộ hệ thống**, hoặc **mọi hành động truy cập, thêm mới/cập nhật dữ liệu và thay đổi trạng thái** mặc nhiên bao phủ cả các use case được bổ sung sau mở rộng phạm vi, bao gồm **UC 4.43 – UC 4.48** tương ứng **FEAT 5.2 – 5.4, FEAT 6.2 – 6.3, FEAT 7.9**. Với các độ đo đang tham chiếu FEAT/UC cụ thể, phạm vi áp dụng được cập nhật tường minh trong tài liệu này để tránh thiếu bao phủ truy vết.
 
 ---
 
 ## 1. SUPL-P01 — Thời gian phản hồi giao diện
 
-**Yêu cầu gốc:** Các thao tác CRUD cơ bản phải đáp ứng các ngưỡng P95 Response Time và Time to Interactive (TTI) theo tải đồng thời được quy định tại phần tiêu chuẩn đáp ứng.
+**Yêu cầu gốc:** Các thao tác nghiệp vụ cơ bản (xem danh sách, xem chi tiết, thêm/sửa, thay đổi trạng thái khi được hỗ trợ) phải đáp ứng các ngưỡng P95 Response Time và Time to Interactive (TTI) theo tải đồng thời được quy định tại phần tiêu chuẩn đáp ứng.
 
 ### Yếu tố chất lượng
 - **Nhóm:** Performance (Hiệu năng)
@@ -20,7 +20,7 @@
 ### Độ đo yêu cầu (Metrics)
 | Độ đo | Đơn vị | Phương pháp đo |
 |-------|--------|----------------|
-| P95 Response Time cho CRUD | Giây (s) | Đo bằng công cụ load test (JMeter, k6) — lấy phân vị 95 của thời gian từ lúc gửi request đến nhận response |
+| P95 Response Time cho thao tác nghiệp vụ cơ bản | Giây (s) | Đo bằng công cụ load test (JMeter, k6) — lấy phân vị 95 của thời gian từ lúc gửi request đến nhận response |
 | Time to Interactive (TTI) | Giây (s) | Đo trên trình duyệt — thời gian từ click đến giao diện sẵn sàng tương tác |
 | Contract List Load Time | Giây (s) | Thời gian từ mở màn hình danh sách hợp đồng đến khi danh sách hiển thị đầy đủ và sẵn sàng tương tác |
 | Contract Detail Load Time | Giây (s) | Thời gian từ click một hợp đồng đến khi màn hình chi tiết hợp đồng hiển thị ổn định |
@@ -430,7 +430,7 @@
 |-------|--------|----------------|
 | CSRF Vulnerabilities | Số lỗ hổng | Penetration test (OWASP ZAP hoặc tương đương) |
 | XSS Vulnerabilities | Số lỗ hổng | Penetration test + code review cơ chế xử lý dữ liệu đầu vào/đầu ra |
-| State-changing Request Protection Coverage | % | Tỷ lệ form POST/PUT/DELETE hoặc request tương đương được bảo vệ chống giả mạo yêu cầu |
+| State-changing Request Protection Coverage | % | Tỷ lệ form POST/PUT/PATCH hoặc request thay đổi trạng thái tương đương được bảo vệ chống giả mạo yêu cầu |
 
 ### Tiêu chuẩn đáp ứng
 - CSRF Vulnerabilities = **0**
@@ -582,7 +582,7 @@
 
 ## 24. SUPL-U07 — Xác nhận trước thao tác quan trọng
 
-**Yêu cầu gốc:** Hệ thống phải hiển thị hộp thoại xác nhận trước các thao tác xóa dữ liệu, khóa tài khoản, đánh dấu thôi việc, chấm dứt hợp đồng lao động trước hạn và thay đổi trạng thái đơn vị.
+**Yêu cầu gốc:** Hệ thống phải hiển thị hộp thoại xác nhận trước các thao tác khóa tài khoản, đánh dấu thôi việc, chấm dứt hợp đồng lao động trước hạn, thay đổi trạng thái đơn vị và các thao tác thay đổi trạng thái có rủi ro tương đương.
 
 ### Yếu tố chất lượng
 - **Nhóm:** Usability
@@ -594,7 +594,7 @@
 | Confirmation Dialog Coverage | % | Tỷ lệ thao tác quan trọng có hộp thoại xác nhận |
 
 ### Tiêu chuẩn đáp ứng
-- Confirmation Dialog Coverage = **100%** cho: xóa dữ liệu, khóa tài khoản, đánh dấu thôi việc, chấm dứt hợp đồng lao động trước hạn, thay đổi trạng thái đơn vị
+- Confirmation Dialog Coverage = **100%** cho: khóa tài khoản, đánh dấu thôi việc, chấm dứt hợp đồng lao động trước hạn, thay đổi trạng thái đơn vị và các thao tác thay đổi trạng thái có rủi ro tương đương
 
 ### Đại lượng thay thế
 - Không cần — kiểm thử trực tiếp từng thao tác
@@ -651,7 +651,7 @@
 
 ## 27. SUPL-F01 — Ghi nhật ký hệ thống tự động
 
-**Yêu cầu gốc:** Hệ thống phải tự động ghi nhật ký cho mọi hành động CRUD và truy cập, đồng thời mỗi bản ghi log phải có đầy đủ các trường thông tin bắt buộc.
+**Yêu cầu gốc:** Hệ thống phải tự động ghi nhật ký cho mọi hành động truy cập, thêm mới/cập nhật dữ liệu, thay đổi trạng thái và thay đổi cấu hình, đồng thời mỗi bản ghi log phải có đầy đủ các trường thông tin bắt buộc.
 
 ### Yếu tố chất lượng
 - **Nhóm:** Functionality (bổ sung) + Correctness
@@ -665,7 +665,7 @@
 | Log Field Completeness | Số trường / 9 | Kiểm tra mỗi log entry có đủ 9 trường: thời gian, tài khoản, họ tên, vai trò, loại hành động, đối tượng, mã đối tượng, mô tả, IP |
 
 ### Tiêu chuẩn đáp ứng
-- Action Log Coverage = **100%** cho mọi hành động CRUD và truy cập
+- Action Log Coverage = **100%** cho mọi hành động truy cập, thêm mới/cập nhật dữ liệu, thay đổi trạng thái và thay đổi cấu hình
 - Log Field Completeness = **9/9 trường** cho mọi entry
 
 ### Đại lượng thay thế
