@@ -98,8 +98,8 @@
 | FEAT 9.5 | Approved | High | Important | Low | High | Low | 3 | Iteration 1 | Team 1 (BA) | STRQ 9 | Phân tách, Làm cho đầy đủ |
 | FEAT 10.1 | Approved | Medium | Important | Medium | Low | Medium | 3 | Iteration 3 | Team 1 (BA) | STRQ 10 | Phân tách, Thêm chi tiết |
 | FEAT 10.2 | Approved | Medium | Important | Medium | Low | Medium | 3 | Iteration 3 | Team 1 (BA) | STRQ 10 | Phân tách, Thêm chi tiết |
-| FEAT 10.3 | Approved | Medium | Medium | Medium | Low | Medium | 2 | Iteration 3 | Team 1 (BA) | STRQ 10 | Phân tách, Thêm chi tiết |
-| FEAT 10.4 | Approved | Medium | Low | Medium | Low | Medium | 2 | Iteration 3 | Team 1 (BA) | STRQ 10 | Phân tách, Thêm chi tiết |
+| FEAT 10.3 | Approved | Medium | Useful | Medium | Low | Medium | 2 | Iteration 3 | Team 1 (BA) | STRQ 10 | Phân tách, Thêm chi tiết |
+| FEAT 10.4 | Approved | Medium | Useful | Medium | Low | Medium | 2 | Iteration 3 | Team 1 (BA) | STRQ 10 | Phân tách, Thêm chi tiết |
 | FEAT 11.1 | Approved | Medium | Useful | Low | High | Low | 3 | Iteration 4 | Team 1 (BA) | STRQ 11 | Phân tách, Làm rõ |
 | FEAT 11.2 | Approved | Medium | Useful | Low | High | Low | 2 | Iteration 4 | Team 1 (BA) | STRQ 11 | Phân tách, Làm rõ |
 | FEAT 11.3 | Approved | Medium | Useful | Low | High | Medium | 3 | Iteration 4 | Team 1 (BA) | STRQ 11 | Phân tách, Làm rõ |
