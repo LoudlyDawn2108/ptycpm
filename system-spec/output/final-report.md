@@ -2436,6 +2436,7 @@ classDiagram
 | **Mô tả yêu cầu** | Hệ thống tự động ghi lại mọi hành động truy cập, thêm/sửa/xóa dữ liệu và thay đổi cấu hình với đầy đủ các thông tin: thời gian, tài khoản, họ tên, vai trò, loại hành động, đối tượng, mã đối tượng, mô tả chi tiết và địa chỉ IP. |
 | **Độ đo yêu cầu** | (1) Tỷ lệ hành động truy cập/CRUD/thay đổi cấu hình được ghi log; (2) Mức đầy đủ trường dữ liệu trên mỗi bản ghi log (9/9 trường bắt buộc). |
 | **Tiêu chuẩn đáp ứng** | (1) 100% hành động thuộc phạm vi yêu cầu phải có bản ghi log; (2) 100% bản ghi log có đủ 9/9 trường bắt buộc. |
+| **Lý do chọn độ đo** | Ghi log kiểm toán là yêu cầu kiểu “đạt hoặc không đạt”, nên ngưỡng 100% là bắt buộc; nếu thiếu 1 hành động hoặc thiếu 1 trường thì chuỗi truy vết bị đứt. Bộ 9 trường được chọn từ yêu cầu nguồn và tương thích với khuyến nghị OWASP Logging về tối thiểu phải ghi được when/who/what/where để phục vụ hậu kiểm trong hệ thống HRMS có dữ liệu nhân sự nhạy cảm. |
 | **Phương pháp đo** | Thực hiện kiểm thử trên các luồng đăng nhập, truy cập, thêm/sửa/xóa và thay đổi cấu hình; đối chiếu số hành động phát sinh với bảng audit log và kiểm tra cấu trúc từng bản ghi. |
 
 #### SUPL-F02: Tự động sinh mã nhân sự
@@ -2445,6 +2446,7 @@ classDiagram
 | **Mô tả yêu cầu** | Khi tạo mới hồ sơ nhân sự, hệ thống tự động cấp một mã cán bộ duy nhất theo mẫu mã đang được cấu hình áp dụng toàn hệ thống tại thời điểm tạo hồ sơ. |
 | **Độ đo yêu cầu** | (1) Tỷ lệ mã nhân sự sinh tự động bị trùng lặp; (2) Tỷ lệ mã sinh ra tuân thủ đúng mẫu mã đang cấu hình; (3) Tỷ lệ hồ sơ mới được cấp mã ngay tại thời điểm tạo. |
 | **Tiêu chuẩn đáp ứng** | (1) 0% mã nhân sự bị trùng lặp; (2) 100% mã sinh ra đúng mẫu mã đang áp dụng; (3) 100% hồ sơ nhân sự mới được cấp mã ngay khi tạo thành công. |
+| **Lý do chọn độ đo** | Mã nhân sự là định danh nghiệp vụ dùng xuyên suốt hồ sơ, hợp đồng, lương và đào tạo nên ngưỡng trùng lặp phải là 0%; chỉ cần 1 trường hợp trùng là toàn bộ liên kết dữ liệu bị sai. Ngưỡng 100% cấp mã ngay khi tạo được chọn theo bối cảnh HRMS của trường vì hồ sơ sau khi lập phải dùng được ngay ở các phân hệ khác, không phù hợp với cơ chế cấp mã thủ công hoặc cấp trễ. |
 | **Phương pháp đo** | Tạo thử nhiều hồ sơ nhân sự mới với các cấu hình mẫu mã khác nhau, kiểm tra tính duy nhất của mã trong cơ sở dữ liệu và đối chiếu chuỗi mã với mẫu cấu hình hiện hành. |
 
 #### SUPL-F03: Tự động đăng xuất phiên không hoạt động
@@ -2454,6 +2456,7 @@ classDiagram
 | **Mô tả yêu cầu** | Hệ thống tự động đăng xuất phiên làm việc nếu người dùng không thao tác trong 30 phút. Tham chiếu FEAT 1.3. |
 | **Độ đo yêu cầu** | Thời gian từ thao tác cuối cùng của người dùng đến khi hệ thống tự động đăng xuất phiên. |
 | **Tiêu chuẩn đáp ứng** | Hệ thống tự động đăng xuất chính xác sau 30 phút không hoạt động, sai số cho phép không quá ±30 giây. |
+| **Lý do chọn độ đo** | Mốc 30 phút phù hợp khuyến nghị OWASP Session Management cho ứng dụng nội bộ có dữ liệu nhạy cảm, thường chọn trong khoảng 15–30 phút cho idle timeout. Với HRMS của trường, 30 phút cân bằng giữa bảo mật và đặc thù công việc hành chính có thể bị gián đoạn bởi họp/tiếp công dân; biên sai số ±30 giây được chấp nhận do khác biệt giữa timer phía client, session backend và độ trễ mạng. |
 | **Phương pháp đo** | Tạo phiên đăng nhập thử nghiệm, ghi nhận thời điểm thao tác cuối cùng, để phiên ở trạng thái không tương tác và đo thời điểm hệ thống hủy phiên/chuyển về màn hình đăng nhập. |
 
 #### SUPL-F04: Tự động khóa tài khoản nhân sự thôi việc
@@ -2463,6 +2466,7 @@ classDiagram
 | **Mô tả yêu cầu** | Khi nhân sự được đánh dấu thôi việc, hệ thống tự động chuyển tài khoản của nhân sự đó sang trạng thái khóa. Cơ chế này gắn với FEAT 2.6 và phát sinh từ các nghiệp vụ thôi việc tương ứng FEAT 8.5, FEAT 8.6. |
 | **Độ đo yêu cầu** | (1) Thời gian từ lúc hồ sơ nhân sự chuyển sang trạng thái thôi việc đến khi tài khoản liên kết bị khóa; (2) Tỷ lệ tài khoản liên kết được khóa tự động đúng quy tắc. |
 | **Tiêu chuẩn đáp ứng** | (1) Tài khoản bị khóa trong không quá 1 phút kể từ khi nhân sự được đánh dấu thôi việc; (2) 100% tài khoản liên kết với nhân sự thôi việc được tự động chuyển sang trạng thái khóa. |
+| **Lý do chọn độ đo** | Sau khi phát sinh quyết định thôi việc, quyền truy cập cần bị thu hồi gần như ngay lập tức để giảm rủi ro rò rỉ dữ liệu nhân sự; vì vậy ngưỡng ≤ 1 phút là SLA an toàn thông tin hợp lý cho hệ thống nội bộ quy mô trường đại học, nơi xử lý đồng bộ hoặc job nền theo phút đều khả thi. Tỷ lệ 100% được chọn vì bỏ sót dù chỉ 1 tài khoản thôi việc vẫn là sự cố bảo mật nghiêm trọng. |
 | **Phương pháp đo** | Thực hiện thao tác đánh dấu thôi việc trên hồ sơ nhân sự có tài khoản liên kết, đo độ trễ cập nhật trạng thái tài khoản và kiểm tra kết quả trong bảng tài khoản/audit log. |
 
 #### SUPL-F05: Tự động chuyển trạng thái hợp đồng
@@ -2472,6 +2476,7 @@ classDiagram
 | **Mô tả yêu cầu** | Hệ thống tự động chuyển trạng thái hợp đồng từ “Còn hiệu lực” sang “Chờ gia hạn” khi thời hạn còn lại nhỏ hơn hoặc bằng ngưỡng chờ gia hạn được cấu hình. |
 | **Độ đo yêu cầu** | (1) Tỷ lệ hợp đồng đủ điều kiện được chuyển sang trạng thái “Chờ gia hạn”; (2) Độ trễ chuyển trạng thái kể từ thời điểm hợp đồng chạm ngưỡng cấu hình. |
 | **Tiêu chuẩn đáp ứng** | (1) 100% hợp đồng đủ điều kiện được chuyển đúng trạng thái; (2) Việc chuyển trạng thái hoàn tất trong không quá 24 giờ kể từ thời điểm đủ điều kiện. |
+| **Lý do chọn độ đo** | Trạng thái hợp đồng trong HRMS gắn với mốc ngày hiệu lực/ngày hết hạn theo nghiệp vụ nhân sự và Bộ luật Lao động, nên xử lý theo chu kỳ ngày là hợp lý hơn xử lý theo giây. Ngưỡng ≤ 24 giờ tương ứng với cơ chế scheduler chạy hằng ngày: đủ nhanh để không bỏ sót hợp đồng sắp hết hạn, đồng thời tránh tốn tài nguyên cho việc quét liên tục; tỷ lệ 100% là bắt buộc vì sai trạng thái hợp đồng ảnh hưởng trực tiếp đến báo cáo và xử lý gia hạn. |
 | **Phương pháp đo** | Cấu hình ngưỡng chờ gia hạn, tạo dữ liệu hợp đồng mẫu với các mốc thời gian khác nhau, chạy cơ chế nền/scheduler và đối chiếu thời điểm đủ điều kiện với thời điểm trạng thái được cập nhật. |
 
 #### SUPL-F06: Tự động cập nhật trạng thái tham gia đào tạo
@@ -2481,6 +2486,7 @@ classDiagram
 | **Mô tả yêu cầu** | Khi khóa đào tạo chuyển từ trạng thái “Đang mở đăng ký” sang trạng thái “Đang đào tạo”, hệ thống tự động cập nhật tất cả đăng ký tương ứng từ trạng thái “Đã đăng ký” sang “Đang học”. |
 | **Độ đo yêu cầu** | (1) Tỷ lệ bản ghi đăng ký của khóa đào tạo được cập nhật đúng trạng thái; (2) Độ trễ cập nhật kể từ thời điểm khóa đào tạo đổi trạng thái. |
 | **Tiêu chuẩn đáp ứng** | (1) 100% bản ghi đăng ký thuộc khóa đào tạo đó được chuyển từ “Đã đăng ký” sang “Đang học”; (2) Hoàn tất cập nhật trong không quá 1 phút kể từ khi khóa đào tạo chuyển sang “Đang đào tạo”. |
+| **Lý do chọn độ đo** | Trạng thái đăng ký đào tạo cần gần thời gian thực để danh sách học viên, điểm danh và thống kê không bị lệch so với trạng thái của khóa học. Ngưỡng ≤ 1 phút đủ nhanh cho trải nghiệm người dùng và vẫn phù hợp với cách triển khai event/job bất đồng bộ; tỷ lệ 100% là cần thiết vì chỉ một bản ghi không được cập nhật cũng làm sai sĩ số và lịch sử đào tạo của nhân sự. |
 | **Phương pháp đo** | Tạo khóa đào tạo mẫu với nhiều đăng ký ở trạng thái “Đã đăng ký”, chuyển trạng thái khóa đào tạo và đối chiếu trạng thái của toàn bộ bản ghi đăng ký sau khi hệ thống xử lý. |
 
 #### SUPL-F07: Quy tắc nghiệp vụ chung về xóa/thay đổi trạng thái
@@ -2490,6 +2496,7 @@ classDiagram
 | **Mô tả yêu cầu** | Danh mục loại phụ cấp và loại hợp đồng chỉ hỗ trợ “Thay đổi trạng thái” (không hỗ trợ “Xóa”) để bảo đảm tính toàn vẹn dữ liệu và phục vụ kiểm toán. Hệ số lương cho phép xóa khi chưa được hồ sơ nào sử dụng. |
 | **Độ đo yêu cầu** | (1) Số trường hợp danh mục đã được sử dụng nhưng vẫn bị xóa; (2) Tỷ lệ danh mục loại phụ cấp/loại hợp đồng đã sử dụng chỉ cho phép đổi trạng thái; (3) Tỷ lệ hệ số lương chưa được sử dụng có thể xóa hợp lệ. |
 | **Tiêu chuẩn đáp ứng** | (1) 0 trường hợp danh mục đã sử dụng bị xóa; (2) 100% loại phụ cấp và loại hợp đồng đã sử dụng chỉ hỗ trợ thay đổi trạng thái; (3) 100% hệ số lương chưa được hồ sơ nào sử dụng có thể xóa thành công. |
+| **Lý do chọn độ đo** | Quy tắc này dựa trên nguyên tắc toàn vẹn tham chiếu và audit trail: dữ liệu master đã được dùng trong hồ sơ thực tế thì không được xóa cứng, nếu không sẽ làm sai lịch sử và đứt liên kết báo cáo. Vì vậy ngưỡng “0 trường hợp xóa sai” và “100% chỉ đổi trạng thái” là ngưỡng nhị phân bắt buộc; riêng hệ số lương chưa được dùng có thể xóa 100% vì chưa tạo ra hệ quả lịch sử dữ liệu. |
 | **Phương pháp đo** | Chuẩn bị các bản ghi danh mục ở cả hai trạng thái đã dùng/chưa dùng, thực hiện kiểm thử âm và dương đối với thao tác xóa/thay đổi trạng thái, sau đó đối chiếu dữ liệu lưu vết trong cơ sở dữ liệu. |
 
 #### SUPL-F08: Bảo vệ mật khẩu lưu trữ
@@ -2499,6 +2506,7 @@ classDiagram
 | **Mô tả yêu cầu** | Hệ thống phải lưu trữ mật khẩu người dùng dưới dạng không thể khôi phục nguyên văn và không được lưu mật khẩu ở dạng văn bản thuần. |
 | **Độ đo yêu cầu** | (1) Mức tuân thủ cơ chế băm một chiều thích ứng đối với mật khẩu; (2) Tham số độ khó của cơ chế băm; (3) Số mật khẩu tồn tại ở dạng văn bản thuần trong dữ liệu lưu trữ. |
 | **Tiêu chuẩn đáp ứng** | (1) 100% mật khẩu được lưu dưới dạng băm một chiều thích ứng; (2) Tham số độ khó tối thiểu tương đương bcrypt cost 10; (3) 0 mật khẩu lưu ở dạng plaintext. |
+| **Lý do chọn độ đo** | OWASP Password Storage và NIST SP 800-63B đều khuyến nghị mật khẩu phải được lưu bằng cơ chế băm một chiều thích ứng, không lưu dạng có thể khôi phục nguyên văn. Mốc bcrypt cost 10 là ngưỡng tối thiểu phổ biến, đủ dễ bảo vệ trong đồ án và vẫn phù hợp khả năng xử lý của hệ thống hiện đại; ngưỡng 0 plaintext là bắt buộc vì chỉ một mật khẩu lưu thô cũng vi phạm nguyên tắc bảo vệ dữ liệu cá nhân theo Nghị định 13/2023/NĐ-CP. |
 | **Phương pháp đo** | Kiểm tra cấu hình bảo mật và mã nguồn xử lý đăng nhập/đổi mật khẩu, đối chiếu định dạng dữ liệu trong cột mật khẩu của cơ sở dữ liệu và thực hiện audit mẫu trên dữ liệu lưu trữ. |
 
 ## 6.2. Ràng buộc thiết kế (Design Constraints)
@@ -2522,6 +2530,7 @@ classDiagram
 | **Mô tả yêu cầu** | Hệ thống phải xây dựng theo mô hình Client-Server, frontend dạng SPA (Single Page Application) giao tiếp với backend qua RESTful API. |
 | **Độ đo yêu cầu** | (1) Tỷ lệ request nghiệp vụ giữa client và server sử dụng RESTful API/JSON; (2) Số luồng nghiệp vụ phía client truy cập dữ liệu mà không đi qua backend API. |
 | **Tiêu chuẩn đáp ứng** | (1) 100% request nghiệp vụ client-server sử dụng RESTful API với dữ liệu trao đổi chuẩn JSON; (2) 0 luồng nghiệp vụ truy cập dữ liệu trực tiếp mà không qua backend API; frontend được triển khai dưới một SPA thống nhất. |
+| **Lý do chọn độ đo** | Với kiến trúc client-server, ranh giới giữa frontend và backend phải rõ ràng nên ngưỡng 100% giao tiếp qua REST/JSON và 0 truy cập dữ liệu trực tiếp là ngưỡng bắt buộc, không thể đặt thấp hơn. Cách chọn này phù hợp đặc tả nguồn của dự án, đồng thời giúp hệ thống HRMS dễ bảo trì, dễ kiểm soát bảo mật, ghi log và tích hợp thêm kênh truy cập sau này. |
 | **Phương pháp đo** | Rà soát kiến trúc hệ thống, tài liệu API và lưu đồ triển khai; dùng browser devtools/network trace trên các luồng chính để xác nhận frontend giao tiếp với backend qua REST API. |
 
 #### SUPL-DC02: Cơ cấu tổ chức dạng cây
@@ -2531,6 +2540,7 @@ classDiagram
 | **Mô tả yêu cầu** | Cơ cấu tổ chức đơn vị phải được mô hình hóa dưới dạng cấu trúc cây cha-con với gốc là Trường Đại học Thủy Lợi. Tham chiếu FEAT 3.1. |
 | **Độ đo yêu cầu** | (1) Số nút gốc trong cây tổ chức; (2) Số chu trình (cycle) phát hiện trong quan hệ cha-con; (3) Tỷ lệ đơn vị có liên kết cha-con hợp lệ trong mô hình dữ liệu. |
 | **Tiêu chuẩn đáp ứng** | (1) Có đúng 1 nút gốc là “Trường Đại học Thủy Lợi”; (2) 0 chu trình trong cấu trúc cây; (3) 100% đơn vị tổ chức nằm trong quan hệ cha-con hợp lệ. |
+| **Lý do chọn độ đo** | Cơ cấu tổ chức của trường mang bản chất phân cấp một gốc nên mô hình dữ liệu phải thỏa đúng định nghĩa của cây: một nút gốc, không chu trình và mọi nút còn lại có quan hệ cha-con hợp lệ. Vì vậy các giá trị 1, 0 và 100% là ngưỡng logic bắt buộc chứ không phải số chọn tùy ý; nếu sai một trong ba điều kiện này thì dữ liệu tổ chức sẽ không còn là cây và kéo theo sai lệch phân quyền, báo cáo và tra cứu đơn vị. |
 | **Phương pháp đo** | Kiểm tra mô hình dữ liệu và thực hiện truy vấn/thuật toán duyệt cây để xác minh số nút gốc, phát hiện cycle và kiểm tra tính hợp lệ của toàn bộ quan hệ đơn vị. |
 
 #### SUPL-DC03: Tách biệt quyền theo vai trò
@@ -2540,6 +2550,7 @@ classDiagram
 | **Mô tả yêu cầu** | Thiết kế hệ thống phải bảo đảm phân tách quyền rõ ràng theo 4 vai trò đã xác định, sử dụng cơ chế Role-Based Access Control (RBAC). |
 | **Độ đo yêu cầu** | (1) Số vai trò được định nghĩa trong mô hình phân quyền; (2) Tỷ lệ chức năng/API có ma trận phân quyền rõ ràng; (3) Số trường hợp vai trò không được phép vẫn truy cập được chức năng khi kiểm thử phân quyền. |
 | **Tiêu chuẩn đáp ứng** | (1) Định nghĩa đúng 4 vai trò: Admin, TCCB, TCKT, Nhân sự; (2) 100% chức năng và API có ma trận RBAC rõ ràng; (3) 0 trường hợp truy cập trái quyền trong kiểm thử phân quyền. |
+| **Lý do chọn độ đo** | Con số 4 vai trò không phải đặt ngẫu nhiên mà kế thừa trực tiếp từ đặc tả hệ thống, phản ánh đúng 4 nhóm tác nhân nghiệp vụ đã được nhóm thống nhất. Ngưỡng 100% chức năng/API có ma trận quyền và 0 truy cập trái quyền được chọn theo nguyên tắc least privilege của RBAC: thiếu một điểm kiểm soát cũng có thể mở ra lỗ hổng truy cập dữ liệu nhân sự. |
 | **Phương pháp đo** | Đối chiếu tài liệu phân quyền với danh sách chức năng/API của hệ thống, kiểm tra cấu hình role-permission và thực hiện kiểm thử truy cập chéo giữa các vai trò. |
 
 ## 6.3. Ràng buộc pháp lý (Legal/Regulatory)
@@ -2563,6 +2574,7 @@ classDiagram
 | **Mô tả yêu cầu** | Hệ thống phải hỗ trợ quản lý sự đồng ý thu thập dữ liệu cá nhân và xử lý yêu cầu hợp lệ về ẩn hoặc xóa dữ liệu cá nhân theo Nghị định 13/2023/NĐ-CP. |
 | **Độ đo yêu cầu** | (1) Tỷ lệ trường hợp xử lý dữ liệu cá nhân thuộc diện phải xin đồng ý có bản ghi đồng ý hợp lệ trước khi xử lý; (2) Tỷ lệ yêu cầu hợp lệ về ẩn/xóa dữ liệu cá nhân được xử lý và lưu vết đầy đủ. |
 | **Tiêu chuẩn đáp ứng** | (1) 100% trường hợp thuộc diện phải xin đồng ý có bản ghi đồng ý hợp lệ trước khi xử lý dữ liệu; (2) 100% yêu cầu hợp lệ về ẩn hoặc xóa dữ liệu cá nhân được thực hiện và có lưu vết xử lý. |
+| **Lý do chọn độ đo** | Nghị định 13/2023/NĐ-CP đặt ra nghĩa vụ tuân thủ theo kiểu “có hoặc không”, không có khái niệm tuân thủ một phần đối với sự đồng ý hợp lệ và quyền của chủ thể dữ liệu. Vì vậy ngưỡng 100% được chọn cho cả hai chỉ số; đồng thời yêu cầu “có lưu vết xử lý” được thêm vào để chứng minh được việc tuân thủ khi thanh tra hoặc khi chủ thể dữ liệu khiếu nại. |
 | **Phương pháp đo** | Kiểm tra hồ sơ đồng ý của chủ thể dữ liệu, đối chiếu nhật ký xử lý yêu cầu ẩn/xóa với các yêu cầu hợp lệ và rà soát mẫu dữ liệu cá nhân trước/sau xử lý. |
 
 #### SUPL-LR02: Tuân thủ quy chế quản lý nhân sự
@@ -2572,6 +2584,7 @@ classDiagram
 | **Mô tả yêu cầu** | Hệ thống phải cho phép cấu hình và sử dụng bộ danh mục loại hợp đồng, phụ cấp và chức danh theo danh mục nhân sự do Trường Đại học Thủy Lợi phê duyệt trên cơ sở quy định hiện hành của Bộ GD&ĐT và Bộ NN&PTNT. |
 | **Độ đo yêu cầu** | (1) Tỷ lệ mục trong bộ danh mục nhân sự đã được phê duyệt có thể cấu hình và sử dụng trên hệ thống; (2) Số mục trái danh mục phê duyệt xuất hiện trong phạm vi nghiệm thu. |
 | **Tiêu chuẩn đáp ứng** | (1) 100% loại hợp đồng, phụ cấp và chức danh trong bộ danh mục phê duyệt được cấu hình và sử dụng được trên hệ thống; (2) 0 mục trái bộ danh mục phê duyệt được đưa vào nghiệm thu. |
+| **Lý do chọn độ đo** | Danh mục loại hợp đồng, phụ cấp và chức danh là dữ liệu chuẩn dùng cho thống kê, quyết định nhân sự và đối soát nội bộ; nếu hệ thống chỉ hỗ trợ một phần hoặc cho phép danh mục ngoài phê duyệt thì báo cáo toàn trường sẽ mất tính thống nhất. Do đó ngưỡng 100% danh mục phê duyệt phải dùng được và 0 mục ngoài phê duyệt là hợp lý theo yêu cầu quản trị nội bộ của trường và nguyên tắc kiểm soát master data. |
 | **Phương pháp đo** | Đối chiếu danh mục được phê duyệt của nhà trường với danh mục cấu hình trên hệ thống, thực hiện kiểm thử chọn/sử dụng các giá trị này trong các nghiệp vụ nhân sự liên quan. |
 
 #### SUPL-LR03: Lưu trữ hồ sơ theo quy định
@@ -2581,6 +2594,7 @@ classDiagram
 | **Mô tả yêu cầu** | Hồ sơ nhân sự, hợp đồng lao động và lịch sử đánh giá khen thưởng/kỷ luật phải được lưu trữ tối thiểu theo thời gian quy định của pháp luật lao động Việt Nam và quy chế lưu trữ hiện hành. |
 | **Độ đo yêu cầu** | (1) Thời gian lưu trữ tối thiểu đối với từng nhóm hồ sơ; (2) Tỷ lệ hồ sơ mẫu còn truy xuất được trong toàn bộ thời hạn lưu trữ bắt buộc. |
 | **Tiêu chuẩn đáp ứng** | (1) Hồ sơ nhân sự được lưu tối thiểu 75 năm; hợp đồng lao động và lịch sử đánh giá khen thưởng/kỷ luật được lưu tối thiểu 10 năm sau khi kết thúc hoặc sau bản ghi cuối cùng; (2) 100% hồ sơ mẫu trong thời hạn lưu trữ bắt buộc còn truy xuất được. |
+| **Lý do chọn độ đo** | Mốc lưu trữ được kế thừa từ đặc tả bổ sung của nhóm và được chọn theo hướng an toàn cao cho bối cảnh cơ quan công lập: hồ sơ nhân sự giữ rất dài để phục vụ xác minh quá trình công tác, nâng lương, hưu trí và tra cứu lịch sử lâu dài; hồ sơ hợp đồng và khen thưởng/kỷ luật giữ 10 năm để đáp ứng nhu cầu thanh tra, hậu kiểm và giải quyết tranh chấp sau khi quan hệ lao động kết thúc. Cơ sở pháp lý nền là Luật Lưu trữ 2011 và Bộ luật Lao động 2019; chỉ số 100% truy xuất được được chọn vì lưu mà không truy xuất được thì về bản chất không đạt yêu cầu lưu trữ. |
 | **Phương pháp đo** | Kiểm tra chính sách lưu trữ, cấu hình lưu trữ/archiving và thử truy xuất hồ sơ mẫu của từng nhóm tài liệu để xác nhận hệ thống không xóa hoặc làm mất dữ liệu trước hạn. |
 
 ## 6.4. Yêu cầu về Khả dụng (Usability)
@@ -2606,9 +2620,10 @@ classDiagram
 |---|---|
 | **Yếu tố chất lượng** | Usability – Tính nhất quán giao diện (Consistency) |
 | **Mô tả yêu cầu** | 100% màn hình phải sử dụng Tiếng Việt, trừ thuật ngữ kỹ thuật; đồng thời bố cục, màu sắc và font chữ phải được áp dụng thống nhất trên toàn bộ hệ thống. |
-| **Độ đo yêu cầu** | (1) Tỷ lệ màn hình sử dụng Tiếng Việt; (2) Số màn hình vi phạm design system về bố cục, màu sắc hoặc font chữ. |
-| **Tiêu chuẩn đáp ứng** | (1) Tỷ lệ màn hình sử dụng Tiếng Việt = 100% (ngoại trừ thuật ngữ kỹ thuật thống nhất toàn hệ thống); (2) Số màn hình vi phạm design system = 0. |
-| **Phương pháp đo** | Rà soát toàn bộ màn hình theo checklist UI/UX; đối chiếu nội dung hiển thị với bộ quy chuẩn giao diện và ghi nhận số màn hình vi phạm. |
+| **Độ đo yêu cầu** | (1) Tỷ lệ nhãn, menu, thông báo và nút thao tác trên các màn hình nghiệp vụ chính sử dụng Tiếng Việt; (2) Tỷ lệ màn hình nghiệp vụ chính đạt checklist design system về bố cục, màu sắc, font chữ và cách đặt tên; (3) Số vi phạm nghiêm trọng làm người dùng hiểu sai chức năng. |
+| **Tiêu chuẩn đáp ứng** | (1) 100% nhãn, menu, thông báo và nút thao tác trên các màn hình nghiệp vụ chính dùng Tiếng Việt, trừ thuật ngữ kỹ thuật thống nhất; (2) ≥ 95% màn hình nghiệp vụ chính đạt checklist design system; (3) 0 vi phạm nghiêm trọng. |
+| **Phương pháp đo** | Rà soát toàn bộ màn hình nghiệp vụ chính theo checklist UI/UX; đối chiếu ngôn ngữ hiển thị và bộ quy chuẩn giao diện trước nghiệm thu. |
+| **Lý do chọn độ đo** | Theo heuristic **Consistency and Standards** và **Match Between the System and the Real World** của Nielsen Norman Group, giao diện phải dùng ngôn ngữ quen thuộc và nhất quán để giảm tải nhận thức. Với HRMS của trường đại học, người dùng chủ yếu là cán bộ hành chính nên ngưỡng **100% cho nhãn/menu/thông báo ở màn hình chính** là cần thiết; còn ngưỡng **≥ 95% tuân thủ design system** thực tế hơn so với ép 100% toàn bộ màn hình vì vẫn có thể tồn tại vài thành phần kỹ thuật hoặc thư viện dùng thuật ngữ gốc. |
 | **Đại lượng thay thế (nếu cần)** | Số component sử dụng hardcoded style ngoài design token hoặc ngoài thư viện giao diện chuẩn của hệ thống. |
 
 #### SUPL-U02: Dễ học cho người dùng mới
@@ -2616,9 +2631,10 @@ classDiagram
 |---|---|
 | **Yếu tố chất lượng** | Usability – Dễ học (Learnability) |
 | **Mô tả yêu cầu** | Sau tối đa 2 giờ đào tạo hướng dẫn, ít nhất 95% người dùng mới thuộc phòng TCCB phải hoàn thành được các tác vụ tìm kiếm, xem chi tiết và cập nhật hồ sơ nhân sự; ít nhất 95% người dùng mới thuộc phòng TCKT phải hoàn thành được các tác vụ tìm kiếm, xem chi tiết và xuất dữ liệu nhân sự mà không cần trợ giúp trực tiếp. |
-| **Độ đo yêu cầu** | (1) Thời gian đào tạo trung bình cho người dùng mới; (2) Tỷ lệ người dùng mới phòng TCCB hoàn thành bộ tác vụ tìm kiếm – xem chi tiết – cập nhật hồ sơ nhân sự; (3) Tỷ lệ người dùng mới phòng TCKT hoàn thành bộ tác vụ tìm kiếm – xem chi tiết – xuất dữ liệu nhân sự mà không cần trợ giúp trực tiếp. |
+| **Độ đo yêu cầu** | (1) Thời gian đào tạo trung bình cho người dùng mới; (2) Tỷ lệ người dùng mới phòng TCCB hoàn thành bộ tác vụ tìm kiếm – xem chi tiết – cập nhật hồ sơ nhân sự mà không cần trợ giúp trực tiếp; (3) Tỷ lệ người dùng mới phòng TCKT hoàn thành bộ tác vụ tìm kiếm – xem chi tiết – xuất dữ liệu nhân sự mà không cần trợ giúp trực tiếp. |
 | **Tiêu chuẩn đáp ứng** | (1) Thời gian đào tạo ≤ 2 giờ/người; (2) Tỷ lệ hoàn thành của nhóm TCCB ≥ 95%; (3) Tỷ lệ hoàn thành của nhóm TCKT ≥ 95%. |
 | **Phương pháp đo** | Tổ chức usability test với người dùng mới đại diện cho hai phòng ban sau buổi hướng dẫn chuẩn; ghi nhận thời gian đào tạo, tỷ lệ hoàn thành tác vụ và số lần cần trợ giúp trực tiếp. |
+| **Lý do chọn độ đo** | NN/g nêu rằng **learnability** nên đo bằng **time on task** và **task completion rate**. Trong bối cảnh trường đại học, đào tạo người dùng thường chỉ bố trí được trong một buổi ngắn; vì vậy ngưỡng **≤ 2 giờ** tương ứng một buổi hướng dẫn cơ bản là phù hợp triển khai. Mức **≥ 95%** bảo đảm đa số tuyệt đối người dùng mới có thể làm việc độc lập ngay sau tập huấn, nhưng vẫn chừa sai số nhỏ cho khác biệt về kỹ năng cá nhân. |
 | **Đại lượng thay thế (nếu cần)** | Khối lượng tài liệu/hướng dẫn đào tạo cho mỗi vai trò không vượt quá 30 trang để tránh tăng gánh nặng học sử dụng. |
 
 #### SUPL-U03: Thông báo lỗi rõ ràng
@@ -2626,9 +2642,10 @@ classDiagram
 |---|---|
 | **Yếu tố chất lượng** | Usability – Xử lý lỗi (Error Handling) |
 | **Mô tả yêu cầu** | Mọi lỗi nhập liệu hoặc lỗi hệ thống phải hiển thị thông báo bằng Tiếng Việt, rõ ràng, mô tả nguyên nhân và hướng dẫn khắc phục. |
-| **Độ đo yêu cầu** | (1) Tỷ lệ loại lỗi có thông báo bằng Tiếng Việt rõ ràng; (2) Tỷ lệ thông báo lỗi có nêu nguyên nhân; (3) Tỷ lệ thông báo lỗi có ít nhất 1 gợi ý khắc phục. |
-| **Tiêu chuẩn đáp ứng** | (1) 100% lỗi validation, lỗi nghiệp vụ và lỗi hệ thống có thông báo bằng Tiếng Việt; (2) 100% thông báo lỗi nêu được nguyên nhân chính; (3) 100% thông báo lỗi có ít nhất 1 gợi ý khắc phục. |
-| **Phương pháp đo** | Lập danh mục các lỗi điển hình theo từng nhóm, kích hoạt lỗi trên môi trường kiểm thử và đối chiếu nội dung thông báo với checklist: đúng tiếng Việt, có nguyên nhân, có hướng dẫn xử lý. |
+| **Độ đo yêu cầu** | (1) Tỷ lệ lỗi validation và lỗi nghiệp vụ có thông báo bằng Tiếng Việt rõ ràng; (2) Tỷ lệ thông báo lỗi có nêu nguyên nhân; (3) Tỷ lệ thông báo lỗi validation/nghiệp vụ có ít nhất 1 gợi ý khắc phục; (4) Tỷ lệ lỗi hệ thống hiển thị thông báo thân thiện kèm mã tra cứu. |
+| **Tiêu chuẩn đáp ứng** | (1) 100% lỗi validation và lỗi nghiệp vụ có thông báo bằng Tiếng Việt; (2) 100% thông báo lỗi nêu được nguyên nhân chính; (3) ≥ 95% thông báo lỗi validation/nghiệp vụ có ít nhất 1 gợi ý khắc phục; (4) 100% lỗi hệ thống hiển thị thông báo thân thiện và có mã tra cứu/log reference. |
+| **Phương pháp đo** | Lập danh mục các lỗi điển hình theo từng nhóm, kích hoạt lỗi trên môi trường kiểm thử và đối chiếu nội dung thông báo với checklist: đúng tiếng Việt, có nguyên nhân, có hướng dẫn xử lý hoặc mã tra cứu. |
+| **Lý do chọn độ đo** | Theo heuristic **Help Users Recognize, Diagnose, and Recover from Errors** của Nielsen và bài **Error-Message Guidelines**, lỗi tốt phải dùng ngôn ngữ dễ hiểu, chỉ rõ vấn đề và gợi ý cách xử lý. Vì lỗi validation/nghiệp vụ là các tình huống dự đoán được nên đặt ngưỡng **100%** là hợp lý; riêng gợi ý khắc phục dùng **≥ 95%** để tránh quá cứng với một số lỗi biên hiếm gặp. Với lỗi hệ thống, người dùng cuối không cần stack trace mà cần thông báo thân thiện và mã tra cứu để bộ phận kỹ thuật xử lý nhanh. |
 | **Đại lượng thay thế (nếu cần)** | Số thông báo lỗi hiển thị bằng tiếng Anh hoặc chỉ hiển thị mã kỹ thuật = 0. |
 
 #### SUPL-U04: Hỗ trợ tìm kiếm và lọc đa tiêu chí
@@ -2636,9 +2653,10 @@ classDiagram
 |---|---|
 | **Yếu tố chất lượng** | Usability – Hiệu quả thao tác (Efficiency) |
 | **Mô tả yêu cầu** | Các danh sách dữ liệu (nhân sự, hợp đồng, đơn vị) phải hỗ trợ tìm kiếm theo từ khóa và lọc đa tiêu chí để giảm thời gian thao tác. |
-| **Độ đo yêu cầu** | (1) Số bước thao tác để tìm kiếm và mở chi tiết 1 hồ sơ nhân sự; (2) Số tiêu chí lọc có thể kết hợp đồng thời trên một danh sách dữ liệu. |
-| **Tiêu chuẩn đáp ứng** | (1) Tìm kiếm và mở chi tiết 1 hồ sơ nhân sự trong ≤ 3 bước (nhập từ khóa → tìm kiếm → mở chi tiết); (2) Bộ lọc hỗ trợ kết hợp ≥ 3 tiêu chí đồng thời. |
+| **Độ đo yêu cầu** | (1) Số bước thao tác để tìm kiếm và mở chi tiết 1 hồ sơ nhân sự; (2) Số tiêu chí lọc có thể kết hợp đồng thời trên một danh sách dữ liệu chính. |
+| **Tiêu chuẩn đáp ứng** | (1) Tìm kiếm và mở chi tiết 1 hồ sơ nhân sự trong ≤ 3 bước (nhập từ khóa → tìm kiếm → mở chi tiết); (2) Bộ lọc hỗ trợ kết hợp ≥ 3 tiêu chí đồng thời trên các danh sách dữ liệu chính. |
 | **Phương pháp đo** | Thực hiện walkthrough trên các màn hình danh sách chính, đếm số thao tác thực tế và kiểm tra khả năng kết hợp đồng thời các tiêu chí lọc trên cùng một truy vấn. |
+| **Lý do chọn độ đo** | Theo heuristic **Recognition Rather than Recall** và **Flexibility and Efficiency of Use** của NN/g, người dùng nên nhìn thấy ngay công cụ tìm kiếm/lọc thay vì phải nhớ nhiều đường đi thao tác. Với HRMS nội bộ, cán bộ thường tra cứu nhanh hồ sơ theo vài thuộc tính như mã, đơn vị, trạng thái; vì vậy ngưỡng **≤ 3 bước** phản ánh luồng tra cứu tối giản, còn **≥ 3 tiêu chí lọc đồng thời** là đủ cho phần lớn truy vấn nghiệp vụ mà không làm giao diện quá phức tạp. |
 | **Đại lượng thay thế (nếu cần)** | Không cần, vì có thể đo trực tiếp qua thao tác người dùng trên giao diện. |
 
 #### SUPL-U05: Hiển thị ổn định trên desktop và tablet
@@ -2646,9 +2664,10 @@ classDiagram
 |---|---|
 | **Yếu tố chất lượng** | Usability – Khả năng truy cập đa thiết bị (Accessibility) |
 | **Mô tả yêu cầu** | Ở độ phân giải desktop từ 1366×768 trở lên, 100% màn hình phải hiển thị đầy đủ nội dung, không chồng lấn thành phần và không yêu cầu cuộn ngang; trên tablet 1024×768, tối thiểu 80% màn hình phải cho phép thực hiện các thao tác chính mà không cần phóng to. |
-| **Độ đo yêu cầu** | (1) Tỷ lệ màn hình hiển thị đúng ở độ phân giải desktop ≥ 1366×768; (2) Tỷ lệ màn hình cho phép thực hiện thao tác chính trên tablet 1024×768 mà không cần phóng to. |
-| **Tiêu chuẩn đáp ứng** | (1) Desktop Compatibility Rate = 100%; (2) Tablet Compatibility Rate ≥ 80%. |
+| **Độ đo yêu cầu** | (1) Tỷ lệ màn hình nghiệp vụ chính hiển thị đúng ở độ phân giải desktop ≥ 1366×768; (2) Tỷ lệ màn hình nghiệp vụ chính sử dụng được trên tablet 1024×768; (3) Tỷ lệ tác vụ cốt lõi thực hiện được trên tablet 1024×768 mà không cần phóng to hoặc cuộn ngang. |
+| **Tiêu chuẩn đáp ứng** | (1) 100% màn hình nghiệp vụ chính đạt tiêu chí ở desktop ≥ 1366×768; (2) ≥ 90% màn hình nghiệp vụ chính dùng được ở tablet 1024×768; (3) 100% tác vụ cốt lõi trên tablet 1024×768 không cần phóng to hoặc cuộn ngang. |
 | **Phương pháp đo** | Kiểm thử giao diện trên trình duyệt desktop chuẩn và thiết bị giả lập/tablet 1024×768; ghi nhận các lỗi cắt nội dung, chồng lấn thành phần, cuộn ngang và thao tác cần phóng to. |
+| **Lý do chọn độ đo** | Hệ thống HRMS của trường chủ yếu được dùng trên desktop tại phòng ban, nên ngưỡng **100% cho desktop 1366×768** là bắt buộc vì đây là mức phân giải văn phòng phổ biến. Tablet chỉ là kênh hỗ trợ cho tra cứu hoặc phê duyệt nhanh, nên đặt **≥ 90% màn hình chính** và **100% tác vụ cốt lõi** là hợp lý hơn việc yêu cầu 100% trên mọi màn hình phụ; cách này vẫn bảo đảm khả năng dùng thực tế mà phù hợp định hướng desktop-first của hệ thống nội bộ. |
 | **Đại lượng thay thế (nếu cần)** | Hệ thống giao diện có tối thiểu 2 breakpoint rõ ràng cho desktop và tablet để hỗ trợ responsive layout. |
 
 #### SUPL-U06: Điều hướng nhanh bằng bàn phím và breadcrumb
@@ -2656,10 +2675,11 @@ classDiagram
 |---|---|
 | **Yếu tố chất lượng** | Usability – Hiệu quả thao tác (Efficiency) |
 | **Mô tả yêu cầu** | Trên ít nhất 90% form nhập liệu, phím Tab phải di chuyển tuần tự giữa các trường có thể nhập; trên 100% form có nút xác nhận mặc định, phím Enter phải kích hoạt nút đó; 100% trang phải hiển thị breadcrumb để người dùng quay lại cấp điều hướng trước. |
-| **Độ đo yêu cầu** | (1) Tỷ lệ form nhập liệu hỗ trợ Tab navigation đúng thứ tự; (2) Tỷ lệ form có nút xác nhận mặc định hỗ trợ phím Enter; (3) Tỷ lệ trang có hiển thị breadcrumb và cho phép quay lại cấp điều hướng trước. |
-| **Tiêu chuẩn đáp ứng** | (1) ≥ 90% form nhập liệu cho phép di chuyển bằng phím Tab theo đúng thứ tự trường nhập; (2) 100% form có nút xác nhận mặc định hỗ trợ phím Enter; (3) 100% trang hiển thị breadcrumb hợp lệ. |
-| **Phương pháp đo** | Thực hiện kiểm thử thủ công bằng bàn phím trên toàn bộ form nhập liệu và trang chức năng; ghi nhận thứ tự focus, hành vi của phím Enter và sự hiện diện của breadcrumb. |
-| **Đại lượng thay thế (nếu cần)** | Tỷ lệ trường nhập liệu có thứ tự focus được xác định rõ ràng trong thiết kế/triển khai ≥ 95%. |
+| **Độ đo yêu cầu** | (1) Tỷ lệ form nhập liệu chính hỗ trợ Tab navigation đúng thứ tự; (2) Tỷ lệ form có nút xác nhận mặc định hỗ trợ phím Enter; (3) Tỷ lệ trang có cấu trúc phân cấp danh sách → chi tiết → chỉnh sửa hiển thị breadcrumb hợp lệ. |
+| **Tiêu chuẩn đáp ứng** | (1) 100% form nhập liệu chính cho phép di chuyển bằng phím Tab theo đúng thứ tự trường nhập; (2) 100% form có nút xác nhận mặc định hỗ trợ phím Enter; (3) 100% trang có cấu trúc phân cấp danh sách → chi tiết → chỉnh sửa hiển thị breadcrumb hợp lệ. |
+| **Phương pháp đo** | Thực hiện kiểm thử thủ công bằng bàn phím trên toàn bộ form nhập liệu chính và các trang chức năng có phân cấp điều hướng; ghi nhận thứ tự focus, hành vi của phím Enter và sự hiện diện của breadcrumb. |
+| **Lý do chọn độ đo** | WCAG 2.2 **SC 2.1.1 Keyboard** yêu cầu mọi chức năng khả dụng qua bàn phím; với hệ thống nhập liệu nhiều như HRMS, điều này giúp tăng năng suất cho người dùng thường xuyên. Tôi thu hẹp phạm vi thành **form nhập liệu chính** và **trang có cấu trúc phân cấp**, nhờ đó ngưỡng **100%** trở nên khả thi và dễ nghiệm thu hơn so với áp dụng máy móc cho mọi modal hoặc dashboard. Breadcrumb được giữ ở mức 100% cho các trang phân cấp vì nó trực tiếp hỗ trợ định hướng và giảm nhầm lẫn khi người dùng quay lui. |
+| **Đại lượng thay thế (nếu cần)** | Tỷ lệ trường nhập liệu có thứ tự focus được xác định rõ ràng trong thiết kế/triển khai = 100% trên các form chính. |
 
 #### SUPL-U07: Xác nhận trước thao tác quan trọng
 | Thuộc tính | Nội dung |
@@ -2669,6 +2689,7 @@ classDiagram
 | **Độ đo yêu cầu** | Tỷ lệ thao tác quan trọng có hộp thoại xác nhận trước khi hệ thống thực thi thao tác. |
 | **Tiêu chuẩn đáp ứng** | 100% thao tác quan trọng có confirmation dialog; tối thiểu bao gồm: xóa dữ liệu, khóa tài khoản, đánh dấu thôi việc, thay đổi trạng thái đơn vị và chấm dứt hợp đồng lao động trước hạn (nếu chức năng được cung cấp trên hệ thống). |
 | **Phương pháp đo** | Lập danh sách thao tác quan trọng theo nghiệp vụ, kích hoạt từng thao tác trên môi trường kiểm thử và kiểm tra sự xuất hiện của hộp thoại xác nhận trước khi dữ liệu bị thay đổi. |
+| **Lý do chọn độ đo** | Theo heuristic **Error Prevention** của Nielsen và hướng dẫn của NN/g về **confirmation dialog**, xác nhận chỉ nên dùng cho hành động có hậu quả nghiêm trọng và khó hoàn tác. Các thao tác như xóa, khóa tài khoản, thôi việc hoặc đổi trạng thái đơn vị đều có rủi ro cao đối với dữ liệu nhân sự, nên ngưỡng **100%** là phù hợp vì đây là yêu cầu kiểu “sharp”: thiếu xác nhận ở một trường hợp cũng có thể gây lỗi nghiệp vụ lớn. |
 | **Đại lượng thay thế (nếu cần)** | Không cần, vì có thể kiểm thử trực tiếp theo từng thao tác trọng yếu. |
 
 ## 6.5. Yêu cầu về Hỗ trợ (Supportability)
@@ -2692,9 +2713,10 @@ classDiagram
 |---|---|
 | **Yếu tố chất lượng** | Supportability – Tính bảo trì, tính module hóa (Maintainability/Modularity) |
 | **Mô tả yêu cầu** | Hệ thống phải được tổ chức thành các module chức năng có giao diện tích hợp rõ ràng để có thể nâng cấp hoặc thay thế từng module mà không buộc sửa đổi toàn bộ hệ thống. |
-| **Độ đo yêu cầu** | (1) Số module khác bị ảnh hưởng khi thay đổi 1 module; (2) Tỷ lệ giao diện tích hợp giữa các module được đặc tả rõ ràng và có thể kiểm thử độc lập. |
-| **Tiêu chuẩn đáp ứng** | (1) Thay đổi 1 module không làm phát sinh thay đổi ở quá 1 module khác; (2) 100% giao diện tích hợp giữa các module được mô tả rõ ràng và kiểm thử độc lập; (3) Frontend và backend giao tiếp 100% qua giao diện API đã công bố. |
-| **Phương pháp đo** | Phân tích dependency giữa các module, rà soát tài liệu interface và thực hiện impact analysis khi sửa đổi thử nghiệm một module chức năng. |
+| **Độ đo yêu cầu** | (1) Số module khác cần sửa khi thực hiện một thay đổi nghiệp vụ thông thường trong 1 module; (2) Tỷ lệ module có interface/service contract được mô tả rõ ràng; (3) Số phụ thuộc vòng giữa các module nghiệp vụ chính. |
+| **Tiêu chuẩn đáp ứng** | (1) Thay đổi nghiệp vụ thông thường trong 1 module không làm phát sinh sửa đổi ở quá 2 module khác; (2) 100% module nghiệp vụ chính có interface/service contract rõ ràng; (3) Số phụ thuộc vòng giữa các module nghiệp vụ chính = 0. |
+| **Phương pháp đo** | Phân tích dependency giữa các module, rà soát tài liệu interface và thực hiện impact analysis đối với một thay đổi nghiệp vụ điển hình ở từng module chính. |
+| **Lý do chọn độ đo** | ISO/IEC 25010 xem **modularity** là một thành phần của maintainability, còn ISO/IEC/IEEE 42010 yêu cầu mô tả kiến trúc đủ rõ để kiểm soát ranh giới module. Tôi dùng ngưỡng **≤ 2 module bị ảnh hưởng** thay cho ≤ 1 vì thực tế hệ thống web thường vẫn có lan truyền sang lớp API hoặc UI; tuy nhiên vượt quá 2 module cho một thay đổi thông thường cho thấy coupling bắt đầu cao. Điều kiện **0 phụ thuộc vòng** giúp kiến trúc dễ thay thế, kiểm thử và bảo trì hơn. |
 | **Đại lượng thay thế (nếu cần)** | Số dependency cross-module ngoài interface công khai phải ở mức tối thiểu và được kiểm soát qua báo cáo phân tích phụ thuộc. |
 
 #### SUPL-S02: Tài liệu kỹ thuật đầy đủ
@@ -2702,9 +2724,10 @@ classDiagram
 |---|---|
 | **Yếu tố chất lượng** | Supportability – Khả năng hiểu và vận hành (Understandability) |
 | **Mô tả yêu cầu** | Cung cấp tài liệu API cho backend, hướng dẫn triển khai và hướng dẫn sử dụng cho từng vai trò. |
-| **Độ đo yêu cầu** | (1) Tỷ lệ API endpoint backend có tài liệu mô tả đầy đủ phương thức, URL, tham số, dữ liệu trả về và mã lỗi; (2) Tỷ lệ vai trò người dùng có hướng dẫn sử dụng riêng cho các chức năng chính; (3) Tỷ lệ nội dung bắt buộc xuất hiện trong tài liệu triển khai. |
-| **Tiêu chuẩn đáp ứng** | (1) ≥ 90% API endpoint backend có tài liệu đầy đủ; (2) 100% vai trò sử dụng hệ thống có hướng dẫn sử dụng tương ứng; (3) 100% tài liệu triển khai có tối thiểu các mục: yêu cầu môi trường, cài đặt, cấu hình, khởi động, sao lưu/khôi phục và xử lý lỗi thường gặp. |
+| **Độ đo yêu cầu** | (1) Tỷ lệ API public hoặc API nội bộ đang được frontend sử dụng có tài liệu mô tả đầy đủ phương thức, URL, tham số, dữ liệu trả về và mã lỗi; (2) Tỷ lệ vai trò người dùng có hướng dẫn sử dụng riêng cho các chức năng chính; (3) Tỷ lệ tài liệu triển khai có đủ các mục bắt buộc. |
+| **Tiêu chuẩn đáp ứng** | (1) 100% API public hoặc API nội bộ đang được frontend sử dụng có tài liệu đầy đủ; (2) 100% vai trò sử dụng hệ thống có hướng dẫn sử dụng tương ứng; (3) 100% tài liệu triển khai có tối thiểu các mục: yêu cầu môi trường, cài đặt, cấu hình, khởi động, sao lưu/khôi phục và xử lý lỗi thường gặp. |
 | **Phương pháp đo** | Đối chiếu danh mục endpoint thực tế với bộ tài liệu API; rà soát tài liệu theo checklist vai trò và checklist triển khai trước nghiệm thu. |
+| **Lý do chọn độ đo** | IEEE **1063-2001** nêu tài liệu người dùng phải có cấu trúc và nội dung tối thiểu, còn ISO/IEC/IEEE **42010** nhấn mạnh việc mô tả kiến trúc và triển khai theo stakeholder concern. Với hệ thống nội bộ, endpoint đang được frontend gọi mà thiếu tài liệu sẽ làm tăng ngay chi phí sửa lỗi và bàn giao, vì vậy chọn **100% cho API đang sử dụng** thay vì 90%. Tương tự, mọi vai trò nghiệp vụ đều cần hướng dẫn riêng để tránh phụ thuộc vào truyền miệng khi vận hành lâu dài. |
 | **Đại lượng thay thế (nếu cần)** | Số endpoint chưa được tài liệu hóa và số vai trò chưa có hướng dẫn sử dụng riêng. |
 
 #### SUPL-S03: Khả năng mở rộng danh mục cấu hình
@@ -2712,9 +2735,10 @@ classDiagram
 |---|---|
 | **Yếu tố chất lượng** | Supportability – Tính linh hoạt cấu hình (Flexibility/Configurability) |
 | **Mô tả yêu cầu** | Hệ thống cho phép mở rộng các danh mục cấu hình (loại phụ cấp, loại hợp đồng, hệ số lương) mà không cần thay đổi mã nguồn. |
-| **Độ đo yêu cầu** | (1) Số loại danh mục cấu hình có thể mở rộng qua giao diện quản trị; (2) Số dòng mã nguồn phải sửa khi thêm một danh mục mới; (3) Khả năng quản trị các cấu hình hiển thị/danh mục tương tự qua giao diện. |
-| **Tiêu chuẩn đáp ứng** | (1) Có ít nhất 3 loại danh mục master data mở rộng được qua giao diện quản trị: hệ số lương, loại phụ cấp, loại hợp đồng; (2) Số dòng mã nguồn cần sửa khi thêm danh mục mới = 0; (3) Các cấu hình hiển thị hoặc danh mục tương tự cũng phải được quản trị qua UI thay vì sửa code trực tiếp. |
-| **Phương pháp đo** | Thực hiện thử nghiệm thêm mới/sửa danh mục cấu hình trên giao diện quản trị và kiểm tra nhật ký thay đổi mã nguồn trong quá trình cấu hình. |
+| **Độ đo yêu cầu** | (1) Số loại danh mục cấu hình có thể mở rộng qua giao diện quản trị; (2) Số dòng mã nguồn phải sửa khi thêm một danh mục mới; (3) Có/không yêu cầu deploy lại hệ thống sau khi thêm mới giá trị cấu hình. |
+| **Tiêu chuẩn đáp ứng** | (1) Có ít nhất 3 loại danh mục master data mở rộng được qua giao diện quản trị: hệ số lương, loại phụ cấp, loại hợp đồng; (2) Số dòng mã nguồn cần sửa khi thêm danh mục mới = 0; (3) Không cần deploy lại hệ thống khi thêm mới giá trị cấu hình. |
+| **Phương pháp đo** | Thực hiện thử nghiệm thêm mới/sửa danh mục cấu hình trên giao diện quản trị và kiểm tra thay đổi mã nguồn, quy trình build/deploy trong suốt quá trình cấu hình. |
+| **Lý do chọn độ đo** | Theo nguyên tắc **Config** của **The Twelve-Factor App**, các thông số thay đổi theo môi trường hoặc chính sách không nên bị hard-code trong chương trình. Với HRMS của trường đại học, ba nhóm danh mục này là những danh mục biến động trực tiếp theo quy định nội bộ và quy định nhà nước, nên chọn **≥ 3 danh mục** là sát nhu cầu thực tế. Điều kiện **0 sửa code** và **không cần deploy lại** bảo đảm hệ thống thực sự linh hoạt chứ không chỉ “cấu hình được” trên lý thuyết. |
 | **Đại lượng thay thế (nếu cần)** | Không cần, vì có thể kiểm chứng trực tiếp qua thao tác cấu hình trên hệ thống. |
 
 #### SUPL-S04: Hỗ trợ gỡ lỗi (Debugging)
@@ -2722,19 +2746,21 @@ classDiagram
 |---|---|
 | **Yếu tố chất lượng** | Supportability – Khả năng chẩn đoán và kiểm thử (Maintainability/Testability) |
 | **Mô tả yêu cầu** | Hệ thống ghi log lỗi phía server theo nhiều cấp độ (ERROR, WARNING, INFO, DEBUG). Log phải bao gồm timestamp, request ID, stack trace. |
-| **Độ đo yêu cầu** | (1) Số cấp độ log được hệ thống hỗ trợ; (2) Tỷ lệ log lỗi mức ERROR chứa đủ timestamp, request ID và stack trace; (3) Tỷ lệ tình huống lỗi server được ghi nhận thành log phục vụ truy vết. |
-| **Tiêu chuẩn đáp ứng** | (1) Hệ thống hỗ trợ tối thiểu 4 cấp độ log: ERROR, WARNING, INFO, DEBUG; (2) 100% log mức ERROR có đủ timestamp, request ID và stack trace; (3) 100% lỗi server được kiểm thử phải sinh log lỗi tương ứng để phục vụ gỡ lỗi. |
+| **Độ đo yêu cầu** | (1) Số cấp độ log được hệ thống hỗ trợ; (2) Tỷ lệ log mức ERROR có đủ timestamp, severity, request ID và stack trace; (3) Tỷ lệ log lỗi/nghiệp vụ phát sinh trong phiên xác thực có gắn user ID hoặc actor ID. |
+| **Tiêu chuẩn đáp ứng** | (1) Hệ thống hỗ trợ tối thiểu 4 cấp độ log: ERROR, WARNING, INFO, DEBUG; (2) 100% log mức ERROR có đủ timestamp, severity, request ID và stack trace; (3) ≥ 95% log lỗi/nghiệp vụ phát sinh trong phiên xác thực có user ID hoặc actor ID. |
 | **Phương pháp đo** | Kích hoạt các tình huống lỗi điển hình trên môi trường kiểm thử, trích xuất log server và đối chiếu từng bản ghi với checklist trường thông tin bắt buộc và cấp độ log. |
-| **Đại lượng thay thế (nếu cần)** | Số log ERROR thiếu một trong các trường bắt buộc (timestamp, request ID, stack trace) phải bằng 0. |
+| **Lý do chọn độ đo** | **OWASP Logging Cheat Sheet** khuyến nghị log phải trả lời được các câu hỏi **when, where, who, what**; **RFC 5424** cũng chuẩn hóa severity level cho log. Vì vậy chỉ đếm số level là chưa đủ, nên tôi bổ sung yêu cầu về **severity, request ID, user ID** để phục vụ truy vết thật sự. Ngưỡng **100% cho log ERROR** là hợp lý vì mọi lỗi server đều phải chẩn đoán được; còn **≥ 95% với user ID** thực tế hơn trong các trường hợp ngoại lệ xảy ra trước khi phiên xác thực hoàn chỉnh. |
+| **Đại lượng thay thế (nếu cần)** | Số log ERROR thiếu một trong các trường bắt buộc (timestamp, severity, request ID, stack trace) phải bằng 0. |
 
 #### SUPL-S05: Khả năng mở rộng quy mô (Scalability)
 | Thuộc tính | Nội dung |
 |---|---|
 | **Yếu tố chất lượng** | Supportability – Khả năng mở rộng quy mô (Scalability) |
 | **Mô tả yêu cầu** | Hệ thống phải duy trì đầy đủ chức năng khi năng lực xử lý được mở rộng bằng cách bổ sung thêm nút ứng dụng trong cùng một môi trường khai thác. |
-| **Độ đo yêu cầu** | (1) Số nút ứng dụng có thể vận hành song song trong cùng môi trường; (2) Tỷ lệ request liên tiếp của cùng người dùng hoạt động đúng khi được phân phối qua các nút khác nhau; (3) Tỷ lệ ca kiểm thử smoke test chức năng chính vẫn đạt khi hệ thống được scale-out. |
-| **Tiêu chuẩn đáp ứng** | (1) Hệ thống hỗ trợ tối thiểu 2 nút ứng dụng chạy song song trong cùng môi trường; (2) 100% request liên tiếp của cùng người dùng hoạt động đúng khi đi qua các nút khác nhau; (3) 100% ca smoke test của các chức năng chính vẫn đạt sau khi bổ sung nút ứng dụng. |
-| **Phương pháp đo** | Triển khai thử nghiệm cấu hình nhiều nút ứng dụng, sử dụng load balancer để phân phối request và chạy bộ smoke test/regression cho các chức năng chính của hệ thống. |
+| **Độ đo yêu cầu** | (1) Số nút ứng dụng có thể vận hành song song trong cùng môi trường; (2) Tỷ lệ phiên người dùng tiếp tục hoạt động đúng khi request liên tiếp được phân phối qua các nút khác nhau trong bài kiểm thử scale-out 30 phút; (3) Tỷ lệ ca smoke test chức năng chính vẫn đạt sau khi bổ sung nút ứng dụng. |
+| **Tiêu chuẩn đáp ứng** | (1) Hệ thống hỗ trợ tối thiểu 2 nút ứng dụng chạy song song trong cùng môi trường; (2) 100% phiên người dùng trong bài kiểm thử 30 phút vẫn hoạt động đúng khi request liên tiếp đi qua các nút khác nhau; (3) 100% ca smoke test của các chức năng chính vẫn đạt sau khi bổ sung nút ứng dụng. |
+| **Phương pháp đo** | Triển khai thử nghiệm cấu hình nhiều nút ứng dụng sau load balancer, chạy kiểm thử phiên liên tiếp trong 30 phút và thực hiện bộ smoke test/regression cho các chức năng chính của hệ thống. |
+| **Lý do chọn độ đo** | **The Twelve-Factor App** (mục **Processes** và **Concurrency**) xem scale ngang là mở rộng bằng cách bổ sung process/instance thay vì chỉ tăng tài nguyên cho một nút. Với HRMS cấp trường, tải đồng thời thường không lớn như hệ thống công cộng, nên ngưỡng **tối thiểu 2 nút** là đủ để chứng minh hệ thống có thể scale-out và có dự phòng cơ bản. Bài kiểm thử **30 phút** đủ dài để quan sát lỗi phiên, lỗi sticky-session hoặc lỗi chia sẻ trạng thái mà không làm tăng chi phí kiểm thử quá mức. |
 | **Đại lượng thay thế (nếu cần)** | Số lỗi phiên làm việc hoặc lỗi điều hướng phát sinh khi request được chuyển giữa các nút ứng dụng phải bằng 0. |
 
 ## 6.6. Yêu cầu về Hiệu năng (Performance)
@@ -2761,6 +2787,7 @@ classDiagram
 | **Mô tả yêu cầu** | Các thao tác CRUD cơ bản (xem danh sách, xem chi tiết, thêm/sửa) trên các màn hình nhân sự, hợp đồng lao động và đánh giá khen thưởng/kỷ luật phải hoàn thành hiển thị trong thời gian phản hồi chấp nhận được tùy số người dùng đồng thời. |
 | **Độ đo yêu cầu** | - **P95 Response Time cho CRUD** (giây)<br>- **Time to Interactive (TTI)** (giây)<br>- **Contract List Load Time** (giây)<br>- **Contract Detail Load Time** (giây)<br>- **Contract Termination Response Time** (giây) |
 | **Tiêu chuẩn đáp ứng** | - **0–10 người dùng đồng thời:** P95 Response Time ≤ **1 giây**, TTI ≤ **1,5 giây**<br>- **11–50 người dùng đồng thời:** P95 Response Time ≤ **2 giây**, TTI ≤ **3 giây**<br>- **51–100 người dùng đồng thời:** P95 Response Time ≤ **5 giây**, TTI ≤ **6 giây**<br>- **Trên 100 người dùng đồng thời:** P95 Response Time ≤ **10 giây**, TTI ≤ **12 giây**<br>- Các ngưỡng trên áp dụng cho toàn bộ thao tác xem/thêm/sửa cơ bản trên hệ thống; riêng các chức năng thuộc **FEAT 7.2**, **FEAT 7.3** và **FEAT 10.2** kế thừa trực tiếp ngưỡng tương ứng theo tải đồng thời. |
+| **Lý do chọn độ đo** | Các ngưỡng này bám theo mốc cảm nhận kinh điển của **Jakob Nielsen**: khoảng **1 giây** là ngưỡng vẫn giữ được mạch suy nghĩ của người dùng, còn khoảng **10 giây** là giới hạn trước khi người dùng mất tập trung. Với HRMS nội bộ, thao tác CRUD thông thường ở tải thấp cần nằm trong khoảng **1–2 giây** để tạo cảm giác phản hồi nhanh; khi tăng lên **51–100 người dùng đồng thời**, ngưỡng **5 giây** được xem là mức chấp nhận được cho **P95** trong giờ cao điểm; mức **10 giây** chỉ là trần chịu tải trong tình huống stress, không phải mục tiêu vận hành thường xuyên. **TTI** được đặt cao hơn response time vì còn bao gồm thời gian render giao diện phía trình duyệt. |
 | **Phương pháp đo** | Dùng công cụ load test (**JMeter**, **k6**) để đo phân vị 95 của thời gian từ lúc gửi request đến lúc nhận response; đo **TTI** trên trình duyệt từ thời điểm người dùng click đến khi giao diện sẵn sàng tương tác. |
 | **Đại lượng thay thế (nếu cần)** | Không cần đại lượng thay thế vì yêu cầu đo trực tiếp được bằng công cụ kiểm thử tải. |
 
@@ -2770,7 +2797,8 @@ classDiagram
 | **Yếu tố chất lượng** | Performance → Capacity (Khả năng chịu tải) |
 | **Mô tả yêu cầu** | Hệ thống hỗ trợ tối thiểu 100 người dùng đồng thời mà không suy giảm hiệu năng đáng kể (thời gian phản hồi tăng không quá 50% so với tải thấp). |
 | **Độ đo yêu cầu** | - **Max Concurrent Users** (số người)<br>- **Throughput** (transactions/giây)<br>- **Degradation Rate** (%) |
-| **Tiêu chuẩn đáp ứng** | - **Max Concurrent Users ≥ 100 người**<br>- **Throughput ≥ 50 tx/s** tại mức **100 concurrent users**<br>- **Degradation Rate ≤ 50%** khi so sánh thời gian phản hồi ở mức **100 users** với mức **1 user** |
+| **Tiêu chuẩn đáp ứng** | - **Max Concurrent Users ≥ 100 người**<br>- **Throughput ≥ 20 tx/s** tại mức **100 concurrent users**<br>- **Degradation Rate ≤ 50%** khi so sánh thời gian phản hồi ở mức **100 users** với mức **1 user** |
+| **Lý do chọn độ đo** | Hệ thống HRMS của trường là hệ thống nội bộ, số người dùng hoạt động đồng thời chủ yếu tập trung ở **Phòng TCCB, Phòng TCKT, quản trị viên** và một phần người dùng tra cứu. Với quy mô khoảng **500–2000 hồ sơ nhân sự**, giả định giờ cao điểm có khoảng **5–10%** người dùng cùng thao tác thì mức **100 người dùng đồng thời** là đủ bao phủ các đợt cao điểm như rà soát hợp đồng, thống kê và xuất dữ liệu. Mức **20 tx/s** tương ứng với tình huống 100 người dùng, trung bình mỗi người thực hiện khoảng 1 thao tác có ý nghĩa trong 4–5 giây, phù hợp hơn với đặc thù nghiệp vụ hành chính so với các hệ thống giao dịch thời gian thực. Ngưỡng suy giảm **≤ 50%** là cách đặt phổ biến để bảo đảm hệ thống vẫn dùng được dưới tải cao mà không đòi hỏi hạ tầng quá lớn. |
 | **Phương pháp đo** | Thực hiện **stress test** để tăng dần số kết nối đồng thời cho đến khi response time vượt ngưỡng; dùng **load test** để đếm số giao dịch hoàn thành mỗi giây; so sánh response time giữa tải cao và tải thấp để tính tỷ lệ suy giảm. |
 | **Đại lượng thay thế (nếu cần)** | **Số kết nối TCP/WebSocket mà server duy trì ổn định**, đo qua hệ thống giám sát máy chủ. |
 
@@ -2779,8 +2807,9 @@ classDiagram
 |---|---|
 | **Yếu tố chất lượng** | Performance → Speed (Tốc độ xử lý và hiển thị báo cáo) |
 | **Mô tả yêu cầu** | Dashboard thống kê và báo cáo tổng hợp (**FEAT 5.1**) phải hoàn thành tải và hiển thị trong các ngưỡng thời gian quy định. |
-| **Độ đo yêu cầu** | - **Dashboard Load Time** (giây)<br>- **Complex Report Generation Time** (giây)<br>- **Single Chart Render Time** (giây/biểu đồ) |
+| **Độ đo yêu cầu** | - **Dashboard Load Time** (giây)<br>- **Complex Report Generation Time** (giây)<br>- **Single Chart Render Time** (giây) |
 | **Tiêu chuẩn đáp ứng** | - **Dashboard Load Time ≤ 5 giây**<br>- **Complex Report Generation Time ≤ 15 giây**<br>- **Single Chart Render Time ≤ 3 giây/biểu đồ** |
+| **Lý do chọn độ đo** | Dashboard là màn hình vào việc nên cần phản hồi nhanh hơn báo cáo tổng hợp; vì vậy ngưỡng **5 giây** được chọn để người dùng vẫn cảm thấy hệ thống phản hồi trong một lần chờ ngắn. Với **biểu đồ đơn lẻ**, mức **3 giây** gần với ngưỡng tải trang tốt theo **Google Web Vitals (LCP ≤ 2,5 giây)** nhưng nới thêm một phần do dashboard thống kê còn phải xử lý dữ liệu nghiệp vụ. Riêng **báo cáo tổng hợp phức tạp** cho phép tới **15 giây** vì đây là tác vụ phân tích theo lô, thường gom nhiều truy vấn/tập dữ liệu và là một “điểm dừng tự nhiên” trong công việc; vượt quá mức này thì người dùng bắt đầu thấy chờ lâu và cần hiển thị trạng thái tiến trình. |
 | **Phương pháp đo** | Đo thời gian từ lúc điều hướng đến dashboard đến khi toàn bộ biểu đồ sẵn sàng hiển thị; đo thời gian từ lúc nhấn **“Tạo báo cáo”** đến khi báo cáo hiển thị hoặc tải xuống hoàn tất; đo riêng thời gian render từng biểu đồ thống kê. |
 | **Đại lượng thay thế (nếu cần)** | **Thời gian truy vấn SQL của các query thống kê**, mục tiêu **≤ 2 giây/query**, đo qua **slow query log**. |
 
@@ -2791,6 +2820,7 @@ classDiagram
 | **Mô tả yêu cầu** | Tìm kiếm và lọc danh sách nhân sự, danh sách đánh giá khen thưởng/kỷ luật (**FEAT 10.3, FEAT 8.1, FEAT 8.2**) trên tập dữ liệu lớn phải trả kết quả trong các ngưỡng thời gian quy định theo quy mô dữ liệu. |
 | **Độ đo yêu cầu** | - **Search Response Time** (giây)<br>- **Filter Apply Time** (giây) |
 | **Tiêu chuẩn đáp ứng** | - Với tập dữ liệu **≤ 10.000 bản ghi**: **Search Response Time ≤ 2 giây**, **Filter Apply Time ≤ 2 giây**<br>- Với tập dữ liệu **≤ 50.000 bản ghi**: **Search Response Time ≤ 5 giây**, **Filter Apply Time ≤ 5 giây** |
+| **Lý do chọn độ đo** | Tìm kiếm/lọc là thao tác tương tác trực tiếp nên phải gần ngưỡng “giữ được luồng làm việc” của người dùng; vì vậy mức **≤ 2 giây** cho **≤ 10.000 bản ghi** là phù hợp với danh sách chính có đánh chỉ mục tốt. Mức **≤ 50.000 bản ghi** được dùng để bao phủ các bảng lịch sử như hợp đồng, đánh giá, biến động và các truy vấn có kết hợp nhiều điều kiện; với quy mô này, ngưỡng **≤ 5 giây** vẫn chấp nhận được cho hệ thống nội bộ trong giờ cao điểm. Proxy **≤ 500 ms** cho truy vấn SQL được chọn vì trong một yêu cầu web hoàn chỉnh còn có thời gian mạng, serialization, phân quyền và render giao diện; như vậy phần truy vấn cơ sở dữ liệu nên chỉ chiếm một phần nhỏ của tổng thời gian phản hồi. |
 | **Phương pháp đo** | Đo thời gian từ lúc người dùng gửi yêu cầu tìm kiếm đến khi danh sách kết quả hiển thị; đo thời gian từ lúc áp dụng bộ lọc đến khi danh sách được cập nhật hoàn chỉnh. |
 | **Đại lượng thay thế (nếu cần)** | **Execution time của truy vấn SQL LIKE/FULLTEXT** đo bằng **EXPLAIN ANALYZE**, mục tiêu **≤ 500 ms** với tập dữ liệu **≤ 10.000 bản ghi**. |
 
@@ -2798,9 +2828,10 @@ classDiagram
 | Thuộc tính | Nội dung |
 |---|---|
 | **Yếu tố chất lượng** | Performance → Speed (Tốc độ truyền file) |
-| **Mô tả yêu cầu** | Việc tải lên và tải xuống các tệp đính kèm dung lượng đến **5 MB** phải hoàn thành trong các ngưỡng thời gian quy định trên môi trường mạng LAN. |
-| **Độ đo yêu cầu** | - **Upload Time** (giây)<br>- **Download Time** (giây) |
-| **Tiêu chuẩn đáp ứng** | - **Upload Time ≤ 5 giây** cho file **≤ 5 MB** trên mạng LAN<br>- **Download Time ≤ 3 giây** cho file **≤ 5 MB** trên mạng LAN |
+| **Mô tả yêu cầu** | Việc tải lên và tải xuống các tệp đính kèm phải hoàn thành trong các ngưỡng thời gian quy định trên môi trường mạng LAN; ngưỡng đánh giá bao phủ cả kích thước thường gặp và kích thước tối đa hệ thống cho phép. |
+| **Độ đo yêu cầu** | - **Upload Time** (giây)<br>- **Download Time** (giây)<br>- **Kích thước file kiểm thử** (MB) |
+| **Tiêu chuẩn đáp ứng** | - Với file **≤ 5 MB**: **Upload Time ≤ 5 giây**, **Download Time ≤ 3 giây** trên mạng LAN<br>- Với file **> 5 MB đến ≤ 10 MB**: **Upload Time ≤ 10 giây**, **Download Time ≤ 6 giây** trên mạng LAN |
+| **Lý do chọn độ đo** | Trong HRMS, phần lớn tệp đính kèm như hợp đồng scan, bằng cấp, chứng chỉ PDF thường nằm trong khoảng **1–5 MB**; vì vậy ngưỡng **5 MB** được dùng cho “mức sử dụng thường xuyên”. Tuy nhiên hệ thống cho phép tối đa **10 MB/file**, nên cần thêm ngưỡng cho khoảng **5–10 MB** để tránh mâu thuẫn với ràng buộc triển khai. Trên mạng LAN văn phòng (thường từ **100 Mbps** trở lên), thời gian truyền lý thuyết của 5 MB khá nhỏ; phần thời gian còn lại chủ yếu đến từ quét file, ghi đĩa, xác thực và phản hồi ứng dụng. Do đó các mức **3–5 giây** cho file thường gặp và **6–10 giây** cho file cận ngưỡng tối đa là chặt nhưng vẫn khả thi. |
 | **Phương pháp đo** | Đo thời gian từ lúc người dùng chọn file đến khi server xác nhận lưu thành công; đo thời gian từ lúc nhấn tải xuống đến khi file sẵn sàng mở hoặc hoàn tất tải về. |
 | **Đại lượng thay thế (nếu cần)** | **Tốc độ ghi file vào đĩa (MB/s)**, đo qua hệ thống giám sát I/O máy chủ. |
 
@@ -2811,6 +2842,7 @@ classDiagram
 | **Mô tả yêu cầu** | Chức năng xuất dữ liệu ra Excel của **FEAT 8.8** phải hoàn thành trong các ngưỡng thời gian quy định theo số lượng bản ghi. |
 | **Độ đo yêu cầu** | - **Export Time** (giây) |
 | **Tiêu chuẩn đáp ứng** | - Với **≤ 1.000 bản ghi**: **Export Time ≤ 10 giây**<br>- Với **≤ 10.000 bản ghi**: **Export Time ≤ 30 giây** |
+| **Lý do chọn độ đo** | Xuất Excel là tác vụ xử lý theo lô, không yêu cầu “tức thì” như CRUD nhưng vẫn phải đủ nhanh để người dùng không rời bỏ tác vụ. Mức **≤ 10 giây** cho **≤ 1.000 bản ghi** phù hợp với nhu cầu xuất danh sách nhân sự theo đơn vị hoặc bộ lọc thông thường. Mức **≤ 30 giây** cho **≤ 10.000 bản ghi** bao phủ trường hợp xuất dữ liệu lớn hơn, gồm nhiều cột và định dạng Excel, đồng thời vẫn nằm trong khoảng chờ có thể chấp nhận cho thao tác báo cáo nội bộ. Các mốc này cũng nhất quán với logic **Nielsen**: thao tác vượt **10 giây** chỉ nên xuất hiện ở tác vụ batch rõ ràng như export, không phải ở tương tác duyệt màn hình. |
 | **Phương pháp đo** | Đo thời gian từ lúc người dùng nhấn **“Xuất Excel”** đến khi file tải xuống hoàn tất. |
 | **Đại lượng thay thế (nếu cần)** | **Thời gian server sinh file Excel** (không tính thời gian download), đo qua **API response time**. |
 
@@ -2836,7 +2868,8 @@ classDiagram
 | **Yếu tố chất lượng** | Reliability → Availability (Tính sẵn sàng) |
 | **Mô tả yêu cầu** | Hệ thống phải sẵn sàng phục vụ trong khung thời gian **7:00–22:00** hằng ngày với tỷ lệ **uptime tối thiểu 99,5%** trên tổng thời gian phục vụ trong tháng, không tính thời gian bảo trì theo kế hoạch. |
 | **Độ đo yêu cầu** | - **Uptime** (%)<br>- **MTBF (Mean Time Between Failures)** (giờ)<br>- **Downtime** (giờ/tháng) |
-| **Tiêu chuẩn đáp ứng** | - **Uptime ≥ 99,5%/tháng** trong khung giờ **7:00–22:00**<br>- **MTBF ≥ 720 giờ** (tương đương 30 ngày)<br>- **Downtime ≤ 2,25 giờ/tháng**, không tính bảo trì theo kế hoạch |
+| **Tiêu chuẩn đáp ứng** | - **Uptime ≥ 99,5%/tháng** trong khung giờ **7:00–22:00**<br>- **MTBF ≥ 225 giờ** trong khung giờ phục vụ<br>- **Downtime ≤ 2,25 giờ/tháng**, không tính bảo trì theo kế hoạch |
+| **Lý do chọn độ đo** | HRMS của trường là hệ thống quan trọng trong giờ làm việc nhưng không phải hệ thống **24/7** như ngân hàng hay cấp cứu, vì vậy mức **99,5%** là phù hợp hơn mức 99,9% vốn đòi hỏi hạ tầng dự phòng tốn kém. Với khung phục vụ **7:00–22:00** tương đương khoảng **450 giờ/tháng**, ngưỡng **99,5%** suy ra downtime tối đa khoảng **2,25 giờ/tháng** trong thời gian phục vụ. Chỉ số **MTBF ≥ 225 giờ** được chọn để phản ánh mục tiêu không quá khoảng **2 sự cố nghiêm trọng/tháng** trong khung phục vụ; con số này bám sát bối cảnh vận hành nội bộ hơn mức 720 giờ tính theo 24/7. |
 | **Phương pháp đo** | Tính tỷ lệ uptime theo công thức **(Tổng thời gian hoạt động / Tổng thời gian dự kiến) × 100**; theo dõi số lần failure để tính MTBF; tổng hợp tổng thời gian hệ thống không truy cập được trong tháng để tính downtime. |
 | **Đại lượng thay thế (nếu cần)** | **Tỷ lệ health check endpoint trả lỗi / tổng số health check**, đo qua công cụ giám sát uptime như **UptimeRobot**. |
 
@@ -2847,6 +2880,7 @@ classDiagram
 | **Mô tả yêu cầu** | Sau sự cố **crash** hoặc **restart**, hệ thống phải phục hồi khả năng phục vụ request thành công trong tối đa **15 phút**. |
 | **Độ đo yêu cầu** | - **MTTR (Mean Time To Repair)** (phút)<br>- **Restart Time** (phút) |
 | **Tiêu chuẩn đáp ứng** | - **MTTR ≤ 15 phút**<br>- **Restart Time ≤ 10 phút** |
+| **Lý do chọn độ đo** | Với hệ thống nội bộ phục vụ nghiệp vụ nhân sự, thời gian gián đoạn trên **15 phút** bắt đầu ảnh hưởng rõ rệt đến tác vụ hành chính liên tục như cập nhật hồ sơ, tra cứu hợp đồng và xuất báo cáo. Mức **Restart Time ≤ 10 phút** được chọn để dành thêm khoảng đệm cho kiểm tra sức khỏe hệ thống, nạp cache và xác nhận hệ thống phục hồi ổn định trước khi tính đủ **MTTR ≤ 15 phút**. Đây là mức khắt khe vừa phải đối với năng lực của một bộ phận CNTT trường đại học, nhưng vẫn đủ bảo đảm khôi phục trong cùng phiên làm việc. |
 | **Phương pháp đo** | Đo thời gian từ thời điểm hệ thống bị crash đến khi phục vụ được request đầu tiên thành công; đo riêng thời gian khởi động lại toàn bộ stack (**database + backend + frontend**). |
 | **Đại lượng thay thế (nếu cần)** | Không cần đại lượng thay thế vì có thể đo trực tiếp bằng **drill test** hoặc mô phỏng sự cố. |
 
@@ -2857,6 +2891,7 @@ classDiagram
 | **Mô tả yêu cầu** | Hệ thống phải sao lưu dữ liệu tự động ít nhất mỗi **24 giờ**, lưu giữ bản sao lưu tối thiểu **30 ngày** và phục hồi được từ bản sao lưu trong tối đa **4 giờ**. |
 | **Độ đo yêu cầu** | - **RPO (Recovery Point Objective)** (giờ)<br>- **RTO (Recovery Time Objective)** (giờ)<br>- **Backup Retention Period** (ngày)<br>- **Backup Success Rate** (%) |
 | **Tiêu chuẩn đáp ứng** | - **RPO ≤ 24 giờ**<br>- **RTO ≤ 4 giờ**<br>- **Backup Retention Period ≥ 30 ngày**<br>- **Backup Success Rate ≥ 99%** |
+| **Lý do chọn độ đo** | Dữ liệu HRMS chủ yếu phát sinh theo ca hành chính chứ không phải giao dịch liên tục từng giây; do đó **RPO ≤ 24 giờ** tương ứng với chu kỳ sao lưu hằng ngày là cân bằng giữa an toàn dữ liệu và chi phí lưu trữ/vận hành. **RTO ≤ 4 giờ** bảo đảm nếu xảy ra sự cố, hệ thống vẫn có thể được phục hồi trong cùng ngày làm việc. Thời gian lưu giữ **≥ 30 ngày** bám theo chu kỳ nghiệp vụ tháng như đối soát hợp đồng, lương, phụ cấp và phát hiện sai sót muộn. Mức **Backup Success Rate ≥ 99%** đủ cao để coi sao lưu là đáng tin cậy nhưng vẫn thực tế hơn 100% tuyệt đối, vì vẫn có thể có các lần chạy lỗi do bảo trì hoặc sự cố hạ tầng cần chạy lại. |
 | **Phương pháp đo** | Theo dõi chu kỳ sao lưu tự động; đo khoảng thời gian dữ liệu có thể mất tối đa khi phục hồi từ backup; đo thời gian thực hiện phục hồi hệ thống từ bản sao lưu; thống kê tỷ lệ các lần backup chạy thành công trên tổng số lần backup. |
 | **Đại lượng thay thế (nếu cần)** | **Thời gian restore database từ bản backup gần nhất trên môi trường staging** dùng làm proxy cho RTO. |
 
@@ -2867,6 +2902,7 @@ classDiagram
 | **Mô tả yêu cầu** | Các thao tác cập nhật dữ liệu quan trọng phải bảo đảm nguyên tắc **toàn bộ hoặc không thực hiện phần nào**; nếu một bước thất bại, hệ thống không được ghi nhận thay đổi dở dang và phải khôi phục dữ liệu về trạng thái trước thao tác. |
 | **Độ đo yêu cầu** | - **Data Inconsistency Count** (số trường hợp)<br>- **Integrity Protection Coverage** (%) |
 | **Tiêu chuẩn đáp ứng** | - **Data Inconsistency Count = 0**<br>- **Integrity Protection Coverage = 100%** cho các nhóm nghiệp vụ: **hợp đồng, bổ nhiệm, đánh giá, chuyển trạng thái**<br>- Không được ghi nhận **thay đổi một phần** khi có lỗi giữa chừng |
+| **Lý do chọn độ đo** | Với dữ liệu nhân sự, hợp đồng và đánh giá, yêu cầu về toàn vẹn gần như không có vùng “chấp nhận sai số”; chỉ cần một bản ghi cập nhật dở dang cũng có thể dẫn đến sai lệch hồ sơ pháp lý hoặc sai báo cáo. Vì vậy **Data Inconsistency Count = 0** là mục tiêu bắt buộc, phù hợp với nguyên tắc **ACID transaction** của cơ sở dữ liệu quan hệ. Mức **100% coverage** cho các nghiệp vụ trọng yếu được chọn vì đây là nhóm thao tác có rủi ro cao nhất nếu xảy ra cập nhật nửa chừng; các phép đo thấp hơn sẽ khó thuyết phục trong bối cảnh dữ liệu nhân sự cần độ chính xác tuyệt đối. |
 | **Phương pháp đo** | Thực hiện **failure-injection test** để kiểm tra dữ liệu bất nhất quán sau lỗi; đo tỷ lệ thao tác cập nhật quan trọng được kiểm thử lỗi giữa chừng nhưng không phát sinh cập nhật dở dang. |
 | **Đại lượng thay thế (nếu cần)** | **Số vi phạm khóa ngoại (Foreign Key violations) và orphaned records** phát hiện qua script kiểm tra toàn vẹn dữ liệu. |
 
@@ -2875,10 +2911,11 @@ classDiagram
 |---|---|
 | **Yếu tố chất lượng** | Reliability → Fault Tolerance (Chịu lỗi) |
 | **Mô tả yêu cầu** | Trước khi phiên tự động hết hạn, hệ thống phải cảnh báo tối thiểu **5 phút**; nếu phiên vẫn hết hạn thì tỷ lệ mất dữ liệu biểu mẫu chưa lưu không được vượt quá **5%**. |
-| **Độ đo yêu cầu** | - **Data Loss Rate** (%)<br>- **Warning Lead Time** (phút) |
-| **Tiêu chuẩn đáp ứng** | - **Data Loss Rate ≤ 5%**<br>- **Warning Lead Time ≥ 5 phút** trước khi tự động đăng xuất |
-| **Phương pháp đo** | Thực hiện **user testing** để đo tỷ lệ mất dữ liệu form khi phiên hết hạn; đo thời gian hiển thị cảnh báo trước thời điểm hệ thống tự động đăng xuất. |
-| **Đại lượng thay thế (nếu cần)** | **Kiểm thử nhị phân Có/Không đối với popup cảnh báo trước khi hết phiên**, dùng làm proxy khi chưa đo được tỷ lệ mất dữ liệu thực tế ở quy mô lớn. |
+| **Độ đo yêu cầu** | - **Draft Recovery Rate** (%)<br>- **Session Expiry Warning Coverage** (%)<br>- **Warning Lead Time** (phút) |
+| **Tiêu chuẩn đáp ứng** | - **Draft Recovery Rate ≥ 95%** đối với form có dữ liệu nhập dở khi người dùng đăng nhập lại<br>- **Session Expiry Warning Coverage = 100%** đối với các phiên sắp hết hạn<br>- **Warning Lead Time ≥ 5 phút** trước khi tự động đăng xuất |
+| **Lý do chọn độ đo** | Với biểu mẫu nhân sự nhiều trường, việc mất toàn bộ dữ liệu đã nhập là rất tốn thời gian và dễ gây bức xúc cho người dùng, nên hệ thống phải cảnh báo trước và khôi phục bản nháp ở mức cao. Ngưỡng cảnh báo **5 phút** đủ để người dùng hoàn tất thao tác lưu hoặc chủ động gia hạn phiên, đồng thời phù hợp với phiên timeout **30 phút** của hệ thống. Mức **100% warning coverage** là hợp lý vì đây là chức năng do chính hệ thống kiểm soát. Riêng **Draft Recovery Rate ≥ 95%** được chọn thay vì 100% tuyệt đối vì khả năng khôi phục còn phụ thuộc các tình huống ngoài kiểm soát như người dùng đóng tab cưỡng bức, trình duyệt xóa session/local storage hoặc sự cố máy trạm; 95% là ngưỡng cao nhưng vẫn thực tế và kiểm thử được. |
+| **Phương pháp đo** | Thực hiện **user testing** hoặc mô phỏng hết phiên trên các form nhập liệu dài để đo tỷ lệ khôi phục dữ liệu nháp sau khi đăng nhập lại; đo tỷ lệ xuất hiện cảnh báo và thời gian cảnh báo trước khi hệ thống tự động đăng xuất. |
+| **Đại lượng thay thế (nếu cần)** | **Kiểm thử nhị phân Có/Không đối với popup cảnh báo trước khi hết phiên** và kiểm tra sự tồn tại của bản nháp lưu tạm trên trình duyệt/máy chủ. |
 
 ## 6.8. Yêu cầu về Bảo mật (Security)
 
@@ -2908,6 +2945,7 @@ classDiagram
 | **Độ đo yêu cầu** | 1) **Mức độ mạnh mật khẩu**: số quy tắc mật khẩu được hệ thống kiểm tra bắt buộc.<br>2) **Số lớp xác thực**: số bước xác thực trước khi truy cập hệ thống.<br>3) **An toàn phiên đăng nhập**: trạng thái phiên có thuộc tính bảo vệ và thời gian hết hạn không hoạt động. |
 | **Tiêu chuẩn đáp ứng** | 1) Mật khẩu có **ít nhất 8 ký tự** và thỏa **3/3 quy tắc**: chữ hoa, chữ thường, chữ số.<br>2) Hệ thống áp dụng **01 lớp xác thực** bằng tên đăng nhập/mật khẩu trước khi vào hệ thống.<br>3) Phiên đăng nhập phải được bảo vệ khỏi truy cập từ script phía client và tự hết hiệu lực sau tối đa **30 phút** không hoạt động. |
 | **Phương pháp đo** | Kiểm thử chức năng đăng nhập/đổi mật khẩu; kiểm tra rule validation trên form; kiểm tra cấu hình cookie/token phiên (HttpOnly, Secure, thời gian hết hạn). |
+| **Lý do chọn độ đo** | Ngưỡng **8 ký tự** phù hợp mức tối thiểu mà NIST SP 800-63B và OWASP Authentication Cheat Sheet thừa nhận cho xác thực bằng mật khẩu; dự án giữ thêm **3 nhóm ký tự** vì đây là chính sách đã chốt trong SUPL gốc nhằm tăng độ khó đoán cho tài khoản nội bộ HRMS chưa triển khai MFA. Chọn **01 lớp xác thực** vì hệ thống hiện là cổng nghiệp vụ nội bộ, chưa có yêu cầu MFA trong phạm vi đề tài. Mốc **30 phút không hoạt động** bám yêu cầu hệ thống về tự động đăng xuất, cân bằng giữa an toàn phiên và tính tiện dụng khi cán bộ thao tác hồ sơ nhân sự. |
 
 #### SUPL-SE02: Phân quyền truy cập (Authorization)
 | Thuộc tính | Nội dung |
@@ -2917,6 +2955,7 @@ classDiagram
 | **Độ đo yêu cầu** | 1) **Số trường hợp truy cập trái phép** phát hiện qua kiểm thử phân quyền.<br>2) **Tỷ lệ API được bảo vệ** = số API endpoint có kiểm tra quyền / tổng số API endpoint.<br>3) **Số vai trò được định nghĩa** trong mô hình RBAC. |
 | **Tiêu chuẩn đáp ứng** | 1) **0** trường hợp truy cập trái phép vào chức năng hoặc API không được cấp quyền.<br>2) **100%** API endpoint có cơ chế kiểm tra quyền trước khi xử lý.<br>3) Hệ thống có đúng **4 vai trò**: Admin, TCCB, TCKT, Nhân sự. |
 | **Phương pháp đo** | Kiểm thử xâm nhập theo ma trận quyền; rà soát middleware/guard trên route API; đối chiếu cấu hình vai trò và quyền trong hệ thống. |
+| **Lý do chọn độ đo** | Với bài toán phân quyền, nguyên tắc **least privilege** của NIST SP 800-53 AC-6 và OWASP Broken Access Control yêu cầu không chấp nhận truy cập vượt quyền, nên ngưỡng đúng phải là **0 trường hợp trái phép** và **100% endpoint được kiểm tra quyền**. Con số **4 vai trò** không phải chọn tùy ý mà xuất phát trực tiếp từ mô hình nghiệp vụ đã xác định trong đặc tả: Admin, TCCB, TCKT, Nhân sự. |
 
 #### SUPL-SE03: Bảo vệ chống tấn công brute-force
 | Thuộc tính | Nội dung |
@@ -2926,6 +2965,7 @@ classDiagram
 | **Độ đo yêu cầu** | 1) **Ngưỡng khóa tài khoản**: số lần đăng nhập sai liên tiếp trước khi bị khóa.<br>2) **Thời gian khóa tạm thời**: số phút tài khoản bị khóa.<br>3) **Ghi log cảnh báo**: có/không bản ghi cảnh báo khi phát hiện hành vi brute-force. |
 | **Tiêu chuẩn đáp ứng** | 1) Tài khoản bị khóa sau đúng **5 lần** đăng nhập sai liên tiếp.<br>2) Thời gian khóa tối thiểu **15 phút**.<br>3) Hệ thống phải ghi log cảnh báo, tối thiểu gồm **IP**, **thời gian** và **tài khoản bị tác động**. |
 | **Phương pháp đo** | Thực hiện đăng nhập sai liên tiếp trên tài khoản thử nghiệm; đo thời gian khóa thực tế; kiểm tra bản ghi cảnh báo trong log bảo mật. |
+| **Lý do chọn độ đo** | OWASP Authentication Cheat Sheet khuyến nghị **login throttling/account lockout** để chống brute-force. Ngưỡng **5 lần sai liên tiếp** là mức cấu hình rất phổ biến trong hệ thống doanh nghiệp vì đủ thấp để chặn thử mật khẩu tự động nhưng chưa gây khóa nhầm quá sớm cho người dùng thật. Mốc **15 phút** là thời gian làm chậm đáng kể tấn công online mà vẫn không buộc cán bộ phải nhờ quản trị viên mở khóa trong hầu hết trường hợp. Ba trường log **IP, thời gian, tài khoản** là tập tối thiểu để truy vết mẫu tấn công và đối chiếu sự cố. |
 
 #### SUPL-SE04: Mã hóa truyền tải dữ liệu (HTTPS)
 | Thuộc tính | Nội dung |
@@ -2935,6 +2975,7 @@ classDiagram
 | **Độ đo yêu cầu** | 1) **Phiên bản TLS** đang sử dụng.<br>2) **Tỷ lệ kết nối HTTPS** = số kết nối HTTPS / tổng số kết nối đến hệ thống.<br>3) **Chuyển hướng HTTP sang HTTPS**: có/không cơ chế tự động chuyển hướng. |
 | **Tiêu chuẩn đáp ứng** | 1) Hệ thống chỉ chấp nhận kết nối với **TLS 1.2 trở lên**.<br>2) **100%** kết nối sử dụng HTTPS; **0%** kết nối HTTP không mã hóa được xử lý trực tiếp.<br>3) Mọi truy cập HTTP phải được tự động chuyển hướng sang HTTPS. |
 | **Phương pháp đo** | Kiểm tra cấu hình TLS bằng trình duyệt/curl hoặc công cụ SSL; đo lưu lượng truy cập thực tế; kiểm thử request HTTP để xác nhận chuyển hướng. |
+| **Lý do chọn độ đo** | NIST SP 800-52 Rev.2 yêu cầu tối thiểu phải hỗ trợ **TLS 1.2** và khuyến nghị tiến tới TLS 1.3; RFC **8996** của IETF đã chính thức loại bỏ TLS 1.0/1.1. Vì HRMS truyền thông tin tài khoản, CCCD, BHXH và dữ liệu hợp đồng, ngưỡng đúng phải là **100% HTTPS** và **0% HTTP thuần** để loại bỏ hoàn toàn kênh truyền không mã hóa. Yêu cầu chuyển hướng HTTP sang HTTPS giúp tránh lỗi cấu hình và giảm nguy cơ người dùng truy cập nhầm URL không an toàn. |
 
 #### SUPL-SE05: Bảo vệ dữ liệu nhạy cảm
 | Thuộc tính | Nội dung |
@@ -2944,6 +2985,7 @@ classDiagram
 | **Độ đo yêu cầu** | 1) **Số trường dữ liệu nhạy cảm bị lộ** cho vai trò không được phép.<br>2) **Tỷ lệ ghi audit log khi truy cập dữ liệu nhạy cảm** = số lần truy cập được ghi log / tổng số lần truy cập dữ liệu nhạy cảm. |
 | **Tiêu chuẩn đáp ứng** | 1) **0** trường dữ liệu nhạy cảm bị hiển thị cho vai trò không được cấp quyền.<br>2) **100%** lượt truy cập các trường CCCD, BHXH và thông tin ngân hàng được ghi audit log. |
 | **Phương pháp đo** | Kiểm thử API/UI theo từng vai trò; kiểm tra payload trả về; đối chiếu nhật ký truy cập dữ liệu nhạy cảm với lịch sử thao tác thực tế. |
+| **Lý do chọn độ đo** | Nghị định **13/2023/NĐ-CP** yêu cầu dữ liệu cá nhân phải được xử lý đúng mục đích, trong phạm vi cần thiết và có biện pháp bảo vệ tương ứng; riêng HRMS của trường còn chứa dữ liệu định danh và tài chính như **CCCD, BHXH, tài khoản ngân hàng**. Do đây là nhóm dữ liệu có rủi ro pháp lý và riêng tư cao, ngưỡng chấp nhận phải là **0 lộ lọt cho vai trò không có quyền**. Chọn **100% ghi audit log** vì mọi lần truy cập dữ liệu nhạy cảm đều phải truy vết được khi kiểm tra nội bộ hoặc xử lý sự cố theo tinh thần trách nhiệm giải trình của Nghị định 13. |
 
 #### SUPL-SE06: Ngăn chặn tấn công web trên chức năng nhập liệu và cập nhật dữ liệu
 | Thuộc tính | Nội dung |
@@ -2953,6 +2995,7 @@ classDiagram
 | **Độ đo yêu cầu** | 1) **Số lỗ hổng CSRF** phát hiện qua kiểm thử bảo mật.<br>2) **Số lỗ hổng XSS** phát hiện qua kiểm thử bảo mật.<br>3) **Tỷ lệ request thay đổi dữ liệu được bảo vệ** = số request POST/PUT/DELETE có cơ chế chống giả mạo / tổng số request POST/PUT/DELETE. |
 | **Tiêu chuẩn đáp ứng** | 1) **0** lỗ hổng CSRF.<br>2) **0** lỗ hổng XSS.<br>3) **100%** chức năng POST/PUT/DELETE và các form thay đổi dữ liệu vượt qua kiểm thử chống CSRF; **100%** dữ liệu do người dùng nhập khi hiển thị lại trên giao diện vượt qua kiểm thử XSS. |
 | **Phương pháp đo** | Kiểm thử bảo mật bằng OWASP ZAP hoặc công cụ tương đương; rà soát cơ chế CSRF token; kiểm tra escaping/sanitizing dữ liệu đầu vào và đầu ra. |
+| **Lý do chọn độ đo** | OWASP Top 10:2021 xem các lỗi chèn mã và kiểm soát truy cập đầu vào/đầu ra là nhóm rủi ro trọng yếu; OWASP **CSRF Prevention Cheat Sheet** và **XSS Prevention Cheat Sheet** đều coi chỉ cần **một** điểm không bảo vệ là có thể khai thác được. Vì vậy các độ đo bảo mật này có dạng **sharp requirement**: **0 lỗ hổng** và **100% request thay đổi trạng thái được bảo vệ**. Với hệ thống HRMS có nhiều form thêm/sửa hồ sơ, mọi endpoint POST/PUT/DELETE đều phải có CSRF token và mọi dữ liệu phản chiếu lên UI đều phải được encode/sanitize. |
 
 #### SUPL-SE07: Chống SQL Injection
 | Thuộc tính | Nội dung |
@@ -2962,6 +3005,7 @@ classDiagram
 | **Độ đo yêu cầu** | 1) **Số lỗ hổng SQL Injection** phát hiện qua kiểm thử.<br>2) **Tỷ lệ truy vấn được bảo vệ** = số truy vấn sử dụng dữ liệu đầu vào có cơ chế tách dữ liệu khỏi câu lệnh SQL / tổng số truy vấn sử dụng dữ liệu đầu vào. |
 | **Tiêu chuẩn đáp ứng** | 1) **0** lỗ hổng SQL Injection.<br>2) **100%** truy vấn có dữ liệu đầu vào từ người dùng được bảo vệ bằng cơ chế truy vấn tham số hóa hoặc ORM tương đương. |
 | **Phương pháp đo** | Kiểm thử bằng sqlmap hoặc công cụ tương đương; rà soát code các truy vấn SQL/ORM; kiểm tra không có truy vấn ghép chuỗi trực tiếp từ dữ liệu đầu vào. |
+| **Lý do chọn độ đo** | OWASP Top 10:2021 **A03 - Injection**, CWE-**89** và OWASP **SQL Injection Prevention Cheat Sheet** đều chỉ ra biện pháp chính là **prepared statements/parameterized queries**. Vì chỉ một truy vấn ghép chuỗi cũng đủ mở đường cho khai thác, nên tiêu chuẩn phù hợp phải là **0 lỗ hổng SQLi** và **100% truy vấn có input người dùng được tham số hóa**. Đây là ngưỡng có thể kiểm chứng rõ ràng bằng code review và penetration test. |
 
 #### SUPL-SE08: Kiểm soát cấu hình ẩn/hiện mục khen thưởng/kỷ luật
 | Thuộc tính | Nội dung |
@@ -2971,6 +3015,7 @@ classDiagram
 | **Độ đo yêu cầu** | 1) **Số thay đổi cấu hình trái phép** đối với chức năng ẩn/hiện mục khen thưởng/kỷ luật.<br>2) **Tỷ lệ thay đổi cấu hình được ghi audit log** = số thay đổi được lưu log / tổng số thay đổi cấu hình hợp lệ.<br>3) **Độ đầy đủ bản ghi audit** = số trường bắt buộc được ghi nhận / 4 trường bắt buộc (người thực hiện, thời gian, giá trị trước, giá trị sau). |
 | **Tiêu chuẩn đáp ứng** | 1) **0** thay đổi cấu hình do người dùng không được ủy quyền thực hiện thành công.<br>2) **100%** thay đổi cấu hình hợp lệ được ghi audit log.<br>3) Mỗi bản ghi audit phải đạt **4/4 trường bắt buộc**: người thực hiện, thời gian, giá trị trước, giá trị sau. |
 | **Phương pháp đo** | Kiểm thử phân quyền trên giao diện và API cấu hình; thực hiện thay đổi cấu hình thử nghiệm; đối chiếu lịch sử thay đổi với audit log của hệ thống. |
+| **Lý do chọn độ đo** | Chức năng ẩn/hiện mục khen thưởng/kỷ luật tác động trực tiếp tới việc ai được nhìn thấy thông tin đánh giá nhân sự, nên đây là một cấu hình bảo mật cấp hệ thống. Vì vậy ngưỡng **0 thay đổi trái phép** là bắt buộc, không thể đặt mức dung sai. Chọn **100% audit log** vì mọi thay đổi cấu hình phải truy ngược được khi rà soát trách nhiệm. Bộ **4 trường** được chọn không tùy ý mà suy ra trực tiếp từ yêu cầu gốc: người thực hiện, thời gian, giá trị trước, giá trị sau là mức tối thiểu để chứng minh ai đổi gì và đổi khi nào. |
 
 #### SUPL-SE09: Kiểm soát chấm dứt hợp đồng trước hạn
 | Thuộc tính | Nội dung |
@@ -2980,6 +3025,7 @@ classDiagram
 | **Độ đo yêu cầu** | 1) **Số trường hợp chấm dứt hợp đồng trước hạn trái phép** phát hiện qua kiểm thử quyền truy cập.<br>2) **Tỷ lệ thao tác chấm dứt hợp đồng được ghi audit log** = số thao tác được lưu log / tổng số thao tác chấm dứt hợp đồng trước hạn hợp lệ.<br>3) **Độ đầy đủ bản ghi audit** = số trường bắt buộc được ghi nhận / 7 trường bắt buộc (mã hợp đồng, mã nhân sự, lý do chấm dứt, người thực hiện, thời gian, giá trị trước, giá trị sau). |
 | **Tiêu chuẩn đáp ứng** | 1) **0** trường hợp chấm dứt hợp đồng trước hạn được thực hiện bởi người dùng không có quyền.<br>2) **100%** thao tác chấm dứt hợp đồng trước hạn hợp lệ được ghi audit log.<br>3) Mỗi bản ghi audit phải đạt **7/7 trường bắt buộc**. |
 | **Phương pháp đo** | Kiểm thử chức năng chấm dứt hợp đồng với nhiều vai trò; rà soát log nghiệp vụ và audit log; đối chiếu dữ liệu trước/sau khi thao tác được thực hiện. |
+| **Lý do chọn độ đo** | Theo **Bộ luật Lao động 2019** (nhóm điều về chấm dứt hợp đồng lao động và nghĩa vụ khi chấm dứt), thao tác chấm dứt hợp đồng trước hạn có hậu quả pháp lý trực tiếp đối với người lao động và nhà trường. Vì vậy ngưỡng đúng phải là **0 thao tác trái phép** và **100% được lưu vết**. Bộ **7 trường** được chọn bám sát hồ sơ cần có để kiểm tra tính hợp lệ của quyết định: mã hợp đồng, mã nhân sự, lý do chấm dứt, người thực hiện, thời gian, giá trị trước, giá trị sau. Nếu thiếu một trường, việc đối chiếu pháp lý và kiểm toán nội bộ sẽ không đầy đủ. |
 
 ## 6.9. Ràng buộc triển khai (Implementation Constraints)
 
@@ -3004,6 +3050,7 @@ classDiagram
 | **Độ đo yêu cầu** | 1) **Tỷ lệ tuân thủ stack frontend** = số module giao diện build bằng React.js + TypeScript / tổng số module frontend.<br>2) **Tỷ lệ tuân thủ stack backend** = số service/backend module triển khai bằng Laravel/PHP / tổng số service backend.<br>3) **Mức tuân thủ cơ sở dữ liệu** = số môi trường triển khai chính thức sử dụng MySQL/MariaDB / tổng số môi trường triển khai chính thức. |
 | **Tiêu chuẩn đáp ứng** | 1) **100%** module frontend sử dụng React.js kết hợp TypeScript.<br>2) **100%** thành phần backend sử dụng Laravel/PHP.<br>3) **100%** môi trường triển khai chính thức sử dụng MySQL hoặc MariaDB; **0** thành phần production dùng hệ quản trị cơ sở dữ liệu ngoài phạm vi yêu cầu. |
 | **Phương pháp đo** | Rà soát package.json, tsconfig, composer.json, cấu trúc source code, file cấu hình triển khai và cấu hình kết nối cơ sở dữ liệu của hệ thống. |
+| **Lý do chọn độ đo** | Đây là **ràng buộc triển khai**, nên bản chất là điều kiện nhị phân: hoặc tuân thủ, hoặc không tuân thủ. Vì vậy ngưỡng hợp lý phải là **100% đúng stack** và **0 thành phần production ngoài stack đã phê duyệt**. Bộ công nghệ React + TypeScript, Laravel/PHP, MySQL/MariaDB được giữ nguyên theo đặc tả nguồn vì phù hợp năng lực nhóm, tài nguyên triển khai của bài toán web nội bộ trường đại học, đồng thời giúp đồng nhất tài liệu, bảo trì và chấm nghiệm thu. |
 
 #### SUPL-IC02: Trình duyệt hỗ trợ
 | Thuộc tính | Nội dung |
@@ -3013,6 +3060,7 @@ classDiagram
 | **Độ đo yêu cầu** | 1) **Độ phủ trình duyệt mục tiêu** = số trình duyệt/phiên bản mục tiêu được kiểm thử / tổng số trình duyệt/phiên bản mục tiêu.<br>2) **Tỷ lệ chức năng chính đạt** = số chức năng nghiệp vụ chính chạy đúng trên từng trình duyệt / tổng số chức năng chính cần kiểm thử.<br>3) **Số lỗi nghiêm trọng theo trình duyệt** phát hiện trong kiểm thử tương thích. |
 | **Tiêu chuẩn đáp ứng** | 1) **100%** phạm vi kiểm thử phải bao gồm Chrome bản mới nhất và **2 phiên bản gần nhất**, Firefox bản ổn định hiện hành và Edge bản ổn định hiện hành tại thời điểm nghiệm thu.<br>2) **100%** chức năng chính hoạt động đúng trên Chrome; **≥ 95%** chức năng chính hoạt động đúng trên Firefox và Edge.<br>3) **0** lỗi mức Nghiêm trọng/Critical trên các trình duyệt mục tiêu. |
 | **Phương pháp đo** | Thực hiện kiểm thử tương thích chéo trình duyệt bằng test thủ công/kịch bản tự động trên môi trường nghiệm thu; ghi nhận lỗi theo từng trình duyệt và từng phiên bản. |
+| **Lý do chọn độ đo** | Chính sách **“bản mới nhất + 2 phiên bản gần nhất”** là cách hỗ trợ phổ biến với các trình duyệt evergreen vì cân bằng được độ phủ người dùng và chi phí kiểm thử. Chrome được đặt ngưỡng **100%** vì theo xu hướng sử dụng desktop tại Việt Nam (nguồn tham khảo: StatCounter Global Stats), đây là trình duyệt ưu tiên cao nhất trong môi trường hành chính - giáo dục. Firefox và Edge được đặt **≥95%** để vẫn bảo đảm tương thích thực tế nhưng tránh chi phí tối ưu hóa quá mức cho các khác biệt nhỏ không ảnh hưởng nghiệp vụ. Riêng lỗi **Critical = 0** vì chỉ cần một lỗi nghiêm trọng trên trình duyệt mục tiêu cũng có thể làm gián đoạn nghiệp vụ nhân sự. |
 
 #### SUPL-IC03: Chuẩn mã hóa ký tự
 | Thuộc tính | Nội dung |
@@ -3022,6 +3070,7 @@ classDiagram
 | **Độ đo yêu cầu** | 1) **Tỷ lệ thành phần dùng UTF-8** = số thành phần kiểm tra đạt UTF-8 / tổng số thành phần cần kiểm tra (giao diện, API response, cơ sở dữ liệu, file import/export).<br>2) **Số lỗi hiển thị tiếng Việt có dấu** phát hiện khi nhập, lưu, tìm kiếm và hiển thị dữ liệu tiếng Việt. |
 | **Tiêu chuẩn đáp ứng** | 1) **100%** thành phần của hệ thống dùng UTF-8.<br>2) **0** lỗi hiển thị sai tiếng Việt có dấu trên giao diện, dữ liệu lưu trữ, dữ liệu xuất và dữ liệu tải lại từ hệ thống. |
 | **Phương pháp đo** | Kiểm tra cấu hình charset/collation của cơ sở dữ liệu, header phản hồi HTTP, cấu hình file nguồn; kiểm thử với bộ dữ liệu mẫu có đầy đủ ký tự tiếng Việt có dấu. |
+| **Lý do chọn độ đo** | W3C khuyến nghị nhà phát triển **luôn chọn UTF-8** cho nội dung và dữ liệu web; với hệ thống HRMS tiếng Việt, đây gần như là lựa chọn bắt buộc để bảo toàn dấu tiếng Việt trong tên người, địa chỉ, đơn vị, quyết định, hợp đồng. Vì mã hóa là thuộc tính nền tảng của toàn hệ thống, mức chấp nhận phù hợp là **100% thành phần dùng UTF-8** và **0 lỗi hiển thị**; chỉ một điểm lệch charset cũng có thể gây lỗi dây chuyền khi nhập, tìm kiếm, lưu và xuất dữ liệu. |
 
 #### SUPL-IC04: Định dạng file đính kèm
 | Thuộc tính | Nội dung |
@@ -3031,3 +3080,4 @@ classDiagram
 | **Độ đo yêu cầu** | 1) **Tỷ lệ file đúng định dạng được xử lý thành công** = số file PDF/Excel hợp lệ được upload, download, import hoặc export thành công / tổng số file hợp lệ được thử nghiệm.<br>2) **Ngưỡng kích thước file tối đa** hệ thống cho phép xử lý.<br>3) **Tỷ lệ từ chối file không hợp lệ** = số file sai định dạng hoặc vượt dung lượng bị từ chối / tổng số file sai định dạng hoặc vượt dung lượng được thử nghiệm. |
 | **Tiêu chuẩn đáp ứng** | 1) **100%** file PDF hợp lệ dùng cho bằng cấp, chứng chỉ, hợp đồng, giấy phép lao động được upload/download thành công; **100%** file Excel hợp lệ dùng cho import/export nhân sự được xử lý thành công.<br>2) Kích thước tối đa được chấp nhận là **10MB/file**.<br>3) **100%** file sai định dạng hoặc lớn hơn **10MB** bị từ chối và hệ thống hiển thị thông báo lỗi rõ ràng. |
 | **Phương pháp đo** | Kiểm thử upload/download/import/export với tập file mẫu hợp lệ và không hợp lệ; kiểm tra MIME type, phần mở rộng file và phản hồi lỗi của hệ thống. |
+| **Lý do chọn độ đo** | **PDF** và **Excel** được chọn vì bám đúng nhu cầu nghiệp vụ đã mô tả trong use case: hồ sơ quét/đính kèm cần dạng tài liệu cố định (PDF), còn nhập/xuất danh sách nhân sự cần dạng bảng tính (Excel). Mốc **10MB/file** là ngưỡng thực dụng cho môi trường trường đại học: đủ chứa bản scan hợp đồng, bằng cấp, chứng chỉ ở chất lượng đọc rõ, nhưng vẫn kiểm soát được dung lượng lưu trữ, băng thông và thời gian tải tệp. Các tỷ lệ **100% file hợp lệ xử lý thành công** và **100% file không hợp lệ bị từ chối** được chọn vì đây là ràng buộc đúng/sai rõ ràng của chức năng kiểm tra định dạng, không phải mục tiêu tối ưu mềm. |
