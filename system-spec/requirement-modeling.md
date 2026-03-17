@@ -14,7 +14,7 @@ Dựa vào các yêu cầu thu thập (STRQ và FEAT), phân tích xác định 
 
 Từ các FEAT đã được phân tách và xác định, chi tiết thành các Use Case (UC) chính cho hệ thống:
 
-> **Ghi chú:** Tổng cộng hệ thống bao gồm **42 Use Case** (UC 4.1 – UC 4.42), được phân nhóm theo chức năng như sau:
+> **Ghi chú:** Tổng cộng hệ thống bao gồm **48 Use Case** (UC 4.1 – UC 4.48), được phân nhóm theo chức năng như sau:
 
 **► Nhóm UC Hệ thống & Tài khoản:**
 
@@ -46,6 +46,12 @@ Từ các FEAT đã được phân tách và xác định, chi tiết thành cá
 * UC Đánh dấu thôi việc nhân sự
 * UC Thêm mới Hợp đồng lao động
 * UC Ghi nhận đánh giá khen thưởng/kỷ luật nhân sự
+* UC Xem danh sách và chi tiết hợp đồng lao động
+* UC Chỉnh sửa hợp đồng lao động chưa có hiệu lực
+* UC Chấm dứt hợp đồng lao động trước hạn
+* UC Xem lịch sử đánh giá khen thưởng/kỷ luật
+* UC Tìm kiếm và lọc danh sách đánh giá
+* UC Cấu hình ẩn/hiện mục khen thưởng/kỷ luật
 
 **► Nhóm UC Quản lý Đào tạo:**
 
@@ -91,9 +97,10 @@ Từ các FEAT đã được phân tách và xác định, chi tiết thành cá
 * **Các Use Case liên kết**:
   + Đăng nhập / Đăng xuất / Đổi mật khẩu
   + Nhóm UC Quản lý hồ sơ nhân sự (Thêm/Sửa/Đánh dấu thôi việc/Lọc tìm)
-  + Nhóm UC Quản lý hợp đồng (Thêm)
+  + Nhóm UC Quản lý hợp đồng (Thêm/Xem/Sửa/Chấm dứt)
   + Điều chuyển nhân sự (Bổ nhiệm/Điều chuyển/Bãi nhiệm)
-  + Ghi nhận đánh giá (Khen thưởng / Kỷ luật)
+  + Nhóm UC Đánh giá (Ghi nhận/Xem lịch sử/Tìm kiếm lọc)
+  + Cấu hình ẩn/hiện khen thưởng/kỷ luật trong hồ sơ
   + Nhóm UC Quản lý khóa đào tạo & kết quả
   + Nhóm UC Cấu hình danh mục (lương, phụ cấp, HD)
   + Nhóm UC Quản lý Đơn vị tổ chức (Thêm mới, Sửa thông tin, Thay đổi trạng thái, Xem chi tiết)
@@ -142,7 +149,12 @@ Từ các FEAT đã được phân tách và xác định, chi tiết thành cá
 | FEAT 4.2 | UC 4.30 (Điều chuyển nhân sự sang đơn vị tổ chức nhân sự khác) |
 | FEAT 4.3 | UC 4.31 (Bãi nhiệm nhân sự khỏi đơn vị tổ chức nhân sự) |
 | FEAT 5.1 | UC 4.22 (Thêm mới Hợp đồng lao động) |
+| FEAT 5.2 | UC 4.43 (Xem danh sách và chi tiết hợp đồng lao động) |
+| FEAT 5.3 | UC 4.44 (Chỉnh sửa hợp đồng lao động chưa có hiệu lực) |
+| FEAT 5.4 | UC 4.45 (Chấm dứt hợp đồng lao động trước hạn) |
 | FEAT 6.1 | UC 4.29 (Ghi nhận đánh giá cho nhân sự) |
+| FEAT 6.2 | UC 4.46 (Xem lịch sử đánh giá khen thưởng/kỷ luật) |
+| FEAT 6.3 | UC 4.47 (Tìm kiếm và lọc danh sách đánh giá) |
 | FEAT 7.1 | UC 4.23 (Tìm kiếm hồ sơ nhân sự) |
 | FEAT 7.2 | UC 4.24 (Lọc danh sách hồ sơ nhân sự) |
 | FEAT 7.3 | UC 4.25 (Thêm mới Hồ sơ nhân sự) |
@@ -151,6 +163,7 @@ Từ các FEAT đã được phân tách và xác định, chi tiết thành cá
 | FEAT 7.6 | UC 4.27 A1 (Thôi việc nhân sự tự động) |
 | FEAT 7.7 | UC 4.28 (Xem Chi tiết thông tin hồ sơ nhân sự) |
 | FEAT 7.8 | UC 4.28 A1/A2 (In hồ sơ / Xuất Excel) |
+| FEAT 7.9 | UC 4.48 (Cấu hình ẩn/hiện mục khen thưởng/kỷ luật) |
 | FEAT 8.1 | UC 4.33 (Mở khóa đào tạo cho cán bộ giảng viên) |
 | FEAT 8.2 | UC 4.34 (Sửa thông tin khóa đào tạo đã mở) |
 | FEAT 8.3 | UC 4.35 (Xem chi tiết thông tin khóa đào tạo đã mở) |
