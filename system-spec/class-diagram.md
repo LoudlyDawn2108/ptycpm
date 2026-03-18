@@ -2,746 +2,1053 @@
 
 ## 5.1. Xác định các lớp — Biểu đồ lớp Hệ thống HRMS
 
-> **Phạm vi biểu đồ cập nhật:** Đây là artefact thiết kế chính đang neo đường truy vết **UC → Design** cho 48 Use Case theo baseline RMP. Trong đó, các lớp BCE (Boundary / Controller / Entity) được đặc tả **tường minh** cho các luồng hợp đồng, đánh giá và cấu hình hiển thị hồ sơ (đặc biệt UC 4.43 – 4.48); các khu vực còn lại hiện chủ yếu được thể hiện ở mức lớp miền nghiệp vụ và quan hệ dữ liệu.
-
----
-
-**Các kiểu liệt kê (Enumeration)**
-
-### 5.1.1. VaiTro (Vai trò) — *«enumeration»*
-
-**Các giá trị liệt kê (literals):**
-
-| STT | Literal | Ý nghĩa |
-| --- | --- | --- |
-| 1 | QUAN\_TRI\_VIEN | Quản trị viên |
-| 2 | CAN\_BO\_TCCB | Cán bộ Tổ chức Cán bộ |
-| 3 | CAN\_BO\_TCKT | Cán bộ Tài chính Kế toán |
-| 4 | CAN\_BO\_NHAN\_SU | Cán bộ / Nhân sự |
-
-### 5.1.2. TrangThaiTaiKhoan (Trạng thái tài khoản) — *«enumeration»*
-
-**Các giá trị liệt kê (literals):**
-
-| STT | Literal | Ý nghĩa |
-| --- | --- | --- |
-| 1 | DANG\_HOAT\_DONG | Đang hoạt động |
-| 2 | BI\_KHOA | Bị khóa |
-
-### 5.1.3. TrangThaiLamViec (Trạng thái làm việc) — *«enumeration»*
-
-**Các giá trị liệt kê (literals):**
-
-| STT | Literal | Ý nghĩa |
-| --- | --- | --- |
-| 1 | DANG\_CHO\_XET | Đang chờ xét |
-| 2 | DANG\_CONG\_TAC | Đang công tác |
-| 3 | DA\_THOI\_VIEC | Đã thôi việc |
-
-### 5.1.4. TrangThaiHopDongNS (Trạng thái hợp đồng nhân sự) — *«enumeration»*
-
-**Các giá trị liệt kê (literals):**
-
-| STT | Literal | Ý nghĩa |
-| --- | --- | --- |
-| 1 | CHUA\_HOP\_DONG | Chưa có hợp đồng |
-| 2 | CON\_HIEU\_LUC | Còn hiệu lực |
-| 3 | HET\_HIEU\_LUC | Hết hiệu lực |
-| 4 | CHO\_GIA\_HAN | Chờ gia hạn |
-
-> **Ghi chú thiết kế – Tự động chuyển trạng thái hợp đồng:** Hệ thống sử dụng bộ hẹn giờ (System Timer / Scheduled Job) để tự động chuyển trạng thái hợp đồng nhân sự từ "Còn hiệu lực" (`CON_HIEU_LUC`) sang "Chờ gia hạn" (`CHO_GIA_HAN`) khi thời gian còn lại của hợp đồng ≤ giá trị `thoiGianChoGiaHan` được cấu hình trong loại hợp đồng tương ứng (xem UC 4.19). Quá trình này chạy định kỳ hàng ngày và không yêu cầu thao tác thủ công từ người dùng.
-
-> **Ghi chú thiết kế – Tự động thôi việc theo hợp đồng:** Khi hợp đồng hết hiệu lực và không có gia hạn hợp lệ trong thời gian cho phép, `SystemTimer` phối hợp với xử lý nghiệp vụ hợp đồng để cập nhật `NhanSu.trangThaiHopDong`, tự động đánh dấu thôi việc theo FEAT 7.6 / UC 4.27 A1, đồng thời làm đầu vào cho cơ chế tự động khóa tài khoản theo FEAT 2.6. Các UC liên quan trực tiếp: UC 4.43, UC 4.44, UC 4.45.
-
-### 5.1.5. LoaiDonVi (Loại đơn vị) — *«enumeration»*
-
-**Các giá trị liệt kê (literals):**
-
-| STT | Literal | Ý nghĩa |
-| --- | --- | --- |
-| 1 | HOI\_DONG | Hội đồng |
-| 2 | BAN | Ban |
-| 3 | KHOA | Khoa |
-| 4 | PHONG | Phòng |
-| 5 | BO\_MON | Bộ môn |
-| 6 | PHONG\_THI\_NGHIEM | Phòng thí nghiệm |
-| 7 | TRUNG\_TAM | Trung tâm |
-
-### 5.1.6. TrangThaiDonVi (Trạng thái đơn vị) — *«enumeration»*
-
-**Các giá trị liệt kê (literals):**
-
-| STT | Literal | Ý nghĩa |
-| --- | --- | --- |
-| 1 | DANG\_HOAT\_DONG | Đang hoạt động |
-| 2 | GIAI\_THE | Giải thể |
-| 3 | SAP\_NHAP | Sáp nhập |
-
-### 5.1.7. TrangThaiHopDong (Trạng thái hợp đồng) — *«enumeration»*
-
-**Các giá trị liệt kê (literals):**
-
-| STT | Literal | Ý nghĩa |
-| --- | --- | --- |
-| 1 | CHUA\_HIEU\_LUC | Chưa có hiệu lực |
-| 2 | CON\_HIEU\_LUC | Còn hiệu lực |
-| 3 | HET\_HIEU\_LUC | Hết hiệu lực |
-
-> **Ghi chú truy vết – giả định thiết kế tạm thời:** Bộ UCS hiện có mâu thuẫn nội bộ giữa UC 4.22 (mô tả hợp đồng mới mặc định là `CON_HIEU_LUC`) và UC 4.44 (chỉ cho phép sửa hợp đồng ở trạng thái `CHUA_HIEU_LUC`). Để biểu đồ lớp vẫn bao phủ được cả hai UC, tài liệu này **tạm quy ước** rằng hợp đồng có `ngayHieuLuc` lớn hơn ngày hiện tại được xem là `CHUA_HIEU_LUC`; khi tới ngày hiệu lực thì chuyển sang `CON_HIEU_LUC`. Trường hợp chấm dứt trước hạn theo UC 4.45 vẫn được lưu qua `BanGhiChamDutHopDong`, còn `HopDongLaoDong.trangThai` được cập nhật về `HET_HIEU_LUC`. Quy ước này cần được chuẩn hóa lại trong đặc tả UC nếu muốn baseline truy vết hoàn toàn nhất quán.
-
-### 5.1.8. TrangThaiDanhMuc (Trạng thái danh mục) — *«enumeration»*
-
-**Các giá trị liệt kê (literals):**
-
-| STT | Literal | Ý nghĩa |
-| --- | --- | --- |
-| 1 | DANG\_SU\_DUNG | Đang sử dụng |
-| 2 | NGUNG\_SU\_DUNG | Ngừng sử dụng |
-
-### 5.1.9. TrangThaiKhoaDaoTao (Trạng thái khóa đào tạo) — *«enumeration»*
-
-**Các giá trị liệt kê (literals):**
-
-| STT | Literal | Ý nghĩa |
-| --- | --- | --- |
-| 1 | DANG\_MO\_DANG\_KY | Đang mở đăng ký |
-| 2 | DANG\_DAO\_TAO | Đang đào tạo |
-| 3 | DA\_HOAN\_THANH | Đã hoàn thành |
-
-### 5.1.10. TrangThaiThamGia (Trạng thái tham gia) — *«enumeration»*
-
-**Các giá trị liệt kê (literals):**
-
-| STT | Literal | Ý nghĩa |
-| --- | --- | --- |
-| 1 | DA\_DANG\_KY | Đã đăng ký |
-| 2 | DANG\_HOC | Đang học |
-| 3 | HOAN\_THANH | Hoàn thành |
-| 4 | KHONG\_DAT | Không đạt |
-
-> **Ghi chú thiết kế – Tự động chuyển trạng thái tham gia:** Khi phòng TCCB chuyển trạng thái khóa đào tạo từ "Đang mở đăng ký" (`DANG_MO_DANG_KY`) sang "Đang đào tạo" (`DANG_DAO_TAO`) thông qua UC 4.34, hệ thống tự động batch-update tất cả bản ghi `DangKyDaoTao` có `trangThaiThamGia = DA_DANG_KY` sang `DANG_HOC`. Quá trình này đảm bảo không còn khoảng trống logic giữa trạng thái "Đã đăng ký" và "Đang học".
-
----
-
-**Các lớp miền nghiệp vụ (Entity), lớp giá trị (Value Object) và lớp hỗ trợ**
-
-### 5.1.11. TaiKhoan (Tài khoản) — *«entity»*
-
-**Thuộc tính:**
-
-| STT | Tên thuộc tính | Kiểu dữ liệu | Khả năng truy cập | Mô tả |
-| --- | --- | --- | --- | --- |
-| 1 | maCanBo | String | private | Mã cán bộ |
-| 2 | email | String | private | Email nhận mật khẩu |
-| 3 | matKhau | String | private | Mật khẩu (đã mã hóa) |
-| 4 | vaiTro | VaiTro | private | Vai trò người dùng |
-| 5 | trangThai | TrangThaiTaiKhoan | private | Trạng thái tài khoản |
-
-**Phương thức:**
-
-| STT | Tên phương thức | Kiểu trả về | Mô tả |
-| --- | --- | --- | --- |
-| 1 | dangNhap() | void | Đăng nhập hệ thống |
-| 2 | dangXuat() | void | Đăng xuất hệ thống |
-| 3 | doiMatKhau() | void | Đổi mật khẩu |
-| 4 | khoaTaiKhoan() | void | Khóa tài khoản |
-| 5 | moKhoaTaiKhoan() | void | Mở khóa tài khoản |
-| 6 | phanQuyen() | void | Phân quyền tài khoản |
-
-### 5.1.12. NhanSu (Nhân sự) — *«entity»*
-
-**Thuộc tính:**
-
-| STT | Tên thuộc tính | Kiểu dữ liệu | Khả năng truy cập | Mô tả |
-| --- | --- | --- | --- | --- |
-| 1 | maCanBo | String | private | Mã cán bộ |
-| 2 | hoTen | String | private | Họ và tên |
-| 3 | ngaySinh | Date | private | Ngày sinh |
-| 4 | gioiTinh | String | private | Giới tính |
-| 5 | soCCCD | String | private | Số CCCD/CMND |
-| 6 | queQuan | String | private | Quê quán |
-| 7 | diaChi | String | private | Địa chỉ |
-| 8 | maSoThue | String | private | Mã số thuế |
-| 9 | soBHXH | String | private | Số Bảo hiểm xã hội |
-| 10 | soBHYT | String | private | Số Bảo hiểm y tế |
-| 11 | email | String | private | Email |
-| 12 | soDienThoai | String | private | Số điện thoại |
-| 13 | anhChanDung | File | private | Ảnh chân dung |
-| 14 | trinhDoVanHoa | String | private | Trình độ văn hóa |
-| 15 | trinhDoDaoTao | String | private | Trình độ đào tạo |
-| 16 | chucDanhNgheNghiep | String | private | Chức danh nghề nghiệp |
-| 17 | chucDanhKhoaHoc | String | private | Chức danh khoa học (Học hàm) |
-| 18 | laNguoiNuocNgoai | Boolean | private | Là người nước ngoài |
-| 19 | trangThaiLamViec | TrangThaiLamViec | private | Trạng thái làm việc |
-| 20 | trangThaiHopDong | TrangThaiHopDongNS | private | Trạng thái hợp đồng |
-| 21 | ngayThoiViec | Date | private | Ngày thôi việc (nếu có) |
-| 22 | lyDoThoiViec | String | private | Lý do thôi việc (nếu có) |
-
-**Phương thức:**
-
-| STT | Tên phương thức | Kiểu trả về | Mô tả |
-| --- | --- | --- | --- |
-| 1 | themMoi() | void | Thêm mới hồ sơ nhân sự |
-| 2 | chinhSua() | void | Chỉnh sửa hồ sơ nhân sự |
-| 3 | danhDauThoiViec() | void | Đánh dấu nhân sự đã thôi việc |
-| 4 | xemChiTiet() | NhanSu | Xem chi tiết hồ sơ nhân sự |
-| 5 | inHoSo() | File | In hồ sơ nhân sự |
-| 6 | xuatExcel() | File | Xuất danh sách nhân sự ra Excel |
-
-> **Ghi chú thiết kế – Hiển thị hồ sơ:** Việc ẩn/hiện mục khen thưởng/kỷ luật khi xem hồ sơ được điều khiển bởi lớp cấu hình `CauHinhHienThiHoSo` theo UC 4.48 / FEAT 7.9; `NhanSu` là đối tượng dữ liệu chịu tác động của cấu hình này ở các UC 4.28 và 4.38.
-
-### 5.1.13. ThongTinNguoiNuocNgoai (Thông tin người nước ngoài) — *«value object»*
-
-**Thuộc tính:**
-
-| STT | Tên thuộc tính | Kiểu dữ liệu | Khả năng truy cập | Mô tả |
-| --- | --- | --- | --- | --- |
-| 1 | soVisa | String | private | Số visa |
-| 2 | ngayHetHanVisa | Date | private | Ngày hết hạn visa |
-| 3 | soHoChieu | String | private | Số hộ chiếu |
-| 4 | ngayHetHanHoChieu | Date | private | Ngày hết hạn hộ chiếu |
-| 5 | soGiayPhepLaoDong | String | private | Số giấy phép lao động |
-| 6 | ngayHetHanGPLD | Date | private | Ngày hết hạn GPLD |
-| 7 | fileGPLD | File | private | File giấy phép lao động |
-
-**Phương thức:** Không có — lớp giá trị (value object) thuộc `NhanSu`.
-
-### 5.1.14. ThongTinGiaDinh (Thông tin gia đình) — *«value object»*
-
-**Thuộc tính:**
-
-| STT | Tên thuộc tính | Kiểu dữ liệu | Khả năng truy cập | Mô tả |
-| --- | --- | --- | --- | --- |
-| 1 | moiQuanHe | String | private | Mối quan hệ |
-| 2 | hoTen | String | private | Họ và tên |
-| 3 | thongTinChiTiet | String | private | Thông tin chi tiết |
-
-**Phương thức:** Không có — lớp giá trị (value object) thuộc `NhanSu`.
-
-### 5.1.15. ThongTinNganHang (Thông tin ngân hàng) — *«value object»*
-
-**Thuộc tính:**
-
-| STT | Tên thuộc tính | Kiểu dữ liệu | Khả năng truy cập | Mô tả |
-| --- | --- | --- | --- | --- |
-| 1 | tenNganHang | String | private | Tên ngân hàng |
-| 2 | soTaiKhoan | String | private | Số tài khoản |
-
-**Phương thức:** Không có — lớp giá trị (value object) thuộc `NhanSu`.
-
-### 5.1.16. QuaTrinhCongTac (Quá trình công tác) — *«value object»*
-
-**Thuộc tính:**
-
-| STT | Tên thuộc tính | Kiểu dữ liệu | Khả năng truy cập | Mô tả |
-| --- | --- | --- | --- | --- |
-| 1 | noiCongTac | String | private | Nơi công tác |
-| 2 | thoiGianCongTac | String | private | Thời gian công tác |
-
-**Phương thức:** Không có — lớp giá trị (value object) thuộc `NhanSu`.
-
-### 5.1.17. ThongTinDangDoan (Thông tin Đảng / Đoàn) — *«value object»*
-
-**Thuộc tính:**
-
-| STT | Tên thuộc tính | Kiểu dữ liệu | Khả năng truy cập | Mô tả |
-| --- | --- | --- | --- | --- |
-| 1 | ngayVaoDoan | Date | private | Ngày vào Đoàn |
-| 2 | ngayVaoDang | Date | private | Ngày vào Đảng |
-| 3 | thongTinChiTiet | String | private | Thông tin chi tiết |
-
-**Phương thức:** Không có — lớp giá trị (value object) thuộc `NhanSu`.
-
-### 5.1.18. BangCap (Bằng cấp) — *«value object»*
-
-**Thuộc tính:**
-
-| STT | Tên thuộc tính | Kiểu dữ liệu | Khả năng truy cập | Mô tả |
-| --- | --- | --- | --- | --- |
-| 1 | tenBang | String | private | Tên bằng cấp |
-| 2 | truong | String | private | Trường |
-| 3 | nganh | String | private | Ngành |
-| 4 | namTotNghiep | Int | private | Năm tốt nghiệp |
-| 5 | xepLoai | String | private | Xếp loại |
-| 6 | filePDF | File | private | File bằng cấp (PDF) |
-
-**Phương thức:** Không có — lớp giá trị (value object) thuộc `NhanSu`.
-
-### 5.1.19. ChungChi (Chứng chỉ) — *«value object»*
-
-**Thuộc tính:**
-
-| STT | Tên thuộc tính | Kiểu dữ liệu | Khả năng truy cập | Mô tả |
-| --- | --- | --- | --- | --- |
-| 1 | tenChungChi | String | private | Tên chứng chỉ |
-| 2 | noiCap | String | private | Nơi cấp |
-| 3 | ngayCap | Date | private | Ngày cấp |
-| 4 | ngayHetHan | Date | private | Ngày hết hạn |
-| 5 | filePDF | File | private | File chứng chỉ (PDF) |
-
-**Phương thức:** Không có — lớp giá trị (value object) thuộc `NhanSu`.
-
-### 5.1.20. DonViToChuc (Đơn vị tổ chức) — *«entity»*
-
-**Thuộc tính:**
-
-| STT | Tên thuộc tính | Kiểu dữ liệu | Khả năng truy cập | Mô tả |
-| --- | --- | --- | --- | --- |
-| 1 | maDonVi | String | private | Mã đơn vị |
-| 2 | tenDonVi | String | private | Tên đơn vị |
-| 3 | loaiDonVi | LoaiDonVi | private | Loại đơn vị |
-| 4 | ngayThanhLap | Date | private | Ngày thành lập |
-| 5 | diaChi | String | private | Địa chỉ |
-| 6 | diaChiVanPhong | String | private | Địa chỉ văn phòng |
-| 7 | email | String | private | Email |
-| 8 | soDienThoai | String | private | Số điện thoại |
-| 9 | website | String | private | Website |
-| 10 | laDonViNut | Boolean | private | Là đơn vị nút (lá) |
-| 11 | trangThai | TrangThaiDonVi | private | Trạng thái đơn vị |
-
-**Phương thức:**
-
-| STT | Tên phương thức | Kiểu trả về | Mô tả |
-| --- | --- | --- | --- |
-| 1 | themMoi() | void | Thêm mới đơn vị tổ chức |
-| 2 | suaThongTin() | void | Sửa thông tin đơn vị |
-| 3 | giaiThe() | void | Giải thể đơn vị |
-| 4 | sapNhap() | void | Sáp nhập đơn vị |
-| 5 | xemChiTiet() | DonViToChuc | Xem chi tiết đơn vị |
-
-### 5.1.21. QuyetDinhDonVi (Quyết định đơn vị) — *«entity»*
-
-**Thuộc tính:**
-
-| STT | Tên thuộc tính | Kiểu dữ liệu | Khả năng truy cập | Mô tả |
-| --- | --- | --- | --- | --- |
-| 1 | ngayHieuLuc | Date | private | Ngày hiệu lực |
-| 2 | soQuyetDinh | String | private | Số quyết định |
-| 3 | ngayQuyetDinh | Date | private | Ngày quyết định |
-| 4 | fileDinhKem | File | private | File đính kèm |
-| 5 | lyDo | String | private | Lý do |
-| 6 | loaiSuKien | String | private | Loại sự kiện (Giải thể/Sáp nhập) |
-
-**Phương thức:** Không có — dữ liệu lịch sử quyết định gắn với `DonViToChuc`.
-
-### 5.1.22. BoNhiem (Bổ nhiệm) — *«entity»*
-
-**Thuộc tính:**
-
-| STT | Tên thuộc tính | Kiểu dữ liệu | Khả năng truy cập | Mô tả |
-| --- | --- | --- | --- | --- |
-| 1 | chucVu | String | private | Chức vụ |
-| 2 | ngayBatDau | Date | private | Ngày bắt đầu |
-
-**Phương thức:**
-
-| STT | Tên phương thức | Kiểu trả về | Mô tả |
-| --- | --- | --- | --- |
-| 1 | boNhiem() | void | Bổ nhiệm nhân sự vào chức vụ |
-| 2 | baiNhiem() | void | Bãi nhiệm nhân sự khỏi chức vụ |
-
-### 5.1.23. HeSoLuong (Hệ số lương) — *«entity»*
-
-**Thuộc tính:**
-
-| STT | Tên thuộc tính | Kiểu dữ liệu | Khả năng truy cập | Mô tả |
-| --- | --- | --- | --- | --- |
-| 1 | ngachVienChuc | String | private | Ngạch viên chức |
-| 2 | bacLuong | Int | private | Bậc lương |
-| 3 | heSoLuong | Double | private | Hệ số lương |
-| 4 | trangThai | TrangThaiDanhMuc | private | Trạng thái danh mục |
-
-**Phương thức:**
-
-| STT | Tên phương thức | Kiểu trả về | Mô tả |
-| --- | --- | --- | --- |
-| 1 | themMoi() | void | Thêm mới hệ số lương |
-| 2 | sua() | void | Sửa hệ số lương |
-| 3 | xoa() | void | Xóa hệ số lương |
-| 4 | ngungSuDung() | void | Ngừng sử dụng hệ số lương |
-
-### 5.1.24. LoaiPhuCap (Loại phụ cấp) — *«entity»*
-
-**Thuộc tính:**
-
-| STT | Tên thuộc tính | Kiểu dữ liệu | Khả năng truy cập | Mô tả |
-| --- | --- | --- | --- | --- |
-| 1 | tenLoaiPhuCap | String | private | Tên loại phụ cấp |
-| 2 | moTa | String | private | Mô tả |
-| 3 | cachTinh | String | private | Cách tính phụ cấp |
-| 4 | trangThai | TrangThaiDanhMuc | private | Trạng thái danh mục |
-
-**Phương thức:**
-
-| STT | Tên phương thức | Kiểu trả về | Mô tả |
-| --- | --- | --- | --- |
-| 1 | themMoi() | void | Thêm mới loại phụ cấp |
-| 2 | sua() | void | Sửa loại phụ cấp |
-| 3 | ngungSuDung() | void | Ngừng sử dụng loại phụ cấp |
-
-### 5.1.25. LoaiHopDong (Loại hợp đồng) — *«entity»*
-
-**Thuộc tính:**
-
-| STT | Tên thuộc tính | Kiểu dữ liệu | Khả năng truy cập | Mô tả |
-| --- | --- | --- | --- | --- |
-| 1 | tenLoaiHopDong | String | private | Tên loại hợp đồng |
-| 2 | soThangToiThieu | Int | private | Số tháng tối thiểu |
-| 3 | soThangToiDa | Int | private | Số tháng tối đa |
-| 4 | soLanGiaHanToiDa | Int | private | Số lần gia hạn tối đa |
-| 5 | thoiGianChoGiaHan | Int | private | Thời gian chờ gia hạn (ngày) |
-| 6 | trangThai | TrangThaiDanhMuc | private | Trạng thái danh mục |
-
-**Phương thức:**
-
-| STT | Tên phương thức | Kiểu trả về | Mô tả |
-| --- | --- | --- | --- |
-| 1 | themMoi() | void | Thêm mới loại hợp đồng |
-| 2 | sua() | void | Sửa loại hợp đồng |
-| 3 | ngungSuDung() | void | Ngừng sử dụng loại hợp đồng |
-
-### 5.1.26. HopDongLaoDong (Hợp đồng lao động) — *«entity»*
-
-**Thuộc tính:**
-
-| STT | Tên thuộc tính | Kiểu dữ liệu | Khả năng truy cập | Mô tả |
-| --- | --- | --- | --- | --- |
-| 1 | soHopDong | String | private | Số hợp đồng |
-| 2 | ngayKy | Date | private | Ngày ký hợp đồng |
-| 3 | ngayHieuLuc | Date | private | Ngày hiệu lực |
-| 4 | ngayHetHan | Date | private | Ngày hết hạn |
-| 5 | donViCongTac | String | private | Đơn vị công tác |
-| 6 | noiDung | String | private | Nội dung hợp đồng |
-| 7 | filePDF | File | private | File hợp đồng (PDF) |
-| 8 | trangThai | TrangThaiHopDong | private | Trạng thái hợp đồng |
-
-**Phương thức:**
-
-| STT | Tên phương thức | Kiểu trả về | Mô tả |
-| --- | --- | --- | --- |
-| 1 | taoMoi() | void | Tạo mới hợp đồng lao động |
-| 2 | capNhatTrangThai() | void | Cập nhật trạng thái hợp đồng |
-
-
-> **Ghi chú thiết kế – Truy vết UC hợp đồng:** Lớp `HopDongLaoDong` bao phủ các UC 4.22, 4.43, 4.44, 4.45 tương ứng với FEAT 5.1 – 5.4; việc chấm dứt trước hạn được lưu bổ sung qua lớp `BanGhiChamDutHopDong`. Tài liệu baseline hiện **không** đặc tả phụ lục hợp đồng như một UC / FEAT riêng, nên không mô hình hóa lớp `PhuLucHopDong` trong biểu đồ lớp này.
-
-### 5.1.27. DanhGia (Đánh giá) — *«entity» «abstract»*
-
-**Thuộc tính:**
-
-| STT | Tên thuộc tính | Kiểu dữ liệu | Khả năng truy cập | Mô tả |
-| --- | --- | --- | --- | --- |
-| 1 | ngayQuyetDinh | Date | private | Ngày quyết định |
-
-**Phương thức:**
-
-| STT | Tên phương thức | Kiểu trả về | Mô tả |
-| --- | --- | --- | --- |
-| 1 | ghiNhanDanhGia()* | void | Ghi nhận đánh giá (abstract) |
-
-> **Ghi chú thiết kế – Truy vết UC đánh giá:** `DanhGia` là thực thể lõi cho UC 4.29, UC 4.46 và UC 4.47; các thao tác xem lịch sử, tìm kiếm và lọc được điều phối qua `DanhGiaController` và có thể trả về lớp bao `DanhSachKetQuaDanhGia`.
-
-### 5.1.28. KhenThuong (Khen thưởng) — *«entity» kế thừa DanhGia*
-
-**Thuộc tính:**
-
-| STT | Tên thuộc tính | Kiểu dữ liệu | Khả năng truy cập | Mô tả |
-| --- | --- | --- | --- | --- |
-| 1 | loaiKhenThuong | String | private | Loại khen thưởng |
-| 2 | tenKhenThuong | String | private | Tên khen thưởng |
-| 3 | soQuyetDinh | String | private | Số quyết định |
-| 4 | noiDung | String | private | Nội dung khen thưởng |
-| 5 | soTienThuong | Double | private | Số tiền thưởng |
-
-**Phương thức:** Kế thừa từ `DanhGia`.
-
-### 5.1.29. KyLuat (Kỷ luật) — *«entity» kế thừa DanhGia*
-
-**Thuộc tính:**
-
-| STT | Tên thuộc tính | Kiểu dữ liệu | Khả năng truy cập | Mô tả |
-| --- | --- | --- | --- | --- |
-| 1 | loaiKyLuat | String | private | Loại kỷ luật |
-| 2 | tenKyLuat | String | private | Tên kỷ luật |
-| 3 | lyDo | String | private | Lý do kỷ luật |
-| 4 | hinhThucXuLy | String | private | Hình thức xử lý |
-
-**Phương thức:** Kế thừa từ `DanhGia`.
-
-### 5.1.30. KhoaDaoTao (Khóa đào tạo) — *«entity»*
-
-**Thuộc tính:**
-
-| STT | Tên thuộc tính | Kiểu dữ liệu | Khả năng truy cập | Mô tả |
-| --- | --- | --- | --- | --- |
-| 1 | tenKhoaDaoTao | String | private | Tên khóa đào tạo |
-| 2 | loaiKhoaDaoTao | String | private | Loại khóa đào tạo |
-| 3 | thoiGianBatDau | Date | private | Thời gian bắt đầu |
-| 4 | thoiGianKetThuc | Date | private | Thời gian kết thúc |
-| 5 | diaDiem | String | private | Địa điểm |
-| 6 | kinhPhi | Double | private | Kinh phí |
-| 7 | camKetSauDaoTao | String | private | Cam kết sau đào tạo |
-| 8 | tenChungChi | String | private | Tên chứng chỉ |
-| 9 | loaiChungChi | String | private | Loại chứng chỉ |
-| 10 | thoiGianMoDangKy\_Tu | Date | private | Thời gian mở đăng ký (từ) |
-| 11 | thoiGianMoDangKy\_Den | Date | private | Thời gian mở đăng ký (đến) |
-| 12 | gioiHanSoNguoi | Int | private | Giới hạn số người |
-| 13 | trangThai | TrangThaiKhoaDaoTao | private | Trạng thái khóa đào tạo |
-
-**Phương thức:**
-
-| STT | Tên phương thức | Kiểu trả về | Mô tả |
-| --- | --- | --- | --- |
-| 1 | moKhoaDaoTao() | void | Mở khóa đào tạo mới |
-| 2 | suaThongTin() | void | Sửa thông tin khóa đào tạo |
-| 3 | xemChiTiet() | KhoaDaoTao | Xem chi tiết khóa đào tạo |
-
-### 5.1.31. DangKyDaoTao (Đăng ký đào tạo) — *«entity»*
-
-**Thuộc tính:**
-
-| STT | Tên thuộc tính | Kiểu dữ liệu | Khả năng truy cập | Mô tả |
-| --- | --- | --- | --- | --- |
-| 1 | thoiDiemDangKy | Date | private | Thời điểm đăng ký |
-| 2 | trangThaiThamGia | TrangThaiThamGia | private | Trạng thái tham gia |
-| 3 | ngayHoanThanh | Date | private | Ngày hoàn thành |
-| 4 | fileChungChi | File | private | File chứng chỉ |
-
-**Phương thức:**
-
-| STT | Tên phương thức | Kiểu trả về | Mô tả |
-| --- | --- | --- | --- |
-| 1 | dangKy() | void | Đăng ký tham gia khóa đào tạo |
-| 2 | ghiNhanKetQua() | void | Ghi nhận kết quả đào tạo |
-
-### 5.1.32. NhatKyHeThong (Nhật ký hệ thống) — *«entity»*
-
-**Thuộc tính:**
-
-| STT | Tên thuộc tính | Kiểu dữ liệu | Khả năng truy cập | Mô tả |
-| --- | --- | --- | --- | --- |
-| 1 | thoiGian | DateTime | private | Thời gian ghi nhật ký |
-| 2 | taiKhoan | String | private | Tài khoản thực hiện |
-| 3 | hoTen | String | private | Họ tên người thực hiện |
-| 4 | vaiTro | String | private | Vai trò người thực hiện |
-| 5 | loaiHanhDong | String | private | Loại hành động |
-| 6 | doiTuong | String | private | Đối tượng |
-| 7 | maDoiTuong | String | private | Mã đối tượng |
-| 8 | moTaChiTiet | String | private | Mô tả chi tiết |
-| 9 | diaChiIP | String | private | Địa chỉ IP |
-
-**Phương thức:** Không có — lớp ghi log chỉ-đọc.
-
-### 5.1.33. BanGhiChamDutHopDong (Bản ghi chấm dứt hợp đồng) — *«value object»*
-
-**Thuộc tính:**
-
-| STT | Tên thuộc tính | Kiểu dữ liệu | Khả năng truy cập | Mô tả |
-| --- | --- | --- | --- | --- |
-| 1 | lyDo | String | private | Lý do chấm dứt trước hạn |
-| 2 | ngayHieuLuc | Date | private | Ngày chấm dứt có hiệu lực |
-
-> **Ghi chú thiết kế:** Lớp này được thêm để lưu vết UC 4.45 / FEAT 5.4, tách riêng dữ liệu chấm dứt trước hạn khỏi bản thân hợp đồng lao động nhưng không mang vòng đời độc lập với `HopDongLaoDong`.
-
-**Phương thức:** Không có — lớp giá trị (value object) thuộc `HopDongLaoDong`.
-
-### 5.1.34. DanhSachKetQuaDanhGia (Danh sách kết quả đánh giá) — *«wrapper»*
-
-**Thuộc tính:**
-
-| STT | Tên thuộc tính | Kiểu dữ liệu | Khả năng truy cập | Mô tả |
-| --- | --- | --- | --- | --- |
-| 1 | tuKhoa | String | private | Từ khóa tìm kiếm hiện tại |
-| 2 | soLuongKetQua | Int | private | Số bản ghi phù hợp với điều kiện hiện tại |
-
-> **Ghi chú thiết kế:** Lớp bao kết quả được dùng cho UC 4.46 – 4.47 để gom danh sách bản ghi đánh giá và thông tin điều kiện truy vấn tối thiểu; baseline hiện chưa đặc tả cơ chế phân trang riêng cho luồng này.
-
-**Phương thức:** Không có — lớp bao (wrapper) cho kết quả tìm kiếm/lọc.
-
-### 5.1.35. CauHinhHienThiHoSo (Cấu hình hiển thị hồ sơ) — *«entity» «configuration»*
-
-**Thuộc tính:**
-
-| STT | Tên thuộc tính | Kiểu dữ liệu | Khả năng truy cập | Mô tả |
-| --- | --- | --- | --- | --- |
-| 1 | vaiTro | VaiTro | private | Vai trò được áp dụng cấu hình |
-| 2 | anKhenThuong | Boolean | private | Ẩn/hiện mục khen thưởng |
-| 3 | anKyLuat | Boolean | private | Ẩn/hiện mục kỷ luật |
-
-> **Ghi chú thiết kế:** Đây là cấu hình mức toàn hệ thống cho UC 4.48 / FEAT 7.9. Cấu hình này áp dụng khi hiển thị `NhanSu`, nhưng không làm thay đổi dữ liệu đánh giá gốc.
-
-**Phương thức:** Không có — dữ liệu cấu hình được quản lý qua `CauHinhHoSoController`.
-
----
-
-**Các lớp biên (Boundary)**
-
-### 5.1.36. ManHinhHopDongLaoDong (Màn hình hợp đồng lao động) — *«boundary»*
-
-**Thuộc tính:** Không có — lớp biên chỉ chứa thao tác giao diện.
-
-**Phương thức:**
-
-| STT | Tên phương thức | Kiểu trả về | Mô tả |
-| --- | --- | --- | --- |
-| 1 | chonTabHopDong() | void | Người dùng truy cập tab hợp đồng trong hồ sơ nhân sự |
-| 2 | hienThiDanhSachHopDong() | void | Hiển thị danh sách hợp đồng lao động |
-| 3 | hienThiChiTietHopDong() | void | Hiển thị chi tiết hợp đồng được chọn |
-| 4 | moFormChinhSua() | void | Mở biểu mẫu chỉnh sửa hợp đồng chưa có hiệu lực |
-| 5 | moFormChamDutTruocHan() | void | Mở biểu mẫu chấm dứt hợp đồng trước hạn |
-
-### 5.1.37. ManHinhDanhGia (Màn hình đánh giá) — *«boundary»*
-
-**Thuộc tính:** Không có — lớp biên chỉ chứa thao tác giao diện.
-
-**Phương thức:**
-
-| STT | Tên phương thức | Kiểu trả về | Mô tả |
-| --- | --- | --- | --- |
-| 1 | chonTabDanhGia() | void | Người dùng truy cập tab khen thưởng/kỷ luật |
-| 2 | hienThiLichSuDanhGia() | void | Hiển thị lịch sử đánh giá theo thời gian |
-| 3 | nhapTieuChiTimKiem() | void | Nhập từ khóa và tiêu chí tìm kiếm/lọc |
-| 4 | hienThiKetQuaLoc() | void | Hiển thị danh sách kết quả phù hợp |
-| 5 | hienThiChiTietDanhGia() | void | Hiển thị chi tiết bản ghi đánh giá |
-
-### 5.1.38. ManHinhCauHinhHienThiHoSo (Màn hình cấu hình hiển thị hồ sơ) — *«boundary»*
-
-**Thuộc tính:** Không có — lớp biên chỉ chứa thao tác giao diện.
-
-**Phương thức:**
-
-| STT | Tên phương thức | Kiểu trả về | Mô tả |
-| --- | --- | --- | --- |
-| 1 | hienThiCauHinhHienThi() | void | Hiển thị cấu hình ẩn/hiện hiện hành theo từng vai trò |
-| 2 | capNhatAnHien() | void | Bật/tắt hiển thị khen thưởng/kỷ luật theo vai trò |
-| 3 | luuCauHinh() | void | Lưu cấu hình hiển thị hồ sơ |
-
----
-
-**Các lớp điều khiển (Controller)**
-
-### 5.1.39. HopDongController (Điều khiển hợp đồng) — *«control»*
-
-**Thuộc tính:** Không có — lớp điều khiển chỉ chứa thao tác nghiệp vụ.
-
-**Phương thức:**
-
-| STT | Tên phương thức | Kiểu trả về | Mô tả |
-| --- | --- | --- | --- |
-| 1 | xemDanhSachHopDong() | List<HopDongLaoDong> | Điều phối lấy danh sách hợp đồng của nhân sự |
-| 2 | xemChiTietHopDong() | HopDongLaoDong | Điều phối lấy chi tiết hợp đồng |
-| 3 | chinhSuaHopDongChuaHieuLuc() | void | Xử lý chỉnh sửa hợp đồng chưa có hiệu lực |
-| 4 | chamDutHopDongTruocHan() | void | Xử lý chấm dứt hợp đồng trước hạn |
-| 5 | dongBoTrangThaiNhanSu() | void | Đồng bộ trạng thái hợp đồng/thôi việc của nhân sự |
-
-### 5.1.40. DanhGiaController (Điều khiển đánh giá) — *«control»*
-
-**Thuộc tính:** Không có — lớp điều khiển chỉ chứa thao tác nghiệp vụ.
-
-**Phương thức:**
-
-| STT | Tên phương thức | Kiểu trả về | Mô tả |
-| --- | --- | --- | --- |
-| 1 | xemLichSuDanhGia() | DanhSachKetQuaDanhGia | Điều phối xem lịch sử đánh giá của nhân sự |
-| 2 | timKiemDanhGia() | DanhSachKetQuaDanhGia | Điều phối tìm kiếm đánh giá |
-| 3 | locDanhGia() | DanhSachKetQuaDanhGia | Điều phối lọc danh sách đánh giá |
-| 4 | taiChiTietDanhGia() | DanhGia | Lấy chi tiết bản ghi đánh giá |
-
-### 5.1.41. CauHinhHoSoController (Điều khiển cấu hình hồ sơ) — *«control»*
-
-**Thuộc tính:** Không có — lớp điều khiển chỉ chứa thao tác nghiệp vụ.
-
-**Phương thức:**
-
-| STT | Tên phương thức | Kiểu trả về | Mô tả |
-| --- | --- | --- | --- |
-| 1 | taiCauHinhHienThi() | CauHinhHienThiHoSo | Tải cấu hình hiển thị hồ sơ hiện hành |
-| 2 | luuCauHinhHienThi() | void | Lưu cấu hình ẩn/hiện khen thưởng/kỷ luật |
-
-### 5.1.42. TaiKhoanController (Điều khiển tài khoản) — *«control»*
-
-**Thuộc tính:** Không có — lớp điều khiển chỉ chứa thao tác nghiệp vụ.
-
-**Phương thức:**
-
-| STT | Tên phương thức | Kiểu trả về | Mô tả |
-| --- | --- | --- | --- |
-| 1 | khoaTaiKhoanTheoTrangThaiNhanSu() | void | Khóa tài khoản khi nhân sự đã thôi việc |
-| 2 | dongBoTrangThaiTaiKhoan() | void | Đồng bộ trạng thái tài khoản với hồ sơ nhân sự |
-
-### 5.1.43. SystemTimer (Bộ hẹn giờ hệ thống) — *«control»*
-
-**Thuộc tính:** Không có — lớp điều khiển tự động chạy định kỳ.
-
-**Phương thức:**
-
-| STT | Tên phương thức | Kiểu trả về | Mô tả |
-| --- | --- | --- | --- |
-| 1 | kiemTraHopDongSapHetHan() | void | Kiểm tra và chuyển hợp đồng sang trạng thái chờ gia hạn |
-| 2 | kiemTraHopDongHetHan() | void | Kiểm tra hợp đồng hết hiệu lực và kích hoạt xử lý tiếp theo |
-| 3 | tuDongDanhDauThoiViec() | void | Tự động đánh dấu thôi việc theo FEAT 7.6 |
-| 4 | tuDongKhoaTaiKhoan() | void | Tự động khóa tài khoản theo FEAT 2.6 |
-
----
-
-**Quan hệ giữa các lớp**
-
-> **Ghi chú ký pháp:** Các quan hệ `«dependency»` bên dưới dùng để mô tả sự phụ thuộc sử dụng giữa Boundary/Controller và các lớp miền trong thiết kế BCE; chúng không biểu diễn quan hệ cấu trúc bền vững như association/composition của miền nghiệp vụ.
-
-| STT | Lớp nguồn | Quan hệ | Lớp đích | Mô tả |
-| --- | --- | --- | --- | --- |
-| 1 | TaiKhoan | 0..1 → 1 | NhanSu | Mỗi tài khoản liên kết đúng một nhân sự; mỗi nhân sự có tối đa một tài khoản |
-| 2 | NhanSu | 1 ◆ 0..1 | ThongTinNguoiNuocNgoai | Nhân sự có tối đa một thông tin người nước ngoài |
-| 3 | NhanSu | 1 ◆ 0..\* | ThongTinGiaDinh | Nhân sự có nhiều thông tin gia đình |
-| 4 | NhanSu | 1 ◆ 1 | ThongTinNganHang | Nhân sự có một thông tin ngân hàng |
-| 5 | NhanSu | 1 ◆ 0..\* | QuaTrinhCongTac | Nhân sự có nhiều quá trình công tác |
-| 6 | NhanSu | 1 ◆ 0..1 | ThongTinDangDoan | Nhân sự có tối đa một thông tin Đảng/Đoàn |
-| 7 | NhanSu | 1 ◆ 0..\* | BangCap | Nhân sự có nhiều bằng cấp |
-| 8 | NhanSu | 1 ◆ 0..\* | ChungChi | Nhân sự có nhiều chứng chỉ |
-| 9 | NhanSu | 0..\* → 0..1 | HeSoLuong | Nhân sự áp dụng một hệ số lương |
-| 10 | NhanSu | 0..\* → 0..\* | LoaiPhuCap | Nhân sự hưởng nhiều loại phụ cấp |
-| 11 | NhanSu | 1 ◆ 0..\* | HopDongLaoDong | Nhân sự ký nhiều hợp đồng |
-| 12 | HopDongLaoDong | 0..\* → 1 | LoaiHopDong | Hợp đồng thuộc một loại hợp đồng |
-| 13 | DanhGia | ◁— | KhenThuong | KhenThuong kế thừa DanhGia |
-| 14 | DanhGia | ◁— | KyLuat | KyLuat kế thừa DanhGia |
-| 15 | NhanSu | 1 ◆ 0..\* | DanhGia | Nhân sự nhận nhiều đánh giá |
-| 16 | DonViToChuc | 0..1 ◇ 0..\* | DonViToChuc | Đơn vị cha chứa nhiều đơn vị con |
-| 17 | DonViToChuc | 1 ◆ 0..\* | QuyetDinhDonVi | Đơn vị có nhiều quyết định |
-| 18 | BoNhiem | 0..\* → 1 | NhanSu | Bổ nhiệm cho nhân sự |
-| 19 | BoNhiem | 0..\* → 1 | DonViToChuc | Bổ nhiệm tại đơn vị |
-| 20 | DangKyDaoTao | 0..\* → 1 | NhanSu | Người đăng ký đào tạo |
-| 21 | DangKyDaoTao | 0..\* → 1 | KhoaDaoTao | Đăng ký khóa đào tạo |
-| 22 | TaiKhoan | 1 → 0..\* | NhatKyHeThong | Tài khoản tạo nhiều nhật ký |
-| 23 | HopDongLaoDong | 1 ◆ 0..1 | BanGhiChamDutHopDong | Hợp đồng có tối đa một bản ghi chấm dứt trước hạn |
-| 24 | DanhSachKetQuaDanhGia | 1 ◇ 0..\* | DanhGia | Lớp bao kết quả tạm thời gom nhiều bản ghi đánh giá trả về từ tìm kiếm/lọc |
-| 25 | ManHinhHopDongLaoDong | «dependency» | HopDongController | Màn hình hợp đồng gọi controller nghiệp vụ hợp đồng |
-| 26 | HopDongController | «dependency» | HopDongLaoDong | Controller truy vấn/cập nhật hợp đồng |
-| 27 | HopDongController | «dependency» | BanGhiChamDutHopDong | Controller ghi nhận dữ liệu chấm dứt trước hạn |
-| 28 | HopDongController | «dependency» | NhanSu | Controller đồng bộ trạng thái hợp đồng và trạng thái thôi việc |
-| 29 | ManHinhDanhGia | «dependency» | DanhGiaController | Màn hình đánh giá gọi controller nghiệp vụ đánh giá |
-| 30 | DanhGiaController | «dependency» | DanhGia | Controller truy vấn dữ liệu đánh giá |
-| 31 | DanhGiaController | «dependency» | DanhSachKetQuaDanhGia | Controller tạo/tải lớp bao kết quả đánh giá |
-| 32 | ManHinhCauHinhHienThiHoSo | «dependency» | CauHinhHoSoController | Màn hình cấu hình gọi controller cấu hình hồ sơ |
-| 33 | CauHinhHoSoController | «dependency» | CauHinhHienThiHoSo | Controller quản lý cấu hình ẩn/hiện hồ sơ |
-| 34 | SystemTimer | «dependency» | HopDongController | Bộ hẹn giờ điều phối tự động xử lý hợp đồng |
-| 35 | SystemTimer | «dependency» | TaiKhoanController | Bộ hẹn giờ điều phối tự động khóa tài khoản |
-| 36 | TaiKhoanController | «dependency» | TaiKhoan | Controller khóa/mở và đồng bộ trạng thái tài khoản |
-| 37 | TaiKhoanController | «dependency» | NhanSu | Controller đọc trạng thái thôi việc của nhân sự |
-
-## 5.2. Xây dựng biểu đồ lớp
+> Các lớp dưới đây được rút ra từ toàn bộ 48 use case của hệ thống HRMS cho Trường Đại học Thủy Lợi theo hướng BCE, chỉ giữ lại **Entity** và **Enumeration**. UC 4.37 về báo cáo/thống kê không tạo lớp nghiệp vụ riêng mà sử dụng dữ liệu tổng hợp từ các lớp lõi đã xác định.
+
+### 5.1.1. TaiKhoan (Tài khoản) — *«entity»*
+
+> Lớp biểu diễn thông tin xác thực và phân quyền truy cập của người dùng hệ thống. Lớp này bao phủ các UC đăng nhập, đổi mật khẩu, quản lý tài khoản, phân quyền và khóa/mở khóa tài khoản.
+
+**Bảng thuộc tính:**
+
+| STT | Thuộc tính | Kiểu dữ liệu | Mô tả |
+|-----|-----------|--------------|-------|
+| 1 | id | Long | Mã định danh tài khoản |
+| 2 | ngayTao | LocalDateTime | Thời điểm tạo tài khoản |
+| 3 | ngayCapNhat | LocalDateTime | Thời điểm cập nhật gần nhất |
+| 4 | tenDangNhap | String | Tên đăng nhập dùng để xác thực |
+| 5 | matKhau | String | Mật khẩu đã được mã hóa |
+| 6 | email | String | Email nhận thông báo và mật khẩu khởi tạo |
+| 7 | vaiTro | VaiTro | Vai trò truy cập của tài khoản |
+| 8 | trangThai | TrangThaiTaiKhoan | Trạng thái hoạt động hoặc bị khóa |
+| 9 | nhanSu | HoSoNhanSu | Hồ sơ nhân sự được liên kết với tài khoản |
+
+**Bảng phương thức:**
+
+| STT | Phương thức | Tham số | Kiểu trả về | Mô tả |
+|-----|------------|---------|-------------|-------|
+| 1 | create() | TaiKhoan taiKhoan | TaiKhoan | Tạo mới tài khoản |
+| 2 | update() | TaiKhoan taiKhoan | TaiKhoan | Cập nhật thông tin tài khoản |
+| 3 | delete() | Long id | Boolean | Xóa mềm tài khoản |
+| 4 | findById() | Long id | TaiKhoan | Tìm tài khoản theo mã định danh |
+| 5 | findAll() | Không | List<TaiKhoan> | Lấy danh sách toàn bộ tài khoản |
+| 6 | authenticate() | String tenDangNhap, String matKhau | Boolean | Kiểm tra thông tin đăng nhập |
+| 7 | changePassword() | String matKhauCu, String matKhauMoi | Boolean | Đổi mật khẩu của tài khoản |
+| 8 | assignRole() | VaiTro vaiTro | Void | Gán hoặc thay đổi vai trò cho tài khoản |
+| 9 | changeStatus() | TrangThaiTaiKhoan trangThai | Void | Khóa hoặc mở khóa tài khoản |
+
+### 5.1.2. HoSoNhanSu (Hồ sơ nhân sự) — *«entity»*
+
+> Lớp trung tâm lưu trữ toàn bộ thông tin cá nhân, học vấn, công tác, lương và trạng thái làm việc của một nhân sự. Đây là hạt nhân dữ liệu cho các UC quản lý hồ sơ, hợp đồng, đánh giá, điều chuyển, đào tạo và self-service.
+
+**Bảng thuộc tính:**
+
+| STT | Thuộc tính | Kiểu dữ liệu | Mô tả |
+|-----|-----------|--------------|-------|
+| 1 | id | Long | Mã định danh hồ sơ |
+| 2 | ngayTao | LocalDateTime | Thời điểm tạo hồ sơ |
+| 3 | ngayCapNhat | LocalDateTime | Thời điểm cập nhật gần nhất |
+| 4 | maCBo | String | Mã cán bộ được sinh tự động |
+| 5 | hoTen | String | Họ và tên nhân sự |
+| 6 | ngaySinh | LocalDate | Ngày sinh |
+| 7 | gioiTinh | GioiTinh | Giới tính của nhân sự |
+| 8 | cccd | String | Số căn cước công dân |
+| 9 | queQuan | String | Quê quán |
+| 10 | diaChi | String | Địa chỉ thường trú hoặc liên hệ |
+| 11 | maSoThue | String | Mã số thuế cá nhân |
+| 12 | soBHXH | String | Số bảo hiểm xã hội |
+| 13 | soBHYT | String | Số bảo hiểm y tế |
+| 14 | email | String | Email liên hệ |
+| 15 | sdtLienHe | String | Số điện thoại liên hệ |
+| 16 | anhChanDung | String | Đường dẫn ảnh chân dung |
+| 17 | trinhDoVanHoa | String | Trình độ văn hóa |
+| 18 | trinhDoDaoTao | String | Trình độ đào tạo |
+| 19 | chucDanhNgheNghiep | String | Chức danh nghề nghiệp |
+| 20 | chucDanhKhoaHoc | String | Chức danh khoa học |
+| 21 | thongTinDangDoan | String | Thông tin Đảng/Đoàn |
+| 22 | trangThaiLamViec | TrangThaiLamViec | Trạng thái làm việc hiện tại |
+| 23 | trangThaiHopDong | TrangThaiHopDongNhanSu | Trạng thái hợp đồng tổng quát của nhân sự |
+| 24 | laNguoiNuocNgoai | Boolean | Đánh dấu nhân sự là người nước ngoài |
+| 25 | soVisa | String | Số visa nếu là người nước ngoài |
+| 26 | ngayHetHanVisa | LocalDate | Ngày hết hạn visa |
+| 27 | soHoChieu | String | Số hộ chiếu |
+| 28 | ngayHetHanHoChieu | LocalDate | Ngày hết hạn hộ chiếu |
+| 29 | soGiayPhepLaoDong | String | Số giấy phép lao động |
+| 30 | ngayHetHanGiayPhepLaoDong | LocalDate | Ngày hết hạn giấy phép lao động |
+| 31 | fileGiayPhepLaoDong | String | Đường dẫn file giấy phép lao động |
+| 32 | heSoLuong | HeSoLuong | Hệ số lương hiện hành được áp dụng |
+| 33 | ngayThoiViec | LocalDate | Ngày thôi việc nếu có |
+| 34 | lyDoThoiViec | String | Lý do thôi việc |
+
+**Bảng phương thức:**
+
+| STT | Phương thức | Tham số | Kiểu trả về | Mô tả |
+|-----|------------|---------|-------------|-------|
+| 1 | create() | HoSoNhanSu hoSoNhanSu | HoSoNhanSu | Tạo mới hồ sơ nhân sự |
+| 2 | update() | HoSoNhanSu hoSoNhanSu | HoSoNhanSu | Cập nhật hồ sơ nhân sự |
+| 3 | delete() | Long id | Boolean | Xóa mềm hồ sơ nhân sự |
+| 4 | findById() | Long id | HoSoNhanSu | Tìm hồ sơ theo mã định danh |
+| 5 | findAll() | Không | List<HoSoNhanSu> | Lấy danh sách toàn bộ hồ sơ |
+| 6 | generateMaCBo() | Không | String | Sinh mã cán bộ duy nhất |
+| 7 | validateHoSo() | Không | Boolean | Kiểm tra tính đầy đủ và logic của hồ sơ |
+| 8 | markResigned() | LocalDate ngayThoiViec, String lyDo | Void | Đánh dấu thôi việc cho nhân sự |
+| 9 | updateTrangThaiHopDong() | TrangThaiHopDongNhanSu trangThai | Void | Đồng bộ trạng thái hợp đồng tổng quát |
+| 10 | assignHeSoLuong() | HeSoLuong heSoLuong | Void | Gán hệ số lương cho hồ sơ |
+
+### 5.1.3. ThongTinGiaDinh (Thông tin gia đình) — *«entity»*
+
+> Lớp lưu các thành viên gia đình và người phụ thuộc của một nhân sự. Dữ liệu này phục vụ đầy đủ cho tab thông tin gia đình trong hồ sơ nhân sự.
+
+**Bảng thuộc tính:**
+
+| STT | Thuộc tính | Kiểu dữ liệu | Mô tả |
+|-----|-----------|--------------|-------|
+| 1 | id | Long | Mã định danh thông tin gia đình |
+| 2 | ngayTao | LocalDateTime | Thời điểm tạo bản ghi |
+| 3 | ngayCapNhat | LocalDateTime | Thời điểm cập nhật gần nhất |
+| 4 | moiQuanHe | String | Quan hệ với nhân sự: cha, mẹ, vợ/chồng, con... |
+| 5 | hoTen | String | Họ tên thành viên gia đình |
+| 6 | ngaySinh | LocalDate | Ngày sinh của thành viên |
+| 7 | ngheNghiep | String | Nghề nghiệp hiện tại |
+| 8 | laNguoiPhuThuoc | Boolean | Đánh dấu người phụ thuộc |
+
+**Bảng phương thức:**
+
+| STT | Phương thức | Tham số | Kiểu trả về | Mô tả |
+|-----|------------|---------|-------------|-------|
+| 1 | create() | ThongTinGiaDinh thongTinGiaDinh | ThongTinGiaDinh | Tạo mới thông tin gia đình |
+| 2 | update() | ThongTinGiaDinh thongTinGiaDinh | ThongTinGiaDinh | Cập nhật thông tin gia đình |
+| 3 | delete() | Long id | Boolean | Xóa mềm bản ghi gia đình |
+| 4 | findById() | Long id | ThongTinGiaDinh | Tìm bản ghi theo mã định danh |
+| 5 | findAll() | Không | List<ThongTinGiaDinh> | Lấy danh sách bản ghi gia đình |
+| 6 | markDependent() | Boolean laNguoiPhuThuoc | Void | Cập nhật trạng thái người phụ thuộc |
+| 7 | validateRelationship() | Không | Boolean | Kiểm tra hợp lệ quan hệ gia đình |
+
+### 5.1.4. ThongTinNganHang (Thông tin ngân hàng) — *«entity»*
+
+> Lớp lưu thông tin tài khoản ngân hàng phục vụ trả lương và đối soát tài chính cho một nhân sự. Mỗi hồ sơ nhân sự có đúng một thông tin ngân hàng tại một thời điểm.
+
+**Bảng thuộc tính:**
+
+| STT | Thuộc tính | Kiểu dữ liệu | Mô tả |
+|-----|-----------|--------------|-------|
+| 1 | id | Long | Mã định danh thông tin ngân hàng |
+| 2 | ngayTao | LocalDateTime | Thời điểm tạo bản ghi |
+| 3 | ngayCapNhat | LocalDateTime | Thời điểm cập nhật gần nhất |
+| 4 | tenNganHang | String | Tên ngân hàng thụ hưởng |
+| 5 | soTaiKhoan | String | Số tài khoản ngân hàng |
+
+**Bảng phương thức:**
+
+| STT | Phương thức | Tham số | Kiểu trả về | Mô tả |
+|-----|------------|---------|-------------|-------|
+| 1 | create() | ThongTinNganHang thongTinNganHang | ThongTinNganHang | Tạo mới thông tin ngân hàng |
+| 2 | update() | ThongTinNganHang thongTinNganHang | ThongTinNganHang | Cập nhật thông tin ngân hàng |
+| 3 | delete() | Long id | Boolean | Xóa mềm thông tin ngân hàng |
+| 4 | findById() | Long id | ThongTinNganHang | Tìm bản ghi theo mã định danh |
+| 5 | findAll() | Không | List<ThongTinNganHang> | Lấy danh sách thông tin ngân hàng |
+| 6 | verifyAccountFormat() | Không | Boolean | Kiểm tra định dạng số tài khoản hợp lệ |
+
+### 5.1.5. QuaTrinhCongTac (Quá trình công tác) — *«entity»*
+
+> Lớp ghi nhận lịch sử công tác trước khi về trường hoặc các giai đoạn nghề nghiệp liên quan của nhân sự. Thông tin này phục vụ tra cứu, xem chi tiết và in hồ sơ.
+
+**Bảng thuộc tính:**
+
+| STT | Thuộc tính | Kiểu dữ liệu | Mô tả |
+|-----|-----------|--------------|-------|
+| 1 | id | Long | Mã định danh quá trình công tác |
+| 2 | ngayTao | LocalDateTime | Thời điểm tạo bản ghi |
+| 3 | ngayCapNhat | LocalDateTime | Thời điểm cập nhật gần nhất |
+| 4 | noiCongTac | String | Nơi công tác trong giai đoạn tương ứng |
+| 5 | thoiGianBatDau | LocalDate | Thời điểm bắt đầu công tác |
+| 6 | thoiGianKetThuc | LocalDate | Thời điểm kết thúc công tác |
+
+**Bảng phương thức:**
+
+| STT | Phương thức | Tham số | Kiểu trả về | Mô tả |
+|-----|------------|---------|-------------|-------|
+| 1 | create() | QuaTrinhCongTac quaTrinhCongTac | QuaTrinhCongTac | Tạo mới quá trình công tác |
+| 2 | update() | QuaTrinhCongTac quaTrinhCongTac | QuaTrinhCongTac | Cập nhật quá trình công tác |
+| 3 | delete() | Long id | Boolean | Xóa mềm quá trình công tác |
+| 4 | findById() | Long id | QuaTrinhCongTac | Tìm bản ghi theo mã định danh |
+| 5 | findAll() | Không | List<QuaTrinhCongTac> | Lấy toàn bộ lịch sử công tác |
+| 6 | calculateDuration() | Không | Integer | Tính số tháng công tác của giai đoạn |
+
+### 5.1.6. BangCap (Bằng cấp) — *«entity»*
+
+> Lớp biểu diễn từng bằng cấp học thuật gắn với hồ sơ nhân sự. Dữ liệu này dùng cho hồ sơ, thống kê trình độ và kiểm tra file minh chứng.
+
+**Bảng thuộc tính:**
+
+| STT | Thuộc tính | Kiểu dữ liệu | Mô tả |
+|-----|-----------|--------------|-------|
+| 1 | id | Long | Mã định danh bằng cấp |
+| 2 | ngayTao | LocalDateTime | Thời điểm tạo bản ghi |
+| 3 | ngayCapNhat | LocalDateTime | Thời điểm cập nhật gần nhất |
+| 4 | tenBang | String | Tên bằng cấp |
+| 5 | truong | String | Trường cấp bằng |
+| 6 | nganh | String | Ngành đào tạo |
+| 7 | namTotNghiep | Integer | Năm tốt nghiệp |
+| 8 | xepLoai | String | Xếp loại tốt nghiệp |
+| 9 | filePdf | String | Đường dẫn file PDF bằng cấp |
+
+**Bảng phương thức:**
+
+| STT | Phương thức | Tham số | Kiểu trả về | Mô tả |
+|-----|------------|---------|-------------|-------|
+| 1 | create() | BangCap bangCap | BangCap | Tạo mới bằng cấp |
+| 2 | update() | BangCap bangCap | BangCap | Cập nhật thông tin bằng cấp |
+| 3 | delete() | Long id | Boolean | Xóa mềm bằng cấp |
+| 4 | findById() | Long id | BangCap | Tìm bằng cấp theo mã định danh |
+| 5 | findAll() | Không | List<BangCap> | Lấy danh sách toàn bộ bằng cấp |
+| 6 | verifyAttachment() | Không | Boolean | Kiểm tra file minh chứng đính kèm |
+
+### 5.1.7. ChungChi (Chứng chỉ) — *«entity»*
+
+> Lớp lưu trữ các chứng chỉ chuyên môn, nghiệp vụ và chứng chỉ sau đào tạo của nhân sự. Lớp này phục vụ cập nhật hồ sơ, xem chi tiết và kiểm tra hạn hiệu lực chứng chỉ.
+
+**Bảng thuộc tính:**
+
+| STT | Thuộc tính | Kiểu dữ liệu | Mô tả |
+|-----|-----------|--------------|-------|
+| 1 | id | Long | Mã định danh chứng chỉ |
+| 2 | ngayTao | LocalDateTime | Thời điểm tạo bản ghi |
+| 3 | ngayCapNhat | LocalDateTime | Thời điểm cập nhật gần nhất |
+| 4 | tenChungChi | String | Tên chứng chỉ |
+| 5 | noiCap | String | Nơi cấp chứng chỉ |
+| 6 | ngayCap | LocalDate | Ngày cấp chứng chỉ |
+| 7 | ngayHetHan | LocalDate | Ngày hết hạn chứng chỉ |
+| 8 | filePdf | String | Đường dẫn file PDF chứng chỉ |
+
+**Bảng phương thức:**
+
+| STT | Phương thức | Tham số | Kiểu trả về | Mô tả |
+|-----|------------|---------|-------------|-------|
+| 1 | create() | ChungChi chungChi | ChungChi | Tạo mới chứng chỉ |
+| 2 | update() | ChungChi chungChi | ChungChi | Cập nhật thông tin chứng chỉ |
+| 3 | delete() | Long id | Boolean | Xóa mềm chứng chỉ |
+| 4 | findById() | Long id | ChungChi | Tìm chứng chỉ theo mã định danh |
+| 5 | findAll() | Không | List<ChungChi> | Lấy danh sách chứng chỉ |
+| 6 | isExpired() | LocalDate ngayThamChieu | Boolean | Kiểm tra chứng chỉ đã hết hạn hay chưa |
+
+### 5.1.8. DonViToChuc (Đơn vị tổ chức) — *«entity»*
+
+> Lớp mô hình hóa cơ cấu tổ chức dạng cây của Trường Đại học Thủy Lợi. Lớp này quản lý thông tin đơn vị, trạng thái hoạt động, quan hệ cha-con và dữ liệu phục vụ bổ nhiệm/điều chuyển nhân sự.
+
+**Bảng thuộc tính:**
+
+| STT | Thuộc tính | Kiểu dữ liệu | Mô tả |
+|-----|-----------|--------------|-------|
+| 1 | id | Long | Mã định danh đơn vị |
+| 2 | ngayTao | LocalDateTime | Thời điểm tạo đơn vị |
+| 3 | ngayCapNhat | LocalDateTime | Thời điểm cập nhật gần nhất |
+| 4 | maDonVi | String | Mã đơn vị duy nhất |
+| 5 | tenDonVi | String | Tên đơn vị tổ chức |
+| 6 | loaiDonVi | LoaiDonVi | Loại đơn vị theo cơ cấu trường |
+| 7 | donViCha | DonViToChuc | Đơn vị quản lý cấp trên |
+| 8 | ngayThanhLap | LocalDate | Ngày thành lập đơn vị |
+| 9 | diaChi | String | Địa chỉ liên hệ chính |
+| 10 | diaChiVanPhong | String | Địa chỉ văn phòng làm việc |
+| 11 | email | String | Email đơn vị |
+| 12 | soDienThoai | String | Số điện thoại liên hệ |
+| 13 | website | String | Website của đơn vị |
+| 14 | trangThai | TrangThaiDonVi | Trạng thái hoạt động của đơn vị |
+| 15 | laDonViNut | Boolean | Đánh dấu đơn vị không cho phép thêm đơn vị con |
+| 16 | soQuyetDinh | String | Số quyết định khi thay đổi trạng thái |
+| 17 | ngayQuyetDinh | LocalDate | Ngày quyết định thay đổi trạng thái |
+| 18 | fileQuyetDinh | String | Tệp quyết định đính kèm |
+| 19 | ngayHieuLucTrangThai | LocalDate | Ngày hiệu lực của trạng thái mới |
+| 20 | lyDoThayDoi | String | Lý do giải thể hoặc sáp nhập |
+
+**Bảng phương thức:**
+
+| STT | Phương thức | Tham số | Kiểu trả về | Mô tả |
+|-----|------------|---------|-------------|-------|
+| 1 | create() | DonViToChuc donViToChuc | DonViToChuc | Tạo mới đơn vị tổ chức |
+| 2 | update() | DonViToChuc donViToChuc | DonViToChuc | Cập nhật thông tin đơn vị |
+| 3 | delete() | Long id | Boolean | Xóa mềm đơn vị |
+| 4 | findById() | Long id | DonViToChuc | Tìm đơn vị theo mã định danh |
+| 5 | findAll() | Không | List<DonViToChuc> | Lấy danh sách toàn bộ đơn vị |
+| 6 | addChild() | DonViToChuc donViCon | Void | Thêm đơn vị con vào cây tổ chức |
+| 7 | changeStatus() | TrangThaiDonVi trangThai, LocalDate ngayHieuLuc | Void | Cập nhật trạng thái giải thể hoặc sáp nhập |
+| 8 | transferChildren() | DonViToChuc donViMoi | Void | Điều chuyển toàn bộ đơn vị con sang đơn vị khác |
+| 9 | mergeTo() | DonViToChuc donViNhanSapNhap | Void | Sáp nhập đơn vị hiện tại vào đơn vị nhận |
+
+### 5.1.9. HopDongLaoDong (Hợp đồng lao động) — *«entity»*
+
+> Lớp biểu diễn từng hợp đồng lao động gắn với một hồ sơ nhân sự. Lớp này bao phủ các nghiệp vụ tạo mới, xem chi tiết, chỉnh sửa trước hiệu lực, theo dõi gia hạn và chấm dứt trước hạn.
+
+**Bảng thuộc tính:**
+
+| STT | Thuộc tính | Kiểu dữ liệu | Mô tả |
+|-----|-----------|--------------|-------|
+| 1 | id | Long | Mã định danh hợp đồng |
+| 2 | ngayTao | LocalDateTime | Thời điểm tạo hợp đồng |
+| 3 | ngayCapNhat | LocalDateTime | Thời điểm cập nhật gần nhất |
+| 4 | soHD | String | Số hợp đồng |
+| 5 | loaiHopDong | LoaiHopDong | Loại hợp đồng tham chiếu danh mục |
+| 6 | ngayKy | LocalDate | Ngày ký hợp đồng |
+| 7 | ngayHieuLuc | LocalDate | Ngày hợp đồng bắt đầu có hiệu lực |
+| 8 | ngayHetHan | LocalDate | Ngày hết hạn hợp đồng |
+| 9 | donViCongTac | DonViToChuc | Đơn vị công tác theo hợp đồng |
+| 10 | noiDungHopDong | String | Nội dung, điều khoản và quyền lợi hợp đồng |
+| 11 | filePdf | String | Đường dẫn file PDF hợp đồng |
+| 12 | trangThai | TrangThaiHopDong | Trạng thái hiện hành của hợp đồng |
+| 13 | ngayChamDut | LocalDate | Ngày chấm dứt trước hạn nếu có |
+| 14 | lyDoChamDut | String | Lý do chấm dứt trước hạn |
+
+**Bảng phương thức:**
+
+| STT | Phương thức | Tham số | Kiểu trả về | Mô tả |
+|-----|------------|---------|-------------|-------|
+| 1 | create() | HopDongLaoDong hopDongLaoDong | HopDongLaoDong | Tạo mới hợp đồng lao động |
+| 2 | update() | HopDongLaoDong hopDongLaoDong | HopDongLaoDong | Cập nhật hợp đồng |
+| 3 | delete() | Long id | Boolean | Xóa mềm hợp đồng |
+| 4 | findById() | Long id | HopDongLaoDong | Tìm hợp đồng theo mã định danh |
+| 5 | findAll() | Không | List<HopDongLaoDong> | Lấy danh sách toàn bộ hợp đồng |
+| 6 | validateThoiHan() | Không | Boolean | Kiểm tra thời hạn theo cấu hình loại hợp đồng |
+| 7 | activate() | Không | Void | Kích hoạt hợp đồng theo ngày hiệu lực |
+| 8 | moveToWaitingRenewal() | Không | Void | Chuyển hợp đồng sang trạng thái chờ gia hạn |
+| 9 | terminateEarly() | LocalDate ngayChamDut, String lyDo | Void | Chấm dứt hợp đồng trước hạn |
+
+### 5.1.10. BoNhiem (Bổ nhiệm) — *«entity»*
+
+> Lớp lưu các quyết định bổ nhiệm, điều chuyển và bãi nhiệm nhân sự tại đơn vị tổ chức. Lớp này là lịch sử biến động chức vụ và đơn vị công tác của nhân sự.
+
+**Bảng thuộc tính:**
+
+| STT | Thuộc tính | Kiểu dữ liệu | Mô tả |
+|-----|-----------|--------------|-------|
+| 1 | id | Long | Mã định danh quyết định bổ nhiệm |
+| 2 | ngayTao | LocalDateTime | Thời điểm tạo bản ghi |
+| 3 | ngayCapNhat | LocalDateTime | Thời điểm cập nhật gần nhất |
+| 4 | nhanSu | HoSoNhanSu | Nhân sự được bổ nhiệm hoặc điều chuyển |
+| 5 | donVi | DonViToChuc | Đơn vị công tác được gán |
+| 6 | chucVu | String | Chức vụ đảm nhiệm tại đơn vị |
+| 7 | ngayBatDau | LocalDate | Ngày bắt đầu đảm nhiệm |
+| 8 | ngayKetThuc | LocalDate | Ngày kết thúc hoặc bãi nhiệm |
+
+**Bảng phương thức:**
+
+| STT | Phương thức | Tham số | Kiểu trả về | Mô tả |
+|-----|------------|---------|-------------|-------|
+| 1 | create() | BoNhiem boNhiem | BoNhiem | Tạo mới quyết định bổ nhiệm |
+| 2 | update() | BoNhiem boNhiem | BoNhiem | Cập nhật thông tin bổ nhiệm |
+| 3 | delete() | Long id | Boolean | Xóa mềm bản ghi bổ nhiệm |
+| 4 | findById() | Long id | BoNhiem | Tìm bổ nhiệm theo mã định danh |
+| 5 | findAll() | Không | List<BoNhiem> | Lấy danh sách lịch sử bổ nhiệm |
+| 6 | appoint() | HoSoNhanSu nhanSu, DonViToChuc donVi, String chucVu | Void | Bổ nhiệm nhân sự vào đơn vị |
+| 7 | transfer() | DonViToChuc donViMoi, LocalDate ngayBatDau | Void | Điều chuyển nhân sự sang đơn vị mới |
+| 8 | dismiss() | LocalDate ngayKetThuc | Void | Bãi nhiệm nhân sự khỏi chức vụ hiện tại |
+
+### 5.1.11. DanhGia (Đánh giá khen thưởng/kỷ luật) — *«entity»*
+
+> Lớp ghi nhận các quyết định khen thưởng hoặc kỷ luật đối với nhân sự. Lớp này hỗ trợ lưu lịch sử đánh giá, xem chi tiết, tìm kiếm và lọc theo nhiều tiêu chí.
+
+**Bảng thuộc tính:**
+
+| STT | Thuộc tính | Kiểu dữ liệu | Mô tả |
+|-----|-----------|--------------|-------|
+| 1 | id | Long | Mã định danh bản ghi đánh giá |
+| 2 | ngayTao | LocalDateTime | Thời điểm tạo bản ghi |
+| 3 | ngayCapNhat | LocalDateTime | Thời điểm cập nhật gần nhất |
+| 4 | loaiDanhGia | LoaiDanhGia | Phân loại khen thưởng hoặc kỷ luật |
+| 5 | nhanSu | HoSoNhanSu | Nhân sự được đánh giá |
+| 6 | ngayQuyetDinh | LocalDate | Ngày ra quyết định |
+| 7 | soQuyetDinh | String | Số quyết định đánh giá |
+| 8 | loaiKhenThuong | String | Loại khen thưởng nếu áp dụng |
+| 9 | tenKhenThuong | String | Tên khen thưởng |
+| 10 | noiDung | String | Nội dung khen thưởng |
+| 11 | soTienThuong | Double | Số tiền thưởng nếu có |
+| 12 | loaiKyLuat | String | Loại kỷ luật nếu áp dụng |
+| 13 | tenKyLuat | String | Tên hình thức kỷ luật |
+| 14 | lyDo | String | Lý do kỷ luật |
+| 15 | hinhThucXuLy | String | Hình thức xử lý kỷ luật |
+
+**Bảng phương thức:**
+
+| STT | Phương thức | Tham số | Kiểu trả về | Mô tả |
+|-----|------------|---------|-------------|-------|
+| 1 | create() | DanhGia danhGia | DanhGia | Tạo mới bản ghi đánh giá |
+| 2 | update() | DanhGia danhGia | DanhGia | Cập nhật bản ghi đánh giá |
+| 3 | delete() | Long id | Boolean | Xóa mềm bản ghi đánh giá |
+| 4 | findById() | Long id | DanhGia | Tìm đánh giá theo mã định danh |
+| 5 | findAll() | Không | List<DanhGia> | Lấy danh sách toàn bộ đánh giá |
+| 6 | recordReward() | String tenKhenThuong, LocalDate ngayQuyetDinh | Void | Ghi nhận quyết định khen thưởng |
+| 7 | recordDiscipline() | String tenKyLuat, String lyDo | Void | Ghi nhận quyết định kỷ luật |
+| 8 | validateByType() | Không | Boolean | Kiểm tra tập thuộc tính phù hợp với loại đánh giá |
+
+### 5.1.12. KhoaDaoTao (Khóa đào tạo) — *«entity»*
+
+> Lớp mô tả một khóa đào tạo do nhà trường mở cho cán bộ, giảng viên. Lớp này quản lý kế hoạch, thời gian đăng ký, trạng thái tổ chức và thông tin chứng chỉ sau đào tạo.
+
+**Bảng thuộc tính:**
+
+| STT | Thuộc tính | Kiểu dữ liệu | Mô tả |
+|-----|-----------|--------------|-------|
+| 1 | id | Long | Mã định danh khóa đào tạo |
+| 2 | ngayTao | LocalDateTime | Thời điểm tạo khóa |
+| 3 | ngayCapNhat | LocalDateTime | Thời điểm cập nhật gần nhất |
+| 4 | tenKhoa | String | Tên khóa đào tạo |
+| 5 | loaiKhoa | String | Loại khóa đào tạo |
+| 6 | thoiGianBatDau | LocalDate | Ngày bắt đầu đào tạo |
+| 7 | thoiGianKetThuc | LocalDate | Ngày kết thúc đào tạo |
+| 8 | diaDiem | String | Địa điểm tổ chức |
+| 9 | kinhPhi | Double | Kinh phí đào tạo |
+| 10 | camKet | String | Cam kết sau đào tạo |
+| 11 | chungChiSauDaoTao | String | Thông tin chứng chỉ sau đào tạo |
+| 12 | thoiGianMoDangKy | LocalDate | Ngày bắt đầu mở đăng ký |
+| 13 | thoiGianDongDangKy | LocalDate | Ngày đóng đăng ký |
+| 14 | gioiHanSoNguoi | Integer | Số lượng người tham gia tối đa |
+| 15 | trangThai | TrangThaiKhoaDaoTao | Trạng thái hiện tại của khóa đào tạo |
+
+**Bảng phương thức:**
+
+| STT | Phương thức | Tham số | Kiểu trả về | Mô tả |
+|-----|------------|---------|-------------|-------|
+| 1 | create() | KhoaDaoTao khoaDaoTao | KhoaDaoTao | Tạo mới khóa đào tạo |
+| 2 | update() | KhoaDaoTao khoaDaoTao | KhoaDaoTao | Cập nhật thông tin khóa đào tạo |
+| 3 | delete() | Long id | Boolean | Xóa mềm khóa đào tạo |
+| 4 | findById() | Long id | KhoaDaoTao | Tìm khóa đào tạo theo mã định danh |
+| 5 | findAll() | Không | List<KhoaDaoTao> | Lấy danh sách toàn bộ khóa đào tạo |
+| 6 | openRegistration() | Không | Void | Mở đăng ký cho khóa đào tạo |
+| 7 | startTraining() | Không | Void | Chuyển khóa sang trạng thái đang đào tạo |
+| 8 | completeTraining() | Không | Void | Kết thúc khóa đào tạo |
+| 9 | isOpenForRegistration() | LocalDate ngayHienTai | Boolean | Kiểm tra khóa còn trong thời gian mở đăng ký |
+
+### 5.1.13. DangKyDaoTao (Đăng ký đào tạo) — *«entity»*
+
+> Lớp biểu diễn mối quan hệ tham gia giữa nhân sự và khóa đào tạo. Lớp này lưu trạng thái tham gia, kết quả sau đào tạo và file chứng chỉ hoàn thành.
+
+**Bảng thuộc tính:**
+
+| STT | Thuộc tính | Kiểu dữ liệu | Mô tả |
+|-----|-----------|--------------|-------|
+| 1 | id | Long | Mã định danh đăng ký đào tạo |
+| 2 | ngayTao | LocalDateTime | Thời điểm tạo đăng ký |
+| 3 | ngayCapNhat | LocalDateTime | Thời điểm cập nhật gần nhất |
+| 4 | nhanSu | HoSoNhanSu | Nhân sự đăng ký khóa đào tạo |
+| 5 | khoaDaoTao | KhoaDaoTao | Khóa đào tạo được đăng ký |
+| 6 | thoiDiemDangKy | LocalDateTime | Thời điểm đăng ký tham gia |
+| 7 | trangThaiThamGia | TrangThaiThamGia | Trạng thái tham gia hiện tại |
+| 8 | ngayHoanThanh | LocalDate | Ngày hoàn thành khóa học |
+| 9 | fileChungChi | String | Đường dẫn file chứng chỉ hoàn thành |
+
+**Bảng phương thức:**
+
+| STT | Phương thức | Tham số | Kiểu trả về | Mô tả |
+|-----|------------|---------|-------------|-------|
+| 1 | create() | DangKyDaoTao dangKyDaoTao | DangKyDaoTao | Tạo mới đăng ký đào tạo |
+| 2 | update() | DangKyDaoTao dangKyDaoTao | DangKyDaoTao | Cập nhật thông tin đăng ký |
+| 3 | delete() | Long id | Boolean | Xóa hoặc hủy đăng ký đào tạo |
+| 4 | findById() | Long id | DangKyDaoTao | Tìm đăng ký theo mã định danh |
+| 5 | findAll() | Không | List<DangKyDaoTao> | Lấy danh sách toàn bộ đăng ký |
+| 6 | register() | HoSoNhanSu nhanSu, KhoaDaoTao khoaDaoTao | DangKyDaoTao | Đăng ký tham gia khóa đào tạo |
+| 7 | cancelRegistration() | Long id | Boolean | Hủy đăng ký trước khi khóa bắt đầu |
+| 8 | recordTrainingResult() | TrangThaiThamGia trangThai, LocalDate ngayHoanThanh | Void | Ghi nhận kết quả tham gia đào tạo |
+
+### 5.1.14. NhatKyHeThong (Nhật ký hệ thống) — *«entity»*
+
+> Lớp ghi vết toàn bộ thao tác quan trọng trong hệ thống để phục vụ giám sát, kiểm toán và truy vết sự cố. Lớp này gắn trực tiếp với UC Audit Log và các yêu cầu logging toàn hệ thống.
+
+**Bảng thuộc tính:**
+
+| STT | Thuộc tính | Kiểu dữ liệu | Mô tả |
+|-----|-----------|--------------|-------|
+| 1 | id | Long | Mã định danh bản ghi log |
+| 2 | ngayTao | LocalDateTime | Thời điểm tạo log |
+| 3 | ngayCapNhat | LocalDateTime | Thời điểm cập nhật gần nhất |
+| 4 | thoiGianThaoTac | LocalDateTime | Thời gian phát sinh hành động |
+| 5 | taiKhoan | TaiKhoan | Tài khoản thực hiện hành động |
+| 6 | hoTenNguoiThucHien | String | Họ tên người thực hiện thao tác |
+| 7 | vaiTro | VaiTro | Vai trò tại thời điểm thao tác |
+| 8 | loaiHanhDong | LoaiHanhDong | Loại hành động được ghi log |
+| 9 | doiTuongBiTacDong | String | Tên module hoặc đối tượng bị tác động |
+| 10 | maDoiTuong | String | Mã đối tượng bị tác động |
+| 11 | moTaChiTiet | String | Mô tả chi tiết thay đổi |
+| 12 | giaTriTruoc | String | Giá trị trước khi thay đổi |
+| 13 | giaTriSau | String | Giá trị sau khi thay đổi |
+| 14 | diaChiIP | String | Địa chỉ IP của người thao tác |
+
+**Bảng phương thức:**
+
+| STT | Phương thức | Tham số | Kiểu trả về | Mô tả |
+|-----|------------|---------|-------------|-------|
+| 1 | create() | NhatKyHeThong nhatKyHeThong | NhatKyHeThong | Tạo mới bản ghi nhật ký |
+| 2 | update() | NhatKyHeThong nhatKyHeThong | NhatKyHeThong | Cập nhật bản ghi log |
+| 3 | delete() | Long id | Boolean | Xóa mềm bản ghi log |
+| 4 | findById() | Long id | NhatKyHeThong | Tìm log theo mã định danh |
+| 5 | findAll() | Không | List<NhatKyHeThong> | Lấy danh sách toàn bộ log |
+| 6 | recordAction() | TaiKhoan taiKhoan, LoaiHanhDong loaiHanhDong, String doiTuong | NhatKyHeThong | Ghi nhận một thao tác hệ thống |
+| 7 | exportByFilter() | String boLoc | String | Xuất nhật ký theo điều kiện lọc |
+
+### 5.1.15. CauHinhHeThong (Cấu hình hệ thống) — *«entity»*
+
+> Lớp lưu các cấu hình ở mức toàn hệ thống, đặc biệt là cấu hình ẩn/hiện mục khen thưởng và kỷ luật theo vai trò. Lớp này giúp thay đổi hành vi hiển thị mà không cần sửa mã nguồn.
+
+**Bảng thuộc tính:**
+
+| STT | Thuộc tính | Kiểu dữ liệu | Mô tả |
+|-----|-----------|--------------|-------|
+| 1 | id | Long | Mã định danh cấu hình |
+| 2 | ngayTao | LocalDateTime | Thời điểm tạo cấu hình |
+| 3 | ngayCapNhat | LocalDateTime | Thời điểm cập nhật gần nhất |
+| 4 | nhomCauHinh | String | Nhóm cấu hình nghiệp vụ |
+| 5 | tenCauHinh | String | Tên cấu hình cụ thể |
+| 6 | giaTri | String | Giá trị cấu hình đang áp dụng |
+| 7 | vaiTroApDung | VaiTro | Vai trò được áp dụng cấu hình |
+
+**Bảng phương thức:**
+
+| STT | Phương thức | Tham số | Kiểu trả về | Mô tả |
+|-----|------------|---------|-------------|-------|
+| 1 | create() | CauHinhHeThong cauHinhHeThong | CauHinhHeThong | Tạo mới cấu hình hệ thống |
+| 2 | update() | CauHinhHeThong cauHinhHeThong | CauHinhHeThong | Cập nhật cấu hình hệ thống |
+| 3 | delete() | Long id | Boolean | Xóa mềm cấu hình |
+| 4 | findById() | Long id | CauHinhHeThong | Tìm cấu hình theo mã định danh |
+| 5 | findAll() | Không | List<CauHinhHeThong> | Lấy toàn bộ cấu hình hệ thống |
+| 6 | applyVisibilitySetting() | VaiTro vaiTro, String giaTri | Void | Áp dụng cấu hình ẩn/hiện cho vai trò |
+| 7 | isAppliedToRole() | VaiTro vaiTro | Boolean | Kiểm tra cấu hình có áp dụng cho vai trò hay không |
+
+### 5.1.16. HeSoLuong (Hệ số lương) — *«entity»*
+
+> Lớp lưu danh mục hệ số lương theo ngạch và bậc phục vụ nhập liệu hồ sơ nhân sự. Đây là dữ liệu tham chiếu dùng cho quản lý lương và thống kê nhân sự.
+
+**Bảng thuộc tính:**
+
+| STT | Thuộc tính | Kiểu dữ liệu | Mô tả |
+|-----|-----------|--------------|-------|
+| 1 | id | Long | Mã định danh hệ số lương |
+| 2 | ngayTao | LocalDateTime | Thời điểm tạo bản ghi |
+| 3 | ngayCapNhat | LocalDateTime | Thời điểm cập nhật gần nhất |
+| 4 | ngachVienChuc | String | Ngạch viên chức tương ứng |
+| 5 | bacLuong | Integer | Bậc lương trong ngạch |
+| 6 | heSoLuong | Double | Giá trị hệ số lương |
+| 7 | trangThai | TrangThaiDanhMuc | Trạng thái sử dụng của danh mục |
+
+**Bảng phương thức:**
+
+| STT | Phương thức | Tham số | Kiểu trả về | Mô tả |
+|-----|------------|---------|-------------|-------|
+| 1 | create() | HeSoLuong heSoLuong | HeSoLuong | Tạo mới hệ số lương |
+| 2 | update() | HeSoLuong heSoLuong | HeSoLuong | Cập nhật hệ số lương |
+| 3 | delete() | Long id | Boolean | Xóa mềm hệ số lương |
+| 4 | findById() | Long id | HeSoLuong | Tìm hệ số lương theo mã định danh |
+| 5 | findAll() | Không | List<HeSoLuong> | Lấy danh sách hệ số lương |
+| 6 | activate() | Không | Void | Kích hoạt lại hệ số lương |
+| 7 | deactivate() | Không | Void | Ngừng sử dụng hệ số lương |
+| 8 | validateScale() | Không | Boolean | Kiểm tra ngạch, bậc và hệ số hợp lệ |
+
+### 5.1.17. LoaiPhuCap (Loại phụ cấp) — *«entity»*
+
+> Lớp lưu danh mục các loại phụ cấp có thể áp dụng cho nhân sự. Dữ liệu này hỗ trợ nhập liệu hồ sơ, hiển thị chế độ lương và quản trị trạng thái sử dụng danh mục.
+
+**Bảng thuộc tính:**
+
+| STT | Thuộc tính | Kiểu dữ liệu | Mô tả |
+|-----|-----------|--------------|-------|
+| 1 | id | Long | Mã định danh loại phụ cấp |
+| 2 | ngayTao | LocalDateTime | Thời điểm tạo bản ghi |
+| 3 | ngayCapNhat | LocalDateTime | Thời điểm cập nhật gần nhất |
+| 4 | tenLoaiPhuCap | String | Tên loại phụ cấp |
+| 5 | moTa | String | Mô tả chi tiết loại phụ cấp |
+| 6 | cachTinh | String | Quy tắc hoặc cách tính phụ cấp |
+| 7 | trangThai | TrangThaiDanhMuc | Trạng thái sử dụng của danh mục |
+
+**Bảng phương thức:**
+
+| STT | Phương thức | Tham số | Kiểu trả về | Mô tả |
+|-----|------------|---------|-------------|-------|
+| 1 | create() | LoaiPhuCap loaiPhuCap | LoaiPhuCap | Tạo mới loại phụ cấp |
+| 2 | update() | LoaiPhuCap loaiPhuCap | LoaiPhuCap | Cập nhật loại phụ cấp |
+| 3 | delete() | Long id | Boolean | Xóa mềm loại phụ cấp |
+| 4 | findById() | Long id | LoaiPhuCap | Tìm loại phụ cấp theo mã định danh |
+| 5 | findAll() | Không | List<LoaiPhuCap> | Lấy danh sách toàn bộ loại phụ cấp |
+| 6 | activate() | Không | Void | Kích hoạt lại loại phụ cấp |
+| 7 | deactivate() | Không | Void | Ngừng sử dụng loại phụ cấp |
+| 8 | estimateValue() | Double coSoTinh | Double | Ước tính giá trị phụ cấp theo cách tính |
+
+### 5.1.18. LoaiHopDong (Loại hợp đồng) — *«entity»*
+
+> Lớp lưu danh mục loại hợp đồng theo quy định, bao gồm các ràng buộc về thời hạn và gia hạn. Lớp này là tham chiếu bắt buộc cho việc tạo và kiểm tra hợp đồng lao động.
+
+**Bảng thuộc tính:**
+
+| STT | Thuộc tính | Kiểu dữ liệu | Mô tả |
+|-----|-----------|--------------|-------|
+| 1 | id | Long | Mã định danh loại hợp đồng |
+| 2 | ngayTao | LocalDateTime | Thời điểm tạo bản ghi |
+| 3 | ngayCapNhat | LocalDateTime | Thời điểm cập nhật gần nhất |
+| 4 | tenLoaiHopDong | String | Tên loại hợp đồng |
+| 5 | soThangToiThieu | Integer | Số tháng tối thiểu được phép |
+| 6 | soThangToiDa | Integer | Số tháng tối đa được phép |
+| 7 | soLanGiaHanToiDa | Integer | Số lần gia hạn tối đa |
+| 8 | thoiGianChoGiaHan | Integer | Số ngày cho phép chờ gia hạn |
+| 9 | trangThai | TrangThaiDanhMuc | Trạng thái sử dụng của danh mục |
+
+**Bảng phương thức:**
+
+| STT | Phương thức | Tham số | Kiểu trả về | Mô tả |
+|-----|------------|---------|-------------|-------|
+| 1 | create() | LoaiHopDong loaiHopDong | LoaiHopDong | Tạo mới loại hợp đồng |
+| 2 | update() | LoaiHopDong loaiHopDong | LoaiHopDong | Cập nhật loại hợp đồng |
+| 3 | delete() | Long id | Boolean | Xóa mềm loại hợp đồng |
+| 4 | findById() | Long id | LoaiHopDong | Tìm loại hợp đồng theo mã định danh |
+| 5 | findAll() | Không | List<LoaiHopDong> | Lấy danh sách loại hợp đồng |
+| 6 | activate() | Không | Void | Kích hoạt lại loại hợp đồng |
+| 7 | deactivate() | Không | Void | Ngừng sử dụng loại hợp đồng |
+| 8 | validateDuration() | Integer soThang | Boolean | Kiểm tra thời hạn hợp đồng có hợp lệ hay không |
+| 9 | canRenew() | Integer soLanDaGiaHan | Boolean | Kiểm tra còn được phép gia hạn hay không |
+
+### 5.1.19. PhuCapNhanSu (Phụ cấp nhân sự) — *«entity»*
+
+> Lớp trung gian biểu diễn loại phụ cấp cụ thể được gán cho một nhân sự cùng giá trị áp dụng. Lớp này hỗ trợ quản lý nhiều phụ cấp trên cùng một hồ sơ nhân sự.
+
+**Bảng thuộc tính:**
+
+| STT | Thuộc tính | Kiểu dữ liệu | Mô tả |
+|-----|-----------|--------------|-------|
+| 1 | id | Long | Mã định danh phụ cấp nhân sự |
+| 2 | ngayTao | LocalDateTime | Thời điểm tạo bản ghi |
+| 3 | ngayCapNhat | LocalDateTime | Thời điểm cập nhật gần nhất |
+| 4 | nhanSu | HoSoNhanSu | Nhân sự được hưởng phụ cấp |
+| 5 | loaiPhuCap | LoaiPhuCap | Loại phụ cấp được áp dụng |
+| 6 | giaTri | Double | Giá trị phụ cấp thực tế |
+
+**Bảng phương thức:**
+
+| STT | Phương thức | Tham số | Kiểu trả về | Mô tả |
+|-----|------------|---------|-------------|-------|
+| 1 | create() | PhuCapNhanSu phuCapNhanSu | PhuCapNhanSu | Tạo mới phụ cấp cho nhân sự |
+| 2 | update() | PhuCapNhanSu phuCapNhanSu | PhuCapNhanSu | Cập nhật phụ cấp nhân sự |
+| 3 | delete() | Long id | Boolean | Xóa mềm phụ cấp nhân sự |
+| 4 | findById() | Long id | PhuCapNhanSu | Tìm phụ cấp theo mã định danh |
+| 5 | findAll() | Không | List<PhuCapNhanSu> | Lấy danh sách phụ cấp nhân sự |
+| 6 | assignAllowance() | HoSoNhanSu nhanSu, LoaiPhuCap loaiPhuCap, Double giaTri | PhuCapNhanSu | Gán loại phụ cấp cho nhân sự |
+| 7 | updateAllowanceValue() | Double giaTri | Void | Cập nhật giá trị phụ cấp thực tế |
+
+### 5.1.20. VaiTro (Vai trò) — *«enumeration»*
+
+> Liệt kê các vai trò người dùng được hệ thống HRMS hỗ trợ để phục vụ RBAC và kiểm soát hiển thị chức năng.
+
+**Bảng thuộc tính:**
+
+| STT | Thuộc tính | Kiểu dữ liệu | Mô tả |
+|-----|-----------|--------------|-------|
+| 1 | ADMIN | VaiTro | Quản trị viên hệ thống |
+| 2 | TCCB | VaiTro | Cán bộ Phòng Tổ chức - Cán bộ |
+| 3 | TCKT | VaiTro | Cán bộ Phòng Tài chính - Kế toán |
+| 4 | EMPLOYEE | VaiTro | Cán bộ, giảng viên hoặc nhân viên |
+
+**Bảng phương thức:**
+
+| STT | Phương thức | Tham số | Kiểu trả về | Mô tả |
+|-----|------------|---------|-------------|-------|
+| 1 | getValues() | Không | List<VaiTro> | Trả về toàn bộ các vai trò |
+| 2 | fromValue() | String value | VaiTro | Chuyển chuỗi sang giá trị vai trò tương ứng |
+
+### 5.1.21. TrangThaiTaiKhoan (Trạng thái tài khoản) — *«enumeration»*
+
+> Liệt kê các trạng thái vận hành của tài khoản người dùng trong hệ thống.
+
+**Bảng thuộc tính:**
+
+| STT | Thuộc tính | Kiểu dữ liệu | Mô tả |
+|-----|-----------|--------------|-------|
+| 1 | DANG_HOAT_DONG | TrangThaiTaiKhoan | Tài khoản đang được phép sử dụng |
+| 2 | BI_KHOA | TrangThaiTaiKhoan | Tài khoản bị khóa, không thể đăng nhập |
+
+**Bảng phương thức:**
+
+| STT | Phương thức | Tham số | Kiểu trả về | Mô tả |
+|-----|------------|---------|-------------|-------|
+| 1 | getValues() | Không | List<TrangThaiTaiKhoan> | Trả về tập trạng thái tài khoản |
+| 2 | fromValue() | String value | TrangThaiTaiKhoan | Chuyển chuỗi sang trạng thái tài khoản |
+
+### 5.1.22. TrangThaiDonVi (Trạng thái đơn vị) — *«enumeration»*
+
+> Liệt kê các trạng thái nghiệp vụ của đơn vị tổ chức trong cơ cấu trường.
+
+**Bảng thuộc tính:**
+
+| STT | Thuộc tính | Kiểu dữ liệu | Mô tả |
+|-----|-----------|--------------|-------|
+| 1 | DANG_HOAT_DONG | TrangThaiDonVi | Đơn vị đang hoạt động bình thường |
+| 2 | GIAI_THE | TrangThaiDonVi | Đơn vị đã giải thể |
+| 3 | SAP_NHAP | TrangThaiDonVi | Đơn vị đã sáp nhập vào đơn vị khác |
+
+**Bảng phương thức:**
+
+| STT | Phương thức | Tham số | Kiểu trả về | Mô tả |
+|-----|------------|---------|-------------|-------|
+| 1 | getValues() | Không | List<TrangThaiDonVi> | Trả về tập trạng thái đơn vị |
+| 2 | fromValue() | String value | TrangThaiDonVi | Chuyển chuỗi sang trạng thái đơn vị |
+
+### 5.1.23. LoaiDonVi (Loại đơn vị) — *«enumeration»*
+
+> Liệt kê các loại đơn vị xuất hiện trong cây cơ cấu tổ chức của Trường Đại học Thủy Lợi.
+
+**Bảng thuộc tính:**
+
+| STT | Thuộc tính | Kiểu dữ liệu | Mô tả |
+|-----|-----------|--------------|-------|
+| 1 | HOI_DONG | LoaiDonVi | Hội đồng |
+| 2 | BAN | LoaiDonVi | Ban |
+| 3 | KHOA | LoaiDonVi | Khoa |
+| 4 | PHONG | LoaiDonVi | Phòng |
+| 5 | BO_MON | LoaiDonVi | Bộ môn |
+| 6 | PHONG_THI_NGHIEM | LoaiDonVi | Phòng thí nghiệm |
+| 7 | TRUNG_TAM | LoaiDonVi | Trung tâm |
+
+**Bảng phương thức:**
+
+| STT | Phương thức | Tham số | Kiểu trả về | Mô tả |
+|-----|------------|---------|-------------|-------|
+| 1 | getValues() | Không | List<LoaiDonVi> | Trả về tập loại đơn vị |
+| 2 | fromValue() | String value | LoaiDonVi | Chuyển chuỗi sang loại đơn vị |
+
+### 5.1.24. TrangThaiHopDong (Trạng thái hợp đồng) — *«enumeration»*
+
+> Liệt kê trạng thái vòng đời của từng hợp đồng lao động.
+
+**Bảng thuộc tính:**
+
+| STT | Thuộc tính | Kiểu dữ liệu | Mô tả |
+|-----|-----------|--------------|-------|
+| 1 | CHUA_CO_HIEU_LUC | TrangThaiHopDong | Hợp đồng đã tạo nhưng chưa đến ngày hiệu lực |
+| 2 | CON_HIEU_LUC | TrangThaiHopDong | Hợp đồng đang có hiệu lực |
+| 3 | CHO_GIA_HAN | TrangThaiHopDong | Hợp đồng đang ở giai đoạn chờ gia hạn |
+| 4 | HET_HIEU_LUC | TrangThaiHopDong | Hợp đồng đã hết hiệu lực |
+
+**Bảng phương thức:**
+
+| STT | Phương thức | Tham số | Kiểu trả về | Mô tả |
+|-----|------------|---------|-------------|-------|
+| 1 | getValues() | Không | List<TrangThaiHopDong> | Trả về tập trạng thái hợp đồng |
+| 2 | fromValue() | String value | TrangThaiHopDong | Chuyển chuỗi sang trạng thái hợp đồng |
+
+### 5.1.25. TrangThaiLamViec (Trạng thái làm việc) — *«enumeration»*
+
+> Liệt kê trạng thái làm việc tổng quát của nhân sự trong trường.
+
+**Bảng thuộc tính:**
+
+| STT | Thuộc tính | Kiểu dữ liệu | Mô tả |
+|-----|-----------|--------------|-------|
+| 1 | DANG_CHO_XET | TrangThaiLamViec | Nhân sự chưa được bố trí công tác chính thức |
+| 2 | DANG_CONG_TAC | TrangThaiLamViec | Nhân sự đang công tác tại đơn vị |
+| 3 | DA_THOI_VIEC | TrangThaiLamViec | Nhân sự đã thôi việc |
+
+**Bảng phương thức:**
+
+| STT | Phương thức | Tham số | Kiểu trả về | Mô tả |
+|-----|------------|---------|-------------|-------|
+| 1 | getValues() | Không | List<TrangThaiLamViec> | Trả về tập trạng thái làm việc |
+| 2 | fromValue() | String value | TrangThaiLamViec | Chuyển chuỗi sang trạng thái làm việc |
+
+### 5.1.26. TrangThaiHopDongNhanSu (Trạng thái hợp đồng nhân sự) — *«enumeration»*
+
+> Liệt kê trạng thái hợp đồng tổng quát ở cấp hồ sơ nhân sự, được tổng hợp từ hợp đồng mới nhất hoặc hợp đồng đang hiệu lực.
+
+**Bảng thuộc tính:**
+
+| STT | Thuộc tính | Kiểu dữ liệu | Mô tả |
+|-----|-----------|--------------|-------|
+| 1 | CHUA_HOP_DONG | TrangThaiHopDongNhanSu | Nhân sự chưa có hợp đồng |
+| 2 | CON_HIEU_LUC | TrangThaiHopDongNhanSu | Nhân sự đang có hợp đồng còn hiệu lực |
+| 3 | HET_HIEU_LUC | TrangThaiHopDongNhanSu | Toàn bộ hợp đồng của nhân sự đã hết hiệu lực |
+| 4 | CHO_GIA_HAN | TrangThaiHopDongNhanSu | Nhân sự đang ở giai đoạn chờ gia hạn hợp đồng |
+
+**Bảng phương thức:**
+
+| STT | Phương thức | Tham số | Kiểu trả về | Mô tả |
+|-----|------------|---------|-------------|-------|
+| 1 | getValues() | Không | List<TrangThaiHopDongNhanSu> | Trả về tập trạng thái hợp đồng nhân sự |
+| 2 | fromValue() | String value | TrangThaiHopDongNhanSu | Chuyển chuỗi sang trạng thái hợp đồng nhân sự |
+
+### 5.1.27. TrangThaiKhoaDaoTao (Trạng thái khóa đào tạo) — *«enumeration»*
+
+> Liệt kê các trạng thái tổ chức của một khóa đào tạo theo vòng đời đào tạo.
+
+**Bảng thuộc tính:**
+
+| STT | Thuộc tính | Kiểu dữ liệu | Mô tả |
+|-----|-----------|--------------|-------|
+| 1 | DANG_MO_DANG_KY | TrangThaiKhoaDaoTao | Khóa đang mở cho đăng ký |
+| 2 | DANG_DAO_TAO | TrangThaiKhoaDaoTao | Khóa đang diễn ra |
+| 3 | DA_HOAN_THANH | TrangThaiKhoaDaoTao | Khóa đã hoàn thành |
+
+**Bảng phương thức:**
+
+| STT | Phương thức | Tham số | Kiểu trả về | Mô tả |
+|-----|------------|---------|-------------|-------|
+| 1 | getValues() | Không | List<TrangThaiKhoaDaoTao> | Trả về tập trạng thái khóa đào tạo |
+| 2 | fromValue() | String value | TrangThaiKhoaDaoTao | Chuyển chuỗi sang trạng thái khóa đào tạo |
+
+### 5.1.28. TrangThaiThamGia (Trạng thái tham gia) — *«enumeration»*
+
+> Liệt kê các trạng thái tham gia của một nhân sự đối với một khóa đào tạo.
+
+**Bảng thuộc tính:**
+
+| STT | Thuộc tính | Kiểu dữ liệu | Mô tả |
+|-----|-----------|--------------|-------|
+| 1 | DA_DANG_KY | TrangThaiThamGia | Đã đăng ký tham gia khóa học |
+| 2 | DANG_HOC | TrangThaiThamGia | Đang học hoặc đang tham gia |
+| 3 | HOAN_THANH | TrangThaiThamGia | Hoàn thành khóa đào tạo |
+| 4 | KHONG_DAT | TrangThaiThamGia | Không đạt yêu cầu sau đào tạo |
+
+**Bảng phương thức:**
+
+| STT | Phương thức | Tham số | Kiểu trả về | Mô tả |
+|-----|------------|---------|-------------|-------|
+| 1 | getValues() | Không | List<TrangThaiThamGia> | Trả về tập trạng thái tham gia |
+| 2 | fromValue() | String value | TrangThaiThamGia | Chuyển chuỗi sang trạng thái tham gia |
+
+### 5.1.29. LoaiDanhGia (Loại đánh giá) — *«enumeration»*
+
+> Liệt kê hai nhóm bản ghi đánh giá chính trong hệ thống nhân sự.
+
+**Bảng thuộc tính:**
+
+| STT | Thuộc tính | Kiểu dữ liệu | Mô tả |
+|-----|-----------|--------------|-------|
+| 1 | KHEN_THUONG | LoaiDanhGia | Bản ghi thuộc nhóm khen thưởng |
+| 2 | KY_LUAT | LoaiDanhGia | Bản ghi thuộc nhóm kỷ luật |
+
+**Bảng phương thức:**
+
+| STT | Phương thức | Tham số | Kiểu trả về | Mô tả |
+|-----|------------|---------|-------------|-------|
+| 1 | getValues() | Không | List<LoaiDanhGia> | Trả về tập loại đánh giá |
+| 2 | fromValue() | String value | LoaiDanhGia | Chuyển chuỗi sang loại đánh giá |
+
+### 5.1.30. LoaiHanhDong (Loại hành động) — *«enumeration»*
+
+> Liệt kê các hành động quan trọng được hệ thống ghi nhận vào nhật ký kiểm toán.
+
+**Bảng thuộc tính:**
+
+| STT | Thuộc tính | Kiểu dữ liệu | Mô tả |
+|-----|-----------|--------------|-------|
+| 1 | DANG_NHAP | LoaiHanhDong | Hành động đăng nhập |
+| 2 | DANG_XUAT | LoaiHanhDong | Hành động đăng xuất |
+| 3 | THEM | LoaiHanhDong | Hành động thêm dữ liệu |
+| 4 | SUA | LoaiHanhDong | Hành động sửa dữ liệu |
+| 5 | PHAN_QUYEN | LoaiHanhDong | Hành động phân quyền tài khoản |
+| 6 | THAY_DOI_TRANG_THAI | LoaiHanhDong | Hành động thay đổi trạng thái đối tượng |
+
+**Bảng phương thức:**
+
+| STT | Phương thức | Tham số | Kiểu trả về | Mô tả |
+|-----|------------|---------|-------------|-------|
+| 1 | getValues() | Không | List<LoaiHanhDong> | Trả về tập loại hành động |
+| 2 | fromValue() | String value | LoaiHanhDong | Chuyển chuỗi sang loại hành động |
+
+### 5.1.31. TrangThaiDanhMuc (Trạng thái danh mục) — *«enumeration»*
+
+> Liệt kê trạng thái sử dụng của các danh mục cấu hình như hệ số lương, loại phụ cấp và loại hợp đồng.
+
+**Bảng thuộc tính:**
+
+| STT | Thuộc tính | Kiểu dữ liệu | Mô tả |
+|-----|-----------|--------------|-------|
+| 1 | DANG_SU_DUNG | TrangThaiDanhMuc | Danh mục đang được phép chọn và áp dụng |
+| 2 | NGUNG_SU_DUNG | TrangThaiDanhMuc | Danh mục bị ngừng sử dụng nhưng vẫn giữ lịch sử |
+
+**Bảng phương thức:**
+
+| STT | Phương thức | Tham số | Kiểu trả về | Mô tả |
+|-----|------------|---------|-------------|-------|
+| 1 | getValues() | Không | List<TrangThaiDanhMuc> | Trả về tập trạng thái danh mục |
+| 2 | fromValue() | String value | TrangThaiDanhMuc | Chuyển chuỗi sang trạng thái danh mục |
+
+### 5.1.32. GioiTinh (Giới tính) — *«enumeration»*
+
+> Liệt kê các giá trị giới tính được sử dụng thống nhất trong hồ sơ nhân sự và bộ lọc tra cứu.
+
+**Bảng thuộc tính:**
+
+| STT | Thuộc tính | Kiểu dữ liệu | Mô tả |
+|-----|-----------|--------------|-------|
+| 1 | NAM | GioiTinh | Giới tính nam |
+| 2 | NU | GioiTinh | Giới tính nữ |
+
+**Bảng phương thức:**
+
+| STT | Phương thức | Tham số | Kiểu trả về | Mô tả |
+|-----|------------|---------|-------------|-------|
+| 1 | getValues() | Không | List<GioiTinh> | Trả về tập giá trị giới tính |
+| 2 | fromValue() | String value | GioiTinh | Chuyển chuỗi sang giá trị giới tính |
+
+## 5.2. Biểu đồ lớp tổng quát
 
 ```mermaid
 classDiagram
-    direction TB
+    class TaiKhoan {
+        <<entity>>
+        +Long id
+        +String tenDangNhap
+        +String email
+        +VaiTro vaiTro
+        +TrangThaiTaiKhoan trangThai
+    }
 
-    %% ===== ENUMERATIONS =====
+    class HoSoNhanSu {
+        <<entity>>
+        +Long id
+        +String maCBo
+        +String hoTen
+        +TrangThaiLamViec trangThaiLamViec
+        +TrangThaiHopDongNhanSu trangThaiHopDong
+    }
+
+    class ThongTinGiaDinh {
+        <<entity>>
+        +Long id
+        +String moiQuanHe
+        +String hoTen
+        +Boolean laNguoiPhuThuoc
+    }
+
+    class ThongTinNganHang {
+        <<entity>>
+        +Long id
+        +String tenNganHang
+        +String soTaiKhoan
+    }
+
+    class QuaTrinhCongTac {
+        <<entity>>
+        +Long id
+        +String noiCongTac
+        +LocalDate thoiGianBatDau
+        +LocalDate thoiGianKetThuc
+    }
+
+    class BangCap {
+        <<entity>>
+        +Long id
+        +String tenBang
+        +String truong
+        +Integer namTotNghiep
+    }
+
+    class ChungChi {
+        <<entity>>
+        +Long id
+        +String tenChungChi
+        +LocalDate ngayCap
+        +LocalDate ngayHetHan
+    }
+
+    class DonViToChuc {
+        <<entity>>
+        +Long id
+        +String maDonVi
+        +String tenDonVi
+        +LoaiDonVi loaiDonVi
+        +TrangThaiDonVi trangThai
+    }
+
+    class HopDongLaoDong {
+        <<entity>>
+        +Long id
+        +String soHD
+        +LocalDate ngayHieuLuc
+        +LocalDate ngayHetHan
+        +TrangThaiHopDong trangThai
+    }
+
+    class BoNhiem {
+        <<entity>>
+        +Long id
+        +String chucVu
+        +LocalDate ngayBatDau
+        +LocalDate ngayKetThuc
+    }
+
+    class DanhGia {
+        <<entity>>
+        +Long id
+        +LoaiDanhGia loaiDanhGia
+        +LocalDate ngayQuyetDinh
+        +String soQuyetDinh
+    }
+
+    class KhoaDaoTao {
+        <<entity>>
+        +Long id
+        +String tenKhoa
+        +LocalDate thoiGianBatDau
+        +LocalDate thoiGianKetThuc
+        +TrangThaiKhoaDaoTao trangThai
+    }
+
+    class DangKyDaoTao {
+        <<entity>>
+        +Long id
+        +LocalDateTime thoiDiemDangKy
+        +TrangThaiThamGia trangThaiThamGia
+        +LocalDate ngayHoanThanh
+    }
+
+    class NhatKyHeThong {
+        <<entity>>
+        +Long id
+        +LocalDateTime thoiGianThaoTac
+        +LoaiHanhDong loaiHanhDong
+        +String doiTuongBiTacDong
+        +String diaChiIP
+    }
+
+    class CauHinhHeThong {
+        <<entity>>
+        +Long id
+        +String nhomCauHinh
+        +String tenCauHinh
+        +String giaTri
+        +VaiTro vaiTroApDung
+    }
+
+    class HeSoLuong {
+        <<entity>>
+        +Long id
+        +String ngachVienChuc
+        +Integer bacLuong
+        +Double heSoLuong
+        +TrangThaiDanhMuc trangThai
+    }
+
+    class LoaiPhuCap {
+        <<entity>>
+        +Long id
+        +String tenLoaiPhuCap
+        +String cachTinh
+        +TrangThaiDanhMuc trangThai
+    }
+
+    class LoaiHopDong {
+        <<entity>>
+        +Long id
+        +String tenLoaiHopDong
+        +Integer soThangToiDa
+        +Integer soLanGiaHanToiDa
+        +TrangThaiDanhMuc trangThai
+    }
+
+    class PhuCapNhanSu {
+        <<entity>>
+        +Long id
+        +Double giaTri
+    }
 
     class VaiTro {
         <<enumeration>>
-        QUAN_TRI_VIEN
-        CAN_BO_TCCB
-        CAN_BO_TCKT
-        CAN_BO_NHAN_SU
+        ADMIN
+        TCCB
+        TCKT
+        EMPLOYEE
     }
 
     class TrangThaiTaiKhoan {
@@ -750,19 +1057,11 @@ classDiagram
         BI_KHOA
     }
 
-    class TrangThaiLamViec {
+    class TrangThaiDonVi {
         <<enumeration>>
-        DANG_CHO_XET
-        DANG_CONG_TAC
-        DA_THOI_VIEC
-    }
-
-    class TrangThaiHopDongNS {
-        <<enumeration>>
-        CHUA_HOP_DONG
-        CON_HIEU_LUC
-        HET_HIEU_LUC
-        CHO_GIA_HAN
+        DANG_HOAT_DONG
+        GIAI_THE
+        SAP_NHAP
     }
 
     class LoaiDonVi {
@@ -776,24 +1075,27 @@ classDiagram
         TRUNG_TAM
     }
 
-    class TrangThaiDonVi {
-        <<enumeration>>
-        DANG_HOAT_DONG
-        GIAI_THE
-        SAP_NHAP
-    }
-
     class TrangThaiHopDong {
         <<enumeration>>
-        CHUA_HIEU_LUC
+        CHUA_CO_HIEU_LUC
         CON_HIEU_LUC
+        CHO_GIA_HAN
         HET_HIEU_LUC
     }
 
-    class TrangThaiDanhMuc {
+    class TrangThaiLamViec {
         <<enumeration>>
-        DANG_SU_DUNG
-        NGUNG_SU_DUNG
+        DANG_CHO_XET
+        DANG_CONG_TAC
+        DA_THOI_VIEC
+    }
+
+    class TrangThaiHopDongNhanSu {
+        <<enumeration>>
+        CHUA_HOP_DONG
+        CON_HIEU_LUC
+        HET_HIEU_LUC
+        CHO_GIA_HAN
     }
 
     class TrangThaiKhoaDaoTao {
@@ -811,414 +1113,513 @@ classDiagram
         KHONG_DAT
     }
 
-    %% ===== CORE ENTITIES =====
+    class LoaiDanhGia {
+        <<enumeration>>
+        KHEN_THUONG
+        KY_LUAT
+    }
 
+    class LoaiHanhDong {
+        <<enumeration>>
+        DANG_NHAP
+        DANG_XUAT
+        THEM
+        SUA
+        PHAN_QUYEN
+        THAY_DOI_TRANG_THAI
+    }
+
+    class TrangThaiDanhMuc {
+        <<enumeration>>
+        DANG_SU_DUNG
+        NGUNG_SU_DUNG
+    }
+
+    class GioiTinh {
+        <<enumeration>>
+        NAM
+        NU
+    }
+
+    TaiKhoan "1" --> "0..1" HoSoNhanSu : liên kết
+    HoSoNhanSu "1" *-- "0..*" ThongTinGiaDinh : có
+    HoSoNhanSu "1" *-- "1" ThongTinNganHang : có
+    HoSoNhanSu "1" *-- "0..*" QuaTrinhCongTac : có
+    HoSoNhanSu "1" *-- "0..*" BangCap : có
+    HoSoNhanSu "1" *-- "0..*" ChungChi : có
+    HoSoNhanSu "1" o-- "0..*" HopDongLaoDong : có
+    HoSoNhanSu "1" o-- "0..*" DanhGia : có
+    HoSoNhanSu "1" o-- "0..*" BoNhiem : có
+    HoSoNhanSu "1" o-- "0..*" DangKyDaoTao : có
+    HoSoNhanSu "1" o-- "0..*" PhuCapNhanSu : có
+    DonViToChuc "0..1" o-- "0..*" DonViToChuc : cha/con
+    DonViToChuc "1" o-- "0..*" BoNhiem : quản lý
+    HopDongLaoDong "0..*" --> "1" LoaiHopDong : thuộc loại
+    HopDongLaoDong "0..*" --> "1" DonViToChuc : công tác tại
+    KhoaDaoTao "1" o-- "0..*" DangKyDaoTao : có
+    PhuCapNhanSu "0..*" --> "1" LoaiPhuCap : thuộc loại
+    NhatKyHeThong "0..*" --> "1" TaiKhoan : ghi bởi
+    HoSoNhanSu "0..*" --> "1" HeSoLuong : áp dụng
+    TaiKhoan "0..*" --> "1" VaiTro : gán vai trò
+    TaiKhoan "0..*" --> "1" TrangThaiTaiKhoan : có trạng thái
+    DonViToChuc "0..*" --> "1" LoaiDonVi : phân loại
+    DonViToChuc "0..*" --> "1" TrangThaiDonVi : có trạng thái
+    HoSoNhanSu "0..*" --> "1" GioiTinh : có giới tính
+    HoSoNhanSu "0..*" --> "1" TrangThaiLamViec : làm việc
+    HoSoNhanSu "0..*" --> "1" TrangThaiHopDongNhanSu : hợp đồng tổng quát
+    HopDongLaoDong "0..*" --> "1" TrangThaiHopDong : trạng thái
+    DanhGia "0..*" --> "1" LoaiDanhGia : phân loại
+    KhoaDaoTao "0..*" --> "1" TrangThaiKhoaDaoTao : trạng thái
+    DangKyDaoTao "0..*" --> "1" TrangThaiThamGia : tham gia
+    NhatKyHeThong "0..*" --> "1" LoaiHanhDong : hành động
+    NhatKyHeThong "0..*" --> "1" VaiTro : vai trò thực hiện
+    HeSoLuong "0..*" --> "1" TrangThaiDanhMuc : trạng thái
+    LoaiPhuCap "0..*" --> "1" TrangThaiDanhMuc : trạng thái
+    LoaiHopDong "0..*" --> "1" TrangThaiDanhMuc : trạng thái
+    CauHinhHeThong "0..*" --> "1" VaiTro : áp dụng cho
+```
+
+## 5.3. Biểu đồ lớp chi tiết theo nhóm chức năng
+
+### 5.3.1. Nhóm Hệ thống & Tài khoản
+
+```mermaid
+classDiagram
     class TaiKhoan {
-        -String maCanBo
-        -String email
-        -String matKhau
-        -VaiTro vaiTro
-        -TrangThaiTaiKhoan trangThai
-        +dangNhap()
-        +dangXuat()
-        +doiMatKhau()
-        +khoaTaiKhoan()
-        +moKhoaTaiKhoan()
-        +phanQuyen()
+        <<entity>>
+        +String tenDangNhap
+        +String email
+        +VaiTro vaiTro
+        +TrangThaiTaiKhoan trangThai
     }
 
-    class NhanSu {
-        -String maCanBo
-        -String hoTen
-        -Date ngaySinh
-        -String gioiTinh
-        -String soCCCD
-        -String queQuan
-        -String diaChi
-        -String maSoThue
-        -String soBHXH
-        -String soBHYT
-        -String email
-        -String soDienThoai
-        -File anhChanDung
-        -String trinhDoVanHoa
-        -String trinhDoDaoTao
-        -String chucDanhNgheNghiep
-        -String chucDanhKhoaHoc
-        -Boolean laNguoiNuocNgoai
-        -TrangThaiLamViec trangThaiLamViec
-        -TrangThaiHopDongNS trangThaiHopDong
-        -Date ngayThoiViec
-        -String lyDoThoiViec
-        +themMoi()
-        +chinhSua()
-        +danhDauThoiViec()
-        +xemChiTiet()
-        +inHoSo()
-        +xuatExcel()
+    class HoSoNhanSu {
+        <<entity>>
+        +String maCBo
+        +String hoTen
     }
 
-    class ThongTinNguoiNuocNgoai {
-        <<value object>>
-        -String soVisa
-        -Date ngayHetHanVisa
-        -String soHoChieu
-        -Date ngayHetHanHoChieu
-        -String soGiayPhepLaoDong
-        -Date ngayHetHanGPLD
-        -File fileGPLD
+    class NhatKyHeThong {
+        <<entity>>
+        +LocalDateTime thoiGianThaoTac
+        +LoaiHanhDong loaiHanhDong
+        +String doiTuongBiTacDong
     }
 
-    class ThongTinGiaDinh {
-        <<value object>>
-        -String moiQuanHe
-        -String hoTen
-        -String thongTinChiTiet
+    class VaiTro {
+        <<enumeration>>
+        ADMIN
+        TCCB
+        TCKT
+        EMPLOYEE
     }
 
-    class ThongTinNganHang {
-        <<value object>>
-        -String tenNganHang
-        -String soTaiKhoan
+    class TrangThaiTaiKhoan {
+        <<enumeration>>
+        DANG_HOAT_DONG
+        BI_KHOA
     }
 
-    class QuaTrinhCongTac {
-        <<value object>>
-        -String noiCongTac
-        -String thoiGianCongTac
+    class LoaiHanhDong {
+        <<enumeration>>
+        DANG_NHAP
+        DANG_XUAT
+        THEM
+        SUA
+        PHAN_QUYEN
+        THAY_DOI_TRANG_THAI
     }
 
-    class ThongTinDangDoan {
-        <<value object>>
-        -Date ngayVaoDoan
-        -Date ngayVaoDang
-        -String thongTinChiTiet
-    }
+    TaiKhoan "1" --> "0..1" HoSoNhanSu : liên kết
+    NhatKyHeThong "0..*" --> "1" TaiKhoan : ghi bởi
+    TaiKhoan "0..*" --> "1" VaiTro : vai trò
+    TaiKhoan "0..*" --> "1" TrangThaiTaiKhoan : trạng thái
+    NhatKyHeThong "0..*" --> "1" LoaiHanhDong : hành động
+    NhatKyHeThong "0..*" --> "1" VaiTro : vai trò thực hiện
+```
 
-    class BangCap {
-        <<value object>>
-        -String tenBang
-        -String truong
-        -String nganh
-        -Int namTotNghiep
-        -String xepLoai
-        -File filePDF
-    }
+### 5.3.2. Nhóm Cơ cấu tổ chức
 
-    class ChungChi {
-        <<value object>>
-        -String tenChungChi
-        -String noiCap
-        -Date ngayCap
-        -Date ngayHetHan
-        -File filePDF
-    }
-
-    %% ===== ORGANIZATIONAL STRUCTURE =====
-
+```mermaid
+classDiagram
     class DonViToChuc {
-        -String maDonVi
-        -String tenDonVi
-        -LoaiDonVi loaiDonVi
-        -Date ngayThanhLap
-        -String diaChi
-        -String diaChiVanPhong
-        -String email
-        -String soDienThoai
-        -String website
-        -Boolean laDonViNut
-        -TrangThaiDonVi trangThai
-        +themMoi()
-        +suaThongTin()
-        +giaiThe()
-        +sapNhap()
-        +xemChiTiet()
-    }
-
-    class QuyetDinhDonVi {
-        -Date ngayHieuLuc
-        -String soQuyetDinh
-        -Date ngayQuyetDinh
-        -File fileDinhKem
-        -String lyDo
-        -String loaiSuKien
+        <<entity>>
+        +String maDonVi
+        +String tenDonVi
+        +LoaiDonVi loaiDonVi
+        +TrangThaiDonVi trangThai
     }
 
     class BoNhiem {
-        -String chucVu
-        -Date ngayBatDau
-        +boNhiem()
-        +baiNhiem()
+        <<entity>>
+        +String chucVu
+        +LocalDate ngayBatDau
+        +LocalDate ngayKetThuc
     }
 
-    %% ===== SALARY & ALLOWANCE =====
+    class HoSoNhanSu {
+        <<entity>>
+        +String maCBo
+        +String hoTen
+        +TrangThaiLamViec trangThaiLamViec
+    }
+
+    class TrangThaiDonVi {
+        <<enumeration>>
+        DANG_HOAT_DONG
+        GIAI_THE
+        SAP_NHAP
+    }
+
+    class LoaiDonVi {
+        <<enumeration>>
+        HOI_DONG
+        BAN
+        KHOA
+        PHONG
+        BO_MON
+        PHONG_THI_NGHIEM
+        TRUNG_TAM
+    }
+
+    DonViToChuc "0..1" o-- "0..*" DonViToChuc : cha/con
+    DonViToChuc "1" o-- "0..*" BoNhiem : quản lý
+    HoSoNhanSu "1" o-- "0..*" BoNhiem : lịch sử bổ nhiệm
+    DonViToChuc "0..*" --> "1" TrangThaiDonVi : trạng thái
+    DonViToChuc "0..*" --> "1" LoaiDonVi : loại
+```
+
+### 5.3.3. Nhóm Hồ sơ nhân sự
+
+```mermaid
+classDiagram
+    class HoSoNhanSu {
+        <<entity>>
+        +String maCBo
+        +String hoTen
+        +GioiTinh gioiTinh
+        +TrangThaiLamViec trangThaiLamViec
+        +TrangThaiHopDongNhanSu trangThaiHopDong
+    }
+
+    class ThongTinGiaDinh {
+        <<entity>>
+        +String moiQuanHe
+        +String hoTen
+    }
+
+    class ThongTinNganHang {
+        <<entity>>
+        +String tenNganHang
+        +String soTaiKhoan
+    }
+
+    class QuaTrinhCongTac {
+        <<entity>>
+        +String noiCongTac
+    }
+
+    class BangCap {
+        <<entity>>
+        +String tenBang
+        +String truong
+    }
+
+    class ChungChi {
+        <<entity>>
+        +String tenChungChi
+        +LocalDate ngayHetHan
+    }
 
     class HeSoLuong {
-        -String ngachVienChuc
-        -Int bacLuong
-        -Double heSoLuong
-        -TrangThaiDanhMuc trangThai
-        +themMoi()
-        +sua()
-        +xoa()
-        +ngungSuDung()
+        <<entity>>
+        +String ngachVienChuc
+        +Integer bacLuong
+        +Double heSoLuong
+    }
+
+    class PhuCapNhanSu {
+        <<entity>>
+        +Double giaTri
     }
 
     class LoaiPhuCap {
-        -String tenLoaiPhuCap
-        -String moTa
-        -String cachTinh
-        -TrangThaiDanhMuc trangThai
-        +themMoi()
-        +sua()
-        +ngungSuDung()
+        <<entity>>
+        +String tenLoaiPhuCap
     }
 
-    %% ===== CONTRACT =====
+    class GioiTinh {
+        <<enumeration>>
+        NAM
+        NU
+    }
 
-    class LoaiHopDong {
-        -String tenLoaiHopDong
-        -Int soThangToiThieu
-        -Int soThangToiDa
-        -Int soLanGiaHanToiDa
-        -Int thoiGianChoGiaHan
-        -TrangThaiDanhMuc trangThai
-        +themMoi()
-        +sua()
-        +ngungSuDung()
+    class TrangThaiLamViec {
+        <<enumeration>>
+        DANG_CHO_XET
+        DANG_CONG_TAC
+        DA_THOI_VIEC
+    }
+
+    class TrangThaiHopDongNhanSu {
+        <<enumeration>>
+        CHUA_HOP_DONG
+        CON_HIEU_LUC
+        HET_HIEU_LUC
+        CHO_GIA_HAN
+    }
+
+    class TrangThaiDanhMuc {
+        <<enumeration>>
+        DANG_SU_DUNG
+        NGUNG_SU_DUNG
+    }
+
+    HoSoNhanSu "1" *-- "0..*" ThongTinGiaDinh : có
+    HoSoNhanSu "1" *-- "1" ThongTinNganHang : có
+    HoSoNhanSu "1" *-- "0..*" QuaTrinhCongTac : có
+    HoSoNhanSu "1" *-- "0..*" BangCap : có
+    HoSoNhanSu "1" *-- "0..*" ChungChi : có
+    HoSoNhanSu "0..*" --> "1" HeSoLuong : áp dụng
+    HoSoNhanSu "1" o-- "0..*" PhuCapNhanSu : hưởng
+    PhuCapNhanSu "0..*" --> "1" LoaiPhuCap : loại phụ cấp
+    HoSoNhanSu "0..*" --> "1" GioiTinh : giới tính
+    HoSoNhanSu "0..*" --> "1" TrangThaiLamViec : trạng thái làm việc
+    HoSoNhanSu "0..*" --> "1" TrangThaiHopDongNhanSu : trạng thái hợp đồng
+    HeSoLuong "0..*" --> "1" TrangThaiDanhMuc : trạng thái
+    LoaiPhuCap "0..*" --> "1" TrangThaiDanhMuc : trạng thái
+```
+
+### 5.3.4. Nhóm Hợp đồng lao động
+
+```mermaid
+classDiagram
+    class HoSoNhanSu {
+        <<entity>>
+        +String maCBo
+        +String hoTen
     }
 
     class HopDongLaoDong {
-        -String soHopDong
-        -Date ngayKy
-        -Date ngayHieuLuc
-        -Date ngayHetHan
-        -String donViCongTac
-        -String noiDung
-        -File filePDF
-        -TrangThaiHopDong trangThai
-        +taoMoi()
-        +capNhatTrangThai()
+        <<entity>>
+        +String soHD
+        +LocalDate ngayHieuLuc
+        +LocalDate ngayHetHan
+        +TrangThaiHopDong trangThai
     }
 
-    class BanGhiChamDutHopDong {
-        <<value object>>
-        -String lyDo
-        -Date ngayHieuLuc
+    class LoaiHopDong {
+        <<entity>>
+        +String tenLoaiHopDong
+        +Integer soThangToiDa
+        +Integer thoiGianChoGiaHan
     }
 
-    %% ===== EVALUATION =====
+    class DonViToChuc {
+        <<entity>>
+        +String maDonVi
+        +String tenDonVi
+    }
+
+    class TrangThaiHopDong {
+        <<enumeration>>
+        CHUA_CO_HIEU_LUC
+        CON_HIEU_LUC
+        CHO_GIA_HAN
+        HET_HIEU_LUC
+    }
+
+    class TrangThaiDanhMuc {
+        <<enumeration>>
+        DANG_SU_DUNG
+        NGUNG_SU_DUNG
+    }
+
+    HoSoNhanSu "1" o-- "0..*" HopDongLaoDong : có
+    HopDongLaoDong "0..*" --> "1" LoaiHopDong : thuộc loại
+    HopDongLaoDong "0..*" --> "1" DonViToChuc : công tác tại
+    HopDongLaoDong "0..*" --> "1" TrangThaiHopDong : trạng thái
+    LoaiHopDong "0..*" --> "1" TrangThaiDanhMuc : trạng thái
+```
+
+### 5.3.5. Nhóm Đánh giá khen thưởng/kỷ luật
+
+```mermaid
+classDiagram
+    class HoSoNhanSu {
+        <<entity>>
+        +String maCBo
+        +String hoTen
+    }
 
     class DanhGia {
         <<entity>>
-        <<abstract>>
-        -Date ngayQuyetDinh
-        +ghiNhanDanhGia()*
+        +LoaiDanhGia loaiDanhGia
+        +LocalDate ngayQuyetDinh
+        +String soQuyetDinh
     }
 
-    class KhenThuong {
+    class LoaiDanhGia {
+        <<enumeration>>
+        KHEN_THUONG
+        KY_LUAT
+    }
+
+    HoSoNhanSu "1" o-- "0..*" DanhGia : có
+    DanhGia "0..*" --> "1" LoaiDanhGia : phân loại
+```
+
+### 5.3.6. Nhóm Đào tạo & Phát triển
+
+```mermaid
+classDiagram
+    class HoSoNhanSu {
         <<entity>>
-        -String loaiKhenThuong
-        -String tenKhenThuong
-        -String soQuyetDinh
-        -String noiDung
-        -Double soTienThuong
+        +String maCBo
+        +String hoTen
     }
-
-    class KyLuat {
-        <<entity>>
-        -String loaiKyLuat
-        -String tenKyLuat
-        -String lyDo
-        -String hinhThucXuLy
-    }
-
-    class DanhSachKetQuaDanhGia {
-        <<wrapper>>
-        -String tuKhoa
-        -Int soLuongKetQua
-    }
-
-    class CauHinhHienThiHoSo {
-        <<entity>>
-        <<configuration>>
-        -VaiTro vaiTro
-        -Boolean anKhenThuong
-        -Boolean anKyLuat
-    }
-
-    %% ===== BOUNDARY / CONTROLLER =====
-
-    class ManHinhHopDongLaoDong {
-        <<boundary>>
-        +chonTabHopDong()
-        +hienThiDanhSachHopDong()
-        +hienThiChiTietHopDong()
-        +moFormChinhSua()
-        +moFormChamDutTruocHan()
-    }
-
-    class ManHinhDanhGia {
-        <<boundary>>
-        +chonTabDanhGia()
-        +hienThiLichSuDanhGia()
-        +nhapTieuChiTimKiem()
-        +hienThiKetQuaLoc()
-        +hienThiChiTietDanhGia()
-    }
-
-    class ManHinhCauHinhHienThiHoSo {
-        <<boundary>>
-        +hienThiCauHinhHienThi()
-        +capNhatAnHien()
-        +luuCauHinh()
-    }
-
-    class HopDongController {
-        <<control>>
-        +xemDanhSachHopDong()
-        +xemChiTietHopDong()
-        +chinhSuaHopDongChuaHieuLuc()
-        +chamDutHopDongTruocHan()
-        +dongBoTrangThaiNhanSu()
-    }
-
-    class DanhGiaController {
-        <<control>>
-        +xemLichSuDanhGia()
-        +timKiemDanhGia()
-        +locDanhGia()
-        +taiChiTietDanhGia()
-    }
-
-    class CauHinhHoSoController {
-        <<control>>
-        +taiCauHinhHienThi()
-        +luuCauHinhHienThi()
-    }
-
-    class TaiKhoanController {
-        <<control>>
-        +khoaTaiKhoanTheoTrangThaiNhanSu()
-        +dongBoTrangThaiTaiKhoan()
-    }
-
-    class SystemTimer {
-        <<control>>
-        +kiemTraHopDongSapHetHan()
-        +kiemTraHopDongHetHan()
-        +tuDongDanhDauThoiViec()
-        +tuDongKhoaTaiKhoan()
-    }
-
-    %% ===== TRAINING =====
 
     class KhoaDaoTao {
-        -String tenKhoaDaoTao
-        -String loaiKhoaDaoTao
-        -Date thoiGianBatDau
-        -Date thoiGianKetThuc
-        -String diaDiem
-        -Double kinhPhi
-        -String camKetSauDaoTao
-        -String tenChungChi
-        -String loaiChungChi
-        -Date thoiGianMoDangKy_Tu
-        -Date thoiGianMoDangKy_Den
-        -Int gioiHanSoNguoi
-        -TrangThaiKhoaDaoTao trangThai
-        +moKhoaDaoTao()
-        +suaThongTin()
-        +xemChiTiet()
+        <<entity>>
+        +String tenKhoa
+        +LocalDate thoiGianBatDau
+        +LocalDate thoiGianKetThuc
+        +TrangThaiKhoaDaoTao trangThai
     }
 
     class DangKyDaoTao {
-        -Date thoiDiemDangKy
-        -TrangThaiThamGia trangThaiThamGia
-        -Date ngayHoanThanh
-        -File fileChungChi
-        +dangKy()
-        +ghiNhanKetQua()
+        <<entity>>
+        +LocalDateTime thoiDiemDangKy
+        +TrangThaiThamGia trangThaiThamGia
+        +LocalDate ngayHoanThanh
     }
 
-    %% ===== AUDIT =====
-
-    class NhatKyHeThong {
-        -DateTime thoiGian
-        -String taiKhoan
-        -String hoTen
-        -String vaiTro
-        -String loaiHanhDong
-        -String doiTuong
-        -String maDoiTuong
-        -String moTaChiTiet
-        -String diaChiIP
+    class TrangThaiKhoaDaoTao {
+        <<enumeration>>
+        DANG_MO_DANG_KY
+        DANG_DAO_TAO
+        DA_HOAN_THANH
     }
 
-    %% ========================================
-    %% RELATIONSHIPS
-    %% ========================================
+    class TrangThaiThamGia {
+        <<enumeration>>
+        DA_DANG_KY
+        DANG_HOC
+        HOAN_THANH
+        KHONG_DAT
+    }
 
-    %% --- Account & Personnel ---
-    TaiKhoan "0..1" --> "1" NhanSu : lienKetVoi
-
-    %% --- Personnel Compositions (value objects owned by NhanSu) ---
-    NhanSu "1" *-- "0..1" ThongTinNguoiNuocNgoai : co
-    NhanSu "1" *-- "0..*" ThongTinGiaDinh : co
-    NhanSu "1" *-- "1" ThongTinNganHang : co
-    NhanSu "1" *-- "0..*" QuaTrinhCongTac : co
-    NhanSu "1" *-- "0..1" ThongTinDangDoan : co
-    NhanSu "1" *-- "0..*" BangCap : co
-    NhanSu "1" *-- "0..*" ChungChi : co
-
-    %% --- Salary & Allowance ---
-    NhanSu "0..*" --> "0..1" HeSoLuong : apDung
-    NhanSu "0..*" --> "0..*" LoaiPhuCap : huong
-
-    %% --- Contract ---
-    NhanSu "1" *-- "0..*" HopDongLaoDong : ky
-    HopDongLaoDong "0..*" --> "1" LoaiHopDong : thuocLoai
-    HopDongLaoDong "1" *-- "0..1" BanGhiChamDutHopDong : chamDutBang
-
-    %% --- Evaluation (Inheritance) ---
-    DanhGia <|-- KhenThuong
-    DanhGia <|-- KyLuat
-    NhanSu "1" *-- "0..*" DanhGia : nhanDuoc
-    DanhSachKetQuaDanhGia "1" o-- "0..*" DanhGia : baoGom
-
-    %% --- Organization ---
-    DonViToChuc "0..1" o-- "0..*" DonViToChuc : donViCha
-    DonViToChuc "1" *-- "0..*" QuyetDinhDonVi : co
-
-    %% --- Appointment (Association Class) ---
-    BoNhiem "0..*" --> "1" NhanSu : boNhiemCho
-    BoNhiem "0..*" --> "1" DonViToChuc : taiDonVi
-
-    %% --- Training (Association Class) ---
-    DangKyDaoTao "0..*" --> "1" NhanSu : nguoiDangKy
-    DangKyDaoTao "0..*" --> "1" KhoaDaoTao : khoaHoc
-
-    %% --- Audit Log ---
-    TaiKhoan "1" --> "0..*" NhatKyHeThong : taoRa
-
-    %% --- Boundary / Controller ---
-    ManHinhHopDongLaoDong ..> HopDongController : goi
-    HopDongController ..> HopDongLaoDong : xuLy
-    HopDongController ..> BanGhiChamDutHopDong : ghiNhan
-    HopDongController ..> NhanSu : dongBoTrangThai
-
-    ManHinhDanhGia ..> DanhGiaController : goi
-    DanhGiaController ..> DanhGia : truyVan
-    DanhGiaController ..> DanhSachKetQuaDanhGia : taoKetQua
-
-    ManHinhCauHinhHienThiHoSo ..> CauHinhHoSoController : goi
-    CauHinhHoSoController ..> CauHinhHienThiHoSo : quanLy
-
-    %% --- Automation ---
-    SystemTimer ..> HopDongController : kichHoatFEAT76
-    SystemTimer ..> TaiKhoanController : kichHoatFEAT26
-    TaiKhoanController ..> TaiKhoan : dongBoKhoa
-    TaiKhoanController ..> NhanSu : docTrangThaiThoiViec
-
-    note for SystemTimer "Chạy định kỳ để hỗ trợ FEAT 7.6 (tự động thôi việc) và FEAT 2.6 (tự động khóa tài khoản)."
+    KhoaDaoTao "1" o-- "0..*" DangKyDaoTao : có
+    HoSoNhanSu "1" o-- "0..*" DangKyDaoTao : tham gia
+    KhoaDaoTao "0..*" --> "1" TrangThaiKhoaDaoTao : trạng thái
+    DangKyDaoTao "0..*" --> "1" TrangThaiThamGia : trạng thái tham gia
 ```
+
+### 5.3.7. Nhóm Danh mục cấu hình
+
+```mermaid
+classDiagram
+    class HeSoLuong {
+        <<entity>>
+        +String ngachVienChuc
+        +Integer bacLuong
+        +Double heSoLuong
+    }
+
+    class LoaiPhuCap {
+        <<entity>>
+        +String tenLoaiPhuCap
+        +String cachTinh
+    }
+
+    class LoaiHopDong {
+        <<entity>>
+        +String tenLoaiHopDong
+        +Integer soThangToiDa
+        +Integer soLanGiaHanToiDa
+    }
+
+    class PhuCapNhanSu {
+        <<entity>>
+        +Double giaTri
+    }
+
+    class HoSoNhanSu {
+        <<entity>>
+        +String maCBo
+        +String hoTen
+    }
+
+    class TrangThaiDanhMuc {
+        <<enumeration>>
+        DANG_SU_DUNG
+        NGUNG_SU_DUNG
+    }
+
+    HoSoNhanSu "0..*" --> "1" HeSoLuong : áp dụng
+    HoSoNhanSu "1" o-- "0..*" PhuCapNhanSu : hưởng
+    PhuCapNhanSu "0..*" --> "1" LoaiPhuCap : loại phụ cấp
+    HeSoLuong "0..*" --> "1" TrangThaiDanhMuc : trạng thái
+    LoaiPhuCap "0..*" --> "1" TrangThaiDanhMuc : trạng thái
+    LoaiHopDong "0..*" --> "1" TrangThaiDanhMuc : trạng thái
+```
+
+### 5.3.8. Nhóm Cấu hình hệ thống
+
+```mermaid
+classDiagram
+    class CauHinhHeThong {
+        <<entity>>
+        +String nhomCauHinh
+        +String tenCauHinh
+        +String giaTri
+        +VaiTro vaiTroApDung
+    }
+
+    class VaiTro {
+        <<enumeration>>
+        ADMIN
+        TCCB
+        TCKT
+        EMPLOYEE
+    }
+
+    CauHinhHeThong "0..*" --> "1" VaiTro : áp dụng cho
+```
+
+## 5.4. Bảng tổng hợp các lớp (Class Inventory)
+
+| STT | Tên lớp | Loại | Mô tả ngắn | UC liên quan |
+|-----|---------|------|------------|--------------|
+| 1 | TaiKhoan | Entity | Quản lý xác thực, phân quyền và trạng thái tài khoản người dùng | UC 4.1-4.8 |
+| 2 | HoSoNhanSu | Entity | Hồ sơ nhân sự trung tâm của toàn hệ thống | UC 4.22-4.29, 4.38 |
+| 3 | ThongTinGiaDinh | Entity | Lưu thành viên gia đình và người phụ thuộc của nhân sự | UC 4.25-4.28, 4.38 |
+| 4 | ThongTinNganHang | Entity | Lưu tài khoản ngân hàng phục vụ trả lương | UC 4.25-4.28, 4.38 |
+| 5 | QuaTrinhCongTac | Entity | Lưu lịch sử công tác của nhân sự | UC 4.25-4.28, 4.38 |
+| 6 | BangCap | Entity | Lưu bằng cấp và minh chứng học vấn | UC 4.25-4.28, 4.38 |
+| 7 | ChungChi | Entity | Lưu chứng chỉ chuyên môn và chứng chỉ đào tạo | UC 4.25-4.28, 4.36, 4.38 |
+| 8 | DonViToChuc | Entity | Mô hình cây cơ cấu tổ chức và thông tin đơn vị | UC 4.9-4.11, 4.30-4.32, 4.39 |
+| 9 | HopDongLaoDong | Entity | Quản lý vòng đời hợp đồng lao động của nhân sự | UC 4.22, 4.27, 4.43-4.45 |
+| 10 | BoNhiem | Entity | Lưu lịch sử bổ nhiệm, điều chuyển và bãi nhiệm | UC 4.30-4.32 |
+| 11 | DanhGia | Entity | Ghi nhận khen thưởng và kỷ luật của nhân sự | UC 4.29, 4.46-4.48 |
+| 12 | KhoaDaoTao | Entity | Quản lý khóa đào tạo và trạng thái tổ chức khóa học | UC 4.33-4.36, 4.40-4.41 |
+| 13 | DangKyDaoTao | Entity | Quản lý quan hệ tham gia đào tạo giữa nhân sự và khóa học | UC 4.35-4.41 |
+| 14 | NhatKyHeThong | Entity | Ghi vết các thao tác quan trọng để kiểm toán hệ thống | UC 4.42 và các UC có thao tác ghi log |
+| 15 | CauHinhHeThong | Entity | Lưu cấu hình ẩn/hiện mục hồ sơ theo vai trò | UC 4.48 |
+| 16 | HeSoLuong | Entity | Danh mục hệ số lương theo ngạch và bậc | UC 4.12-4.15, 4.25-4.28 |
+| 17 | LoaiPhuCap | Entity | Danh mục loại phụ cấp áp dụng cho nhân sự | UC 4.16-4.18, 4.25-4.28 |
+| 18 | LoaiHopDong | Entity | Danh mục loại hợp đồng và các ràng buộc gia hạn | UC 4.19-4.22, 4.43-4.45 |
+| 19 | PhuCapNhanSu | Entity | Liên kết loại phụ cấp với nhân sự và giá trị áp dụng | UC 4.25-4.28, 4.38 |
+| 20 | VaiTro | Enumeration | Nhóm vai trò truy cập của người dùng | UC 4.1, 4.4-4.7, 4.42, 4.48 |
+| 21 | TrangThaiTaiKhoan | Enumeration | Trạng thái hoạt động hoặc bị khóa của tài khoản | UC 4.1, 4.4, 4.8 |
+| 22 | TrangThaiDonVi | Enumeration | Trạng thái nghiệp vụ của đơn vị tổ chức | UC 4.9-4.11, 4.32, 4.39 |
+| 23 | LoaiDonVi | Enumeration | Phân loại đơn vị trong cơ cấu tổ chức | UC 4.9-4.11, 4.32, 4.39 |
+| 24 | TrangThaiHopDong | Enumeration | Trạng thái vòng đời của từng hợp đồng lao động | UC 4.22, 4.27, 4.43-4.45 |
+| 25 | TrangThaiLamViec | Enumeration | Trạng thái làm việc tổng quát của nhân sự | UC 4.23-4.27, 4.38 |
+| 26 | TrangThaiHopDongNhanSu | Enumeration | Trạng thái hợp đồng tổng quát ở cấp hồ sơ nhân sự | UC 4.22-4.28, 4.38 |
+| 27 | TrangThaiKhoaDaoTao | Enumeration | Trạng thái tổ chức của khóa đào tạo | UC 4.33-4.36, 4.40-4.41 |
+| 28 | TrangThaiThamGia | Enumeration | Trạng thái tham gia đào tạo của nhân sự | UC 4.34-4.36, 4.40-4.41 |
+| 29 | LoaiDanhGia | Enumeration | Phân loại bản ghi khen thưởng hoặc kỷ luật | UC 4.29, 4.46-4.47 |
+| 30 | LoaiHanhDong | Enumeration | Phân loại hành động được ghi vào audit log | UC 4.42 và các UC ghi log |
+| 31 | TrangThaiDanhMuc | Enumeration | Trạng thái sử dụng của danh mục cấu hình | UC 4.12-4.21 |
+| 32 | GioiTinh | Enumeration | Giá trị giới tính dùng trong hồ sơ và bộ lọc | UC 4.23-4.26, 4.38 |
