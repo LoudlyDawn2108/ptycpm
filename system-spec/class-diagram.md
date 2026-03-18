@@ -2,7 +2,7 @@
 
 ## 5.1. Xác định các lớp — Biểu đồ lớp Hệ thống HRMS
 
-> **Phạm vi biểu đồ cập nhật:** Biểu đồ này mô tả đồng thời lớp miền nghiệp vụ (Entity), lớp biên tương tác (Boundary) và lớp điều khiển nghiệp vụ (Controller) để bảo đảm truy vết đầy đủ cho 48 Use Case, bao gồm các UC 4.43 – 4.48 mới được bổ sung.
+> **Phạm vi biểu đồ cập nhật:** Đây là artefact thiết kế chính đang neo đường truy vết **UC → Design** cho 48 Use Case theo baseline RMP. Trong đó, các lớp BCE (Boundary / Controller / Entity) được đặc tả **tường minh** cho các luồng hợp đồng, đánh giá và cấu hình hiển thị hồ sơ (đặc biệt UC 4.43 – 4.48); các khu vực còn lại hiện chủ yếu được thể hiện ở mức lớp miền nghiệp vụ và quan hệ dữ liệu.
 
 ---
 
@@ -87,7 +87,7 @@
 | 2 | CON\_HIEU\_LUC | Còn hiệu lực |
 | 3 | HET\_HIEU\_LUC | Hết hiệu lực |
 
-> **Ghi chú thiết kế – Trạng thái hợp đồng chi tiết:** Để nhất quán giữa UC 4.22 và UC 4.44, thiết kế quy ước rằng hợp đồng có `ngayHieuLuc` lớn hơn ngày hiện tại được khởi tạo ở trạng thái `CHUA_HIEU_LUC`; khi đến ngày hiệu lực thì chuyển sang `CON_HIEU_LUC`. Trường hợp chấm dứt trước hạn theo UC 4.45 được lưu qua `BanGhiChamDutHopDong`, còn `HopDongLaoDong.trangThai` được cập nhật về `HET_HIEU_LUC`.
+> **Ghi chú truy vết – giả định thiết kế tạm thời:** Bộ UCS hiện có mâu thuẫn nội bộ giữa UC 4.22 (mô tả hợp đồng mới mặc định là `CON_HIEU_LUC`) và UC 4.44 (chỉ cho phép sửa hợp đồng ở trạng thái `CHUA_HIEU_LUC`). Để biểu đồ lớp vẫn bao phủ được cả hai UC, tài liệu này **tạm quy ước** rằng hợp đồng có `ngayHieuLuc` lớn hơn ngày hiện tại được xem là `CHUA_HIEU_LUC`; khi tới ngày hiệu lực thì chuyển sang `CON_HIEU_LUC`. Trường hợp chấm dứt trước hạn theo UC 4.45 vẫn được lưu qua `BanGhiChamDutHopDong`, còn `HopDongLaoDong.trangThai` được cập nhật về `HET_HIEU_LUC`. Quy ước này cần được chuẩn hóa lại trong đặc tả UC nếu muốn baseline truy vết hoàn toàn nhất quán.
 
 ### 5.1.8. TrangThaiDanhMuc (Trạng thái danh mục) — *«enumeration»*
 
@@ -421,27 +421,11 @@
 | --- | --- | --- | --- |
 | 1 | taoMoi() | void | Tạo mới hợp đồng lao động |
 | 2 | capNhatTrangThai() | void | Cập nhật trạng thái hợp đồng |
-| 3 | xemDanhSach() | List | Xem danh sách hợp đồng |
-| 4 | xemChiTiet() | HopDongLaoDong | Xem chi tiết hợp đồng |
-| 5 | chinhSua() | void | Chỉnh sửa hợp đồng |
-| 6 | chamDutTruocHan() | void | Chấm dứt hợp đồng trước hạn |
 
-> **Ghi chú thiết kế – Truy vết UC hợp đồng:** Lớp `HopDongLaoDong` bao phủ các UC 4.22, 4.43, 4.44, 4.45 tương ứng với FEAT 5.1 – 5.4; việc chấm dứt trước hạn được lưu bổ sung qua lớp `BanGhiChamDutHopDong`.
 
-### 5.1.27. PhuLucHopDong (Phụ lục hợp đồng) — *«value object»*
+> **Ghi chú thiết kế – Truy vết UC hợp đồng:** Lớp `HopDongLaoDong` bao phủ các UC 4.22, 4.43, 4.44, 4.45 tương ứng với FEAT 5.1 – 5.4; việc chấm dứt trước hạn được lưu bổ sung qua lớp `BanGhiChamDutHopDong`. Tài liệu baseline hiện **không** đặc tả phụ lục hợp đồng như một UC / FEAT riêng, nên không mô hình hóa lớp `PhuLucHopDong` trong biểu đồ lớp này.
 
-**Thuộc tính:**
-
-| STT | Tên thuộc tính | Kiểu dữ liệu | Khả năng truy cập | Mô tả |
-| --- | --- | --- | --- | --- |
-| 1 | ngayHieuLuc | Date | private | Ngày hiệu lực |
-| 2 | dieuKhoanBoSung | String | private | Điều khoản bổ sung |
-| 3 | quyDinhMoi | String | private | Quy định mới |
-| 4 | luuYQuanTrong | String | private | Lưu ý quan trọng |
-
-**Phương thức:** Không có — lớp giá trị (value object) thuộc `HopDongLaoDong`.
-
-### 5.1.28. DanhGia (Đánh giá) — *«entity» «abstract»*
+### 5.1.27. DanhGia (Đánh giá) — *«entity» «abstract»*
 
 **Thuộc tính:**
 
@@ -454,13 +438,10 @@
 | STT | Tên phương thức | Kiểu trả về | Mô tả |
 | --- | --- | --- | --- |
 | 1 | ghiNhanDanhGia()* | void | Ghi nhận đánh giá (abstract) |
-| 2 | xemLichSu() | List | Xem lịch sử đánh giá |
-| 3 | timKiem() | List | Tìm kiếm đánh giá |
-| 4 | loc() | List | Lọc danh sách đánh giá |
 
 > **Ghi chú thiết kế – Truy vết UC đánh giá:** `DanhGia` là thực thể lõi cho UC 4.29, UC 4.46 và UC 4.47; các thao tác xem lịch sử, tìm kiếm và lọc được điều phối qua `DanhGiaController` và có thể trả về lớp bao `DanhSachKetQuaDanhGia`.
 
-### 5.1.29. KhenThuong (Khen thưởng) — *«entity» kế thừa DanhGia*
+### 5.1.28. KhenThuong (Khen thưởng) — *«entity» kế thừa DanhGia*
 
 **Thuộc tính:**
 
@@ -474,7 +455,7 @@
 
 **Phương thức:** Kế thừa từ `DanhGia`.
 
-### 5.1.30. KyLuat (Kỷ luật) — *«entity» kế thừa DanhGia*
+### 5.1.29. KyLuat (Kỷ luật) — *«entity» kế thừa DanhGia*
 
 **Thuộc tính:**
 
@@ -487,7 +468,7 @@
 
 **Phương thức:** Kế thừa từ `DanhGia`.
 
-### 5.1.31. KhoaDaoTao (Khóa đào tạo) — *«entity»*
+### 5.1.30. KhoaDaoTao (Khóa đào tạo) — *«entity»*
 
 **Thuộc tính:**
 
@@ -515,7 +496,7 @@
 | 2 | suaThongTin() | void | Sửa thông tin khóa đào tạo |
 | 3 | xemChiTiet() | KhoaDaoTao | Xem chi tiết khóa đào tạo |
 
-### 5.1.32. DangKyDaoTao (Đăng ký đào tạo) — *«entity»*
+### 5.1.31. DangKyDaoTao (Đăng ký đào tạo) — *«entity»*
 
 **Thuộc tính:**
 
@@ -533,7 +514,7 @@
 | 1 | dangKy() | void | Đăng ký tham gia khóa đào tạo |
 | 2 | ghiNhanKetQua() | void | Ghi nhận kết quả đào tạo |
 
-### 5.1.33. NhatKyHeThong (Nhật ký hệ thống) — *«entity»*
+### 5.1.32. NhatKyHeThong (Nhật ký hệ thống) — *«entity»*
 
 **Thuộc tính:**
 
@@ -551,7 +532,7 @@
 
 **Phương thức:** Không có — lớp ghi log chỉ-đọc.
 
-### 5.1.34. BanGhiChamDutHopDong (Bản ghi chấm dứt hợp đồng) — *«value object»*
+### 5.1.33. BanGhiChamDutHopDong (Bản ghi chấm dứt hợp đồng) — *«value object»*
 
 **Thuộc tính:**
 
@@ -564,22 +545,20 @@
 
 **Phương thức:** Không có — lớp giá trị (value object) thuộc `HopDongLaoDong`.
 
-### 5.1.35. DanhSachKetQuaDanhGia (Danh sách kết quả đánh giá) — *«wrapper»*
+### 5.1.34. DanhSachKetQuaDanhGia (Danh sách kết quả đánh giá) — *«wrapper»*
 
 **Thuộc tính:**
 
 | STT | Tên thuộc tính | Kiểu dữ liệu | Khả năng truy cập | Mô tả |
 | --- | --- | --- | --- | --- |
 | 1 | tuKhoa | String | private | Từ khóa tìm kiếm hiện tại |
-| 2 | tongSoBanGhi | Int | private | Tổng số bản ghi phù hợp |
-| 3 | trangHienTai | Int | private | Trang hiện tại |
-| 4 | kichThuocTrang | Int | private | Kích thước trang |
+| 2 | soLuongKetQua | Int | private | Số bản ghi phù hợp với điều kiện hiện tại |
 
-> **Ghi chú thiết kế:** Lớp bao kết quả được dùng cho UC 4.46 – 4.47 để gom danh sách bản ghi đánh giá và thông tin phân trang/lọc.
+> **Ghi chú thiết kế:** Lớp bao kết quả được dùng cho UC 4.46 – 4.47 để gom danh sách bản ghi đánh giá và thông tin điều kiện truy vấn tối thiểu; baseline hiện chưa đặc tả cơ chế phân trang riêng cho luồng này.
 
 **Phương thức:** Không có — lớp bao (wrapper) cho kết quả tìm kiếm/lọc.
 
-### 5.1.36. CauHinhHienThiHoSo (Cấu hình hiển thị hồ sơ) — *«configuration»*
+### 5.1.35. CauHinhHienThiHoSo (Cấu hình hiển thị hồ sơ) — *«entity» «configuration»*
 
 **Thuộc tính:**
 
@@ -597,7 +576,7 @@
 
 **Các lớp biên (Boundary)**
 
-### 5.1.37. ManHinhHopDongLaoDong (Màn hình hợp đồng lao động) — *«boundary»*
+### 5.1.36. ManHinhHopDongLaoDong (Màn hình hợp đồng lao động) — *«boundary»*
 
 **Thuộc tính:** Không có — lớp biên chỉ chứa thao tác giao diện.
 
@@ -611,7 +590,7 @@
 | 4 | moFormChinhSua() | void | Mở biểu mẫu chỉnh sửa hợp đồng chưa có hiệu lực |
 | 5 | moFormChamDutTruocHan() | void | Mở biểu mẫu chấm dứt hợp đồng trước hạn |
 
-### 5.1.38. ManHinhDanhGia (Màn hình đánh giá) — *«boundary»*
+### 5.1.37. ManHinhDanhGia (Màn hình đánh giá) — *«boundary»*
 
 **Thuộc tính:** Không có — lớp biên chỉ chứa thao tác giao diện.
 
@@ -625,7 +604,7 @@
 | 4 | hienThiKetQuaLoc() | void | Hiển thị danh sách kết quả phù hợp |
 | 5 | hienThiChiTietDanhGia() | void | Hiển thị chi tiết bản ghi đánh giá |
 
-### 5.1.39. ManHinhCauHinhHienThiHoSo (Màn hình cấu hình hiển thị hồ sơ) — *«boundary»*
+### 5.1.38. ManHinhCauHinhHienThiHoSo (Màn hình cấu hình hiển thị hồ sơ) — *«boundary»*
 
 **Thuộc tính:** Không có — lớp biên chỉ chứa thao tác giao diện.
 
@@ -633,7 +612,7 @@
 
 | STT | Tên phương thức | Kiểu trả về | Mô tả |
 | --- | --- | --- | --- |
-| 1 | hienThiDanhSachVaiTro() | void | Hiển thị các vai trò và trạng thái ẩn/hiện tương ứng |
+| 1 | hienThiCauHinhHienThi() | void | Hiển thị cấu hình ẩn/hiện hiện hành theo từng vai trò |
 | 2 | capNhatAnHien() | void | Bật/tắt hiển thị khen thưởng/kỷ luật theo vai trò |
 | 3 | luuCauHinh() | void | Lưu cấu hình hiển thị hồ sơ |
 
@@ -641,7 +620,7 @@
 
 **Các lớp điều khiển (Controller)**
 
-### 5.1.40. HopDongController (Điều khiển hợp đồng) — *«control»*
+### 5.1.39. HopDongController (Điều khiển hợp đồng) — *«control»*
 
 **Thuộc tính:** Không có — lớp điều khiển chỉ chứa thao tác nghiệp vụ.
 
@@ -649,13 +628,13 @@
 
 | STT | Tên phương thức | Kiểu trả về | Mô tả |
 | --- | --- | --- | --- |
-| 1 | xemDanhSachHopDong() | List | Điều phối lấy danh sách hợp đồng của nhân sự |
+| 1 | xemDanhSachHopDong() | List<HopDongLaoDong> | Điều phối lấy danh sách hợp đồng của nhân sự |
 | 2 | xemChiTietHopDong() | HopDongLaoDong | Điều phối lấy chi tiết hợp đồng |
 | 3 | chinhSuaHopDongChuaHieuLuc() | void | Xử lý chỉnh sửa hợp đồng chưa có hiệu lực |
 | 4 | chamDutHopDongTruocHan() | void | Xử lý chấm dứt hợp đồng trước hạn |
 | 5 | dongBoTrangThaiNhanSu() | void | Đồng bộ trạng thái hợp đồng/thôi việc của nhân sự |
 
-### 5.1.41. DanhGiaController (Điều khiển đánh giá) — *«control»*
+### 5.1.40. DanhGiaController (Điều khiển đánh giá) — *«control»*
 
 **Thuộc tính:** Không có — lớp điều khiển chỉ chứa thao tác nghiệp vụ.
 
@@ -663,12 +642,12 @@
 
 | STT | Tên phương thức | Kiểu trả về | Mô tả |
 | --- | --- | --- | --- |
-| 1 | xemLichSuDanhGia() | List | Điều phối xem lịch sử đánh giá của nhân sự |
+| 1 | xemLichSuDanhGia() | DanhSachKetQuaDanhGia | Điều phối xem lịch sử đánh giá của nhân sự |
 | 2 | timKiemDanhGia() | DanhSachKetQuaDanhGia | Điều phối tìm kiếm đánh giá |
 | 3 | locDanhGia() | DanhSachKetQuaDanhGia | Điều phối lọc danh sách đánh giá |
 | 4 | taiChiTietDanhGia() | DanhGia | Lấy chi tiết bản ghi đánh giá |
 
-### 5.1.42. CauHinhHoSoController (Điều khiển cấu hình hồ sơ) — *«control»*
+### 5.1.41. CauHinhHoSoController (Điều khiển cấu hình hồ sơ) — *«control»*
 
 **Thuộc tính:** Không có — lớp điều khiển chỉ chứa thao tác nghiệp vụ.
 
@@ -678,9 +657,8 @@
 | --- | --- | --- | --- |
 | 1 | taiCauHinhHienThi() | CauHinhHienThiHoSo | Tải cấu hình hiển thị hồ sơ hiện hành |
 | 2 | luuCauHinhHienThi() | void | Lưu cấu hình ẩn/hiện khen thưởng/kỷ luật |
-| 3 | apDungCauHinhAnHien() | void | Áp dụng cấu hình khi hiển thị hồ sơ nhân sự |
 
-### 5.1.43. TaiKhoanController (Điều khiển tài khoản) — *«control»*
+### 5.1.42. TaiKhoanController (Điều khiển tài khoản) — *«control»*
 
 **Thuộc tính:** Không có — lớp điều khiển chỉ chứa thao tác nghiệp vụ.
 
@@ -691,7 +669,7 @@
 | 1 | khoaTaiKhoanTheoTrangThaiNhanSu() | void | Khóa tài khoản khi nhân sự đã thôi việc |
 | 2 | dongBoTrangThaiTaiKhoan() | void | Đồng bộ trạng thái tài khoản với hồ sơ nhân sự |
 
-### 5.1.44. SystemTimer (Bộ hẹn giờ hệ thống) — *«control»*
+### 5.1.43. SystemTimer (Bộ hẹn giờ hệ thống) — *«control»*
 
 **Thuộc tính:** Không có — lớp điều khiển tự động chạy định kỳ.
 
@@ -724,33 +702,31 @@
 | 10 | NhanSu | 0..\* → 0..\* | LoaiPhuCap | Nhân sự hưởng nhiều loại phụ cấp |
 | 11 | NhanSu | 1 ◆ 0..\* | HopDongLaoDong | Nhân sự ký nhiều hợp đồng |
 | 12 | HopDongLaoDong | 0..\* → 1 | LoaiHopDong | Hợp đồng thuộc một loại hợp đồng |
-| 13 | HopDongLaoDong | 1 ◆ 0..\* | PhuLucHopDong | Hợp đồng có thể có nhiều phụ lục |
-| 14 | DanhGia | ◁— | KhenThuong | KhenThuong kế thừa DanhGia |
-| 15 | DanhGia | ◁— | KyLuat | KyLuat kế thừa DanhGia |
-| 16 | NhanSu | 1 ◆ 0..\* | DanhGia | Nhân sự nhận nhiều đánh giá |
-| 17 | DonViToChuc | 0..1 ◇ 0..\* | DonViToChuc | Đơn vị cha chứa nhiều đơn vị con |
-| 18 | DonViToChuc | 1 ◆ 0..\* | QuyetDinhDonVi | Đơn vị có nhiều quyết định |
-| 19 | BoNhiem | 0..\* → 1 | NhanSu | Bổ nhiệm cho nhân sự |
-| 20 | BoNhiem | 0..\* → 1 | DonViToChuc | Bổ nhiệm tại đơn vị |
-| 21 | DangKyDaoTao | 0..\* → 1 | NhanSu | Người đăng ký đào tạo |
-| 22 | DangKyDaoTao | 0..\* → 1 | KhoaDaoTao | Đăng ký khóa đào tạo |
-| 23 | TaiKhoan | 1 → 0..\* | NhatKyHeThong | Tài khoản tạo nhiều nhật ký |
-| 24 | HopDongLaoDong | 1 ◆ 0..1 | BanGhiChamDutHopDong | Hợp đồng có tối đa một bản ghi chấm dứt trước hạn |
-| 25 | DanhSachKetQuaDanhGia | 1 ◇ 0..\* | DanhGia | Lớp bao kết quả tạm thời gom nhiều bản ghi đánh giá trả về từ tìm kiếm/lọc |
-| 26 | ManHinhHopDongLaoDong | «dependency» | HopDongController | Màn hình hợp đồng gọi controller nghiệp vụ hợp đồng |
-| 27 | HopDongController | «dependency» | HopDongLaoDong | Controller truy vấn/cập nhật hợp đồng |
-| 28 | HopDongController | «dependency» | BanGhiChamDutHopDong | Controller ghi nhận dữ liệu chấm dứt trước hạn |
-| 29 | HopDongController | «dependency» | NhanSu | Controller đồng bộ trạng thái hợp đồng và trạng thái thôi việc |
-| 30 | ManHinhDanhGia | «dependency» | DanhGiaController | Màn hình đánh giá gọi controller nghiệp vụ đánh giá |
-| 31 | DanhGiaController | «dependency» | DanhGia | Controller truy vấn dữ liệu đánh giá |
-| 32 | DanhGiaController | «dependency» | DanhSachKetQuaDanhGia | Controller tạo/tải lớp bao kết quả đánh giá |
-| 33 | ManHinhCauHinhHienThiHoSo | «dependency» | CauHinhHoSoController | Màn hình cấu hình gọi controller cấu hình hồ sơ |
-| 34 | CauHinhHoSoController | «dependency» | CauHinhHienThiHoSo | Controller quản lý cấu hình ẩn/hiện hồ sơ |
-| 35 | CauHinhHoSoController | «dependency» | NhanSu | Controller đọc dữ liệu nhân sự khi áp dụng cấu hình hiển thị |
-| 36 | SystemTimer | «dependency» | HopDongController | Bộ hẹn giờ điều phối tự động xử lý hợp đồng |
-| 37 | SystemTimer | «dependency» | TaiKhoanController | Bộ hẹn giờ điều phối tự động khóa tài khoản |
-| 38 | TaiKhoanController | «dependency» | TaiKhoan | Controller khóa/mở và đồng bộ trạng thái tài khoản |
-| 39 | TaiKhoanController | «dependency» | NhanSu | Controller đọc trạng thái thôi việc của nhân sự |
+| 13 | DanhGia | ◁— | KhenThuong | KhenThuong kế thừa DanhGia |
+| 14 | DanhGia | ◁— | KyLuat | KyLuat kế thừa DanhGia |
+| 15 | NhanSu | 1 ◆ 0..\* | DanhGia | Nhân sự nhận nhiều đánh giá |
+| 16 | DonViToChuc | 0..1 ◇ 0..\* | DonViToChuc | Đơn vị cha chứa nhiều đơn vị con |
+| 17 | DonViToChuc | 1 ◆ 0..\* | QuyetDinhDonVi | Đơn vị có nhiều quyết định |
+| 18 | BoNhiem | 0..\* → 1 | NhanSu | Bổ nhiệm cho nhân sự |
+| 19 | BoNhiem | 0..\* → 1 | DonViToChuc | Bổ nhiệm tại đơn vị |
+| 20 | DangKyDaoTao | 0..\* → 1 | NhanSu | Người đăng ký đào tạo |
+| 21 | DangKyDaoTao | 0..\* → 1 | KhoaDaoTao | Đăng ký khóa đào tạo |
+| 22 | TaiKhoan | 1 → 0..\* | NhatKyHeThong | Tài khoản tạo nhiều nhật ký |
+| 23 | HopDongLaoDong | 1 ◆ 0..1 | BanGhiChamDutHopDong | Hợp đồng có tối đa một bản ghi chấm dứt trước hạn |
+| 24 | DanhSachKetQuaDanhGia | 1 ◇ 0..\* | DanhGia | Lớp bao kết quả tạm thời gom nhiều bản ghi đánh giá trả về từ tìm kiếm/lọc |
+| 25 | ManHinhHopDongLaoDong | «dependency» | HopDongController | Màn hình hợp đồng gọi controller nghiệp vụ hợp đồng |
+| 26 | HopDongController | «dependency» | HopDongLaoDong | Controller truy vấn/cập nhật hợp đồng |
+| 27 | HopDongController | «dependency» | BanGhiChamDutHopDong | Controller ghi nhận dữ liệu chấm dứt trước hạn |
+| 28 | HopDongController | «dependency» | NhanSu | Controller đồng bộ trạng thái hợp đồng và trạng thái thôi việc |
+| 29 | ManHinhDanhGia | «dependency» | DanhGiaController | Màn hình đánh giá gọi controller nghiệp vụ đánh giá |
+| 30 | DanhGiaController | «dependency» | DanhGia | Controller truy vấn dữ liệu đánh giá |
+| 31 | DanhGiaController | «dependency» | DanhSachKetQuaDanhGia | Controller tạo/tải lớp bao kết quả đánh giá |
+| 32 | ManHinhCauHinhHienThiHoSo | «dependency» | CauHinhHoSoController | Màn hình cấu hình gọi controller cấu hình hồ sơ |
+| 33 | CauHinhHoSoController | «dependency» | CauHinhHienThiHoSo | Controller quản lý cấu hình ẩn/hiện hồ sơ |
+| 34 | SystemTimer | «dependency» | HopDongController | Bộ hẹn giờ điều phối tự động xử lý hợp đồng |
+| 35 | SystemTimer | «dependency» | TaiKhoanController | Bộ hẹn giờ điều phối tự động khóa tài khoản |
+| 36 | TaiKhoanController | «dependency» | TaiKhoan | Controller khóa/mở và đồng bộ trạng thái tài khoản |
+| 37 | TaiKhoanController | «dependency» | NhanSu | Controller đọc trạng thái thôi việc của nhân sự |
 
 ## 5.2. Xây dựng biểu đồ lớp
 
@@ -1023,18 +999,6 @@ classDiagram
         -TrangThaiHopDong trangThai
         +taoMoi()
         +capNhatTrangThai()
-        +xemDanhSach()
-        +xemChiTiet()
-        +chinhSua()
-        +chamDutTruocHan()
-    }
-
-    class PhuLucHopDong {
-        <<value object>>
-        -Date ngayHieuLuc
-        -String dieuKhoanBoSung
-        -String quyDinhMoi
-        -String luuYQuanTrong
     }
 
     class BanGhiChamDutHopDong {
@@ -1046,15 +1010,14 @@ classDiagram
     %% ===== EVALUATION =====
 
     class DanhGia {
+        <<entity>>
         <<abstract>>
         -Date ngayQuyetDinh
         +ghiNhanDanhGia()*
-        +xemLichSu()
-        +timKiem()
-        +loc()
     }
 
     class KhenThuong {
+        <<entity>>
         -String loaiKhenThuong
         -String tenKhenThuong
         -String soQuyetDinh
@@ -1063,6 +1026,7 @@ classDiagram
     }
 
     class KyLuat {
+        <<entity>>
         -String loaiKyLuat
         -String tenKyLuat
         -String lyDo
@@ -1072,12 +1036,11 @@ classDiagram
     class DanhSachKetQuaDanhGia {
         <<wrapper>>
         -String tuKhoa
-        -Int tongSoBanGhi
-        -Int trangHienTai
-        -Int kichThuocTrang
+        -Int soLuongKetQua
     }
 
     class CauHinhHienThiHoSo {
+        <<entity>>
         <<configuration>>
         -VaiTro vaiTro
         -Boolean anKhenThuong
@@ -1106,7 +1069,7 @@ classDiagram
 
     class ManHinhCauHinhHienThiHoSo {
         <<boundary>>
-        +hienThiDanhSachVaiTro()
+        +hienThiCauHinhHienThi()
         +capNhatAnHien()
         +luuCauHinh()
     }
@@ -1132,7 +1095,6 @@ classDiagram
         <<control>>
         +taiCauHinhHienThi()
         +luuCauHinhHienThi()
-        +apDungCauHinhAnHien()
     }
 
     class TaiKhoanController {
@@ -1216,7 +1178,6 @@ classDiagram
     %% --- Contract ---
     NhanSu "1" *-- "0..*" HopDongLaoDong : ky
     HopDongLaoDong "0..*" --> "1" LoaiHopDong : thuocLoai
-    HopDongLaoDong "1" *-- "0..*" PhuLucHopDong : boSung
     HopDongLaoDong "1" *-- "0..1" BanGhiChamDutHopDong : chamDutBang
 
     %% --- Evaluation (Inheritance) ---
@@ -1252,7 +1213,6 @@ classDiagram
 
     ManHinhCauHinhHienThiHoSo ..> CauHinhHoSoController : goi
     CauHinhHoSoController ..> CauHinhHienThiHoSo : quanLy
-    CauHinhHoSoController ..> NhanSu : docDuLieuHienThi
 
     %% --- Automation ---
     SystemTimer ..> HopDongController : kichHoatFEAT76
