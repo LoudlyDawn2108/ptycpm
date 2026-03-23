@@ -307,9 +307,9 @@ Thể hiện ánh xạ giữa các yêu cầu thuộc các kiểu khác nhau:
 | Thành viên | STRQs | FEATs |
 |---|---|---|
 | Nguyễn Hồng Phúc | 1–3 | 1.1–3.5 (15) |
-| Ngô Đức Nam Khánh | 4–6 | 4.1–6.2 (11) |
-| Nguyễn Hải Ninh | 7–8 | 7.1–8.9 (13) |
-| Ngô Quang Tùng | 9–12 | 9.1–12.4 (14) |
+| Nguyễn Hải Ninh | 4–6 | 4.1–6.2 (11) |
+| Ngô Quang Tùng | 7–8 | 7.1–8.9 (13) |
+| Ngô Đức Nam Khánh | 9–12 | 9.1–12.4 (14) |
 
 ## 2.2. Nội dung tổng hợp STRQ và FEAT theo thành viên
 
@@ -323,7 +323,7 @@ Thể hiện ánh xạ giữa các yêu cầu thuộc các kiểu khác nhau:
 
 > **Ghi chú thiết kế – FEAT 2.4:** "Nhóm nghiệp vụ" trong FEAT 2.4 chỉ các vai trò chức năng được hệ thống định nghĩa sẵn, tương ứng với phân nhóm tác nhân: Quản trị viên, Phòng TCCB, Phòng TCKT, Người dùng (Cán bộ/Giảng viên/Nhân viên). Mỗi nhóm nghiệp vụ quy định tập quyền truy cập các chức năng hệ thống khác nhau.
 
-### 2.2.2. Phần đóng góp của Ngô Đức Nam Khánh (STRQ 4–6)
+### 2.2.2. Phần đóng góp của Nguyễn Hải Ninh (STRQ 4–6)
 
 | Yêu cầu (STRQ) | Kỹ thuật xác định FEAT | Tính năng (FEAT) |
 | --- | --- | --- |
@@ -336,14 +336,14 @@ Thể hiện ánh xạ giữa các yêu cầu thuộc các kiểu khác nhau:
 | **STRQ 5:** Phòng TCKT và TCCB muốn thống kê chi tiết về nhân sự. | * Phân tách * Thêm chi tiết | * **FEAT 5.1:** Hệ thống cho phép phòng TCCB và phòng TCKT xem và xuất thống kê tổng quan nhân sự và biến động nhân sự. * **FEAT 5.2:** Hệ thống cho phép phòng TCCB và phòng TCKT xem và xuất cơ cấu nhân sự theo đơn vị, trình độ, học hàm, chức danh. * **FEAT 5.3:** Hệ thống cho phép phòng TCCB và phòng TCKT xem và xuất thống kê hợp đồng, tình trạng làm việc, đánh giá cán bộ. * **FEAT 5.4:** Hệ thống cho phép phòng TCCB và phòng TCKT xem và xuất thống kê đào tạo, phát triển, bổ nhiệm nhân sự. |
 | **STRQ 6:** Hệ thống yêu cầu tự động log dấu vết hoạt động người dùng (System Logging). | * Phân tách * Thêm chi tiết | * **FEAT 6.1:** Hệ thống tự động ghi vết tất cả các tác vụ truy cập tài khoản, thay đổi/cập nhật hệ thống hoặc dữ liệu. * **FEAT 6.2:** Hệ thống cho phép quản trị viên truy xuất xem và xuất Audit log (Nhật ký hệ thống) nhằm truy vết hoạt động. |
 
-### 2.2.3. Phần đóng góp của Nguyễn Hải Ninh (STRQ 7–8)
+### 2.2.3. Phần đóng góp của Ngô Quang Tùng (STRQ 7–8)
 
 | Yêu cầu (STRQ) | Kỹ thuật xác định FEAT | Tính năng (FEAT) |
 | --- | --- | --- |
 | **STRQ 7:** Phòng TCCB có thể tạo hợp đồng lao động của nhân sự. | * Phân tách * Thêm chi tiết * Làm cho đầy đủ | * **FEAT 7.1:** Hệ thống cho phép phòng TCCB tạo hợp đồng cho nhân sự không có hợp đồng hoặc cần gia hạn hợp đồng. * **FEAT 7.2:** Hệ thống cho phép phòng TCCB xem danh sách và chi tiết hợp đồng lao động của nhân sự. * **FEAT 7.3:** Hệ thống cho phép phòng TCCB chỉnh sửa hợp đồng lao động của nhân sự khi hợp đồng chưa có hiệu lực. * **FEAT 7.4:** Hệ thống cho phép phòng TCCB chấm dứt hợp đồng lao động trước hạn của nhân sự. |
 | **STRQ 8:** Phòng TCCB muốn quản lý hồ sơ nhân sự như thêm, sửa hồ sơ và cho phép đánh dấu thôi việc nếu nhân sự không còn làm việc, có thêm phương pháp tìm kiếm và lọc để tiện quản lý. | * Phân tách * Làm rõ * Thêm chi tiết * Làm cho đầy đủ | * **FEAT 8.1:** Hệ thống cho phép phòng TCCB và phòng TCKT tìm kiếm hồ sơ nhân sự bằng nhiều từ khóa. * **FEAT 8.2:** Hệ thống cho phép phòng TCCB và phòng TCKT lọc đa tiêu chí hồ sơ nhân sự. * **FEAT 8.3:** Hệ thống cho phép phòng TCCB thêm mới hồ sơ nhân sự (gồm nhập tay hoặc upload từ Excel). * **FEAT 8.4:** Hệ thống cho phép phòng TCCB chỉnh sửa hồ sơ nhân sự (thông tin cá nhân, trình độ học vấn, khen thưởng/kỷ luật, quá trình công tác, thông tin hợp đồng). * **FEAT 8.5:** Hệ thống cho phép phòng TCCB đánh dấu thôi việc nhân sự. * **FEAT 8.6:** Hệ thống tự động đánh dấu thôi việc nhân sự khi hợp đồng hết hạn và không có gia hạn trong thời gian cho phép theo cấu hình loại hợp đồng. * **FEAT 8.7:** Hệ thống cho phép phòng TCCB và phòng TCKT xem chi tiết hồ sơ nhân sự theo từng chế độ xem. * **FEAT 8.8:** Hệ thống cho phép phòng TCCB và phòng TCKT in hoặc xuất Excel hồ sơ nhân sự. * **FEAT 8.9:** Hệ thống cho phép phòng TCCB cấu hình ẩn/hiện các mục khen thưởng, kỷ luật trong hồ sơ nhân sự đối với các vai trò không thuộc phòng TCCB. |
 
-### 2.2.4. Phần đóng góp của Ngô Quang Tùng (STRQ 9–12)
+### 2.2.4. Phần đóng góp của Ngô Đức Nam Khánh (STRQ 9–12)
 
 | Yêu cầu (STRQ) | Kỹ thuật xác định FEAT | Tính năng (FEAT) |
 | --- | --- | --- |
@@ -487,9 +487,9 @@ Từ các FEAT đã được phân tách và xác định, chi tiết thành cá
 | Thành viên | UCs |
 |---|---|
 | Nguyễn Hồng Phúc | 4.1–4.12 (12) |
-| Ngô Đức Nam Khánh | 4.13–4.24 (12) |
-| Nguyễn Hải Ninh | 4.25–4.35 (11) |
-| Ngô Quang Tùng | 4.36–4.48 (13) |
+| Nguyễn Hải Ninh | 4.13–4.24 (12) |
+| Ngô Quang Tùng | 4.25–4.35 (11) |
+| Ngô Đức Nam Khánh | 4.36–4.48 (13) |
 
 ### 3.3.4. Danh mục Use Case đã đánh số lại
 
@@ -796,9 +796,9 @@ Từ các FEAT đã được phân tách và xác định, chi tiết thành cá
 | Luồng sự kiện thay thế  (Alternative Flow) | Không có |
 | Luồng sự kiện ngoại lệ  (Exception Flow) | Không có |
 
-## 4.2 Phần đóng góp của Ngô Đức Nam Khánh (UC 4.13–4.24)
+## 4.2 Phần đóng góp của Nguyễn Hải Ninh (UC 4.13–4.24)
 
-### 4.13. Use Case: Thêm mới danh mục hệ số lương (Ngô Đức Nam Khánh)
+### 4.13. Use Case: Thêm mới danh mục hệ số lương (Nguyễn Hải Ninh)
 
 |  |  |
 | --- | --- |
@@ -974,7 +974,7 @@ Từ các FEAT đã được phân tách và xác định, chi tiết thành cá
 | Luồng sự kiện thay thế  (Alternative Flow) | **A1: Xuất nhật ký**   1. Tại bước 5, Quản trị viên chọn chức năng "Xuất nhật ký". 2. Hệ thống cho phép xuất danh sách nhật ký theo bộ lọc hiện tại dưới định dạng Excel hoặc PDF. 3. Quản trị viên xác nhận xuất. 4. Hệ thống tạo file và cho phép tải về. |
 | Luồng sự kiện ngoại lệ  (Exception Flow) | **E1: Không tìm thấy kết quả**   1. Tại bước 5, nếu không có bản ghi nhật ký nào phù hợp với tiêu chí lọc, Hệ thống hiển thị thông báo: "Không tìm thấy nhật ký phù hợp với tiêu chí tìm kiếm." |
 
-## 4.3 Phần đóng góp của Nguyễn Hải Ninh (UC 4.25–4.35)
+## 4.3 Phần đóng góp của Ngô Quang Tùng (UC 4.25–4.35)
 
 ### 4.25. Use Case: Thêm mới Hợp đồng lao động
 
@@ -1152,7 +1152,7 @@ Từ các FEAT đã được phân tách và xác định, chi tiết thành cá
 | Luồng sự kiện thay thế  (Alternative Flow) | **A1: Không thay đổi cấu hình**   1. Tại bước 5, Phòng TCCB không thực hiện thay đổi nào và chọn **“Hủy”** hoặc thoát màn hình. 2. Hệ thống không cập nhật cấu hình và giữ nguyên thiết lập hiện tại. |
 | Luồng sự kiện ngoại lệ  (Exception Flow) | Không có |
 
-## 4.4 Phần đóng góp của Ngô Quang Tùng (UC 4.36–4.48)
+## 4.4 Phần đóng góp của Ngô Đức Nam Khánh (UC 4.36–4.48)
 
 ### 4.36. Use Case: Bổ nhiệm và điều chuyển nhân sự cho đơn vị tổ chức nhân sự
 
@@ -1234,7 +1234,7 @@ Từ các FEAT đã được phân tách và xác định, chi tiết thành cá
 | Luồng sự kiện thay thế  (Alternative Flow) | **A1: Không có kết quả phù hợp**   1. Tại bước 5, nếu không có bản ghi nào phù hợp với tiêu chí tìm kiếm/lọc. 2. Hệ thống hiển thị thông báo: *“Không tìm thấy đánh giá phù hợp với tiêu chí tìm kiếm.”* |
 | Luồng sự kiện ngoại lệ  (Exception Flow) | Không có |
 
-### 4.41. Use Case: Mở khóa đào tạo cho cán bộ giảng viên (Ngô Quang Tùng)
+### 4.41. Use Case: Mở khóa đào tạo cho cán bộ giảng viên (Ngô Đức Nam Khánh)
 
 |  |  |
 | --- | --- |
