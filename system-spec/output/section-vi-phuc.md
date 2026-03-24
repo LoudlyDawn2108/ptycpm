@@ -22,52 +22,60 @@
 ### Độ đo và tiêu chuẩn đáp ứng
 
 #### SUPL-F01
-| Thuộc tính | Nội dung | Yếu tố chất lượng |
-|---|---|---|
-| **Độ đo yêu cầu** | (1) Tỷ lệ thao tác thuộc phạm vi yêu cầu có bản ghi log; (2) Tỷ lệ bản ghi có đủ 9 trường bắt buộc. | Tính đúng đắn – Khả năng kiểm toán |
-| **Tiêu chuẩn đáp ứng** | (1) 100% thao tác thuộc phạm vi yêu cầu có bản ghi log; (2) 100% bản ghi có đủ 9/9 trường bắt buộc. | Tính đúng đắn – Khả năng kiểm toán |
+| Thuộc tính | Nội dung |
+|---|---|
+| **Yếu tố chất lượng** | Tính đúng đắn – Khả năng kiểm toán |
+| **Độ đo yêu cầu** | (1) Tỷ lệ thao tác thuộc phạm vi yêu cầu có bản ghi log; (2) Tỷ lệ bản ghi có đủ 9 trường bắt buộc. |
+| **Tiêu chuẩn đáp ứng** | (1) 100% thao tác thuộc phạm vi yêu cầu có bản ghi log; (2) 100% bản ghi có đủ 9/9 trường bắt buộc. |
 
 #### SUPL-F02
-| Thuộc tính | Nội dung | Yếu tố chất lượng |
-|---|---|---|
-| **Độ đo yêu cầu** | (1) Tỷ lệ mã cán bộ bị trùng; (2) Tỷ lệ mã được sinh đúng mẫu; (3) Tỷ lệ hồ sơ mới được cấp mã ngay khi tạo. | Tính đúng đắn |
-| **Tiêu chuẩn đáp ứng** | (1) 0% mã cán bộ bị trùng; (2) 100% mã được sinh đúng mẫu đang áp dụng; (3) 100% hồ sơ mới được cấp mã ngay khi tạo thành công. | Tính đúng đắn |
+| Thuộc tính | Nội dung |
+|---|---|
+| **Yếu tố chất lượng** | Tính đúng đắn |
+| **Độ đo yêu cầu** | (1) Tỷ lệ mã cán bộ bị trùng; (2) Tỷ lệ mã được sinh đúng mẫu; (3) Tỷ lệ hồ sơ mới được cấp mã ngay khi tạo. |
+| **Tiêu chuẩn đáp ứng** | (1) 0% mã cán bộ bị trùng; (2) 100% mã được sinh đúng mẫu đang áp dụng; (3) 100% hồ sơ mới được cấp mã ngay khi tạo thành công. |
 
 #### SUPL-F03
-| Thuộc tính | Nội dung | Yếu tố chất lượng |
-|---|---|---|
-| **Độ đo yêu cầu** | Thời gian từ lần tương tác cuối cùng của người dùng đến khi hệ thống đăng xuất phiên làm việc. | Tính đúng đắn – Tự động hóa |
-| **Tiêu chuẩn đáp ứng** | Hệ thống tự động đăng xuất sau 30 phút không có tương tác của người dùng trên giao diện, với sai số không quá ±30 giây. | Tính đúng đắn – Tự động hóa |
+| Thuộc tính | Nội dung |
+|---|---|
+| **Yếu tố chất lượng** | Tính đúng đắn – Tự động hóa |
+| **Độ đo yêu cầu** | Thời gian từ lần tương tác cuối cùng của người dùng đến khi hệ thống đăng xuất phiên làm việc. |
+| **Tiêu chuẩn đáp ứng** | Hệ thống tự động đăng xuất sau 30 phút không có tương tác của người dùng trên giao diện, với sai số không quá ±30 giây. |
 
 #### SUPL-F04
-| Thuộc tính | Nội dung | Yếu tố chất lượng |
-|---|---|---|
-| **Độ đo yêu cầu** | (1) Thời gian từ khi nhân sự được đánh dấu thôi việc đến khi tài khoản bị khóa; (2) Tỷ lệ tài khoản liên kết được khóa tự động đúng quy tắc. | Tính đúng đắn – Tự động hóa |
-| **Tiêu chuẩn đáp ứng** | (1) Tài khoản bị khóa trong không quá 1 phút; (2) 100% tài khoản liên kết của nhân sự thôi việc bị khóa tự động. | Tính đúng đắn – Tự động hóa |
+| Thuộc tính | Nội dung |
+|---|---|
+| **Yếu tố chất lượng** | Tính đúng đắn – Tự động hóa |
+| **Độ đo yêu cầu** | (1) Thời gian từ khi nhân sự được đánh dấu thôi việc đến khi tài khoản bị khóa; (2) Tỷ lệ tài khoản liên kết được khóa tự động đúng quy tắc. |
+| **Tiêu chuẩn đáp ứng** | (1) Tài khoản bị khóa trong không quá 1 phút; (2) 100% tài khoản liên kết của nhân sự thôi việc bị khóa tự động. |
 
 #### SUPL-F05
-| Thuộc tính | Nội dung | Yếu tố chất lượng |
-|---|---|---|
-| **Độ đo yêu cầu** | (1) Tỷ lệ hợp đồng đủ điều kiện được chuyển sang trạng thái “Chờ gia hạn”; (2) Độ trễ từ thời điểm hợp đồng chạm ngưỡng đến khi trạng thái được cập nhật. | Tính đúng đắn – Tự động hóa |
-| **Tiêu chuẩn đáp ứng** | (1) 100% hợp đồng đủ điều kiện được chuyển đúng trạng thái; (2) Việc cập nhật hoàn tất trong không quá 24 giờ kể từ thời điểm đủ điều kiện. | Tính đúng đắn – Tự động hóa |
+| Thuộc tính | Nội dung |
+|---|---|
+| **Yếu tố chất lượng** | Tính đúng đắn – Tự động hóa |
+| **Độ đo yêu cầu** | (1) Tỷ lệ hợp đồng đủ điều kiện được chuyển sang trạng thái “Chờ gia hạn”; (2) Độ trễ từ thời điểm hợp đồng chạm ngưỡng đến khi trạng thái được cập nhật. |
+| **Tiêu chuẩn đáp ứng** | (1) 100% hợp đồng đủ điều kiện được chuyển đúng trạng thái; (2) Việc cập nhật hoàn tất trong không quá 24 giờ kể từ thời điểm đủ điều kiện. |
 
 #### SUPL-F06
-| Thuộc tính | Nội dung | Yếu tố chất lượng |
-|---|---|---|
-| **Độ đo yêu cầu** | (1) Tỷ lệ đăng ký của khóa đang ở trạng thái “Đã đăng ký” được cập nhật đúng trạng thái; (2) Độ trễ từ thời điểm khóa đào tạo đổi trạng thái đến khi cập nhật xong toàn bộ đăng ký. | Tính đúng đắn – Tự động hóa |
-| **Tiêu chuẩn đáp ứng** | (1) 100% đăng ký của khóa đang ở trạng thái “Đã đăng ký” được chuyển sang “Đang học”; (2) Hoàn tất cập nhật trong không quá 1 phút. | Tính đúng đắn – Tự động hóa |
+| Thuộc tính | Nội dung |
+|---|---|
+| **Yếu tố chất lượng** | Tính đúng đắn – Tự động hóa |
+| **Độ đo yêu cầu** | (1) Tỷ lệ đăng ký của khóa đang ở trạng thái “Đã đăng ký” được cập nhật đúng trạng thái; (2) Độ trễ từ thời điểm khóa đào tạo đổi trạng thái đến khi cập nhật xong toàn bộ đăng ký. |
+| **Tiêu chuẩn đáp ứng** | (1) 100% đăng ký của khóa đang ở trạng thái “Đã đăng ký” được chuyển sang “Đang học”; (2) Hoàn tất cập nhật trong không quá 1 phút. |
 
 #### SUPL-F07
-| Thuộc tính | Nội dung | Yếu tố chất lượng |
-|---|---|---|
-| **Độ đo yêu cầu** | (1) Tỷ lệ danh mục đã được tham chiếu vẫn bảo toàn liên kết dữ liệu lịch sử sau khi ngừng sử dụng hoặc kích hoạt lại; (2) Số danh mục đã được tham chiếu nhưng vẫn bị xóa. | Tính toàn vẹn |
-| **Tiêu chuẩn đáp ứng** | (1) 100% danh mục đã được tham chiếu bảo toàn liên kết dữ liệu lịch sử sau khi ngừng sử dụng hoặc kích hoạt lại; (2) 0 danh mục đã được tham chiếu bị xóa. | Tính toàn vẹn |
+| Thuộc tính | Nội dung |
+|---|---|
+| **Yếu tố chất lượng** | Tính toàn vẹn |
+| **Độ đo yêu cầu** | (1) Tỷ lệ danh mục đã được tham chiếu vẫn bảo toàn liên kết dữ liệu lịch sử sau khi ngừng sử dụng hoặc kích hoạt lại; (2) Số danh mục đã được tham chiếu nhưng vẫn bị xóa. |
+| **Tiêu chuẩn đáp ứng** | (1) 100% danh mục đã được tham chiếu bảo toàn liên kết dữ liệu lịch sử sau khi ngừng sử dụng hoặc kích hoạt lại; (2) 0 danh mục đã được tham chiếu bị xóa. |
 
 #### SUPL-F08
-| Thuộc tính | Nội dung | Yếu tố chất lượng |
-|---|---|---|
-| **Độ đo yêu cầu** | (1) Tỷ lệ mật khẩu được lưu dưới dạng giá trị xác thực một chiều; (2) Số mật khẩu được lưu ở dạng văn bản thuần. | Bảo mật – Tính bí mật |
-| **Tiêu chuẩn đáp ứng** | (1) 100% mật khẩu được lưu dưới dạng giá trị xác thực một chiều; (2) 0 mật khẩu được lưu ở dạng văn bản thuần. | Bảo mật – Tính bí mật |
+| Thuộc tính | Nội dung |
+|---|---|
+| **Yếu tố chất lượng** | Bảo mật – Tính bí mật |
+| **Độ đo yêu cầu** | (1) Tỷ lệ mật khẩu được lưu dưới dạng giá trị xác thực một chiều; (2) Số mật khẩu được lưu ở dạng văn bản thuần. |
+| **Tiêu chuẩn đáp ứng** | (1) 100% mật khẩu được lưu dưới dạng giá trị xác thực một chiều; (2) 0 mật khẩu được lưu ở dạng văn bản thuần. |
 
 ## 6.2. Ràng buộc thiết kế (Design Constraints)
 
@@ -84,22 +92,25 @@
 ### Độ đo và tiêu chuẩn đáp ứng
 
 #### SUPL-DC01
-| Thuộc tính | Nội dung | Yếu tố chất lượng |
-|---|---|---|
-| **Độ đo yêu cầu** | (1) Tỷ lệ yêu cầu nghiệp vụ giữa frontend và backend đi qua API; (2) Số luồng nghiệp vụ truy cập dữ liệu mà không qua backend. | Ràng buộc thiết kế – Kiến trúc |
-| **Tiêu chuẩn đáp ứng** | (1) 100% yêu cầu nghiệp vụ đi qua API; (2) 0 luồng nghiệp vụ truy cập dữ liệu trực tiếp mà không qua backend. | Ràng buộc thiết kế – Kiến trúc |
+| Thuộc tính | Nội dung |
+|---|---|
+| **Yếu tố chất lượng** | Ràng buộc thiết kế – Kiến trúc |
+| **Độ đo yêu cầu** | (1) Tỷ lệ yêu cầu nghiệp vụ giữa frontend và backend đi qua API; (2) Số luồng nghiệp vụ truy cập dữ liệu mà không qua backend. |
+| **Tiêu chuẩn đáp ứng** | (1) 100% yêu cầu nghiệp vụ đi qua API; (2) 0 luồng nghiệp vụ truy cập dữ liệu trực tiếp mà không qua backend. |
 
 #### SUPL-DC02
-| Thuộc tính | Nội dung | Yếu tố chất lượng |
-|---|---|---|
-| **Độ đo yêu cầu** | (1) Số nút gốc trong cây tổ chức; (2) Số chu trình trong quan hệ cha-con; (3) Tỷ lệ đơn vị có liên kết cha-con hợp lệ. | Ràng buộc thiết kế – Mô hình dữ liệu |
-| **Tiêu chuẩn đáp ứng** | (1) Có đúng 1 nút gốc là Trường Đại học Thủy Lợi; (2) 0 chu trình; (3) 100% đơn vị có liên kết cha-con hợp lệ. | Ràng buộc thiết kế – Mô hình dữ liệu |
+| Thuộc tính | Nội dung |
+|---|---|
+| **Yếu tố chất lượng** | Ràng buộc thiết kế – Mô hình dữ liệu |
+| **Độ đo yêu cầu** | (1) Số nút gốc trong cây tổ chức; (2) Số chu trình trong quan hệ cha-con; (3) Tỷ lệ đơn vị có liên kết cha-con hợp lệ. |
+| **Tiêu chuẩn đáp ứng** | (1) Có đúng 1 nút gốc là Trường Đại học Thủy Lợi; (2) 0 chu trình; (3) 100% đơn vị có liên kết cha-con hợp lệ. |
 
 #### SUPL-DC03
-| Thuộc tính | Nội dung | Yếu tố chất lượng |
-|---|---|---|
-| **Độ đo yêu cầu** | (1) Số vai trò được định nghĩa trong mô hình phân quyền; (2) Tỷ lệ chức năng và API có ma trận quyền rõ ràng; (3) Số trường hợp truy cập trái quyền. | Ràng buộc thiết kế – Phân quyền |
-| **Tiêu chuẩn đáp ứng** | (1) Định nghĩa đúng 4 vai trò: Quản trị viên, TCCB, TCKT, Nhân sự; (2) 100% chức năng và API có ma trận quyền rõ ràng; (3) 0 trường hợp truy cập trái quyền. | Ràng buộc thiết kế – Phân quyền |
+| Thuộc tính | Nội dung |
+|---|---|
+| **Yếu tố chất lượng** | Ràng buộc thiết kế – Phân quyền |
+| **Độ đo yêu cầu** | (1) Số vai trò được định nghĩa trong mô hình phân quyền; (2) Tỷ lệ chức năng và API có ma trận quyền rõ ràng; (3) Số trường hợp truy cập trái quyền. |
+| **Tiêu chuẩn đáp ứng** | (1) Định nghĩa đúng 4 vai trò: Quản trị viên, TCCB, TCKT, Nhân sự; (2) 100% chức năng và API có ma trận quyền rõ ràng; (3) 0 trường hợp truy cập trái quyền. |
 
 ## 6.3. Ràng buộc pháp lý (Legal/Regulatory)
 
@@ -116,19 +127,22 @@
 ### Độ đo và tiêu chuẩn đáp ứng
 
 #### SUPL-LR01
-| Thuộc tính | Nội dung | Yếu tố chất lượng |
-|---|---|---|
-| **Độ đo yêu cầu** | (1) Tỷ lệ trường hợp xử lý dữ liệu cá nhân có căn cứ xử lý được lưu; (2) Tỷ lệ trường hợp xử lý dựa trên sự đồng ý có hồ sơ đồng ý được lưu trước khi xử lý; (3) Tỷ lệ hồ sơ đồng ý có thể truy xuất để đối chiếu. | Ràng buộc pháp lý – Bảo vệ dữ liệu cá nhân |
-| **Tiêu chuẩn đáp ứng** | (1) 100% trường hợp xử lý dữ liệu cá nhân có căn cứ xử lý được lưu; (2) 100% trường hợp xử lý dựa trên sự đồng ý có hồ sơ đồng ý được lưu trước khi xử lý; (3) 100% hồ sơ đồng ý có thể truy xuất để đối chiếu. | Ràng buộc pháp lý – Bảo vệ dữ liệu cá nhân |
+| Thuộc tính | Nội dung |
+|---|---|
+| **Yếu tố chất lượng** | Ràng buộc pháp lý – Bảo vệ dữ liệu cá nhân |
+| **Độ đo yêu cầu** | (1) Tỷ lệ trường hợp xử lý dữ liệu cá nhân có căn cứ xử lý được lưu; (2) Tỷ lệ trường hợp xử lý dựa trên sự đồng ý có hồ sơ đồng ý được lưu trước khi xử lý; (3) Tỷ lệ hồ sơ đồng ý có thể truy xuất để đối chiếu. |
+| **Tiêu chuẩn đáp ứng** | (1) 100% trường hợp xử lý dữ liệu cá nhân có căn cứ xử lý được lưu; (2) 100% trường hợp xử lý dựa trên sự đồng ý có hồ sơ đồng ý được lưu trước khi xử lý; (3) 100% hồ sơ đồng ý có thể truy xuất để đối chiếu. |
 
 #### SUPL-LR02
-| Thuộc tính | Nội dung | Yếu tố chất lượng |
-|---|---|---|
-| **Độ đo yêu cầu** | (1) Tỷ lệ mục trong danh mục được phê duyệt có thể cấu hình và sử dụng trên hệ thống; (2) Số mục ngoài danh mục được phê duyệt nhưng vẫn được phép sử dụng. | Ràng buộc pháp lý – Danh mục nghiệp vụ |
-| **Tiêu chuẩn đáp ứng** | (1) 100% mục trong danh mục được phê duyệt có thể cấu hình và sử dụng; (2) 0 mục ngoài danh mục được phê duyệt nhưng vẫn được phép sử dụng. | Ràng buộc pháp lý – Danh mục nghiệp vụ |
+| Thuộc tính | Nội dung |
+|---|---|
+| **Yếu tố chất lượng** | Ràng buộc pháp lý – Danh mục nghiệp vụ |
+| **Độ đo yêu cầu** | (1) Tỷ lệ mục trong danh mục được phê duyệt có thể cấu hình và sử dụng trên hệ thống; (2) Số mục ngoài danh mục được phê duyệt nhưng vẫn được phép sử dụng. |
+| **Tiêu chuẩn đáp ứng** | (1) 100% mục trong danh mục được phê duyệt có thể cấu hình và sử dụng; (2) 0 mục ngoài danh mục được phê duyệt nhưng vẫn được phép sử dụng. |
 
 #### SUPL-LR03
-| Thuộc tính | Nội dung | Yếu tố chất lượng |
-|---|---|---|
-| **Độ đo yêu cầu** | (1) Tỷ lệ loại hồ sơ có thời hạn lưu giữ được cấu hình; (2) Tỷ lệ hồ sơ mẫu còn truy xuất được trong thời hạn lưu giữ; (3) Số trường hợp xóa hồ sơ trước hạn. | Ràng buộc pháp lý – Lưu trữ |
-| **Tiêu chuẩn đáp ứng** | (1) 100% loại hồ sơ thuộc phạm vi yêu cầu có thời hạn lưu giữ được cấu hình; (2) 100% hồ sơ mẫu còn truy xuất được trong thời hạn lưu giữ; (3) 0 trường hợp xóa hồ sơ trước hạn. | Ràng buộc pháp lý – Lưu trữ |
+| Thuộc tính | Nội dung |
+|---|---|
+| **Yếu tố chất lượng** | Ràng buộc pháp lý – Lưu trữ |
+| **Độ đo yêu cầu** | (1) Tỷ lệ loại hồ sơ có thời hạn lưu giữ được cấu hình; (2) Tỷ lệ hồ sơ mẫu còn truy xuất được trong thời hạn lưu giữ; (3) Số trường hợp xóa hồ sơ trước hạn. |
+| **Tiêu chuẩn đáp ứng** | (1) 100% loại hồ sơ thuộc phạm vi yêu cầu có thời hạn lưu giữ được cấu hình; (2) 100% hồ sơ mẫu còn truy xuất được trong thời hạn lưu giữ; (3) 0 trường hợp xóa hồ sơ trước hạn. |
