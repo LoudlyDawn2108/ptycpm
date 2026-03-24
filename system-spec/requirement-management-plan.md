@@ -333,7 +333,13 @@ Thể hiện ánh xạ giữa các yêu cầu thuộc các kiểu khác nhau:
 
 > **Ghi chú:** Mặc dù tên file là `uc31-42.md`, file này hiện đang chứa **UC 4.31 – UC 4.48**. Nếu tái cấu trúc bộ tài liệu, nên đổi tên thành `uc31-48.md` để phản ánh đúng phạm vi nội dung.
 
-# V. YÊU CẦU BỔ SUNG VÀ THIẾT LẬP ĐỘ ĐO
+# V. XÁC ĐỊNH CÁC LỚP, XÂY DỰNG BIỂU ĐỒ LỚP
+
+[class-diagram.md](./class-diagram.md)
+
+> **Ghi chú:** Đây là artefact thiết kế chính hiện tại để neo đường truy vết **UC → Design** trong baseline thiết kế.
+
+# VI. YÊU CẦU BỔ SUNG VÀ THIẾT LẬP ĐỘ ĐO
 
 [supplementary-requirements.md](./supplementary-requirements.md)
 
@@ -343,8 +349,4 @@ Thể hiện ánh xạ giữa các yêu cầu thuộc các kiểu khác nhau:
 
 > **Ghi chú:** File này chứa độ đo, tiêu chuẩn đáp ứng và proxy dùng để xác minh **SUPL**.
 
-# VI. XÁC ĐỊNH CÁC LỚP, XÂY DỰNG BIỂU ĐỒ LỚP
 
-[class-diagram.md](./class-diagram.md)
-
-> **Ghi chú:** Đây là artefact thiết kế chính hiện tại để neo đường truy vết **UC → Design** trong baseline thiết kế.
