@@ -1,114 +1,143 @@
 # Mục VI — Yêu cầu bổ sung / yêu cầu phi chức năng của Nguyễn Hải Ninh
 
+> Cột **FEAT liên quan** dùng để ghi các FEAT hoặc phạm vi chức năng mà mỗi SUPL truy vết tới.
+
 ## 6.4. Yêu cầu về khả dụng (Usability)
 
 > Người thực hiện: Nguyễn Hải Ninh
 
 ### Danh sách yêu cầu
 
-| STT | ID | Tên yêu cầu | Yếu tố chất lượng | FEAT liên quan |
-|-----|----|--------------|--------------------|----------------|
-| 1 | SUPL-U01 | Giao diện tiếng Việt và nhất quán | Usability – Tính nhất quán giao diện (UI consistency) | Toàn bộ giao diện hệ thống |
-| 2 | SUPL-U02 | Dễ học cho người dùng mới | Usability – Dễ học (Learnability) | FEAT 7.1; FEAT 7.4; FEAT 7.7; FEAT 7.8; FEAT 10.1; FEAT 10.2; FEAT 10.3; FEAT 10.4 |
-| 3 | SUPL-U03 | Thông báo lỗi rõ ràng | Usability – Xử lý lỗi (Error handling) | FEAT 5.1; FEAT 6.1; FEAT 7.3; FEAT 7.4; FEAT 7.5; FEAT 8.1; FEAT 9.4; FEAT 9.5 |
-| 4 | SUPL-U04a | Hỗ trợ tìm kiếm và lọc đa tiêu chí | Usability – Hiệu quả thao tác (Efficiency) | FEAT 6.3; FEAT 7.1; FEAT 7.2 |
-| 5 | SUPL-U04b | Mở nhanh hồ sơ nhân sự | Usability – Hiệu quả thao tác (Efficiency) | FEAT 7.1; FEAT 7.7 |
-| 6 | SUPL-U05 | Hiển thị ổn định trên desktop và tablet | Usability – Khả năng truy cập đa thiết bị (Accessibility) | Toàn bộ giao diện hệ thống |
-| 7 | SUPL-U06a | Điều hướng nhanh bằng bàn phím | Usability – Ergonomics (Thao tác bằng bàn phím) | Toàn bộ form nhập liệu chính |
-| 8 | SUPL-U06b | Điều hướng bằng breadcrumb | Usability – Dễ sử dụng (Ease of use) | Toàn bộ trang có phân cấp điều hướng |
-| 9 | SUPL-U07 | Xác nhận trước thao tác quan trọng | Usability – Ngăn ngừa lỗi (Error prevention) | FEAT 2.5; FEAT 2.6; FEAT 3.4; FEAT 5.4; FEAT 7.5; FEAT 9.3; FEAT 9.4; FEAT 9.5 |
+| STT | ID | Nội dung yêu cầu | FEAT liên quan |
+|-----|----|------------------|----------------|
+| 1 | SUPL-U01 | Hệ thống phải hiển thị nhãn, menu, nút thao tác và thông báo bằng tiếng Việt trên các màn hình hồ sơ nhân sự, hợp đồng lao động, đào tạo, đánh giá và danh mục cấu hình. | Toàn bộ giao diện hệ thống |
+| 2 | SUPL-U02 | Hệ thống phải áp dụng thống nhất bố cục, màu sắc, font chữ và vị trí các nút thao tác trên các màn hình hồ sơ nhân sự, hợp đồng lao động, đào tạo, đánh giá và danh mục cấu hình. | Toàn bộ giao diện hệ thống |
+| 3 | SUPL-U03 | Sau tối đa 2 giờ hướng dẫn, ít nhất 95% người dùng mới thuộc vai trò Phòng Tổ chức – Cán bộ (TCCB) phải hoàn thành tác vụ tìm kiếm hồ sơ nhân sự, xem chi tiết hồ sơ và cập nhật hồ sơ mà không cần người hướng dẫn can thiệp thêm. | FEAT 7.1, FEAT 7.4, FEAT 7.7 |
+| 4 | SUPL-U04 | Sau tối đa 2 giờ hướng dẫn, ít nhất 95% người dùng mới thuộc vai trò Phòng Tài chính – Kế toán (TCKT) phải hoàn thành tác vụ tìm kiếm hồ sơ nhân sự, xem chi tiết hồ sơ và xuất hồ sơ nhân sự mà không cần người hướng dẫn can thiệp thêm. | FEAT 7.1, FEAT 7.7, FEAT 7.8 |
+| 5 | SUPL-U05 | Hệ thống phải hiển thị thông báo lỗi kiểm tra dữ liệu đầu vào và lỗi nghiệp vụ bằng tiếng Việt, trong đó nêu rõ nguyên nhân lỗi và hành động người dùng cần thực hiện để tiếp tục. | FEAT 5.1, FEAT 6.1, FEAT 7.3, FEAT 7.4, FEAT 8.1, FEAT 9.4, FEAT 9.5 |
+| 6 | SUPL-U06 | Hệ thống phải hiển thị thông báo lỗi hệ thống bằng tiếng Việt và kèm mã tra cứu duy nhất để bộ phận kỹ thuật đối chiếu nhật ký hệ thống. | FEAT 12.1, FEAT 12.2 |
+| 7 | SUPL-U07 | Hệ thống phải cho phép người dùng kết hợp ít nhất 3 tiêu chí lọc khi tìm kiếm hồ sơ nhân sự. | FEAT 7.1, FEAT 7.2 |
+| 8 | SUPL-U08 | Từ danh sách hồ sơ nhân sự, người dùng phải mở được trang chi tiết của một hồ sơ trong tối đa 3 thao tác giao diện. | FEAT 7.1, FEAT 7.7 |
+| 9 | SUPL-U09 | Ở độ phân giải 1366×768 trở lên, hệ thống phải hiển thị toàn bộ thành phần giao diện chính của các màn hình hồ sơ nhân sự, hợp đồng lao động, đào tạo, đánh giá và danh mục cấu hình trong vùng hiển thị và không có thành phần nào chỉ truy cập được bằng cuộn ngang. | Toàn bộ giao diện hệ thống |
+| 10 | SUPL-U10 | Ở độ phân giải 1024×768, hệ thống phải cho phép thực hiện các tác vụ tìm kiếm hồ sơ, xem chi tiết hồ sơ, thêm mới hồ sơ và chỉnh sửa hồ sơ mà không cần cuộn ngang hoặc phóng to. | FEAT 7.1, FEAT 7.3, FEAT 7.4, FEAT 7.7 |
+| 11 | SUPL-U11 | Hệ thống phải cho phép di chuyển bằng phím Tab theo thứ tự từ trên xuống dưới, từ trái sang phải của các trường nhập có thể thao tác trên các biểu mẫu thêm mới và chỉnh sửa hồ sơ nhân sự, hợp đồng lao động, khóa đào tạo, loại phụ cấp và loại hợp đồng. | Toàn bộ biểu mẫu nhập liệu chính |
+| 12 | SUPL-U12 | Trên các biểu mẫu thêm mới và chỉnh sửa hồ sơ nhân sự, hợp đồng lao động, khóa đào tạo, loại phụ cấp và loại hợp đồng, phím Enter phải kích hoạt đúng nút xác nhận mặc định của biểu mẫu. | Toàn bộ biểu mẫu nhập liệu chính |
+| 13 | SUPL-U13 | Hệ thống phải hiển thị breadcrumb có thể điều hướng được trên mọi trang có cấu trúc danh sách → chi tiết → chỉnh sửa. | Toàn bộ trang có phân cấp điều hướng |
+| 14 | SUPL-U14 | Hệ thống phải yêu cầu xác nhận trước khi thực hiện các thao tác khóa hoặc mở khóa tài khoản, giải thể hoặc sáp nhập đơn vị, chấm dứt hợp đồng trước hạn, đánh dấu thôi việc, xóa hệ số lương, thay đổi trạng thái loại phụ cấp và thay đổi trạng thái loại hợp đồng. | FEAT 2.5, FEAT 3.4, FEAT 5.4, FEAT 7.5, FEAT 9.3, FEAT 9.4, FEAT 9.5 |
 
-### Chi tiết độ đo và tiêu chuẩn đáp ứng
+### Độ đo và tiêu chuẩn đáp ứng
 
-#### SUPL-U01: Giao diện tiếng Việt và nhất quán
+#### SUPL-U01
+
 | Thuộc tính | Nội dung |
 |---|---|
-| **Yếu tố chất lượng** | Usability – Tính nhất quán giao diện (UI consistency) |
-| **Mô tả yêu cầu** | Hệ thống phải sử dụng tiếng Việt trên 100% nhãn, menu, nút thao tác và thông báo ở các màn hình nghiệp vụ chính; thuật ngữ kỹ thuật chỉ được giữ nguyên khi đã thống nhất cách dùng trong toàn hệ thống. |
-| **Độ đo yêu cầu** | (1) Tỷ lệ thành phần giao diện dùng tiếng Việt; (2) Tỷ lệ màn hình nghiệp vụ chính tuân thủ cùng quy ước bố cục, màu sắc và font chữ. |
-| **Tiêu chuẩn đáp ứng** | (1) 100% nhãn, menu, nút thao tác và thông báo ở màn hình nghiệp vụ chính dùng tiếng Việt; (2) ≥ 95% màn hình nghiệp vụ chính tuân thủ cùng một design system. |
-| **Lý do chọn độ đo** | Ngôn ngữ hiển thị và độ nhất quán giao diện ảnh hưởng trực tiếp đến khả năng hiểu và giảm lỗi thao tác của cán bộ hành chính. Ngưỡng 100% cho nhãn/menu/thông báo ở màn hình nghiệp vụ chính là cần thiết, còn ≥ 95% cho tuân thủ design system là thực tế hơn cho một bài tập lớn sinh viên. |
-| **Phương pháp đo** | Rà soát checklist giao diện trên các màn hình đại diện của nhóm hồ sơ, thống kê và self-service. |
+| **Yếu tố chất lượng** | Khả dụng – Ngôn ngữ giao diện |
+| **Độ đo yêu cầu** | Tỷ lệ nhãn, menu, nút thao tác và thông báo ở các màn hình thuộc phạm vi yêu cầu hiển thị bằng tiếng Việt. |
+| **Tiêu chuẩn đáp ứng** | 100% nhãn, menu, nút thao tác và thông báo ở các màn hình thuộc phạm vi yêu cầu hiển thị bằng tiếng Việt. |
 
-#### SUPL-U02: Dễ học cho người dùng mới
+#### SUPL-U02
+
 | Thuộc tính | Nội dung |
 |---|---|
-| **Yếu tố chất lượng** | Usability – Dễ học (Learnability) |
-| **Mô tả yêu cầu** | Sau tối đa 2 giờ hướng dẫn chuẩn, ít nhất 95% người dùng mới ở vai trò TCCB và TCKT phải hoàn thành được bộ tác vụ cơ bản của vai trò mình mà không cần trợ giúp trực tiếp. |
-| **Độ đo yêu cầu** | (1) Thời gian hướng dẫn cho mỗi người dùng mới; (2) Tỷ lệ hoàn thành bộ tác vụ cơ bản của TCCB; (3) Tỷ lệ hoàn thành bộ tác vụ cơ bản của TCKT. |
-| **Tiêu chuẩn đáp ứng** | (1) Thời gian hướng dẫn ≤ 2 giờ/người; (2) Tỷ lệ hoàn thành bộ tác vụ cơ bản của TCCB ≥ 95%; (3) Tỷ lệ hoàn thành bộ tác vụ cơ bản của TCKT ≥ 95%. |
-| **Lý do chọn độ đo** | Learnability nên đo bằng thời gian làm quen và tỷ lệ hoàn thành tác vụ sau hướng dẫn. Mốc ≤ 2 giờ phù hợp một buổi tập huấn ngắn của hệ thống nội bộ; mức ≥ 95% cho thấy đa số người dùng mới có thể làm việc độc lập. |
-| **Phương pháp đo** | Tổ chức usability test sau buổi hướng dẫn chuẩn và ghi nhận thời gian học, tỷ lệ hoàn thành, số lần cần trợ giúp. |
+| **Yếu tố chất lượng** | Khả dụng – Tính nhất quán giao diện |
+| **Độ đo yêu cầu** | Tỷ lệ màn hình thuộc phạm vi yêu cầu đạt checklist giao diện về bố cục, màu sắc, font chữ và vị trí nút thao tác. |
+| **Tiêu chuẩn đáp ứng** | Ít nhất 95% màn hình thuộc phạm vi yêu cầu đạt checklist giao diện về bố cục, màu sắc, font chữ và vị trí nút thao tác. |
 
-#### SUPL-U03: Thông báo lỗi rõ ràng
+#### SUPL-U03
+
 | Thuộc tính | Nội dung |
 |---|---|
-| **Yếu tố chất lượng** | Usability – Xử lý lỗi (Error handling) |
-| **Mô tả yêu cầu** | Hệ thống phải hiển thị thông báo lỗi bằng tiếng Việt; lỗi validation và lỗi nghiệp vụ phải nêu nguyên nhân chính và cách xử lý, còn lỗi hệ thống phải hiển thị thông báo thân thiện kèm mã tra cứu. |
-| **Độ đo yêu cầu** | (1) Tỷ lệ lỗi validation và lỗi nghiệp vụ có thông báo tiếng Việt nêu nguyên nhân; (2) Tỷ lệ lỗi validation và lỗi nghiệp vụ có ít nhất 1 gợi ý khắc phục; (3) Tỷ lệ lỗi hệ thống có thông báo thân thiện kèm mã tra cứu. |
-| **Tiêu chuẩn đáp ứng** | (1) 100% lỗi validation và lỗi nghiệp vụ có thông báo tiếng Việt nêu nguyên nhân chính; (2) ≥ 95% lỗi validation và lỗi nghiệp vụ có ít nhất 1 gợi ý khắc phục; (3) 100% lỗi hệ thống có thông báo thân thiện và mã tra cứu. |
-| **Lý do chọn độ đo** | Thông báo lỗi tốt phải giúp người dùng nhận biết và khắc phục lỗi, nên độ đo tập trung vào ngôn ngữ hiển thị, nguyên nhân và gợi ý xử lý. Các lỗi dự đoán được phải đạt gần như tuyệt đối, còn lỗi hệ thống cần mã tra cứu để hỗ trợ bộ phận kỹ thuật. |
-| **Phương pháp đo** | Kích hoạt các lỗi điển hình trên môi trường kiểm thử và đối chiếu nội dung thông báo với checklist nghiệm thu. |
+| **Yếu tố chất lượng** | Khả dụng – Dễ học |
+| **Độ đo yêu cầu** | (1) Thời gian hướng dẫn cho mỗi người dùng mới thuộc vai trò TCCB; (2) Tỷ lệ người dùng mới thuộc vai trò TCCB hoàn thành đủ 3 tác vụ đã nêu mà không cần người hướng dẫn can thiệp thêm. |
+| **Tiêu chuẩn đáp ứng** | (1) Thời gian hướng dẫn không quá 2 giờ/người; (2) Ít nhất 95% người dùng mới thuộc vai trò TCCB hoàn thành đủ 3 tác vụ đã nêu mà không cần người hướng dẫn can thiệp thêm. |
 
-#### SUPL-U04a: Hỗ trợ tìm kiếm và lọc đa tiêu chí
+#### SUPL-U04
+
 | Thuộc tính | Nội dung |
 |---|---|
-| **Yếu tố chất lượng** | Usability – Hiệu quả thao tác (Efficiency) |
-| **Mô tả yêu cầu** | Các màn hình danh sách có chức năng tra cứu phải hỗ trợ tìm theo từ khóa và kết hợp ít nhất 3 tiêu chí lọc. |
-| **Độ đo yêu cầu** | Số tiêu chí lọc có thể kết hợp đồng thời trên một màn hình có chức năng lọc. |
-| **Tiêu chuẩn đáp ứng** | Bộ lọc hỗ trợ kết hợp ≥ 3 tiêu chí đồng thời. |
-| **Lý do chọn độ đo** | Hiệu quả tra cứu phụ thuộc trực tiếp vào khả năng kết hợp tiêu chí lọc. Mốc ≥ 3 tiêu chí đủ cho phần lớn truy vấn nhân sự mà vẫn giữ giao diện gọn và phù hợp phạm vi bài tập lớn. |
-| **Phương pháp đo** | Thực hiện walkthrough trên các màn hình tra cứu và đếm số thao tác thực tế cùng số tiêu chí lọc kết hợp được. |
+| **Yếu tố chất lượng** | Khả dụng – Dễ học |
+| **Độ đo yêu cầu** | (1) Thời gian hướng dẫn cho mỗi người dùng mới thuộc vai trò TCKT; (2) Tỷ lệ người dùng mới thuộc vai trò TCKT hoàn thành đủ 3 tác vụ đã nêu mà không cần người hướng dẫn can thiệp thêm. |
+| **Tiêu chuẩn đáp ứng** | (1) Thời gian hướng dẫn không quá 2 giờ/người; (2) Ít nhất 95% người dùng mới thuộc vai trò TCKT hoàn thành đủ 3 tác vụ đã nêu mà không cần người hướng dẫn can thiệp thêm. |
 
-#### SUPL-U04b: Mở nhanh hồ sơ nhân sự
+#### SUPL-U05
+
 | Thuộc tính | Nội dung |
 |---|---|
-| **Yếu tố chất lượng** | Usability – Hiệu quả thao tác (Efficiency) |
-| **Mô tả yêu cầu** | Trên danh sách hồ sơ nhân sự, người dùng phải mở được một hồ sơ trong tối đa 3 bước. |
-| **Độ đo yêu cầu** | Số bước để tìm và mở một hồ sơ nhân sự. |
-| **Tiêu chuẩn đáp ứng** | Mở một hồ sơ nhân sự trong ≤ 3 bước (nhập từ khóa → tìm kiếm → mở chi tiết). |
-| **Lý do chọn độ đo** | Số bước để mở hồ sơ là chỉ số trực tiếp của hiệu quả thao tác. Ngưỡng ≤ 3 bước phản ánh một luồng tra cứu nhanh, phù hợp với nhu cầu tra cứu thường xuyên trong hệ thống HRMS nội bộ. |
-| **Phương pháp đo** | Thực hiện walkthrough trên danh sách hồ sơ nhân sự và đếm số thao tác từ lúc nhập từ khóa đến lúc mở chi tiết. |
+| **Yếu tố chất lượng** | Khả dụng – Xử lý lỗi |
+| **Độ đo yêu cầu** | (1) Tỷ lệ lỗi kiểm tra dữ liệu đầu vào và lỗi nghiệp vụ có thông báo bằng tiếng Việt; (2) Tỷ lệ thông báo nêu rõ nguyên nhân lỗi; (3) Tỷ lệ thông báo nêu rõ hành động người dùng cần thực hiện để tiếp tục. |
+| **Tiêu chuẩn đáp ứng** | (1) 100% lỗi kiểm tra dữ liệu đầu vào và lỗi nghiệp vụ có thông báo bằng tiếng Việt; (2) 100% thông báo nêu rõ nguyên nhân lỗi; (3) Ít nhất 95% thông báo nêu rõ hành động người dùng cần thực hiện để tiếp tục. |
 
-#### SUPL-U05: Hiển thị ổn định trên desktop và tablet
+#### SUPL-U06
+
 | Thuộc tính | Nội dung |
 |---|---|
-| **Yếu tố chất lượng** | Usability – Khả năng truy cập đa thiết bị (Accessibility) |
-| **Mô tả yêu cầu** | Hệ thống phải hiển thị đầy đủ nội dung trên desktop từ 1366×768 trở lên và cho phép thực hiện các tác vụ trong bộ smoke test trên tablet 1024×768 mà không cần cuộn ngang hoặc phóng to. |
-| **Độ đo yêu cầu** | (1) Tỷ lệ màn hình nghiệp vụ chính hiển thị đúng trên desktop ≥ 1366×768; (2) Tỷ lệ màn hình nghiệp vụ chính sử dụng được trên tablet 1024×768; (3) Tỷ lệ tác vụ trong bộ smoke test trên tablet không cần cuộn ngang hoặc phóng to. |
-| **Tiêu chuẩn đáp ứng** | (1) 100% màn hình nghiệp vụ chính hiển thị đúng trên desktop ≥ 1366×768; (2) ≥ 80% màn hình nghiệp vụ chính sử dụng được trên tablet 1024×768; (3) 100% tác vụ trong bộ smoke test trên tablet không cần cuộn ngang hoặc phóng to. |
-| **Lý do chọn độ đo** | Desktop là môi trường sử dụng chính nên phải đạt 100%; tablet chỉ là kênh hỗ trợ nên dùng ngưỡng thấp hơn nhưng vẫn phải vượt qua bộ smoke test. Cách chọn này cân bằng giữa tính khả dụng và phạm vi của một bài tập lớn sinh viên. |
-| **Phương pháp đo** | Kiểm thử giao diện trên desktop chuẩn và tablet 1024×768 hoặc thiết bị giả lập tương đương. |
+| **Yếu tố chất lượng** | Khả dụng – Hỗ trợ chẩn đoán lỗi |
+| **Độ đo yêu cầu** | (1) Tỷ lệ lỗi hệ thống có thông báo bằng tiếng Việt; (2) Tỷ lệ lỗi hệ thống có mã tra cứu duy nhất. |
+| **Tiêu chuẩn đáp ứng** | (1) 100% lỗi hệ thống có thông báo bằng tiếng Việt; (2) 100% lỗi hệ thống có mã tra cứu duy nhất. |
 
-#### SUPL-U06a: Điều hướng nhanh bằng bàn phím
+#### SUPL-U07
+
 | Thuộc tính | Nội dung |
 |---|---|
-| **Yếu tố chất lượng** | Usability – Ergonomics (Thao tác bằng bàn phím) |
-| **Mô tả yêu cầu** | Hệ thống phải cho phép thao tác trên các form nhập liệu chính bằng bàn phím: phím Tab di chuyển đúng thứ tự trường và phím Enter kích hoạt nút xác nhận mặc định khi có. |
-| **Độ đo yêu cầu** | (1) Tỷ lệ form nhập liệu chính có thứ tự Tab đúng; (2) Tỷ lệ form có nút xác nhận mặc định hỗ trợ phím Enter. |
-| **Tiêu chuẩn đáp ứng** | (1) 100% form nhập liệu chính cho phép di chuyển bằng phím Tab theo đúng thứ tự; (2) 100% form có nút xác nhận mặc định hỗ trợ phím Enter. |
-| **Lý do chọn độ đo** | Các form nhập liệu là nơi người dùng thao tác thường xuyên nên điều hướng bàn phím ảnh hưởng trực tiếp đến tốc độ nhập liệu. Ngưỡng 100% trên form chính giúp kiểm thử rõ ràng và tránh lỗi focus hoặc gửi nhầm thao tác. |
-| **Phương pháp đo** | Kiểm thử thủ công bằng bàn phím trên các form nhập liệu chính của hồ sơ, đào tạo và danh mục cấu hình. |
+| **Yếu tố chất lượng** | Khả dụng – Hiệu quả thao tác |
+| **Độ đo yêu cầu** | Số tiêu chí lọc có thể kết hợp đồng thời khi tìm kiếm hồ sơ nhân sự. |
+| **Tiêu chuẩn đáp ứng** | Người dùng kết hợp được tối thiểu 3 tiêu chí lọc đồng thời khi tìm kiếm hồ sơ nhân sự. |
 
-#### SUPL-U06b: Điều hướng bằng breadcrumb
+#### SUPL-U08
+
 | Thuộc tính | Nội dung |
 |---|---|
-| **Yếu tố chất lượng** | Usability – Dễ sử dụng (Ease of use) |
-| **Mô tả yêu cầu** | Hệ thống phải hiển thị breadcrumb hợp lệ trên 100% trang có cấu trúc danh sách → chi tiết → chỉnh sửa để người dùng quay lại cấp điều hướng trước một cách rõ ràng. |
-| **Độ đo yêu cầu** | Tỷ lệ trang có cấu trúc danh sách → chi tiết → chỉnh sửa hiển thị breadcrumb hợp lệ. |
-| **Tiêu chuẩn đáp ứng** | 100% trang có cấu trúc danh sách → chi tiết → chỉnh sửa hiển thị breadcrumb hợp lệ. |
-| **Lý do chọn độ đo** | Breadcrumb là công cụ định hướng trên các trang phân cấp; chỉ cần thiếu ở một trang cũng gây khó quay lại màn trước. Vì vậy độ đo dùng tỷ lệ hiện diện hợp lệ với ngưỡng 100% để dễ kiểm tra và dễ nghiệm thu. |
-| **Phương pháp đo** | Rà soát các trang có phân cấp điều hướng và đối chiếu breadcrumb với đường dẫn nghiệp vụ thực tế. |
+| **Yếu tố chất lượng** | Khả dụng – Hiệu quả thao tác |
+| **Độ đo yêu cầu** | Số thao tác giao diện từ danh sách hồ sơ nhân sự đến trang chi tiết hồ sơ. |
+| **Tiêu chuẩn đáp ứng** | Người dùng mở được trang chi tiết của một hồ sơ trong tối đa 3 thao tác giao diện. |
 
-#### SUPL-U07: Xác nhận trước thao tác quan trọng
+#### SUPL-U09
+
 | Thuộc tính | Nội dung |
 |---|---|
-| **Yếu tố chất lượng** | Usability – Ngăn ngừa lỗi (Error prevention) |
-| **Mô tả yêu cầu** | Hệ thống phải yêu cầu xác nhận trước khi thực hiện các thao tác làm mất dữ liệu hoặc thay đổi trạng thái có rủi ro cao. |
-| **Độ đo yêu cầu** | Tỷ lệ thao tác rủi ro cao có hộp thoại xác nhận trước khi thực thi. |
-| **Tiêu chuẩn đáp ứng** | 100% thao tác rủi ro cao có hộp thoại xác nhận; tối thiểu gồm: xóa hệ số lương khi được phép, khóa tài khoản, đánh dấu thôi việc, chấm dứt hợp đồng trước hạn, thay đổi trạng thái đơn vị, loại phụ cấp và loại hợp đồng. |
-| **Lý do chọn độ đo** | Đây là yêu cầu nhị phân: thao tác rủi ro cao phải có xác nhận, thiếu một trường hợp cũng có thể gây sai lệch dữ liệu. Vì vậy dùng tỷ lệ bao phủ confirmation dialog và đặt ngưỡng 100%. |
-| **Phương pháp đo** | Lập danh sách thao tác rủi ro cao, kích hoạt từng thao tác trên môi trường kiểm thử và kiểm tra sự xuất hiện của hộp thoại xác nhận. |
+| **Yếu tố chất lượng** | Khả dụng – Hiển thị trên desktop |
+| **Độ đo yêu cầu** | Tỷ lệ màn hình thuộc phạm vi yêu cầu mà mọi thành phần giao diện chính hiển thị trong vùng hiển thị và không có thành phần nào chỉ truy cập được bằng cuộn ngang ở độ phân giải 1366×768 trở lên. |
+| **Tiêu chuẩn đáp ứng** | 100% màn hình thuộc phạm vi yêu cầu mà mọi thành phần giao diện chính hiển thị trong vùng hiển thị và không có thành phần nào chỉ truy cập được bằng cuộn ngang ở độ phân giải 1366×768 trở lên. |
+
+#### SUPL-U10
+
+| Thuộc tính | Nội dung |
+|---|---|
+| **Yếu tố chất lượng** | Khả dụng – Hiển thị trên tablet |
+| **Độ đo yêu cầu** | (1) Tỷ lệ tác vụ thuộc phạm vi yêu cầu thực hiện được ở độ phân giải 1024×768; (2) Số lần phải cuộn ngang hoặc phóng to trong mỗi tác vụ. |
+| **Tiêu chuẩn đáp ứng** | (1) 100% tác vụ thuộc phạm vi yêu cầu thực hiện được ở độ phân giải 1024×768; (2) 0 lần phải cuộn ngang hoặc phóng to trong mỗi tác vụ. |
+
+#### SUPL-U11
+
+| Thuộc tính | Nội dung |
+|---|---|
+| **Yếu tố chất lượng** | Khả dụng – Điều hướng bằng bàn phím |
+| **Độ đo yêu cầu** | Tỷ lệ biểu mẫu thuộc phạm vi yêu cầu có thứ tự Tab theo thứ tự từ trên xuống dưới, từ trái sang phải của các trường nhập có thể thao tác. |
+| **Tiêu chuẩn đáp ứng** | 100% biểu mẫu thuộc phạm vi yêu cầu có thứ tự Tab theo thứ tự từ trên xuống dưới, từ trái sang phải của các trường nhập có thể thao tác. |
+
+#### SUPL-U12
+
+| Thuộc tính | Nội dung |
+|---|---|
+| **Yếu tố chất lượng** | Khả dụng – Điều hướng bằng bàn phím |
+| **Độ đo yêu cầu** | Tỷ lệ biểu mẫu thuộc phạm vi yêu cầu mà phím Enter kích hoạt đúng nút xác nhận mặc định của biểu mẫu. |
+| **Tiêu chuẩn đáp ứng** | 100% biểu mẫu thuộc phạm vi yêu cầu mà phím Enter kích hoạt đúng nút xác nhận mặc định của biểu mẫu. |
+
+#### SUPL-U13
+
+| Thuộc tính | Nội dung |
+|---|---|
+| **Yếu tố chất lượng** | Khả dụng – Điều hướng giao diện |
+| **Độ đo yêu cầu** | (1) Tỷ lệ trang thuộc phạm vi yêu cầu có breadcrumb hiển thị; (2) Tỷ lệ thành phần breadcrumb điều hướng đúng trang tương ứng. |
+| **Tiêu chuẩn đáp ứng** | (1) 100% trang thuộc phạm vi yêu cầu có breadcrumb hiển thị; (2) 100% thành phần breadcrumb điều hướng đúng trang tương ứng. |
+
+#### SUPL-U14
+
+| Thuộc tính | Nội dung |
+|---|---|
+| **Yếu tố chất lượng** | Khả dụng – Ngăn ngừa lỗi |
+| **Độ đo yêu cầu** | Tỷ lệ thao tác thuộc danh sách yêu cầu có hộp thoại xác nhận trước khi hệ thống thực thi. |
+| **Tiêu chuẩn đáp ứng** | 100% thao tác thuộc danh sách yêu cầu có hộp thoại xác nhận trước khi hệ thống thực thi. |
 
 ## 6.5. Yêu cầu về hỗ trợ (Supportability)
 
@@ -116,62 +145,97 @@
 
 ### Danh sách yêu cầu
 
-| STT | ID | Tên yêu cầu | Yếu tố chất lượng | FEAT liên quan |
-|-----|----|--------------|--------------------|----------------|
-| 1 | SUPL-S01 | Kiến trúc module hóa | Supportability – Maintainability/Modularity | Toàn bộ hệ thống |
-| 2 | SUPL-S02 | Tài liệu kỹ thuật đầy đủ | Supportability – Understandability | Toàn bộ hệ thống |
-| 3 | SUPL-S03 | Khả năng mở rộng danh mục cấu hình | Supportability – Configurability | FEAT 9.1; FEAT 9.2; FEAT 9.3; FEAT 9.4; FEAT 9.5 |
-| 4 | SUPL-S04 | Hỗ trợ gỡ lỗi (Debugging) | Supportability – Analyzability | FEAT 12.1; FEAT 12.2 |
-| 5 | SUPL-S05 | Khả năng mở rộng quy mô (Scalability) | Supportability – Scalability | Toàn bộ hệ thống |
+| STT | ID | Nội dung yêu cầu | FEAT liên quan |
+|-----|----|------------------|----------------|
+| 1 | SUPL-S01 | Khi thay đổi một quy tắc kiểm tra dữ liệu hoặc chuyển trạng thái của phân hệ hồ sơ nhân sự, hợp đồng lao động, đào tạo hoặc danh mục cấu hình, hệ thống không được làm phát sinh sửa mã nguồn ở quá 2 phân hệ khác. | Toàn bộ hệ thống |
+| 2 | SUPL-S02 | Hệ thống phải có tài liệu mô tả cho 100% giao diện lập trình ứng dụng (API) mà giao diện web đang sử dụng. | Toàn bộ hệ thống |
+| 3 | SUPL-S03 | Hệ thống phải có tài liệu triển khai gồm tối thiểu các mục: yêu cầu môi trường, cài đặt, cấu hình, khởi động, sao lưu hoặc khôi phục và xử lý lỗi thường gặp. | Toàn bộ hệ thống |
+| 4 | SUPL-S04 | Hệ thống phải có hướng dẫn sử dụng riêng cho các vai trò Quản trị viên, Phòng Tổ chức – Cán bộ (TCCB), Phòng Tài chính – Kế toán (TCKT) và Người dùng. | Toàn bộ hệ thống |
+| 5 | SUPL-S05 | Trong không quá 1 phút kể từ khi quản trị viên lưu thay đổi trên giao diện cấu hình, hệ thống phải áp dụng giá trị mới của hệ số lương, loại phụ cấp và loại hợp đồng mà không yêu cầu sửa mã nguồn hoặc triển khai lại hệ thống. | FEAT 9.1, FEAT 9.2, FEAT 9.3, FEAT 9.4, FEAT 9.5 |
+| 6 | SUPL-S06 | Hệ thống phải ghi log máy chủ tối thiểu ở 4 mức: ERROR, WARNING, INFO và DEBUG. | FEAT 12.1, FEAT 12.2 |
+| 7 | SUPL-S07 | 100% bản ghi log mức ERROR phải chứa timestamp, severity, request ID và stack trace. | FEAT 12.1, FEAT 12.2 |
+| 8 | SUPL-S08 | Ít nhất 95% bản ghi log phát sinh trong phiên đã xác thực phải chứa user ID. | FEAT 12.1, FEAT 12.2 |
+| 9 | SUPL-S09 | Khi chạy đồng thời trên tối thiểu 2 nút ứng dụng trong cùng một môi trường, hệ thống phải thực hiện được các tác vụ đăng nhập, tìm kiếm hồ sơ nhân sự, xem chi tiết hồ sơ, thêm mới hồ sơ, chỉnh sửa hồ sơ và thay đổi trạng thái loại hợp đồng mà không phát sinh lỗi và dữ liệu sau tác vụ phải đúng với kết quả mong đợi. | Toàn bộ hệ thống |
+| 10 | SUPL-S10 | Trong bài kiểm thử 30 phút với tối thiểu 2 nút ứng dụng, 100% phiên người dùng phải duy trì được trạng thái đăng nhập khi các request liên tiếp của cùng một phiên đi qua các nút khác nhau. | Toàn bộ hệ thống |
 
-### Chi tiết độ đo và tiêu chuẩn đáp ứng
+### Độ đo và tiêu chuẩn đáp ứng
 
-#### SUPL-S01: Kiến trúc module hóa
+#### SUPL-S01
+
 | Thuộc tính | Nội dung |
 |---|---|
-| **Yếu tố chất lượng** | Supportability – Maintainability/Modularity |
-| **Mô tả yêu cầu** | Hệ thống phải được tách thành các module nghiệp vụ có hợp đồng giao tiếp rõ ràng; một thay đổi nghiệp vụ thông thường trong một module không được làm phát sinh sửa đổi ở quá 2 module khác. |
-| **Độ đo yêu cầu** | (1) Số module khác phải sửa khi thực hiện một thay đổi nghiệp vụ thông thường trong một module; (2) Tỷ lệ module nghiệp vụ chính có service contract hoặc interface rõ ràng; (3) Số phụ thuộc vòng giữa các module nghiệp vụ chính. |
-| **Tiêu chuẩn đáp ứng** | (1) Một thay đổi nghiệp vụ thông thường trong một module không làm phát sinh sửa đổi ở quá 2 module khác; (2) 100% module nghiệp vụ chính có service contract hoặc interface rõ ràng; (3) Số phụ thuộc vòng giữa các module nghiệp vụ chính = 0. |
-| **Lý do chọn độ đo** | Khả năng bảo trì của kiến trúc thể hiện rõ qua phạm vi ảnh hưởng thay đổi, ranh giới module và phụ thuộc vòng. Ba độ đo này giúp kiểm tra trực tiếp mức coupling của hệ thống mà không cần phân tích kiến trúc quá phức tạp. |
-| **Phương pháp đo** | Phân tích phụ thuộc giữa các module và thực hiện impact analysis trên một thay đổi nghiệp vụ điển hình của từng module chính. |
+| **Yếu tố chất lượng** | Khả năng hỗ trợ – Bảo trì |
+| **Độ đo yêu cầu** | Số phân hệ khác phải sửa mã nguồn khi thay đổi một quy tắc kiểm tra dữ liệu hoặc chuyển trạng thái của các phân hệ thuộc phạm vi yêu cầu. |
+| **Tiêu chuẩn đáp ứng** | Một thay đổi thuộc phạm vi yêu cầu không làm phát sinh sửa mã nguồn ở quá 2 phân hệ khác. |
 
-#### SUPL-S02: Tài liệu kỹ thuật đầy đủ
+#### SUPL-S02
+
 | Thuộc tính | Nội dung |
 |---|---|
-| **Yếu tố chất lượng** | Supportability – Understandability |
-| **Mô tả yêu cầu** | Hệ thống phải đi kèm bộ tài liệu kỹ thuật tối thiểu gồm tài liệu API, hướng dẫn triển khai và hướng dẫn sử dụng theo vai trò. |
-| **Độ đo yêu cầu** | (1) Tỷ lệ API đang được frontend sử dụng có tài liệu đầy đủ; (2) Tỷ lệ vai trò sử dụng hệ thống có hướng dẫn sử dụng riêng; (3) Tỷ lệ hướng dẫn triển khai có đủ các mục bắt buộc. |
-| **Tiêu chuẩn đáp ứng** | (1) 100% API đang được frontend sử dụng có tài liệu mô tả phương thức, URL, tham số, dữ liệu trả về và mã lỗi; (2) 100% vai trò sử dụng hệ thống có hướng dẫn sử dụng tương ứng; (3) 100% hướng dẫn triển khai có tối thiểu các mục: yêu cầu môi trường, cài đặt, cấu hình, khởi động, sao lưu/khôi phục và lỗi thường gặp. |
-| **Lý do chọn độ đo** | Tài liệu kỹ thuật chỉ hữu ích khi bao phủ đúng API, đúng vai trò và đủ nội dung triển khai. Vì đây là tài liệu phục vụ bàn giao và vận hành nên dùng ngưỡng 100% để tránh phụ thuộc vào truyền miệng hoặc suy đoán. |
-| **Phương pháp đo** | Đối chiếu danh mục endpoint và vai trò thực tế với bộ tài liệu trước nghiệm thu. |
+| **Yếu tố chất lượng** | Khả năng hỗ trợ – Tài liệu API |
+| **Độ đo yêu cầu** | Tỷ lệ giao diện lập trình ứng dụng (API) mà giao diện web đang sử dụng có tài liệu mô tả đầy đủ phương thức, URL, tham số, dữ liệu trả về và mã lỗi. |
+| **Tiêu chuẩn đáp ứng** | 100% giao diện lập trình ứng dụng (API) mà giao diện web đang sử dụng có tài liệu mô tả đầy đủ phương thức, URL, tham số, dữ liệu trả về và mã lỗi. |
 
-#### SUPL-S03: Khả năng mở rộng danh mục cấu hình
+#### SUPL-S03
+
 | Thuộc tính | Nội dung |
 |---|---|
-| **Yếu tố chất lượng** | Supportability – Configurability |
-| **Mô tả yêu cầu** | Hệ thống phải cho phép quản trị viên mở rộng các danh mục dữ liệu chủ qua giao diện quản trị mà không cần sửa mã nguồn. |
-| **Độ đo yêu cầu** | (1) Số loại danh mục dữ liệu chủ có thể mở rộng qua giao diện quản trị; (2) Số dòng mã nguồn cần sửa khi thêm danh mục hoặc giá trị cấu hình mới; (3) Có hoặc không yêu cầu triển khai lại hệ thống sau khi thêm mới giá trị cấu hình. |
-| **Tiêu chuẩn đáp ứng** | (1) Có ít nhất 3 loại danh mục dữ liệu chủ mở rộng được qua giao diện quản trị: hệ số lương, loại phụ cấp, loại hợp đồng; (2) Số dòng mã nguồn cần sửa = 0; (3) Không cần triển khai lại hệ thống khi thêm mới giá trị cấu hình. |
-| **Lý do chọn độ đo** | Nếu vẫn phải sửa code hoặc triển khai lại thì chưa thể coi là cấu hình linh hoạt. Vì vậy độ đo tập trung vào số danh mục mở rộng được, số dòng mã phải sửa và nhu cầu triển khai lại sau cấu hình. |
-| **Phương pháp đo** | Thực hiện thử nghiệm thêm mới và chỉnh sửa danh mục cấu hình trên giao diện quản trị, đồng thời kiểm tra mã nguồn và quy trình triển khai. |
+| **Yếu tố chất lượng** | Khả năng hỗ trợ – Tài liệu triển khai |
+| **Độ đo yêu cầu** | Tỷ lệ tài liệu triển khai có đủ các mục: yêu cầu môi trường, cài đặt, cấu hình, khởi động, sao lưu hoặc khôi phục và xử lý lỗi thường gặp. |
+| **Tiêu chuẩn đáp ứng** | 100% tài liệu triển khai có đủ các mục: yêu cầu môi trường, cài đặt, cấu hình, khởi động, sao lưu hoặc khôi phục và xử lý lỗi thường gặp. |
 
-#### SUPL-S04: Hỗ trợ gỡ lỗi (Debugging)
+#### SUPL-S04
+
 | Thuộc tính | Nội dung |
 |---|---|
-| **Yếu tố chất lượng** | Supportability – Analyzability |
-| **Mô tả yêu cầu** | Hệ thống phải ghi log chẩn đoán phía server theo nhiều mức và đủ thông tin để truy vết lỗi theo request và người thao tác. |
-| **Độ đo yêu cầu** | (1) Số mức log hệ thống hỗ trợ; (2) Tỷ lệ log mức ERROR có đủ timestamp, severity, request ID và stack trace; (3) Tỷ lệ log phát sinh trong phiên xác thực có user ID hoặc actor ID. |
-| **Tiêu chuẩn đáp ứng** | (1) Hệ thống hỗ trợ tối thiểu 4 mức log: ERROR, WARNING, INFO, DEBUG; (2) 100% log mức ERROR có đủ timestamp, severity, request ID và stack trace; (3) ≥ 95% log phát sinh trong phiên xác thực có user ID hoặc actor ID. |
-| **Lý do chọn độ đo** | Log chẩn đoán chỉ hữu ích khi đủ mức log và đủ thông tin để truy vết lỗi theo request và người dùng. Các độ đo này phản ánh trực tiếp khả năng phân tích lỗi khi hệ thống vận hành thực tế. |
-| **Phương pháp đo** | Kích hoạt các tình huống lỗi điển hình, trích xuất log máy chủ và đối chiếu từng bản ghi với checklist trường thông tin bắt buộc. |
+| **Yếu tố chất lượng** | Khả năng hỗ trợ – Tài liệu sử dụng |
+| **Độ đo yêu cầu** | Số vai trò có hướng dẫn sử dụng riêng trong phạm vi yêu cầu. |
+| **Tiêu chuẩn đáp ứng** | Có đủ 4 hướng dẫn sử dụng riêng cho các vai trò Quản trị viên, TCCB, TCKT và Người dùng. |
 
-#### SUPL-S05: Khả năng mở rộng quy mô (Scalability)
+#### SUPL-S05
+
 | Thuộc tính | Nội dung |
 |---|---|
-| **Yếu tố chất lượng** | Supportability – Scalability |
-| **Mô tả yêu cầu** | Hệ thống phải duy trì đúng các chức năng trong bộ smoke test khi mở rộng theo chiều ngang bằng cách bổ sung thêm nút ứng dụng trong cùng môi trường khai thác. |
-| **Độ đo yêu cầu** | (1) Số nút ứng dụng có thể chạy song song trong cùng môi trường; (2) Tỷ lệ phiên người dùng hoạt động đúng khi request liên tiếp đi qua các nút khác nhau trong bài kiểm thử scale-out 30 phút; (3) Tỷ lệ ca smoke test vẫn đạt sau khi bổ sung nút ứng dụng. |
-| **Tiêu chuẩn đáp ứng** | (1) Hệ thống hỗ trợ tối thiểu 2 nút ứng dụng chạy song song trong cùng môi trường; (2) 100% phiên người dùng trong bài kiểm thử 30 phút vẫn hoạt động đúng khi request liên tiếp đi qua các nút khác nhau; (3) 100% ca smoke test vẫn đạt sau khi bổ sung nút ứng dụng. |
-| **Lý do chọn độ đo** | Khả năng scale-out cần được chứng minh bằng số nút chạy song song, tính đúng của phiên làm việc và kết quả smoke test sau mở rộng. Đây là các chỉ số quan sát được và phù hợp với một bài kiểm thử quy mô sinh viên. |
-| **Phương pháp đo** | Triển khai thử nghiệm nhiều nút ứng dụng sau load balancer, chạy bài kiểm thử scale-out 30 phút và thực hiện bộ smoke test đã xác định. |
+| **Yếu tố chất lượng** | Khả năng hỗ trợ – Cấu hình |
+| **Độ đo yêu cầu** | (1) Tỷ lệ thay đổi cấu hình thuộc phạm vi yêu cầu có hiệu lực trong không quá 1 phút kể từ khi lưu; (2) Số lần phải sửa mã nguồn hoặc triển khai lại hệ thống để giá trị mới có hiệu lực. |
+| **Tiêu chuẩn đáp ứng** | (1) 100% thay đổi cấu hình thuộc phạm vi yêu cầu có hiệu lực trong không quá 1 phút kể từ khi lưu; (2) 0 lần phải sửa mã nguồn hoặc triển khai lại hệ thống để giá trị mới có hiệu lực. |
+
+#### SUPL-S06
+
+| Thuộc tính | Nội dung |
+|---|---|
+| **Yếu tố chất lượng** | Khả năng hỗ trợ – Ghi log |
+| **Độ đo yêu cầu** | Số mức log máy chủ mà hệ thống hỗ trợ. |
+| **Tiêu chuẩn đáp ứng** | Hệ thống hỗ trợ tối thiểu 4 mức log: ERROR, WARNING, INFO và DEBUG. |
+
+#### SUPL-S07
+
+| Thuộc tính | Nội dung |
+|---|---|
+| **Yếu tố chất lượng** | Khả năng hỗ trợ – Chẩn đoán lỗi |
+| **Độ đo yêu cầu** | Tỷ lệ bản ghi log mức ERROR chứa đủ timestamp, severity, request ID và stack trace. |
+| **Tiêu chuẩn đáp ứng** | 100% bản ghi log mức ERROR chứa đủ timestamp, severity, request ID và stack trace. |
+
+#### SUPL-S08
+
+| Thuộc tính | Nội dung |
+|---|---|
+| **Yếu tố chất lượng** | Khả năng hỗ trợ – Chẩn đoán lỗi |
+| **Độ đo yêu cầu** | Tỷ lệ bản ghi log phát sinh trong phiên đã xác thực chứa user ID. |
+| **Tiêu chuẩn đáp ứng** | Ít nhất 95% bản ghi log phát sinh trong phiên đã xác thực chứa user ID. |
+
+#### SUPL-S09
+
+| Thuộc tính | Nội dung |
+|---|---|
+| **Yếu tố chất lượng** | Khả năng hỗ trợ – Khả năng mở rộng |
+| **Độ đo yêu cầu** | (1) Số nút ứng dụng chạy song song trong cùng môi trường; (2) Tỷ lệ tác vụ thuộc phạm vi yêu cầu không phát sinh lỗi và tạo ra dữ liệu đúng với kết quả mong đợi. |
+| **Tiêu chuẩn đáp ứng** | (1) Hệ thống chạy đồng thời trên tối thiểu 2 nút ứng dụng trong cùng môi trường; (2) 100% tác vụ thuộc phạm vi yêu cầu không phát sinh lỗi và tạo ra dữ liệu đúng với kết quả mong đợi. |
+
+#### SUPL-S10
+
+| Thuộc tính | Nội dung |
+|---|---|
+| **Yếu tố chất lượng** | Khả năng hỗ trợ – Khả năng mở rộng |
+| **Độ đo yêu cầu** | (1) Thời lượng bài kiểm thử; (2) Tỷ lệ phiên người dùng duy trì được trạng thái đăng nhập khi các request liên tiếp của cùng một phiên đi qua các nút ứng dụng khác nhau. |
+| **Tiêu chuẩn đáp ứng** | (1) Bài kiểm thử kéo dài 30 phút; (2) 100% phiên người dùng duy trì được trạng thái đăng nhập khi các request liên tiếp của cùng một phiên đi qua các nút ứng dụng khác nhau. |
