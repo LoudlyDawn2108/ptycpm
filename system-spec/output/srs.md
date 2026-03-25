@@ -32,7 +32,7 @@ Ngoài phạm vi sản phẩm của phiên bản hiện tại:
 Tài liệu SRS này được tổ chức như sau:
 
 - **Phần 1** mô tả phạm vi và cách tài liệu được tổ chức.
-- **Phần 2** trình bày bối cảnh sản phẩm, nhóm người dùng và các chức năng chính ở mức tổng quan.
+- **Phần 2** trình bày bối cảnh sản phẩm, nhóm người dùng, tác nhân hệ thống và các chức năng chính ở mức tổng quan.
 - **Phần 3.1** mô tả các yêu cầu giao diện áp dụng ở mức toàn hệ thống.
 - **Phần 3.2** mô tả các yêu cầu chức năng chính của hệ thống.
 - **Phần 3.3** mô tả các yêu cầu bổ sung, yêu cầu phi chức năng và ràng buộc kỹ thuật.
@@ -77,42 +77,43 @@ Các chữ viết tắt sử dụng trong tài liệu:
 
 ### 2.1. Mô tả chung về giao diện
 
-HRMS là hệ thống **ứng dụng web nhiều người dùng**. Người dùng truy cập hệ thống qua trình duyệt, thao tác nghiệp vụ trên giao diện web, và toàn bộ xử lý nghiệp vụ được thực hiện thông qua các API của hệ thống.
+HRMS là hệ thống **ứng dụng web nhiều người dùng**. Người dùng truy cập hệ thống qua trình duyệt, thao tác nghiệp vụ trên giao diện web, và toàn bộ xử lý nghiệp vụ được thực hiện thông qua các API của hệ thống. Người dùng chủ yếu là cán bộ, giảng viên và nhân viên hành chính tại trường Đại học Thủy Lợi, thao tác trên máy tính để bàn trong môi trường mạng nội bộ hoặc Internet.
 
-Các nhóm người dùng chính của hệ thống gồm:
+Các nhóm người dùng và tác nhân hệ thống chính của HRMS gồm:
 
-| Nhóm người dùng | Vai trò sử dụng chính |
+| Nhóm người dùng / tác nhân | Vai trò sử dụng chính |
 | --- | --- |
 | Quản trị viên (Admin) | Quản lý tài khoản, phân quyền, quản lý cơ cấu tổ chức, xem nhật ký hệ thống |
 | Phòng TCCB | Thực hiện nghiệp vụ quản lý hồ sơ, hợp đồng, đào tạo, đánh giá, điều chuyển/bổ nhiệm, cấu hình danh mục |
 | Phòng TCKT | Tra cứu hồ sơ, xem dữ liệu phục vụ lương/phụ cấp, xem và xuất báo cáo thống kê |
 | Cán bộ / Giảng viên / Nhân viên | Xem thông tin cá nhân, xem đơn vị công tác, đăng ký đào tạo, xem lịch sử đào tạo |
-| Hệ thống (System Timer / Auto-Job) | Thực hiện các tác vụ tự động như đăng xuất, khóa tài khoản, cập nhật trạng thái |
+| Hệ thống (System Timer / Auto-Job) | Thực hiện các tác vụ tự động: đăng xuất phiên hết hạn (FEAT 1.3), khóa tài khoản nhân sự thôi việc (FEAT 2.6), tự động đánh dấu thôi việc khi hợp đồng hết hạn (FEAT 7.6), ghi vết hoạt động (FEAT 12.1) |
 
 Đặc điểm giao diện ở mức tổng quan:
 
 - giao diện sử dụng tiếng Việt và điều hướng theo vai trò;
-- sau đăng nhập, người dùng được đưa đến dashboard phù hợp với quyền hạn;
+- sau đăng nhập, người dùng được đưa đến trang chính với nội dung phù hợp vai trò được phân quyền;
 - hệ thống sử dụng các mẫu màn hình chính: danh sách có tìm kiếm/lọc, form nhập liệu, màn hình chi tiết, màn hình thống kê, hộp thoại xác nhận và chức năng import/export;
-- hệ thống ưu tiên khai thác trên máy tính để bàn, đồng thời hỗ trợ một phần thao tác chính trên máy tính bảng;
-- hệ thống hỗ trợ thao tác với tệp PDF và Excel cho các nghiệp vụ cần đính kèm hoặc xuất dữ liệu.
+- hệ thống ưu tiên khai thác trên máy tính để bàn; yêu cầu hỗ trợ máy tính bảng được quy định chi tiết tại Mục 3.1 (UI-05, UI-06);
+- hệ thống hỗ trợ nhập dữ liệu từ tệp Excel và xuất dữ liệu ra định dạng PDF, Excel theo quy định tại NFR-IC03.
 
 ### 2.2. Các chức năng chính
 
 | Nhóm chức năng | Mô tả tổng quan | Truy vết chính |
 | --- | --- | --- |
-| Quản lý truy cập | Đăng nhập, đăng xuất, đổi mật khẩu, quản lý phiên làm việc | FEAT 1.1–1.4 |
+| Quản lý truy cập | Đăng nhập, đăng xuất, đổi mật khẩu, tự động đăng xuất khi không tương tác trong 30 phút | FEAT 1.1–1.4 |
+| Nền tảng truy cập web | Cung cấp ứng dụng web nhiều người dùng; mọi thao tác nghiệp vụ được xử lý qua API | FEAT 1.5 |
 | Quản trị tài khoản | Tìm kiếm, thêm, sửa, khóa/mở khóa tài khoản, phân quyền | FEAT 2.1–2.6 |
 | Quản lý cơ cấu tổ chức | Thiết lập cây đơn vị, cập nhật thông tin đơn vị, giải thể/sáp nhập | FEAT 3.1–3.5 |
 | Bố trí nhân sự theo đơn vị | Bổ nhiệm, điều chuyển, bãi nhiệm nhân sự trong cơ cấu tổ chức | FEAT 4.1–4.3 |
 | Quản lý hợp đồng | Tạo, xem, sửa, chấm dứt hợp đồng lao động | FEAT 5.1–5.4 |
 | Quản lý đánh giá | Ghi nhận và tra cứu khen thưởng/kỷ luật | FEAT 6.1–6.3 |
-| Quản lý hồ sơ nhân sự | Tìm kiếm, lọc, tạo mới, chỉnh sửa, xem chi tiết, in/xuất, đánh dấu thôi việc | FEAT 7.1–7.9 |
+| Quản lý hồ sơ nhân sự | Tìm kiếm, lọc, tạo mới, chỉnh sửa, xem chi tiết, in/xuất, đánh dấu thôi việc, cấu hình ẩn/hiện mục khen thưởng – kỷ luật | FEAT 7.1–7.9 |
 | Quản lý đào tạo | Mở khóa đào tạo, chỉnh sửa, xem khóa học, ghi nhận kết quả | FEAT 8.1–8.4 |
 | Cấu hình danh mục | Quản lý hệ số lương, loại phụ cấp, loại hợp đồng | FEAT 9.1–9.5 |
 | Báo cáo và thống kê | Xem và xuất thống kê nhân sự, hợp đồng, đào tạo, bổ nhiệm | FEAT 10.1–10.4 |
-| Tự phục vụ cá nhân | Xem hồ sơ cá nhân, xem đơn vị công tác, đăng ký đào tạo, xem lịch sử đào tạo | FEAT 11.1–11.4 |
-| Ghi vết và kiểm toán | Ghi log tự động và truy xuất audit log | FEAT 12.1–12.2 |
+| Tự phục vụ cá nhân | Xem hồ sơ cá nhân, xem đơn vị công tác, đăng ký/hủy đăng ký đào tạo, xem lịch sử đào tạo | FEAT 11.1–11.4 |
+| Ghi vết và kiểm toán | Tự động ghi nhật ký hoạt động (audit log) và cho phép quản trị viên truy xuất nhật ký | FEAT 12.1–12.2 |
 
 ---
 
@@ -120,17 +121,17 @@ Các nhóm người dùng chính của hệ thống gồm:
 
 ### 3.1. Các yêu cầu về giao diện
 
-| Mã | Yêu cầu | Truy vết nguồn |
-| --- | --- | --- |
-| UI-01 | Hệ thống phải sử dụng tiếng Việt trên 100% màn hình, trừ các thuật ngữ kỹ thuật không thể thay thế hợp lý. | SUPL-U01 |
-| UI-02 | Hệ thống phải áp dụng thống nhất bố cục, màu sắc và font chữ trên toàn bộ giao diện; số cặp màn hình cùng loại có khác biệt về bố cục, màu sắc hoặc font chữ phải bằng 0. | SUPL-U01 |
-| UI-03 | Hệ thống phải hiển thị mọi lỗi nhập liệu, lỗi nghiệp vụ và lỗi hệ thống bằng tiếng Việt, kèm mô tả nguyên nhân và ít nhất một gợi ý khắc phục. | SUPL-U03 |
-| UI-04 | Hệ thống phải hỗ trợ tìm kiếm theo từ khóa và lọc đa tiêu chí trên các danh sách nhân sự, hợp đồng, đơn vị và đánh giá khi chức năng đó được cung cấp. | SUPL-U04 |
-| UI-05 | Ở độ phân giải từ 1366×768 trở lên, 100% màn hình phải hiển thị đầy đủ nội dung, không chồng lấn thành phần và không yêu cầu cuộn ngang. | SUPL-U05 |
-| UI-06 | Trên thiết bị 1024×768, tối thiểu 80% màn hình phải cho phép thực hiện thao tác chính mà không cần phóng to. | SUPL-U05 |
-| UI-07 | Trên ít nhất 90% form nhập liệu, phím Tab phải di chuyển tuần tự giữa các trường có thể nhập; 100% form có nút xác nhận mặc định phải hỗ trợ phím Enter; 100% trang phải hiển thị breadcrumb. | SUPL-U06 |
-| UI-08 | Hệ thống phải hiển thị hộp thoại xác nhận trước các thao tác khóa tài khoản, đánh dấu thôi việc, chấm dứt hợp đồng trước hạn, thay đổi trạng thái đơn vị và các thao tác thay đổi trạng thái có rủi ro tương đương. | SUPL-U07 |
-| UI-09 | Hệ thống phải hỗ trợ Chrome (bản mới nhất và 2 bản gần nhất), Firefox và Edge; 100% chức năng phải hoạt động đúng trên Chrome bản mới nhất và tối thiểu 95% chức năng phải hoạt động đúng trên Firefox và Edge. | SUPL-IC02 |
+| Mã | Yêu cầu | Mức ưu tiên | Truy vết nguồn |
+| --- | --- | --- | --- |
+| UI-01 | Hệ thống phải sử dụng tiếng Việt trên 100% màn hình, trừ các thuật ngữ kỹ thuật. | M | SUPL-U01 |
+| UI-02 | Hệ thống phải áp dụng thống nhất bố cục, màu sắc và font chữ theo bộ quy chuẩn giao diện của hệ thống; số cặp màn hình thuộc cùng một mẫu giao diện có khác biệt ngoài bộ quy chuẩn này phải bằng 0. | M | SUPL-U01 |
+| UI-03 | Hệ thống phải hiển thị mọi lỗi nhập liệu, lỗi nghiệp vụ và lỗi hệ thống bằng tiếng Việt, kèm mô tả nguyên nhân và ít nhất một gợi ý khắc phục. | M | SUPL-U03 |
+| UI-05 | Ở độ phân giải từ 1366×768 trở lên, 100% màn hình phải hiển thị đầy đủ nội dung, không chồng lấn thành phần và không yêu cầu cuộn ngang. | E | SUPL-U05 |
+| UI-06 | Trên tablet 1024×768, tối thiểu 80% màn hình phải cho phép thực hiện thao tác chính mà không cần phóng to. | E | SUPL-U05 |
+| UI-07a | Trên ít nhất 90% form nhập liệu, phím Tab phải di chuyển tuần tự giữa các trường có thể nhập. | N | SUPL-U06 |
+| UI-07b | Trên 100% form có nút xác nhận mặc định, phím Enter phải kích hoạt nút đó. | N | SUPL-U06 |
+| UI-07c | 100% trang phải hiển thị breadcrumb để người dùng quay lại cấp điều hướng trước. | N | SUPL-U06 |
+| UI-08 | Hệ thống phải hiển thị hộp thoại xác nhận trước 100% thao tác khóa tài khoản, đánh dấu thôi việc, chấm dứt hợp đồng trước hạn, thay đổi trạng thái đơn vị và các thao tác thay đổi trạng thái làm mất hiệu lực dữ liệu hoặc quyền truy cập. | M | SUPL-U07 |
 
 ### 3.2. Các yêu cầu chức năng
 
@@ -197,8 +198,15 @@ Các nhóm người dùng chính của hệ thống gồm:
 | SR-F03 | Khi khóa đào tạo chuyển sang trạng thái “Đang đào tạo”, hệ thống phải tự động cập nhật trạng thái tham gia của tất cả đăng ký liên quan từ “Đã đăng ký” sang “Đang học”. | SUPL-F06 |
 | SR-F04 | Hệ thống phải áp dụng quy tắc thay đổi trạng thái đối với danh mục loại phụ cấp và loại hợp đồng để bảo toàn dữ liệu lịch sử, thay vì xóa dữ liệu đã được sử dụng. | SUPL-F07 |
 | SR-F05 | Hệ thống phải lưu trữ mật khẩu người dùng ở dạng không thể khôi phục nguyên văn và không được lưu mật khẩu ở dạng văn bản thuần. | SUPL-F08 |
+| SR-F06 | Các danh sách nhân sự, hợp đồng và đơn vị phải hỗ trợ tìm kiếm theo từ khóa và lọc đa tiêu chí; bộ lọc phải cho phép kết hợp đồng thời ít nhất 3 tiêu chí. | SUPL-U04 |
 
-#### 3.3.2. Yêu cầu về độ tin cậy
+#### 3.3.2. Yêu cầu về tính dễ sử dụng
+
+| Mã | Yêu cầu | Truy vết nguồn |
+| --- | --- | --- |
+| NFR-U01 | Sau tối đa 2 giờ đào tạo hướng dẫn, ít nhất 95% người dùng mới thuộc phòng TCCB phải hoàn thành các tác vụ tìm kiếm, xem chi tiết và cập nhật hồ sơ nhân sự mà không cần trợ giúp trực tiếp; ít nhất 95% người dùng mới thuộc phòng TCKT phải hoàn thành các tác vụ tìm kiếm, xem chi tiết và xuất dữ liệu nhân sự mà không cần trợ giúp trực tiếp. | SUPL-U02 |
+
+#### 3.3.3. Yêu cầu về độ tin cậy
 
 | Mã | Yêu cầu | Truy vết nguồn |
 | --- | --- | --- |
@@ -208,7 +216,7 @@ Các nhóm người dùng chính của hệ thống gồm:
 | NFR-R04 | Các thao tác cập nhật dữ liệu quan trọng phải tuân thủ nguyên tắc toàn bộ hoặc không thực hiện phần nào; số trường hợp dữ liệu bất nhất quán sau lỗi phải bằng 0. | SUPL-R04 |
 | NFR-R05 | Đối với form có dữ liệu nhập dở, hệ thống phải cảnh báo trước 5 phút khi phiên sắp hết hạn và phải khôi phục được tối thiểu 95% dữ liệu gần nhất sau khi người dùng đăng nhập lại. | SUPL-R05 |
 
-#### 3.3.3. Yêu cầu về hiệu năng
+#### 3.3.4. Yêu cầu về hiệu năng
 
 | Mã | Yêu cầu | Truy vết nguồn |
 | --- | --- | --- |
@@ -219,7 +227,7 @@ Các nhóm người dùng chính của hệ thống gồm:
 | NFR-P05 | Upload tệp dung lượng đến 5MB trên mạng LAN phải hoàn thành trong tối đa 5 giây; download tệp dung lượng đến 5MB trên mạng LAN phải hoàn thành trong tối đa 3 giây. | SUPL-P05 |
 | NFR-P06 | Xuất Excel phải hoàn thành trong tối đa 10 giây với tối đa 1.000 bản ghi và tối đa 30 giây với tối đa 10.000 bản ghi. | SUPL-P06 |
 
-#### 3.3.4. Yêu cầu về bảo mật và quyền riêng tư
+#### 3.3.5. Yêu cầu về bảo mật và quyền riêng tư
 
 | Mã | Yêu cầu | Truy vết nguồn |
 | --- | --- | --- |
@@ -236,7 +244,7 @@ Các nhóm người dùng chính của hệ thống gồm:
 | NFR-LR02 | Các danh mục được cấu hình và sử dụng trong hệ thống phải tuân theo bộ danh mục nhân sự do Trường Đại học Thủy Lợi phê duyệt trên cơ sở quy định hiện hành của cơ quan quản lý. | SUPL-LR02 |
 | NFR-LR03 | Hồ sơ nhân sự phải được lưu trữ tối thiểu 75 năm; hợp đồng lao động và lịch sử đánh giá khen thưởng/kỷ luật phải được lưu trữ tối thiểu 10 năm sau khi kết thúc hoặc sau bản ghi cuối cùng. | SUPL-LR03 |
 
-#### 3.3.5. Yêu cầu về hỗ trợ, bảo trì và ràng buộc kỹ thuật
+#### 3.3.6. Yêu cầu về hỗ trợ, bảo trì và ràng buộc kỹ thuật
 
 | Mã | Yêu cầu | Truy vết nguồn |
 | --- | --- | --- |
@@ -250,6 +258,7 @@ Các nhóm người dùng chính của hệ thống gồm:
 | NFR-IC01 | Stack triển khai bắt buộc của hệ thống là React.js (TypeScript) cho frontend, Laravel/PHP cho backend và MySQL/MariaDB cho cơ sở dữ liệu. | SUPL-IC01 |
 | NFR-IC02 | Toàn bộ hệ thống phải sử dụng mã hóa UTF-8 và không được phát sinh lỗi hiển thị tiếng Việt có dấu. | SUPL-IC03 |
 | NFR-IC03 | Hệ thống chỉ hỗ trợ tệp PDF cho upload/download đính kèm nghiệp vụ và tệp Excel cho import/export dữ liệu; kích thước tối đa của mỗi tệp là 10MB và hệ thống phải thông báo lỗi khi vượt quá giới hạn. | SUPL-IC04 |
+| NFR-IC04 | Hệ thống phải hỗ trợ Chrome, Firefox và Edge; với mỗi trình duyệt, phạm vi hỗ trợ gồm bản mới nhất và 2 bản ổn định gần nhất. 100% chức năng phải hoạt động đúng trên Chrome bản mới nhất và tối thiểu 95% chức năng phải hoạt động đúng trên Firefox và Edge trong phạm vi phiên bản được hỗ trợ. | SUPL-IC02 |
 
 ### 3.4. Các yêu cầu khác
 

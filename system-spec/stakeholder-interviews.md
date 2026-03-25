@@ -118,4 +118,4 @@
 | Iteration 2 | 18 | 59 | Quản lý hồ sơ nhân sự, hợp đồng, đánh giá, điều chuyển / bổ nhiệm |
 | Iteration 3 | 10 | 34 | Đào tạo, báo cáo thống kê, tính năng tự động, xuất dữ liệu |
 | Iteration 4 | 5 | 13 | Tự phục vụ cá nhân, xem nhật ký hệ thống |
-| **Tổng** | **53** | **163** | |
+| **Tổng** | **54** | **163** | |
