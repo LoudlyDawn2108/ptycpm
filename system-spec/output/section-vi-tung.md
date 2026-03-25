@@ -6,7 +6,7 @@
 
 > Người thực hiện: Ngô Quang Tùng
 
-### Danh sách yêu cầu
+### 6.6.1. Danh sách yêu cầu
 
 | STT | ID | Nội dung yêu cầu | FEAT liên quan |
 |-----|----|------------------|----------------|
@@ -21,7 +21,7 @@
 | 9 | SUPL-P07a | Hệ thống phải phục hồi khả năng phục vụ sau sự cố trong tối đa 15 phút. | FEAT 7.1–8.9 |
 | 10 | SUPL-P07b | Hệ thống phải khởi động lại toàn bộ stack trong tối đa 10 phút sau sự cố crash hoặc restart có chủ đích. | FEAT 7.1–8.9 |
 
-### Độ đo và tiêu chuẩn đáp ứng
+### 6.6.2. Độ đo và tiêu chuẩn đáp ứng
 
 #### SUPL-P01
 | Thuộc tính | Nội dung |
@@ -93,7 +93,7 @@
 | **Độ đo yêu cầu** | Thời gian từ lúc phát hiện crash hoặc phát lệnh restart đến khi toàn bộ stack khởi động thành công theo health check kỹ thuật. |
 | **Tiêu chuẩn đáp ứng** | Toàn bộ stack khởi động lại trong tối đa 10 phút sau sự cố crash hoặc restart có chủ đích. |
 
-### Ghi chú phạm vi trong nhóm Performance
+### 6.6.3. Ghi chú phạm vi trong nhóm Performance
 
 - `SUPL-P01` gốc được tách thành `SUPL-P01` và `SUPL-P01b` để tách riêng ngưỡng **P95 Response Time** và **TTI**, giúp requirement atomic hơn.
 - `SUPL-R02` gốc được đổi thành `SUPL-P07a` và `SUPL-P07b` để khớp với section **Hiệu năng** và yếu tố chất lượng chính của hai requirement này.
@@ -104,7 +104,7 @@
 
 > Người thực hiện: Ngô Quang Tùng
 
-### Danh sách yêu cầu
+### 6.7.1. Danh sách yêu cầu
 
 | STT | ID | Nội dung yêu cầu | FEAT liên quan |
 |-----|----|------------------|----------------|
@@ -119,7 +119,7 @@
 
 > `SUPL-R03` gốc được tách thành cụm `SUPL-R03a`, `SUPL-R03b`, `SUPL-R03c`, `SUPL-R03d` để phần sao lưu/phục hồi được trình bày liền mạch trong cùng một cụm requirement. Trong đó `SUPL-R03b` vẫn mang **yếu tố chất lượng chính là Hiệu năng – Thời gian phục hồi**.
 
-### Độ đo và tiêu chuẩn đáp ứng
+### 6.7.2. Độ đo và tiêu chuẩn đáp ứng
 
 #### SUPL-R01
 | Thuộc tính | Nội dung |
@@ -177,7 +177,7 @@
 | **Độ đo yêu cầu** | Tỷ lệ khôi phục dữ liệu nháp khi người dùng đăng nhập lại sau khi phiên hết hạn. |
 | **Tiêu chuẩn đáp ứng** | Hệ thống khôi phục dữ liệu nháp trong ít nhất 95% trường hợp kiểm thử đối với form có dữ liệu đã nhập nhưng chưa lưu. |
 
-### Ghi chú phạm vi trong nhóm Reliability
+### 6.7.3. Ghi chú phạm vi trong nhóm Reliability
 
 - **Robustness:** N/A trong fragment này vì yêu cầu xử lý dữ liệu nhập sai và phản ứng với input bất thường đang được đặc tả tại các phần validation/giao diện của nhóm khác.
 - **Fault tolerance:** N/A trong fragment này vì hiện chưa có yêu cầu vận hành về chế độ suy giảm hoặc tiếp tục phục vụ khi một thành phần phụ trợ bị lỗi.
