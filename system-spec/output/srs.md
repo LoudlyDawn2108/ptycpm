@@ -8,9 +8,9 @@
 
 ### 1.1. Phạm vi
 
-Tài liệu này đặc tả các yêu cầu phần mềm của **Hệ thống Quản lý Nhân sự (HRMS)** phục vụ Trường Đại học Thủy Lợi. Hệ thống được xây dựng để tập trung hóa hoạt động quản lý nhân sự cho các đơn vị đào tạo, đơn vị nghiên cứu khoa học, các phòng ban chức năng và các đơn vị trực thuộc nhà trường.
+**Hệ thống Quản lý Nhân sự (HRMS)** là hệ thống ứng dụng web nhiều người dùng phục vụ lĩnh vực quản lý nhân sự trong môi trường giáo dục đại học tại Trường Đại học Thủy Lợi. Hệ thống được xây dựng để tập trung hóa hoạt động quản lý nhân sự cho các đơn vị đào tạo, đơn vị nghiên cứu khoa học, các phòng ban chức năng và các đơn vị trực thuộc nhà trường.
 
-Phạm vi chức năng của hệ thống bao gồm:
+Ở mức phạm vi sản phẩm, hệ thống bao phủ các chức năng chính sau:
 
 - xác thực người dùng, quản lý tài khoản và phân quyền theo vai trò;
 - quản lý cơ cấu tổ chức theo mô hình cây cha–con;
@@ -22,10 +22,10 @@ Phạm vi chức năng của hệ thống bao gồm:
 - hỗ trợ chức năng tự phục vụ cho cán bộ, giảng viên, nhân viên;
 - ghi vết hoạt động và hỗ trợ truy vết kiểm toán.
 
-Ngoài phạm vi của phiên bản hiện tại:
+Ngoài phạm vi sản phẩm của phiên bản hiện tại:
 
 - các luồng tác vụ cá nhân khác ngoài xem thông tin cá nhân, xem đơn vị công tác, đăng ký đào tạo và xem lịch sử đào tạo;
-- các artefact thiết kế và kiểm thử chi tiết như class diagram, sequence diagram, test case matrix.
+- các chức năng chưa được phản ánh trong baseline FEAT hiện tại của dự án, như quản lý nghỉ phép, chấm công, tính lương hoặc tuyển dụng.
 
 ### 1.2. Tổng quan về tài liệu
 
@@ -38,25 +38,37 @@ Tài liệu SRS này được tổ chức như sau:
 - **Phần 3.3** mô tả các yêu cầu bổ sung, yêu cầu phi chức năng và ràng buộc kỹ thuật.
 - **Phần 3.4** mô tả các quy tắc truy vết, tổ chức requirement, thuộc tính requirement và các giả định/phụ thuộc dùng để quản lý bộ yêu cầu.
 
+SRS này là tài liệu tổng hợp ở mức hệ thống. Tài liệu không thay thế các nguồn chi tiết như bộ **Use Case Specification (UCS)** hay tài liệu **supplementary requirements/metrics**; các tài liệu đó vẫn là nguồn chuẩn cho hành vi chi tiết và các ngưỡng xác minh tương ứng.
+
+Về quan hệ tài liệu, SRS này tổng hợp nội dung ở mức hệ thống từ các nguồn **STR**, **VIS**, **UCS** và **SS** để phục vụ đặc tả và quản lý yêu cầu thống nhất trong dự án.
+
 Các tài liệu nền tảng liên quan đến SRS này gồm:
 
 | Tài liệu | Vai trò |
 | --- | --- |
 | Kế hoạch quản lý yêu cầu (RMP) | Định nghĩa loại requirement, thuộc tính, truy vết và tổ chức bộ tài liệu |
-| Tài liệu thu thập yêu cầu từ stakeholder | Nguồn chuẩn cho STRQ và FEAT |
-| Mô hình hóa yêu cầu và bộ Use Case Specification | Nguồn chuẩn cho tác nhân, nhóm use case và hành vi chức năng chi tiết |
-| Đặc tả yêu cầu bổ sung và tài liệu độ đo | Nguồn chuẩn cho SUPL, metric và acceptance criteria |
+| Yêu cầu của các bên liên quan (STR) | Nguồn chuẩn cho STRQ; trong baseline hiện tại nội dung STRQ và FEAT đang được gộp trong `stakeholder-interviews.md` |
+| Tài liệu tầm nhìn (VIS) | Vai trò logic là nguồn chuẩn cho FEAT và phạm vi sản phẩm; trong baseline hiện tại chưa tách thành file riêng và đang được gộp trong `stakeholder-interviews.md` |
+| Mô hình hóa yêu cầu và bộ Use Case Specification (UCS) | Nguồn chuẩn cho tác nhân, nhóm use case, SCEN và hành vi chức năng chi tiết |
+| Đặc tả yêu cầu bổ sung (SS) và tài liệu độ đo | Nguồn chuẩn cho SUPL, metric và acceptance criteria |
 
 Các chữ viết tắt sử dụng trong tài liệu:
 
 | Viết tắt | Diễn giải |
 | --- | --- |
 | HRMS | Human Resource Management System |
+| SRS | Software Requirements Specification |
+| RMP | Requirements Management Plan |
+| STR | Stakeholder Requests Document |
+| VIS | Vision Document |
+| UCS | Use Case Specification |
+| SS | Supplementary Specification |
 | TCCB | Phòng Tổ chức – Cán bộ |
 | TCKT | Phòng Tài chính – Kế toán |
 | STRQ | Stakeholder Request |
 | FEAT | Feature |
 | UC | Use Case |
+| SCEN | Scenario |
 | SUPL | Supplementary Requirement |
 
 ---
