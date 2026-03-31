@@ -4,13 +4,16 @@
 
 | Yêu cầu (STRQ) | Kỹ thuật xác định FEAT | Tính năng (FEAT) |
 | --- | --- | --- |
-| **STRQ 1:** Cần hệ thống cho phép đăng nhập, đăng xuất, đổi mật khẩu tương tự các hệ thống phần mềm nhân sự khác, với tài khoản có phân quyền cho nhiều người dùng. | * Phân tách * Làm cho đầy đủ * Tổng quát hóa * Thêm chi tiết | * **FEAT 1.1:** Hệ thống cho phép người dùng đăng nhập bằng tài khoản. * **FEAT 1.2:** Hệ thống cho phép người dùng đăng xuất khỏi tài khoản đang sử dụng. * **FEAT 1.3:** Hệ thống tự động đăng xuất khỏi phiên làm việc nếu người dùng không có tương tác giao diện (nhấn chuột, nhập liệu, điều hướng) với trang web trong 30 phút. * **FEAT 1.4:** Hệ thống cho phép người dùng đổi mật khẩu tài khoản đang sử dụng. * **FEAT 1.5:** Hệ thống cung cấp ứng dụng web cho nhiều người dùng; mọi thao tác nghiệp vụ từ giao diện web được xử lý thông qua các API của hệ thống. |
-| **STRQ 2:** Quản trị viên là người có thể quản lý tài khoản như thêm, sửa, khóa hoặc phân quyền người dùng. | * Phân tách * Thêm chi tiết * Làm cho đầy đủ | * **FEAT 2.1:** Hệ thống cho phép quản trị viên tìm kiếm tài khoản người dùng. * **FEAT 2.2:** Hệ thống cho phép quản trị viên thêm mới tài khoản người dùng. * **FEAT 2.3:** Hệ thống cho phép quản trị viên sửa tài khoản người dùng. * **FEAT 2.4:** Hệ thống cho phép quản trị viên phân quyền cho tài khoản thành viên hệ thống tương ứng với các nhóm nghiệp vụ. * **FEAT 2.5:** Hệ thống cho phép quản trị viên thay đổi trạng thái của tài khoản người dùng (Trạng thái: Khóa/Mở khóa). * **FEAT 2.6:** Hệ thống tự động khóa tài khoản của nhân sự đã được đánh dấu thôi việc. |
+| **STRQ 1:** Cần hệ thống cho phép đăng nhập, đăng xuất, đổi mật khẩu tương tự các hệ thống phần mềm nhân sự khác, với tài khoản có phân quyền cho nhiều người dùng. | * Phân tách * Làm cho đầy đủ * Tổng quát hóa * Thêm chi tiết | * **FEAT 1.1:** Hệ thống cho phép người dùng đăng nhập bằng tài khoản. * **FEAT 1.2:** Hệ thống cho phép người dùng đăng xuất khỏi tài khoản đang sử dụng. * **FEAT 1.3:** Hệ thống tự động đăng xuất khỏi phiên làm việc nếu người dùng không có tương tác giao diện (nhấn chuột, nhập liệu, điều hướng) với trang web trong 30 phút. * **FEAT 1.4:** Hệ thống cho phép người dùng đổi mật khẩu tài khoản đang sử dụng; mọi mật khẩu được thiết lập mới phải được lưu trữ dưới dạng không thể khôi phục nguyên văn và không được lưu ở dạng văn bản thuần. * **FEAT 1.5:** Hệ thống được cung cấp dưới dạng ứng dụng web nhiều người dùng; frontend dạng SPA giao tiếp với backend thông qua RESTful API của hệ thống. |
+| **STRQ 2:** Quản trị viên là người có thể quản lý tài khoản như thêm, sửa, khóa hoặc phân quyền người dùng. | * Phân tách * Thêm chi tiết * Làm cho đầy đủ | * **FEAT 2.1:** Hệ thống cho phép quản trị viên tìm kiếm tài khoản người dùng. * **FEAT 2.2:** Hệ thống cho phép quản trị viên thêm mới tài khoản người dùng. * **FEAT 2.3:** Hệ thống cho phép quản trị viên sửa tài khoản người dùng. * **FEAT 2.4:** Hệ thống cho phép quản trị viên phân quyền cho tài khoản thành viên hệ thống theo các vai trò chức năng được định nghĩa sẵn: Quản trị viên, Phòng TCCB, Phòng TCKT, Người dùng (Cán bộ/Giảng viên/Nhân viên). * **FEAT 2.5:** Hệ thống cho phép quản trị viên thay đổi trạng thái của tài khoản người dùng (Trạng thái: Khóa/Mở khóa). * **FEAT 2.6:** Hệ thống tự động khóa tài khoản của nhân sự đã được đánh dấu thôi việc. |
 | **STRQ 3:** Quản trị viên và phòng TCCB có thể quản lý cơ cấu tổ chức, thêm vào các đơn vị mới, chỉnh sửa thông tin hoặc thông báo giải thể, sáp nhập đơn vị. | * Phân tách * Làm cho đầy đủ * Thêm chi tiết | * **FEAT 3.1:** Hệ thống cung cấp cơ cấu tổ chức phân cấp đơn vị theo dạng cha-con có gốc là trường Đại học Thủy Lợi. * **FEAT 3.2:** Hệ thống cho phép quản trị viên và phòng TCCB thêm mới đơn vị tổ chức nhân sự. * **FEAT 3.3:** Hệ thống cho phép quản trị viên và phòng TCCB sửa thông tin đơn vị tổ chức nhân sự. * **FEAT 3.4:** Hệ thống cho phép quản trị viên và phòng TCCB thay đổi trạng thái của đơn vị tổ chức nhân sự (Trạng thái: Giải thể/Sáp nhập). * **FEAT 3.5:** Hệ thống cho phép quản trị viên và phòng TCCB xem chi tiết thông tin đơn vị tổ chức nhân sự. |
+| **STRQ 13:** Hệ thống phải tuân thủ các quy định về bảo vệ dữ liệu cá nhân theo Nghị định 13/2023/NĐ-CP, bao gồm quản lý sự đồng ý thu thập dữ liệu và xử lý yêu cầu ẩn danh hóa dữ liệu khi có yêu cầu hợp lệ. | * Làm cho đầy đủ * Phân tách | * **FEAT 13.1:** Hệ thống cho phép ghi nhận, xem lịch sử và thu hồi sự đồng ý thu thập dữ liệu cá nhân cho từng cán bộ, theo Nghị định 13/2023/NĐ-CP. * **FEAT 13.2:** Hệ thống phải xử lý yêu cầu ẩn danh hóa dữ liệu cá nhân (thay thế thông tin định danh bằng dữ liệu ẩn danh) khi có yêu cầu hợp lệ từ chủ thể dữ liệu hoặc quản trị viên, theo Nghị định 13/2023/NĐ-CP. |
 
 > **Ghi chú thiết kế – FEAT 2.4:** "Nhóm nghiệp vụ" trong FEAT 2.4 chỉ các vai trò chức năng được hệ thống định nghĩa sẵn, tương ứng với phân nhóm tác nhân: Quản trị viên, Phòng TCCB, Phòng TCKT, Người dùng (Cán bộ/Giảng viên/Nhân viên). Mỗi nhóm nghiệp vụ quy định tập quyền truy cập các chức năng hệ thống khác nhau.
 
-> **Ghi chú thiết kế – FEAT 1.5:** FEAT 1.5 mô tả hình thức cung cấp hệ thống dưới dạng ứng dụng web nhiều người dùng. FEAT này được hiện thực hóa bởi SUPL-DC01 nên không tách thành UC riêng.
+> **Ghi chú thiết kế – FEAT 1.5:** FEAT 1.5 là feature mức giải pháp mô tả hình thức cung cấp hệ thống dưới dạng ứng dụng web nhiều người dùng. FEAT này được hiện thực hóa bởi SUPL-DC01 nên không tách thành UC riêng.
+
+> **Ghi chú thiết kế – FEAT 13.1/13.2:** FEAT 13.1 và 13.2 là các tính năng bổ sung theo kỹ thuật *Làm cho đầy đủ* (Completion) nhằm tuân thủ Nghị định 13/2023/NĐ-CP về bảo vệ dữ liệu cá nhân. Các FEAT này được hiện thực hóa bởi SUPL-LR01 và SUPL-LR04 nên không tách thành UC riêng mà ràng buộc xuyên suốt các luồng xử lý hồ sơ nhân sự.
 
 ## Part B: UC Model Entries (for Section III)
 
@@ -46,6 +49,8 @@
 | FEAT 3.3 | UC 4.10 (Sửa thông tin đơn vị tổ chức nhân sự) |
 | FEAT 3.4 | UC 4.11 (Cập nhật trạng thái cho đơn vị tổ chức nhân sự) |
 | FEAT 3.5 | UC 4.12 (Xem chi tiết thông tin đơn vị tổ chức nhân sự) |
+| FEAT 13.1 | Ràng buộc pháp lý — được hiện thực hóa bởi SUPL-LR01 (không tách UC riêng) |
+| FEAT 13.2 | Ràng buộc pháp lý — được hiện thực hóa bởi SUPL-LR04 (không tách UC riêng) |
 
 ## Part D: UC Specifications (for Section IV)
 
@@ -243,16 +248,62 @@
 
 ## Part E: FEAT-specific SUPLs
 
-### 2.1. Functionality – Yêu cầu chức năng bổ sung (không thuộc UC)
+> Mục này liệt kê toàn bộ yêu cầu bổ sung (SUPL) do Nguyễn Hồng Phúc phụ trách. Mỗi SUPL truy vết đến đúng một FEAT trong tài liệu master (stakeholder-interviews.md). Các FEAT thuộc phạm vi đóng góp của thành viên khác được ghi chú rõ.
 
-| Mã | Yêu cầu | Mô tả chi tiết | Ưu tiên |
-|----|----------|-----------------|---------|
-| **SUPL-F03** | Tự động đăng xuất phiên không hoạt động | Hệ thống tự động đăng xuất phiên làm việc nếu người dùng không thao tác trong 30 phút. Tham chiếu FEAT 1.3. | **M** |
-| **SUPL-F04** | Tự động khóa tài khoản nhân sự thôi việc | Khi nhân sự được đánh dấu thôi việc (FEAT 8.5/8.6), hệ thống tự động chuyển tài khoản của nhân sự đó sang trạng thái khóa. Tham chiếu FEAT 2.6. | **M** |
-| **SUPL-F08** | Bảo vệ mật khẩu lưu trữ | Hệ thống phải lưu trữ mật khẩu người dùng dưới dạng không thể khôi phục nguyên văn và không được lưu mật khẩu ở dạng văn bản thuần. | **M** |
+### 6.1. Functionality – Yêu cầu chức năng bổ sung
 
-### 2.7. Design Constraints – Ràng buộc thiết kế
+| Mã | Yêu cầu | Mô tả chi tiết | FEAT | Ưu tiên |
+|----|----------|-----------------|------|---------|
+| **SUPL-F01** | Ghi nhật ký kiểm toán tự động | Hệ thống phải tự động ghi nhật ký cho mọi thao tác truy cập tài khoản, thay đổi dữ liệu, thay đổi trạng thái và thay đổi cấu hình, kèm 9 trường bắt buộc: thời gian, tài khoản, họ tên, vai trò, loại hành động, đối tượng, mã đối tượng, mô tả chi tiết và địa chỉ IP. | FEAT 12.1 (Ninh) | **M** |
+| **SUPL-F02** | Tự động cấp mã cán bộ | Khi tạo mới hồ sơ nhân sự, hệ thống phải tự động cấp một mã cán bộ duy nhất theo mẫu mã đang được cấu hình áp dụng toàn hệ thống tại thời điểm tạo hồ sơ. | FEAT 7.3 (Tung) | **M** |
+| **SUPL-F03** | Tự động đăng xuất phiên không hoạt động | Hệ thống tự động đăng xuất phiên làm việc sau 30 phút không có tương tác của người dùng trên giao diện. | FEAT 1.3 (Phúc) | **M** |
+| **SUPL-F04** | Tự động khóa tài khoản nhân sự thôi việc | Khi nhân sự được chuyển sang trạng thái thôi việc (FEAT 7.5/7.6), hệ thống phải tự động khóa tài khoản liên kết của nhân sự đó. | FEAT 2.6 (Phúc) | **M** |
+| **SUPL-F05** | Tự động chuyển trạng thái hợp đồng | Hệ thống phải tự động chuyển hợp đồng từ trạng thái "Còn hiệu lực" sang "Chờ gia hạn" khi thời hạn còn lại ≤ ngưỡng chờ gia hạn được cấu hình. | FEAT 5.1 (Tung) | **M** |
+| **SUPL-F06** | Tự động cập nhật trạng thái đăng ký đào tạo | Khi khóa đào tạo chuyển từ "Đang mở đăng ký" sang "Đang đào tạo", hệ thống phải tự động cập nhật tất cả đăng ký từ "Đã đăng ký" sang "Đang học". | FEAT 8.2 (Khanh) | **M** |
+| **SUPL-F07** | Ngừng sử dụng / kích hoạt lại loại phụ cấp | Hệ thống phải cho phép chuyển loại phụ cấp đã được tham chiếu trong dữ liệu nghiệp vụ sang trạng thái ngừng sử dụng hoặc kích hoạt lại mà không làm mất liên kết dữ liệu lịch sử; loại phụ cấp đã được tham chiếu không được xóa. | FEAT 9.4 (Ninh) | **M** |
+| **SUPL-F08** | Bảo vệ mật khẩu lưu trữ | Hệ thống phải lưu trữ mật khẩu người dùng dưới dạng không thể khôi phục nguyên văn và không được lưu mật khẩu ở dạng văn bản thuần. | FEAT 1.4 (Phúc) | **M** |
+| **SUPL-F09** | Ngừng sử dụng / kích hoạt lại loại hợp đồng | Hệ thống phải cho phép chuyển loại hợp đồng đã được tham chiếu trong dữ liệu nghiệp vụ sang trạng thái ngừng sử dụng hoặc kích hoạt lại mà không làm mất liên kết dữ liệu lịch sử; loại hợp đồng đã được tham chiếu không được xóa. | FEAT 9.5 (Ninh) | **M** |
 
-| Mã | Yêu cầu | Mô tả chi tiết | Ưu tiên |
-|----|----------|-----------------|---------|
-| **SUPL-DC02** | Cơ cấu tổ chức dạng cây | Cơ cấu tổ chức đơn vị phải được mô hình hóa dưới dạng cấu trúc cây cha-con với gốc là Trường Đại học Thủy Lợi (FEAT 3.1). | **M** |
+### 6.2. Design Constraints – Ràng buộc thiết kế
+
+| Mã | Yêu cầu | Mô tả chi tiết | FEAT | Ưu tiên |
+|----|----------|-----------------|------|---------|
+| **SUPL-DC01** | Kiến trúc Client-Server SPA + RESTful API | Hệ thống phải xây dựng theo mô hình Client-Server, frontend dạng SPA giao tiếp với backend qua RESTful API. | FEAT 1.5 (Phúc) | **M** |
+| **SUPL-DC02** | Cơ cấu tổ chức dạng cây | Hệ thống phải biểu diễn cơ cấu tổ chức dưới dạng cây cha-con với gốc duy nhất là Trường Đại học Thủy Lợi. | FEAT 3.1 (Phúc) | **M** |
+| **SUPL-DC03** | Phân quyền theo vai trò | Hệ thống phải áp dụng phân quyền theo vai trò; mỗi chức năng và API chỉ cho phép truy cập bởi vai trò được cấp quyền. | FEAT 2.4 (Phúc) | **M** |
+
+### 6.3. Legal/Regulatory – Ràng buộc pháp lý
+
+| Mã | Yêu cầu | Mô tả chi tiết | FEAT | Ưu tiên |
+|----|----------|-----------------|------|---------|
+| **SUPL-LR01** | Quản lý sự đồng ý thu thập dữ liệu | Hệ thống phải cho phép ghi nhận, xem lịch sử và thu hồi sự đồng ý thu thập dữ liệu cá nhân cho từng cán bộ, theo Nghị định 13/2023/NĐ-CP. | FEAT 13.1 (Phúc) | **M** |
+| **SUPL-LR02** | Danh mục loại hợp đồng được phê duyệt | Hệ thống chỉ cho phép cấu hình và sử dụng loại hợp đồng thuộc danh mục được nhà trường phê duyệt. | FEAT 9.5 (Ninh) | **M** |
+| **SUPL-LR03** | Lưu trữ hồ sơ nhân sự 75 năm | Hồ sơ nhân sự phải được lưu trữ tối thiểu 75 năm kể từ ngày tạo hồ sơ. | FEAT 7.3 (Tung) | **M** |
+| **SUPL-LR04** | Ẩn danh hóa dữ liệu cá nhân | Hệ thống phải xử lý yêu cầu ẩn danh hóa dữ liệu cá nhân (thay thế thông tin định danh bằng dữ liệu ẩn danh) khi có yêu cầu hợp lệ từ chủ thể dữ liệu hoặc quản trị viên, theo Nghị định 13/2023/NĐ-CP. | FEAT 13.2 (Phúc) | **M** |
+| **SUPL-LR05** | Danh mục loại phụ cấp được phê duyệt | Hệ thống chỉ cho phép cấu hình và sử dụng loại phụ cấp thuộc danh mục được nhà trường phê duyệt. | FEAT 9.4 (Ninh) | **M** |
+| **SUPL-LR06** | Lưu trữ hợp đồng lao động 10 năm | Hợp đồng lao động phải được lưu trữ tối thiểu 10 năm sau khi hợp đồng chấm dứt. | FEAT 5.1 (Tung) | **M** |
+| **SUPL-LR07** | Lưu trữ đánh giá khen thưởng/kỷ luật 10 năm | Lịch sử đánh giá khen thưởng/kỷ luật phải được lưu trữ tối thiểu 10 năm kể từ bản ghi đánh giá cuối cùng. | FEAT 6.1 (Khanh) | **M** |
+
+### Tóm tắt truy vết SUPL → FEAT
+
+| SUPL | FEAT | Chủ sở hữu FEAT | Ghi chú |
+|------|------|-----------------|---------|
+| SUPL-F01 | FEAT 12.1 | Ninh | Ghi vết tác vụ — SUPL thêm yêu cầu 9 trường bắt buộc |
+| SUPL-F02 | FEAT 7.3 | Tung | Tạo hồ sơ nhân sự — SUPL ràng buộc tự động cấp mã |
+| SUPL-F03 | FEAT 1.3 | Phúc | Đăng xuất tự động — SUPL cụ thể hóa ngưỡng 30 phút |
+| SUPL-F04 | FEAT 2.6 | Phúc | Tự động khóa tài khoản — SUPL ràng buộc sự kiện thôi việc |
+| SUPL-F05 | FEAT 5.1 | Tung | Tạo/gia hạn hợp đồng — SUPL ràng buộc auto chuyển trạng thái |
+| SUPL-F06 | FEAT 8.2 | Khanh | Chỉnh sửa khóa đào tạo — SUPL ràng buộc auto cập nhật đăng ký |
+| SUPL-F07 | FEAT 9.4 | Ninh | Danh mục phụ cấp — SUPL ràng buộc soft-delete |
+| SUPL-F08 | FEAT 1.4 | Phúc | Đổi mật khẩu — SUPL ràng buộc lưu trữ mật khẩu an toàn |
+| SUPL-F09 | FEAT 9.5 | Ninh | Danh mục hợp đồng — SUPL ràng buộc soft-delete |
+| SUPL-DC01 | FEAT 1.5 | Phúc | Ràng buộc kiến trúc SPA + RESTful API |
+| SUPL-DC02 | FEAT 3.1 | Phúc | Ràng buộc mô hình cây tổ chức |
+| SUPL-DC03 | FEAT 2.4 | Phúc | Ràng buộc phân quyền theo vai trò |
+| SUPL-LR01 | FEAT 13.1 | Phúc | Ràng buộc pháp lý — quản lý đồng ý (Nghị định 13/2023) |
+| SUPL-LR02 | FEAT 9.5 | Ninh | Ràng buộc pháp lý — danh mục hợp đồng phê duyệt |
+| SUPL-LR03 | FEAT 7.3 | Tung | Ràng buộc pháp lý — lưu trữ hồ sơ nhân sự 75 năm |
+| SUPL-LR04 | FEAT 13.2 | Phúc | Ràng buộc pháp lý — ẩn danh hóa dữ liệu (Nghị định 13/2023) |
+| SUPL-LR05 | FEAT 9.4 | Ninh | Ràng buộc pháp lý — danh mục phụ cấp phê duyệt |
+| SUPL-LR06 | FEAT 5.1 | Tung | Ràng buộc pháp lý — lưu trữ hợp đồng 10 năm |
+| SUPL-LR07 | FEAT 6.1 | Khanh | Ràng buộc pháp lý — lưu trữ đánh giá 10 năm |

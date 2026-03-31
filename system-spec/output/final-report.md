@@ -317,19 +317,21 @@ Thể hiện ánh xạ giữa các yêu cầu thuộc các kiểu khác nhau:
 
 | Yêu cầu (STRQ) | Kỹ thuật xác định FEAT | Tính năng (FEAT) |
 | --- | --- | --- |
-| **STRQ 1:** Cần hệ thống cho phép đăng nhập, đăng xuất, đổi mật khẩu tương tự các hệ thống phần mềm nhân sự khác, với tài khoản có phân quyền cho nhiều người dùng. | * Phân tách * Làm cho đầy đủ * Tổng quát hóa * Thêm chi tiết | * **FEAT 1.1:** Hệ thống cho phép người dùng đăng nhập bằng tài khoản. * **FEAT 1.2:** Hệ thống cho phép người dùng đăng xuất khỏi tài khoản đang sử dụng. * **FEAT 1.3:** Hệ thống tự động đăng xuất khỏi phiên làm việc nếu người dùng không có tương tác giao diện (nhấn chuột, nhập liệu, điều hướng) với trang web trong 30 phút. * **FEAT 1.4:** Hệ thống cho phép người dùng đổi mật khẩu tài khoản đang sử dụng. |
-| **STRQ 2:** Quản trị viên là người có thể quản lý tài khoản như thêm, sửa, khóa hoặc phân quyền người dùng. | * Phân tách * Thêm chi tiết * Làm cho đầy đủ | * **FEAT 2.1:** Hệ thống cho phép quản trị viên tìm kiếm tài khoản người dùng. * **FEAT 2.2:** Hệ thống cho phép quản trị viên thêm mới tài khoản người dùng. * **FEAT 2.3:** Hệ thống cho phép quản trị viên sửa tài khoản người dùng. * **FEAT 2.4:** Hệ thống cho phép quản trị viên phân quyền cho tài khoản thành viên hệ thống tương ứng với các nhóm nghiệp vụ. * **FEAT 2.5:** Hệ thống cho phép quản trị viên thay đổi trạng thái của tài khoản người dùng (Trạng thái: Khóa/Mở khóa). * **FEAT 2.6:** Hệ thống tự động khóa tài khoản của nhân sự đã được đánh dấu thôi việc. |
+| **STRQ 1:** Cần hệ thống cho phép đăng nhập, đăng xuất, đổi mật khẩu tương tự các hệ thống phần mềm nhân sự khác, với tài khoản có phân quyền cho nhiều người dùng. | * Phân tách * Làm cho đầy đủ * Tổng quát hóa * Thêm chi tiết | * **FEAT 1.1:** Hệ thống cho phép người dùng đăng nhập bằng tài khoản. * **FEAT 1.2:** Hệ thống cho phép người dùng đăng xuất khỏi tài khoản đang sử dụng. * **FEAT 1.3:** Hệ thống tự động đăng xuất khỏi phiên làm việc nếu người dùng không có tương tác giao diện (nhấn chuột, nhập liệu, điều hướng) với trang web trong 30 phút. * **FEAT 1.4:** Hệ thống cho phép người dùng đổi mật khẩu tài khoản đang sử dụng; mọi mật khẩu được thiết lập mới phải được lưu trữ dưới dạng không thể khôi phục nguyên văn và không được lưu ở dạng văn bản thuần. |
+| **STRQ 2:** Quản trị viên là người có thể quản lý tài khoản như thêm, sửa, khóa hoặc phân quyền người dùng. | * Phân tách * Thêm chi tiết * Làm cho đầy đủ | * **FEAT 2.1:** Hệ thống cho phép quản trị viên tìm kiếm tài khoản người dùng. * **FEAT 2.2:** Hệ thống cho phép quản trị viên thêm mới tài khoản người dùng. * **FEAT 2.3:** Hệ thống cho phép quản trị viên sửa tài khoản người dùng. * **FEAT 2.4:** Hệ thống cho phép quản trị viên phân quyền cho tài khoản thành viên hệ thống theo các vai trò chức năng được định nghĩa sẵn: Quản trị viên, Phòng TCCB, Phòng TCKT, Người dùng (Cán bộ/Giảng viên/Nhân viên). * **FEAT 2.5:** Hệ thống cho phép quản trị viên thay đổi trạng thái của tài khoản người dùng (Trạng thái: Khóa/Mở khóa). * **FEAT 2.6:** Hệ thống tự động khóa tài khoản của nhân sự đã được đánh dấu thôi việc. |
 | **STRQ 3:** Quản trị viên và phòng TCCB có thể quản lý cơ cấu tổ chức, thêm vào các đơn vị mới, chỉnh sửa thông tin hoặc thông báo giải thể, sáp nhập đơn vị. | * Phân tách * Làm cho đầy đủ * Thêm chi tiết | * **FEAT 3.1:** Hệ thống cung cấp cơ cấu tổ chức phân cấp đơn vị theo dạng cha-con có gốc là trường Đại học Thủy Lợi. * **FEAT 3.2:** Hệ thống cho phép quản trị viên và phòng TCCB thêm mới đơn vị tổ chức nhân sự. * **FEAT 3.3:** Hệ thống cho phép quản trị viên và phòng TCCB sửa thông tin đơn vị tổ chức nhân sự. * **FEAT 3.4:** Hệ thống cho phép quản trị viên và phòng TCCB thay đổi trạng thái của đơn vị tổ chức nhân sự (Trạng thái: Giải thể/Sáp nhập). * **FEAT 3.5:** Hệ thống cho phép quản trị viên và phòng TCCB xem chi tiết thông tin đơn vị tổ chức nhân sự. |
 
 > **Ghi chú thiết kế – FEAT 2.4:** "Nhóm nghiệp vụ" trong FEAT 2.4 chỉ các vai trò chức năng được hệ thống định nghĩa sẵn, tương ứng với phân nhóm tác nhân: Quản trị viên, Phòng TCCB, Phòng TCKT, Người dùng (Cán bộ/Giảng viên/Nhân viên). Mỗi nhóm nghiệp vụ quy định tập quyền truy cập các chức năng hệ thống khác nhau.
+
+> **Ghi chú thiết kế – FEAT 1.5:** FEAT 1.5 là feature mức giải pháp mô tả hình thức cung cấp hệ thống dưới dạng ứng dụng web nhiều người dùng. FEAT này được hiện thực hóa bởi SUPL-DC01 nên không tách thành UC riêng.
 
 ### 2.2.2. Phần đóng góp của Nguyễn Hải Ninh (STRQ 4–6)
 
 | Yêu cầu (STRQ) | Kỹ thuật xác định FEAT | Tính năng (FEAT) |
 | --- | --- | --- |
-| **STRQ 4:** Phòng TCCB có thể cấu hình lương, loại phụ cấp, loại hợp đồng. | * Phân tách * Làm cho đầy đủ | * **FEAT 4.1:** Hệ thống cho phép phòng TCCB thêm mới hệ số lương (Hệ số lương được thêm sẽ được dùng làm thông tin cho hồ sơ). * **FEAT 4.2:** Hệ thống cho phép phòng TCCB sửa thông tin đối với hệ số lương chưa được hồ sơ nào sử dụng, phục vụ sửa chữa nhập liệu lỗi. * **FEAT 4.3:** Hệ thống cho phép phòng TCCB xóa hệ số lương khi không được hồ sơ nào sử dụng, hoặc thay đổi trạng thái (đưa vào trạng thái ngừng sử dụng hoặc kích hoạt lại) nếu đã được sử dụng. * **FEAT 4.4:** Hệ thống cho phép phòng TCCB cấu hình (Thêm/Sửa/Thay đổi trạng thái) danh mục loại phụ cấp. * **FEAT 4.5:** Hệ thống cho phép phòng TCCB cấu hình (Thêm/Sửa/Thay đổi trạng thái) danh mục loại hợp đồng. |
+| **STRQ 4:** Phòng TCCB có thể cấu hình lương, loại phụ cấp, loại hợp đồng. | * Phân tách * Làm cho đầy đủ | * **FEAT 4.1:** Hệ thống cho phép phòng TCCB thêm mới hệ số lương (Hệ số lương được thêm sẽ được dùng làm thông tin cho hồ sơ). * **FEAT 4.2:** Hệ thống cho phép phòng TCCB sửa thông tin đối với hệ số lương chưa được hồ sơ nào sử dụng, phục vụ sửa chữa nhập liệu lỗi. * **FEAT 4.3:** Hệ thống cho phép phòng TCCB xóa hệ số lương khi không được hồ sơ nào sử dụng, hoặc thay đổi trạng thái (đưa vào trạng thái ngừng sử dụng hoặc kích hoạt lại) nếu đã được sử dụng. * **FEAT 4.4:** Hệ thống cho phép phòng TCCB thêm mới, sửa và thay đổi trạng thái danh mục loại phụ cấp theo bộ danh mục nhân sự do Trường Đại học Thủy Lợi phê duyệt; các mục đã được tham chiếu trong dữ liệu nghiệp vụ không được xóa mà chỉ được chuyển giữa trạng thái "Đang sử dụng" và "Ngừng sử dụng". * **FEAT 4.5:** Hệ thống cho phép phòng TCCB thêm mới, sửa và thay đổi trạng thái danh mục loại hợp đồng theo bộ danh mục nhân sự do Trường Đại học Thủy Lợi phê duyệt; các mục đã được tham chiếu trong dữ liệu nghiệp vụ không được xóa mà chỉ được chuyển giữa trạng thái "Đang sử dụng" và "Ngừng sử dụng". |
 
-> **Ghi chú thiết kế – FEAT 4.4/4.5:** Danh mục loại phụ cấp và loại hợp đồng chỉ hỗ trợ thao tác "Thay đổi trạng thái" (chuyển đổi giữa "Đang sử dụng" và "Ngừng sử dụng") mà không hỗ trợ "Xóa" (khác với hệ số lương ở FEAT 4.3 có hỗ trợ xóa khi chưa được sử dụng). Thiết kế này nhằm đảm bảo tính toàn vẹn dữ liệu và phục vụ kiểm toán – các loại phụ cấp/hợp đồng đã từng được sử dụng trong hệ thống cần được lưu giữ lịch sử.
+> **Ghi chú thiết kế – FEAT 4.4/4.5:** Đối với danh mục loại phụ cấp và loại hợp đồng, hệ thống cho phép thêm mới, sửa và thay đổi trạng thái theo bộ danh mục nhân sự được phê duyệt. Các mục đã từng được tham chiếu trong dữ liệu nghiệp vụ không được xóa mà chỉ được chuyển giữa "Đang sử dụng" và "Ngừng sử dụng" để bảo toàn dữ liệu lịch sử và phục vụ kiểm toán.
 
 | Yêu cầu (STRQ) | Kỹ thuật xác định FEAT | Tính năng (FEAT) |
 | --- | --- | --- |
@@ -341,7 +343,7 @@ Thể hiện ánh xạ giữa các yêu cầu thuộc các kiểu khác nhau:
 | Yêu cầu (STRQ) | Kỹ thuật xác định FEAT | Tính năng (FEAT) |
 | --- | --- | --- |
 | **STRQ 7:** Phòng TCCB có thể tạo hợp đồng lao động của nhân sự. | * Phân tách * Thêm chi tiết * Làm cho đầy đủ | * **FEAT 7.1:** Hệ thống cho phép phòng TCCB tạo hợp đồng cho nhân sự không có hợp đồng hoặc cần gia hạn hợp đồng. * **FEAT 7.2:** Hệ thống cho phép phòng TCCB xem danh sách và chi tiết hợp đồng lao động của nhân sự. * **FEAT 7.3:** Hệ thống cho phép phòng TCCB chỉnh sửa hợp đồng lao động của nhân sự khi hợp đồng chưa có hiệu lực. * **FEAT 7.4:** Hệ thống cho phép phòng TCCB chấm dứt hợp đồng lao động trước hạn của nhân sự. |
-| **STRQ 8:** Phòng TCCB muốn quản lý hồ sơ nhân sự như thêm, sửa hồ sơ và cho phép đánh dấu thôi việc nếu nhân sự không còn làm việc, có thêm phương pháp tìm kiếm và lọc để tiện quản lý. | * Phân tách * Làm rõ * Thêm chi tiết * Làm cho đầy đủ | * **FEAT 8.1:** Hệ thống cho phép phòng TCCB và phòng TCKT tìm kiếm hồ sơ nhân sự bằng nhiều từ khóa. * **FEAT 8.2:** Hệ thống cho phép phòng TCCB và phòng TCKT lọc đa tiêu chí hồ sơ nhân sự. * **FEAT 8.3:** Hệ thống cho phép phòng TCCB thêm mới hồ sơ nhân sự (gồm nhập tay hoặc upload từ Excel). * **FEAT 8.4:** Hệ thống cho phép phòng TCCB chỉnh sửa hồ sơ nhân sự (thông tin cá nhân, trình độ học vấn, khen thưởng/kỷ luật, quá trình công tác, thông tin hợp đồng). * **FEAT 8.5:** Hệ thống cho phép phòng TCCB đánh dấu thôi việc nhân sự. * **FEAT 8.6:** Hệ thống tự động đánh dấu thôi việc nhân sự khi hợp đồng hết hạn và không có gia hạn trong thời gian cho phép theo cấu hình loại hợp đồng. * **FEAT 8.7:** Hệ thống cho phép phòng TCCB và phòng TCKT xem chi tiết hồ sơ nhân sự theo từng chế độ xem. * **FEAT 8.8:** Hệ thống cho phép phòng TCCB và phòng TCKT in hoặc xuất Excel hồ sơ nhân sự. * **FEAT 8.9:** Hệ thống cho phép phòng TCCB cấu hình ẩn/hiện các mục khen thưởng, kỷ luật trong hồ sơ nhân sự đối với các vai trò không thuộc phòng TCCB. |
+| **STRQ 8:** Phòng TCCB muốn quản lý hồ sơ nhân sự như thêm, sửa hồ sơ và cho phép đánh dấu thôi việc nếu nhân sự không còn làm việc, có thêm phương pháp tìm kiếm và lọc để tiện quản lý. | * Phân tách * Làm rõ * Thêm chi tiết * Làm cho đầy đủ | * **FEAT 8.1:** Hệ thống cho phép phòng TCCB và phòng TCKT tìm kiếm hồ sơ nhân sự bằng nhiều từ khóa. * **FEAT 8.2:** Hệ thống cho phép phòng TCCB và phòng TCKT lọc đa tiêu chí hồ sơ nhân sự. * **FEAT 8.3:** Hệ thống cho phép phòng TCCB thêm mới hồ sơ nhân sự (gồm nhập tay hoặc upload từ Excel) và tự động cấp mã cán bộ duy nhất theo mẫu mã đang được cấu hình áp dụng tại thời điểm tạo hồ sơ. * **FEAT 8.4:** Hệ thống cho phép phòng TCCB chỉnh sửa hồ sơ nhân sự (thông tin cá nhân, trình độ học vấn, khen thưởng/kỷ luật, quá trình công tác, thông tin hợp đồng). * **FEAT 8.5:** Hệ thống cho phép phòng TCCB đánh dấu thôi việc nhân sự. * **FEAT 8.6:** Hệ thống tự động đánh dấu thôi việc nhân sự khi hợp đồng hết hạn và không có gia hạn trong thời gian cho phép theo cấu hình loại hợp đồng. * **FEAT 8.7:** Hệ thống cho phép phòng TCCB và phòng TCKT xem chi tiết hồ sơ nhân sự theo từng chế độ xem. * **FEAT 8.8:** Hệ thống cho phép phòng TCCB và phòng TCKT in hoặc xuất Excel hồ sơ nhân sự. * **FEAT 8.9:** Hệ thống cho phép phòng TCCB cấu hình ẩn/hiện các mục khen thưởng, kỷ luật trong hồ sơ nhân sự đối với các vai trò không thuộc phòng TCCB. |
 
 ### 2.2.4. Phần đóng góp của Ngô Đức Nam Khánh (STRQ 9–12)
 
@@ -349,7 +351,7 @@ Thể hiện ánh xạ giữa các yêu cầu thuộc các kiểu khác nhau:
 | --- | --- | --- |
 | **STRQ 9:** Phòng TCCB có thể điều chuyển và bổ nhiệm nhân sự vào các đơn vị. | * Phân tách * Thêm chi tiết * Làm cho đầy đủ | * **FEAT 9.1:** Hệ thống cho phép phòng TCCB bổ nhiệm nhân sự vào một đơn vị tổ chức nhân sự. * **FEAT 9.2:** Hệ thống cho phép phòng TCCB điều chuyển nhân sự sang đơn vị tổ chức nhân sự khác. * **FEAT 9.3:** Hệ thống cho phép phòng TCCB bãi nhiệm nhân sự khỏi đơn vị tổ chức đó. |
 | **STRQ 10:** Phòng TCCB có thể ghi nhận đánh giá nhân sự. | * Phân tách * Thêm chi tiết * Làm cho đầy đủ | * **FEAT 10.1:** Hệ thống cho phép phòng TCCB ghi đánh giá cho nhân sự (Loại đánh giá: Khen thưởng/Kỷ luật). * **FEAT 10.2:** Hệ thống cho phép phòng TCCB xem lịch sử đánh giá khen thưởng và kỷ luật của nhân sự. * **FEAT 10.3:** Hệ thống cho phép phòng TCCB tìm kiếm và lọc danh sách đánh giá khen thưởng/kỷ luật theo nhân sự, loại đánh giá, hoặc khoảng thời gian. |
-| **STRQ 11:** Phòng TCCB cần hệ thống cho phép mở khóa đào tạo, quản lý khóa đào tạo cho nhân sự. | * Phân tách * Làm cho đầy đủ * Thêm chi tiết | * **FEAT 11.1:** Hệ thống cho phép phòng TCCB mở khóa đào tạo (cấu hình chuyên sâu về thời gian, địa điểm, chứng chỉ) cho cán bộ. * **FEAT 11.2:** Hệ thống cho phép phòng TCCB chỉnh sửa khóa đào tạo đã mở cho cán bộ tùy theo trạng thái chưa diễn ra hay đang diễn ra, bao gồm thay đổi trạng thái khóa đào tạo (Đang mở đăng ký → Đang đào tạo → Đã hoàn thành). * **FEAT 11.3:** Hệ thống cho phép phòng TCCB xem thông tin khóa đào tạo đã mở cho cán bộ kèm danh sách người đã đăng ký. * **FEAT 11.4:** Hệ thống cho phép phòng TCCB ghi nhận kết quả đào tạo cho cán bộ đã tham gia và lưu trực tiếp chứng chỉ vào hồ sơ nhân sự. |
+| **STRQ 11:** Phòng TCCB cần hệ thống cho phép mở khóa đào tạo, quản lý khóa đào tạo cho nhân sự. | * Phân tách * Làm cho đầy đủ * Thêm chi tiết | * **FEAT 11.1:** Hệ thống cho phép phòng TCCB mở khóa đào tạo (cấu hình chuyên sâu về thời gian, địa điểm, chứng chỉ) cho cán bộ. * **FEAT 11.2:** Hệ thống cho phép phòng TCCB chỉnh sửa khóa đào tạo đã mở cho cán bộ tùy theo trạng thái chưa diễn ra hay đang diễn ra, bao gồm thay đổi trạng thái khóa đào tạo (Đang mở đăng ký → Đang đào tạo → Đã hoàn thành); khi khóa đào tạo được chuyển sang trạng thái "Đang đào tạo", hệ thống phải tự động cập nhật tất cả đăng ký tương ứng từ trạng thái "Đã đăng ký" sang "Đang học". * **FEAT 11.3:** Hệ thống cho phép phòng TCCB xem thông tin khóa đào tạo đã mở cho cán bộ kèm danh sách người đã đăng ký. * **FEAT 11.4:** Hệ thống cho phép phòng TCCB ghi nhận kết quả đào tạo cho cán bộ đã tham gia và lưu trực tiếp chứng chỉ vào hồ sơ nhân sự. |
 | **STRQ 12:** Người dùng phần mềm có thể xem hồ sơ cá nhân, xem thông tin đơn vị đang công tác và thực hiện các luồng tác vụ cá nhân. | * Phân tách * Làm rõ * Thêm chi tiết | * **FEAT 12.1:** Hệ thống cho phép người dùng xem thông tin cá nhân của bản thân. * **FEAT 12.2:** Hệ thống cho phép người dùng xem thông tin đơn vị mình đang công tác và cơ cấu các thành phần đơn vị trực thuộc. * **FEAT 12.3:** Hệ thống cho phép người dùng đăng ký hoặc hủy đăng ký tham gia khóa học/đào tạo được nhà trường phê duyệt mở. * **FEAT 12.4:** Hệ thống cho phép người dùng xem danh sách các khóa đào tạo đã đăng ký và lịch sử đào tạo đã tham gia. |
 
 > **Ghi chú thiết kế – FEAT 12.3/12.4:** "Luồng tác vụ cá nhân" trong STRQ 12 được giới hạn phạm vi ở đăng ký đào tạo trong phiên bản hiện tại. Các tác vụ cá nhân khác (ví dụ: yêu cầu cập nhật thông tin, đề xuất nghỉ phép) có thể được bổ sung trong các phiên bản sau nếu có yêu cầu từ stakeholder.
@@ -2403,13 +2405,13 @@ classDiagram
 | STT | ID | Nội dung yêu cầu | FEAT liên quan |
 |-----|----|------------------|----------------|
 | 1 | SUPL-F01 | Hệ thống phải tự động ghi nhật ký cho mọi thao tác truy cập tài khoản, thay đổi dữ liệu, thay đổi trạng thái và thay đổi cấu hình, kèm thời gian, tài khoản, họ tên, vai trò, loại hành động, đối tượng, mã đối tượng, mô tả chi tiết và địa chỉ IP. | FEAT 12.1 |
-| 2 | SUPL-F02 | Khi tạo mới hồ sơ nhân sự, hệ thống phải tự động cấp một mã cán bộ duy nhất theo mẫu mã đang áp dụng tại thời điểm tạo. | FEAT 7.3 |
+| 2 | SUPL-F02 | Khi tạo mới hồ sơ nhân sự, hệ thống phải tự động cấp một mã cán bộ duy nhất theo mẫu mã đang được cấu hình áp dụng toàn hệ thống tại thời điểm tạo hồ sơ. | FEAT 7.3 |
 | 3 | SUPL-F03 | Hệ thống phải tự động đăng xuất phiên làm việc sau 30 phút không có tương tác của người dùng trên giao diện. | FEAT 1.3 |
 | 4 | SUPL-F04 | Khi nhân sự được chuyển sang trạng thái thôi việc, hệ thống phải tự động khóa tài khoản liên kết của nhân sự đó. | FEAT 2.6, FEAT 7.5, FEAT 7.6 |
-| 5 | SUPL-F05 | Hệ thống phải tự động chuyển hợp đồng từ trạng thái “Còn hiệu lực” sang “Chờ gia hạn” khi thời gian còn lại nhỏ hơn hoặc bằng ngưỡng chờ gia hạn của loại hợp đồng. | FEAT 5.1, FEAT 7.6, FEAT 9.5 |
-| 6 | SUPL-F06 | Khi khóa đào tạo chuyển sang trạng thái “Đang đào tạo”, hệ thống phải tự động cập nhật mọi đăng ký của khóa đó đang ở trạng thái “Đã đăng ký” sang “Đang học”. | FEAT 8.2 |
+| 5 | SUPL-F05 | Hệ thống phải tự động chuyển hợp đồng từ trạng thái “Còn hiệu lực” sang “Chờ gia hạn” khi thời hạn còn lại nhỏ hơn hoặc bằng ngưỡng chờ gia hạn được cấu hình. | FEAT 5.1, FEAT 7.6, FEAT 9.5 |
+| 6 | SUPL-F06 | Khi khóa đào tạo chuyển từ trạng thái “Đang mở đăng ký” sang “Đang đào tạo”, hệ thống phải tự động cập nhật tất cả đăng ký tương ứng từ trạng thái “Đã đăng ký” sang “Đang học”. | FEAT 8.2 |
 | 7 | SUPL-F07 | Hệ thống phải cho phép chuyển loại phụ cấp và loại hợp đồng đã được tham chiếu trong dữ liệu nghiệp vụ sang trạng thái ngừng sử dụng hoặc kích hoạt lại mà không làm mất liên kết dữ liệu lịch sử; các danh mục này không được xóa. | FEAT 9.4, FEAT 9.5 |
-| 8 | SUPL-F08 | Hệ thống phải lưu mật khẩu người dùng dưới dạng giá trị xác thực một chiều và không được lưu ở dạng văn bản thuần. | FEAT 1.1, FEAT 1.4 |
+| 8 | SUPL-F08 | Hệ thống phải lưu trữ mật khẩu người dùng dưới dạng không thể khôi phục nguyên văn và không được lưu mật khẩu ở dạng văn bản thuần. | FEAT 1.4 |
 
 ### Độ đo và tiêu chuẩn đáp ứng
 
@@ -2452,7 +2454,7 @@ classDiagram
 | Thuộc tính | Nội dung |
 |---|---|
 | **Yếu tố chất lượng** | Tính đúng đắn – Tự động hóa |
-| **Độ đo yêu cầu** | (1) Tỷ lệ đăng ký của khóa đang ở trạng thái “Đã đăng ký” được cập nhật đúng trạng thái; (2) Độ trễ từ thời điểm khóa đào tạo đổi trạng thái đến khi cập nhật xong toàn bộ đăng ký. |
+| **Độ đo yêu cầu** | (1) Tỷ lệ đăng ký của khóa đang ở trạng thái “Đã đăng ký” được cập nhật đúng trạng thái khi khóa đào tạo chuyển từ trạng thái “Đang mở đăng ký” sang “Đang đào tạo”; (2) Độ trễ từ thời điểm khóa đào tạo đổi trạng thái đến khi cập nhật xong toàn bộ đăng ký. |
 | **Tiêu chuẩn đáp ứng** | (1) 100% đăng ký của khóa đang ở trạng thái “Đã đăng ký” được chuyển sang “Đang học”; (2) Hoàn tất cập nhật trong không quá 1 phút. |
 
 #### SUPL-F07
@@ -2466,8 +2468,8 @@ classDiagram
 | Thuộc tính | Nội dung |
 |---|---|
 | **Yếu tố chất lượng** | Bảo mật – Tính bí mật |
-| **Độ đo yêu cầu** | (1) Tỷ lệ mật khẩu được lưu dưới dạng giá trị xác thực một chiều; (2) Số mật khẩu được lưu ở dạng văn bản thuần. |
-| **Tiêu chuẩn đáp ứng** | (1) 100% mật khẩu được lưu dưới dạng giá trị xác thực một chiều; (2) 0 mật khẩu được lưu ở dạng văn bản thuần. |
+| **Độ đo yêu cầu** | (1) Tỷ lệ mật khẩu được lưu ở dạng không thể khôi phục nguyên văn; (2) Số mật khẩu được lưu ở dạng văn bản thuần. |
+| **Tiêu chuẩn đáp ứng** | (1) 100% mật khẩu được lưu ở dạng không thể khôi phục nguyên văn; (2) 0 mật khẩu được lưu ở dạng văn bản thuần. |
 
 ## 6.2. Ràng buộc thiết kế (Design Constraints)
 
@@ -2477,7 +2479,7 @@ classDiagram
 
 | STT | ID | Nội dung yêu cầu | FEAT liên quan |
 |-----|----|------------------|----------------|
-| 1 | SUPL-DC01 | Hệ thống phải tổ chức frontend và backend theo mô hình client-server; mọi trao đổi dữ liệu nghiệp vụ giữa frontend và backend phải thực hiện thông qua các API do backend cung cấp. | FEAT 1.5 |
+| 1 | SUPL-DC01 | Hệ thống phải xây dựng theo mô hình Client-Server, frontend dạng SPA (Single Page Application) giao tiếp với backend qua RESTful API. | FEAT 1.5 |
 | 2 | SUPL-DC02 | Hệ thống phải biểu diễn cơ cấu tổ chức dưới dạng cây cha-con với một nút gốc duy nhất là Trường Đại học Thủy Lợi. | FEAT 3.1 |
 | 3 | SUPL-DC03 | Hệ thống phải áp dụng phân quyền theo vai trò; mỗi chức năng và API chỉ cho phép truy cập bởi vai trò được cấp quyền. | FEAT 2.4 |
 
@@ -2486,9 +2488,9 @@ classDiagram
 #### SUPL-DC01
 | Thuộc tính | Nội dung |
 |---|---|
-| **Yếu tố chất lượng** | Ràng buộc thiết kế – Kiến trúc |
-| **Độ đo yêu cầu** | (1) Tỷ lệ yêu cầu nghiệp vụ giữa frontend và backend đi qua API; (2) Số luồng nghiệp vụ truy cập dữ liệu mà không qua backend. |
-| **Tiêu chuẩn đáp ứng** | (1) 100% yêu cầu nghiệp vụ đi qua API; (2) 0 luồng nghiệp vụ truy cập dữ liệu trực tiếp mà không qua backend. |
+| **Yếu tố chất lượng** | Portability – Kiến trúc |
+| **Độ đo yêu cầu** | Tuân thủ mô hình Client-Server, RESTful API. |
+| **Tiêu chuẩn đáp ứng** | 100% giao tiếp client-server qua RESTful API (JSON). Frontend là SPA (Single Page Application). |
 
 #### SUPL-DC02
 | Thuộc tính | Nội dung |
@@ -2512,18 +2514,18 @@ classDiagram
 
 | STT | ID | Nội dung yêu cầu | FEAT liên quan |
 |-----|----|------------------|----------------|
-| 1 | SUPL-LR01 | Hệ thống phải lưu căn cứ xử lý dữ liệu cá nhân cho từng trường hợp xử lý; nếu xử lý dựa trên sự đồng ý, hệ thống phải lưu hồ sơ đồng ý theo quy định trước khi xử lý và cho phép truy xuất hồ sơ đó để đối chiếu. | FEAT 7.3, FEAT 7.4, FEAT 11.1 |
+| 1 | SUPL-LR01 | Hệ thống phải hỗ trợ quản lý sự đồng ý thu thập dữ liệu cá nhân và xử lý yêu cầu hợp lệ về ẩn dữ liệu cá nhân theo Nghị định 13/2023/NĐ-CP. | FEAT 7.3, FEAT 7.4, FEAT 11.1 |
 | 2 | SUPL-LR02 | Hệ thống chỉ cho phép cấu hình và sử dụng loại hợp đồng, loại phụ cấp thuộc danh mục được nhà trường phê duyệt. | FEAT 9.4, FEAT 9.5 |
-| 3 | SUPL-LR03 | Hệ thống phải áp dụng thời hạn lưu giữ theo từng loại hồ sơ nhân sự theo pháp luật hiện hành và quy định lưu trữ nội bộ được phê duyệt, đồng thời không cho phép xóa hồ sơ trước thời hạn đó. | FEAT 5.1, FEAT 6.1, FEAT 7.3, FEAT 7.4 |
+| 3 | SUPL-LR03 | Hồ sơ nhân sự phải được lưu trữ tối thiểu 75 năm; hợp đồng lao động và lịch sử đánh giá khen thưởng/kỷ luật phải được lưu trữ tối thiểu 10 năm sau khi hợp đồng chấm dứt hoặc sau bản ghi đánh giá cuối cùng. | FEAT 5.1, FEAT 6.1, FEAT 7.3, FEAT 7.4 |
 
 ### Độ đo và tiêu chuẩn đáp ứng
 
 #### SUPL-LR01
 | Thuộc tính | Nội dung |
 |---|---|
-| **Yếu tố chất lượng** | Ràng buộc pháp lý – Bảo vệ dữ liệu cá nhân |
-| **Độ đo yêu cầu** | (1) Tỷ lệ trường hợp xử lý dữ liệu cá nhân có căn cứ xử lý được lưu; (2) Tỷ lệ trường hợp xử lý dựa trên sự đồng ý có hồ sơ đồng ý được lưu trước khi xử lý; (3) Tỷ lệ hồ sơ đồng ý có thể truy xuất để đối chiếu. |
-| **Tiêu chuẩn đáp ứng** | (1) 100% trường hợp xử lý dữ liệu cá nhân có căn cứ xử lý được lưu; (2) 100% trường hợp xử lý dựa trên sự đồng ý có hồ sơ đồng ý được lưu trước khi xử lý; (3) 100% hồ sơ đồng ý có thể truy xuất để đối chiếu. |
+| **Yếu tố chất lượng** | Ràng buộc pháp lý – Bảo vệ dữ liệu |
+| **Độ đo yêu cầu** | (1) Tỷ lệ trường hợp xử lý dữ liệu có bản ghi đồng ý hợp lệ; (2) Tỷ lệ yêu cầu ẩn dữ liệu được xử lý đúng. |
+| **Tiêu chuẩn đáp ứng** | (1) 100% trường hợp thuộc diện phải xin đồng ý có bản ghi đồng ý hợp lệ trước khi xử lý dữ liệu; (2) 100% yêu cầu hợp lệ về ẩn dữ liệu cá nhân được thực hiện và lưu vết xử lý. |
 
 #### SUPL-LR02
 | Thuộc tính | Nội dung |
@@ -2536,8 +2538,8 @@ classDiagram
 | Thuộc tính | Nội dung |
 |---|---|
 | **Yếu tố chất lượng** | Ràng buộc pháp lý – Lưu trữ |
-| **Độ đo yêu cầu** | (1) Tỷ lệ loại hồ sơ có thời hạn lưu giữ được cấu hình; (2) Tỷ lệ hồ sơ mẫu còn truy xuất được trong thời hạn lưu giữ; (3) Số trường hợp xóa hồ sơ trước hạn. |
-| **Tiêu chuẩn đáp ứng** | (1) 100% loại hồ sơ thuộc phạm vi yêu cầu có thời hạn lưu giữ được cấu hình; (2) 100% hồ sơ mẫu còn truy xuất được trong thời hạn lưu giữ; (3) 0 trường hợp xóa hồ sơ trước hạn. |
+| **Độ đo yêu cầu** | Thời gian lưu trữ tối thiểu. |
+| **Tiêu chuẩn đáp ứng** | Hồ sơ nhân sự lưu ≥ 75 năm. Hợp đồng lao động và lịch sử đánh giá khen thưởng/kỷ luật lưu ≥ 10 năm sau khi kết thúc hoặc sau bản ghi cuối cùng. |
 
 
 ## 6.4. Yêu cầu về Khả dụng (Usability)
@@ -3024,4 +3026,3 @@ classDiagram
 | **Tiêu chuẩn đáp ứng** | 1) **100%** file PDF hợp lệ dùng cho bằng cấp, chứng chỉ, hợp đồng, giấy phép lao động được upload/download thành công; **100%** file Excel hợp lệ dùng cho import/export nhân sự được xử lý thành công.<br>2) Kích thước tối đa được chấp nhận là **10MB/file**.<br>3) **100%** file sai định dạng hoặc lớn hơn **10MB** bị từ chối và hệ thống hiển thị thông báo lỗi rõ ràng. |
 | **Phương pháp đo** | Kiểm thử upload/download/import/export với tập file mẫu hợp lệ và không hợp lệ; kiểm tra MIME type, phần mở rộng file và phản hồi lỗi của hệ thống. |
 | **Lý do chọn độ đo** | **PDF** và **Excel** được chọn vì bám đúng nhu cầu nghiệp vụ đã mô tả trong use case: hồ sơ quét/đính kèm cần dạng tài liệu cố định (PDF), còn nhập/xuất danh sách nhân sự cần dạng bảng tính (Excel). Mốc **10MB/file** là ngưỡng thực dụng cho môi trường trường đại học: đủ chứa bản scan hợp đồng, bằng cấp, chứng chỉ ở chất lượng đọc rõ, nhưng vẫn kiểm soát được dung lượng lưu trữ, băng thông và thời gian tải tệp. Các tỷ lệ **100% file hợp lệ xử lý thành công** và **100% file không hợp lệ bị từ chối** được chọn vì đây là ràng buộc đúng/sai rõ ràng của chức năng kiểm tra định dạng, không phải mục tiêu tối ưu mềm. |
-
