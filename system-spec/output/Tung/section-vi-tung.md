@@ -12,14 +12,11 @@
 |-----|----|------------------|----------------|
 | 1 | SUPL-P01 | Hệ thống phải giữ P95 Response Time của các thao tác xem danh sách, xem chi tiết, thêm mới và chỉnh sửa trên các màn hình hợp đồng và hồ sơ nhân sự trong các ngưỡng quy định theo 3 mức tải đồng thời. | FEAT 7.1, FEAT 7.2, FEAT 7.3, FEAT 8.3, FEAT 8.4, FEAT 8.7 |
 | 2 | SUPL-P01b | Hệ thống phải giữ Time to Interactive (TTI) của các thao tác xem danh sách, xem chi tiết, thêm mới và chỉnh sửa trên các màn hình hợp đồng và hồ sơ nhân sự trong các ngưỡng quy định theo 3 mức tải đồng thời. | FEAT 7.1, FEAT 7.2, FEAT 7.3, FEAT 8.3, FEAT 8.4, FEAT 8.7 |
-| 3 | SUPL-P02 | Hệ thống phải hỗ trợ tối thiểu 100 người dùng đồng thời trong giờ cao điểm mà không làm thời gian phản hồi tăng quá 50% so với tải một người dùng. | FEAT 7.1–8.9 |
-| 4 | SUPL-P03a | Hệ thống phải hiển thị chi tiết hồ sơ nhân sự tổng hợp trong tối đa 5 giây ở mức không quá 10 người dùng đồng thời. | FEAT 8.7 |
-| 5 | SUPL-P03b | Hệ thống phải chuẩn bị dữ liệu in hồ sơ nhân sự trong tối đa 10 giây ở mức không quá 10 người dùng đồng thời. | FEAT 8.8 |
-| 6 | SUPL-P04 | Hệ thống phải trả kết quả tìm kiếm và lọc hồ sơ nhân sự trong tối đa 2 giây với tập dữ liệu không quá 10.000 bản ghi hoặc tối đa 5 giây với tập dữ liệu không quá 50.000 bản ghi, tại mức không quá 50 người dùng đồng thời. | FEAT 8.1, FEAT 8.2 |
-| 7 | SUPL-P05 | Hệ thống phải hoàn thành upload/download tệp đính kèm trong tối đa 5/3 giây với file không quá 5 MB hoặc tối đa 10/6 giây với file trên 5 MB đến 10 MB, trên mạng LAN 1 Gbps và ở mức không quá 10 người dùng đồng thời. | FEAT 7.1, FEAT 7.2, FEAT 7.3, FEAT 8.3, FEAT 8.4, FEAT 8.7 |
-| 8 | SUPL-P06 | Hệ thống phải xuất dữ liệu hồ sơ nhân sự ra Excel trong tối đa 10 giây với tập dữ liệu không quá 1.000 bản ghi hoặc tối đa 30 giây với tập dữ liệu không quá 10.000 bản ghi, tại mức không quá 10 người dùng đồng thời. | FEAT 8.8 |
-| 9 | SUPL-P07a | Hệ thống phải phục hồi khả năng phục vụ sau sự cố trong tối đa 15 phút. | FEAT 7.1–8.9 |
-| 10 | SUPL-P07b | Hệ thống phải khởi động lại toàn bộ stack trong tối đa 10 phút sau sự cố crash hoặc restart có chủ đích. | FEAT 7.1–8.9 |
+| 3 | SUPL-P02 | Hệ thống phải hỗ trợ tối thiểu 100 người dùng đồng thời trong giờ cao điểm mà thời gian phản hồi của các thao tác xem danh sách, xem chi tiết, thêm mới và chỉnh sửa không tăng quá 50% so với tải một người dùng trong cùng điều kiện đo. | FEAT 7.1–8.9 |
+| 4 | SUPL-P04 | Hệ thống phải trả kết quả tìm kiếm và lọc hồ sơ nhân sự trong tối đa 2 giây với tập dữ liệu không quá 10.000 bản ghi hoặc tối đa 5 giây với tập dữ liệu không quá 50.000 bản ghi, tại mức không quá 50 người dùng đồng thời. | FEAT 8.1, FEAT 8.2 |
+| 5 | SUPL-P05 | Hệ thống phải hoàn thành upload tệp đính kèm trong tối đa 5 giây và download trong tối đa 3 giây với file không quá 5 MB, hoặc upload tối đa 10 giây và download tối đa 6 giây với file trên 5 MB đến 10 MB, trên mạng LAN 1 Gbps và ở mức không quá 10 người dùng đồng thời. | FEAT 7.1, FEAT 7.2, FEAT 7.3, FEAT 8.3, FEAT 8.4, FEAT 8.7 |
+| 6 | SUPL-P07a | Hệ thống phải phục hồi khả năng phục vụ sau sự cố crash hoặc gián đoạn ngoài kế hoạch trong tối đa 15 phút. | FEAT 7.1–8.9 |
+| 7 | SUPL-P07b | Hệ thống phải khởi động lại toàn bộ stack trong tối đa 10 phút sau lệnh restart có chủ đích. | FEAT 7.1–8.9 |
 
 ### 6.6.2. Độ đo và tiêu chuẩn đáp ứng
 
@@ -41,22 +38,8 @@
 | Thuộc tính | Nội dung |
 |---|---|
 | **Yếu tố chất lượng** | Hiệu năng – Sức chứa |
-| **Độ đo yêu cầu** | (1) Số người dùng đồng thời tối đa hệ thống hỗ trợ; (2) Throughput tại mức tải mục tiêu; (3) Tỷ lệ suy giảm thời gian phản hồi khi so sánh mức 100 người dùng với mức 1 người dùng. |
-| **Tiêu chuẩn đáp ứng** | (1) Hệ thống hỗ trợ tối thiểu 100 người dùng đồng thời; (2) Throughput đạt tối thiểu 50 tx/s tại mức 100 người dùng đồng thời; (3) Thời gian phản hồi tăng không quá 50% so với tải một người dùng. |
-
-#### SUPL-P03a
-| Thuộc tính | Nội dung |
-|---|---|
-| **Yếu tố chất lượng** | Hiệu năng – Thời gian phản hồi |
-| **Độ đo yêu cầu** | Thời gian tải trang chi tiết hồ sơ nhân sự tổng hợp. |
-| **Tiêu chuẩn đáp ứng** | Trang chi tiết hồ sơ nhân sự tổng hợp hiển thị hoàn chỉnh trong tối đa 5 giây tại mức không quá 10 người dùng đồng thời. |
-
-#### SUPL-P03b
-| Thuộc tính | Nội dung |
-|---|---|
-| **Yếu tố chất lượng** | Hiệu năng – Thời gian phản hồi |
-| **Độ đo yêu cầu** | Thời gian chuẩn bị dữ liệu in hồ sơ nhân sự. |
-| **Tiêu chuẩn đáp ứng** | Dữ liệu in hồ sơ nhân sự được chuẩn bị xong trong tối đa 10 giây tại mức không quá 10 người dùng đồng thời. |
+| **Độ đo yêu cầu** | (1) Số người dùng đồng thời tối đa hệ thống hỗ trợ trong giờ cao điểm; (2) Tỷ lệ tăng thời gian phản hồi của các thao tác xem danh sách, xem chi tiết, thêm mới và chỉnh sửa khi so sánh mức 100 người dùng đồng thời với mức 1 người dùng trong cùng điều kiện đo. |
+| **Tiêu chuẩn đáp ứng** | (1) Hệ thống hỗ trợ tối thiểu 100 người dùng đồng thời trong giờ cao điểm; (2) Thời gian phản hồi của các thao tác xem danh sách, xem chi tiết, thêm mới và chỉnh sửa tại mức 100 người dùng đồng thời không tăng quá 50% so với tải một người dùng trong cùng điều kiện đo. |
 
 #### SUPL-P04
 | Thuộc tính | Nội dung |
@@ -72,32 +55,26 @@
 | **Độ đo yêu cầu** | (1) Thời gian upload file; (2) Thời gian download file; (3) Kích thước file kiểm thử trong hai khoảng: ≤ 5 MB và > 5 MB đến ≤ 10 MB, trên mạng LAN 1 Gbps. |
 | **Tiêu chuẩn đáp ứng** | (1) Với file ≤ 5 MB: Upload ≤ 5 giây, Download ≤ 3 giây tại mức ≤ 10 người dùng đồng thời; (2) Với file > 5 MB đến ≤ 10 MB: Upload ≤ 10 giây, Download ≤ 6 giây tại mức ≤ 10 người dùng đồng thời. |
 
-#### SUPL-P06
-| Thuộc tính | Nội dung |
-|---|---|
-| **Yếu tố chất lượng** | Hiệu năng – Thời gian phản hồi |
-| **Độ đo yêu cầu** | Thời gian xuất dữ liệu hồ sơ nhân sự ra Excel với hai quy mô dữ liệu: ≤ 1.000 bản ghi và ≤ 10.000 bản ghi. |
-| **Tiêu chuẩn đáp ứng** | (1) Với tập dữ liệu ≤ 1.000 bản ghi: thời gian xuất Excel ≤ 10 giây tại mức ≤ 10 người dùng đồng thời; (2) Với tập dữ liệu ≤ 10.000 bản ghi: thời gian xuất Excel ≤ 30 giây tại mức ≤ 10 người dùng đồng thời. |
-
 #### SUPL-P07a
 | Thuộc tính | Nội dung |
 |---|---|
 | **Yếu tố chất lượng** | Hiệu năng – Thời gian phục hồi dịch vụ |
-| **Độ đo yêu cầu** | Thời gian từ lúc hệ thống gặp sự cố đến khi phục vụ lại được request đầu tiên thành công. |
-| **Tiêu chuẩn đáp ứng** | Hệ thống phục hồi khả năng phục vụ trong tối đa 15 phút sau sự cố crash hoặc restart. |
+| **Độ đo yêu cầu** | Thời gian từ lúc hệ thống gặp sự cố crash hoặc gián đoạn ngoài kế hoạch đến khi phục vụ lại được request đầu tiên thành công. |
+| **Tiêu chuẩn đáp ứng** | Hệ thống phục hồi khả năng phục vụ trong tối đa 15 phút sau sự cố crash hoặc gián đoạn ngoài kế hoạch. |
 
 #### SUPL-P07b
 | Thuộc tính | Nội dung |
 |---|---|
 | **Yếu tố chất lượng** | Hiệu năng – Thời gian khởi động lại |
-| **Độ đo yêu cầu** | Thời gian từ lúc phát hiện crash hoặc phát lệnh restart đến khi toàn bộ stack khởi động thành công theo health check kỹ thuật. |
-| **Tiêu chuẩn đáp ứng** | Toàn bộ stack khởi động lại trong tối đa 10 phút sau sự cố crash hoặc restart có chủ đích. |
+| **Độ đo yêu cầu** | Thời gian từ lúc phát lệnh restart có chủ đích đến khi toàn bộ stack khởi động thành công theo health check kỹ thuật. |
+| **Tiêu chuẩn đáp ứng** | Toàn bộ stack khởi động lại trong tối đa 10 phút sau lệnh restart có chủ đích. |
 
 ### 6.6.3. Ghi chú phạm vi trong nhóm Performance
 
 - `SUPL-P01` gốc được tách thành `SUPL-P01` và `SUPL-P01b` để tách riêng ngưỡng **P95 Response Time** và **TTI**, giúp requirement atomic hơn.
+- Các chỉ tiêu thời gian hiển thị chi tiết hồ sơ, chuẩn bị dữ liệu in và tạo file xuất Excel được đặt tại **Yêu cầu đặc biệt** của UC 4.35 và UC 4.36 vì chỉ áp dụng cho các use case cụ thể, không giữ trong fragment Supplementary Specification này.
 - `SUPL-R02` gốc được đổi thành `SUPL-P07a` và `SUPL-P07b` để khớp với section **Hiệu năng** và yếu tố chất lượng chính của hai requirement này.
-- Ngoài `SUPL-P07b`, hiện không có thêm yêu cầu nghiệm thu riêng cho thời gian khởi động mới hoặc tắt an toàn trong fragment này.
+- Ngoài `SUPL-P07b`, hiện không có thêm yêu cầu nghiệm thu riêng cho thời gian khởi động ban đầu hoặc tắt an toàn trong fragment này.
 - **Resource utilization:** N/A trong fragment này vì stakeholder chưa đưa ra ràng buộc CPU, RAM, băng thông hoặc dung lượng lưu trữ cụ thể cho môi trường triển khai.
 
 ## 6.7. Yêu cầu về Độ tin cậy (Reliability)
@@ -108,16 +85,16 @@
 
 | STT | ID | Nội dung yêu cầu | FEAT liên quan |
 |-----|----|------------------|----------------|
-| 1 | SUPL-R01 | Hệ thống phải duy trì uptime tối thiểu 99,5% trong khung giờ 7:00–22:00 hằng ngày, không tính bảo trì theo kế hoạch. | FEAT 7.1–8.9 |
+| 1 | SUPL-R01 | Hệ thống phải duy trì uptime tối thiểu 99,5% theo tháng trong khung giờ 7:00–22:00 hằng ngày, không tính bảo trì theo kế hoạch. | FEAT 7.1–8.9 |
 | 2 | SUPL-R03a | Hệ thống phải sao lưu dữ liệu tự động ít nhất mỗi 24 giờ. | FEAT 7.1–8.9 |
 | 3 | SUPL-R03b | Hệ thống phải phục hồi từ bản sao lưu gần nhất và sẵn sàng phục vụ trong tối đa 4 giờ. | FEAT 7.1–8.9 |
 | 4 | SUPL-R03c | Hệ thống phải lưu giữ bản sao lưu tối thiểu 30 ngày. | FEAT 7.1–8.9 |
 | 5 | SUPL-R03d | Hệ thống phải đạt tỷ lệ backup thành công tối thiểu 99%. | FEAT 7.1–8.9 |
-| 6 | SUPL-R04 | Hệ thống phải bảo đảm các thao tác tạo/chỉnh sửa hồ sơ nhân sự, hợp đồng và thay đổi trạng thái không để lại dữ liệu dở dang khi có lỗi. | FEAT 7.1–8.9 |
-| 7 | SUPL-R05a | Hệ thống phải cảnh báo tối thiểu 5 phút trước khi phiên tự động hết hạn trên 100% phiên được kiểm thử. | FEAT 7.1–8.9 |
+| 6 | SUPL-R04 | Hệ thống phải bảo đảm các thao tác tạo/chỉnh sửa hồ sơ nhân sự, tạo/chỉnh sửa/chấm dứt hợp đồng và cập nhật trạng thái thôi việc không để lại dữ liệu dở dang hoặc bất nhất khi có lỗi. | FEAT 7.1, FEAT 7.3, FEAT 7.4, FEAT 8.3, FEAT 8.4, FEAT 8.5, FEAT 8.6 |
+| 7 | SUPL-R05a | Hệ thống phải cảnh báo tối thiểu 5 phút trước khi phiên tự động hết hạn trên 100% phiên được kiểm thử để người dùng có cơ hội lưu lại dữ liệu đang nhập. | FEAT 7.1–8.9 |
 | 8 | SUPL-R05b | Hệ thống phải khôi phục dữ liệu nháp sau khi người dùng đăng nhập lại trong ít nhất 95% trường hợp kiểm thử. | FEAT 7.1–8.9 |
 
-> `SUPL-R03` gốc được tách thành cụm `SUPL-R03a`, `SUPL-R03b`, `SUPL-R03c`, `SUPL-R03d` để phần sao lưu/phục hồi được trình bày liền mạch trong cùng một cụm requirement. Trong đó `SUPL-R03b` vẫn mang **yếu tố chất lượng chính là Hiệu năng – Thời gian phục hồi**.
+> `SUPL-R03` gốc được tách thành cụm `SUPL-R03a`, `SUPL-R03b`, `SUPL-R03c`, `SUPL-R03d` để phần sao lưu/phục hồi được trình bày liền mạch trong cùng một cụm requirement. Trong đó `SUPL-R03b` được giữ trong cụm này vì gắn trực tiếp với kịch bản phục hồi từ bản sao lưu gần nhất, dù độ đo chính là thời gian phục hồi.
 
 ### 6.7.2. Độ đo và tiêu chuẩn đáp ứng
 
@@ -125,8 +102,8 @@
 | Thuộc tính | Nội dung |
 |---|---|
 | **Yếu tố chất lượng** | Độ tin cậy – Tính sẵn sàng |
-| **Độ đo yêu cầu** | (1) Tỷ lệ uptime theo tháng trong khung giờ 7:00–22:00; (2) Tổng downtime trong tháng; (3) MTBF. |
-| **Tiêu chuẩn đáp ứng** | (1) Uptime đạt tối thiểu 99,5% mỗi tháng trong khung giờ 7:00–22:00; (2) Downtime không quá 2,25 giờ/tháng, không tính bảo trì theo kế hoạch; (3) MTBF đạt tối thiểu 720 giờ. |
+| **Độ đo yêu cầu** | (1) Tỷ lệ uptime theo tháng trong khung giờ 7:00–22:00 hằng ngày; (2) Tỷ lệ downtime trên tổng thời lượng phục vụ trong cùng kỳ đo. |
+| **Tiêu chuẩn đáp ứng** | (1) Uptime đạt tối thiểu 99,5% mỗi tháng trong khung giờ 7:00–22:00 hằng ngày; (2) Downtime không vượt quá 0,5% tổng thời lượng phục vụ trong cùng kỳ đo, không tính bảo trì theo kế hoạch. |
 
 #### SUPL-R03a
 | Thuộc tính | Nội dung |
@@ -159,16 +136,16 @@
 #### SUPL-R04
 | Thuộc tính | Nội dung |
 |---|---|
-| **Yếu tố chất lượng** | Độ tin cậy – Tính toàn vẹn dữ liệu |
-| **Độ đo yêu cầu** | (1) Số trường hợp phát sinh dữ liệu bất nhất quán sau lỗi; (2) Tỷ lệ các nhóm nghiệp vụ trọng yếu trong phạm vi FEAT 7.1–8.9 được bảo vệ khỏi cập nhật dở dang. |
-| **Tiêu chuẩn đáp ứng** | (1) 0 trường hợp dữ liệu bất nhất quán; (2) 100% các nhóm nghiệp vụ tạo/chỉnh sửa hồ sơ nhân sự, tạo/chỉnh sửa/chấm dứt hợp đồng và thay đổi trạng thái nghiệp vụ không phát sinh cập nhật dở dang khi có lỗi. |
+| **Yếu tố chất lượng** | Độ tin cậy – Tính đúng đắn dữ liệu |
+| **Độ đo yêu cầu** | (1) Số trường hợp phát sinh dữ liệu dở dang hoặc bất nhất sau lỗi; (2) Tỷ lệ các nhóm nghiệp vụ trọng yếu trong phạm vi FEAT 7.1, FEAT 7.3, FEAT 7.4, FEAT 8.3, FEAT 8.4, FEAT 8.5, FEAT 8.6 được bảo vệ khỏi cập nhật dở dang hoặc bất nhất. |
+| **Tiêu chuẩn đáp ứng** | (1) 0 trường hợp dữ liệu dở dang hoặc bất nhất sau lỗi; (2) 100% các nhóm nghiệp vụ tạo/chỉnh sửa hồ sơ nhân sự, tạo/chỉnh sửa/chấm dứt hợp đồng và cập nhật trạng thái thôi việc không phát sinh dữ liệu dở dang hoặc bất nhất khi có lỗi. |
 
 #### SUPL-R05a
 | Thuộc tính | Nội dung |
 |---|---|
 | **Yếu tố chất lượng** | Độ tin cậy – Khả năng phục hồi |
-| **Độ đo yêu cầu** | (1) Tỷ lệ phiên được hiển thị cảnh báo trước khi hết hạn; (2) Thời gian cảnh báo trước khi tự động đăng xuất. |
-| **Tiêu chuẩn đáp ứng** | (1) 100% phiên được kiểm thử có cảnh báo trước khi hết hạn; (2) Cảnh báo xuất hiện tối thiểu 5 phút trước khi tự động đăng xuất. |
+| **Độ đo yêu cầu** | (1) Tỷ lệ phiên được hiển thị cảnh báo trước khi hết hạn; (2) Thời gian cảnh báo trước khi tự động đăng xuất; (3) Khả năng để người dùng nhận biết và thực hiện thao tác lưu trước khi phiên hết hạn. |
+| **Tiêu chuẩn đáp ứng** | (1) 100% phiên được kiểm thử có cảnh báo trước khi hết hạn; (2) Cảnh báo xuất hiện tối thiểu 5 phút trước khi tự động đăng xuất; (3) Cảnh báo được hiển thị đủ rõ để người dùng có cơ hội thực hiện thao tác lưu trước khi phiên hết hạn. |
 
 #### SUPL-R05b
 | Thuộc tính | Nội dung |
@@ -182,5 +159,5 @@
 - **Robustness:** N/A trong fragment này vì yêu cầu xử lý dữ liệu nhập sai và phản ứng với input bất thường đang được đặc tả tại các phần validation/giao diện của nhóm khác.
 - **Fault tolerance:** N/A trong fragment này vì hiện chưa có yêu cầu vận hành về chế độ suy giảm hoặc tiếp tục phục vụ khi một thành phần phụ trợ bị lỗi.
 - **Safety:** N/A vì HRMS là hệ thống quản lý nghiệp vụ nội bộ, không trực tiếp điều khiển thiết bị vật lý hoặc tạo rủi ro an toàn cho con người/môi trường.
-- **Security:** Covered elsewhere trong các section bảo mật của nhóm, nên không lặp lại trong fragment Reliability này.
-- **Accuracy / Correctness ngoài phạm vi Integrity:** Covered by `SUPL-R04` đối với các thao tác cập nhật dữ liệu trọng yếu; các yêu cầu đúng/sai nghiệp vụ chi tiết theo từng use case sẽ được đặc tả ở tài liệu use case hoặc section chức năng tương ứng.
+- **Security:** Các yêu cầu bảo mật về xác thực, phân quyền, timeout phiên và kiểm soát truy cập được đặc tả ở section bảo mật của nhóm; fragment Reliability này chỉ xét khía cạnh hạn chế mất dữ liệu đang nhập khi phiên hết hạn.
+- **Accuracy / Correctness ngoài phạm vi tính nhất quán dữ liệu khi lỗi:** Chưa được đặc tả riêng trong fragment này; `SUPL-R04` chỉ bao phủ yêu cầu không để lại dữ liệu dở dang hoặc bất nhất khi thao tác cập nhật gặp lỗi.

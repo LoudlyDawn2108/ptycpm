@@ -96,7 +96,7 @@ skill(name="use-case-specification")
 
 | File | Nội dung |
 |------|----------|
-| `section-vi-tung.md` | Section 6.6: Performance (SUPL-P01–P07) |
+| `section-vi-tung.md` | Section 6.6: Performance (SUPL-P01, P01b, P02, P04, P05, P07a, P07b) |
 | `section-vi-tung.md` | Section 6.7: Reliability (SUPL-R01–R05) |
 
 **Skill:** `supplementary-specification`
@@ -110,7 +110,7 @@ skill(name="supplementary-specification")
 **Danh sách SUPL:**
 | Nhóm | SUPL IDs |
 |------|----------|
-| Performance | SUPL-P01, P01b, P02, P03a, P03b, P04, P05, P06, P07a, P07b |
+| Performance | SUPL-P01, P01b, P02, P04, P05, P07a, P07b |
 | Reliability | SUPL-R01, R03a, R03b, R03c, R03d, R04, R05a, R05b |
 
 ---
