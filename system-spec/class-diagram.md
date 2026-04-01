@@ -2,7 +2,7 @@
 
 ## 5.1. Xác định các lớp — Biểu đồ lớp Hệ thống HRMS
 
-> Tài liệu này là artefact thiết kế chính để neo đường truy vết **UC → Design** cho toàn bộ 48 use case của hệ thống HRMS Trường Đại học Thủy Lợi theo mẫu **Boundary – Controller – Entity (BCE)**. Khác với baseline trước chỉ đặc tả Entity và Enumeration, phiên bản này đặc tả đầy đủ **Boundary**, **Controller**, **Entity** và **Enumeration** cùng các quan hệ và phụ thuộc chính giữa chúng.
+> Tài liệu này là artefact thiết kế chính để neo đường truy vết **UC → Design** cho toàn bộ 50 use case của hệ thống HRMS Trường Đại học Thủy Lợi theo mẫu **Boundary – Controller – Entity (BCE)**. Khác với baseline trước chỉ đặc tả Entity và Enumeration, phiên bản này đặc tả đầy đủ **Boundary**, **Controller**, **Entity** và **Enumeration** cùng các quan hệ và phụ thuộc chính giữa chúng.
 
 > **Quy ước đọc tài liệu:** Tên lớp, tên thuộc tính và tên phương thức tuân theo quy ước đặt tên Java; phần mô tả vẫn giữ bằng tiếng Việt. Boundary tập trung vào thao tác giao diện, Controller tập trung điều phối nghiệp vụ, Entity tập trung trạng thái miền dữ liệu bền vững. Truy vết use case chi tiết được tổng hợp tại **Mục 5.5**.
 
@@ -639,7 +639,7 @@
 
 ### 5.1.25. CoCauToChucPage (Trang cơ cấu tổ chức) — *«boundary»*
 
-> Boundary thể hiện cây tổ chức, chi tiết đơn vị và các biểu mẫu tạo/sửa đơn vị, bổ nhiệm, điều chuyển, bãi nhiệm trong nhóm UC 4.9 đến 4.11, 4.30 đến 4.32 và 4.39.
+> Boundary thể hiện cây tổ chức, chi tiết đơn vị và các biểu mẫu tạo/sửa đơn vị, bổ nhiệm, điều chuyển, bãi nhiệm trong nhóm UC 4.9 đến 4.12, 4.38 đến 4.39 và 4.48.
 
 **Bảng thuộc tính:**
 
@@ -668,7 +668,7 @@
 
 ### 5.1.26. DanhMucHeSoLuongPage (Trang danh mục hệ số lương) — *«boundary»*
 
-> Boundary phục vụ quản lý danh mục hệ số lương trong các UC 4.12 đến 4.15.
+> Boundary phục vụ quản lý danh mục hệ số lương trong các UC 4.13 đến 4.16.
 
 **Bảng thuộc tính:**
 
@@ -691,7 +691,7 @@
 
 ### 5.1.27. DanhMucPhuCapPage (Trang danh mục phụ cấp) — *«boundary»*
 
-> Boundary phục vụ quản lý danh mục loại phụ cấp trong các UC 4.16 đến 4.18.
+> Boundary phục vụ quản lý danh mục loại phụ cấp trong các UC 4.17 đến 4.19.
 
 **Bảng thuộc tính:**
 
@@ -713,7 +713,7 @@
 
 ### 5.1.28. DanhMucHopDongPage (Trang danh mục hợp đồng) — *«boundary»*
 
-> Boundary phục vụ quản lý danh mục loại hợp đồng trong các UC 4.19 đến 4.21.
+> Boundary phục vụ quản lý danh mục loại hợp đồng trong các UC 4.20 đến 4.22.
 
 **Bảng thuộc tính:**
 
@@ -735,7 +735,7 @@
 
 ### 5.1.29. DanhSachNhanSuPage (Trang danh sách nhân sự) — *«boundary»*
 
-> Boundary phụ trách màn hình danh sách hồ sơ nhân sự, tìm kiếm thời gian thực và lọc nâng cao cho UC 4.23 và 4.24.
+> Boundary phụ trách màn hình danh sách hồ sơ nhân sự, tìm kiếm thời gian thực và lọc nâng cao cho UC 4.29 và 4.30.
 
 **Bảng thuộc tính:**
 
@@ -757,7 +757,7 @@
 
 ### 5.1.30. HoSoNhanSuForm (Biểu mẫu hồ sơ nhân sự) — *«boundary»*
 
-> Boundary phục vụ các thao tác thêm mới, cập nhật, xem chi tiết, thôi việc, in hồ sơ và xuất Excel đối với hồ sơ nhân sự trong UC 4.25 đến 4.28 và 4.38.
+> Boundary phục vụ các thao tác thêm mới, cập nhật, xem chi tiết, thôi việc, in hồ sơ và xuất Excel đối với hồ sơ nhân sự trong UC 4.31 đến 4.37 và 4.47.
 
 **Bảng thuộc tính:**
 
@@ -782,7 +782,7 @@
 
 ### 5.1.31. HopDongLaoDongForm (Biểu mẫu hợp đồng lao động) — *«boundary»*
 
-> Boundary phục vụ tạo mới, xem danh sách, xem chi tiết, sửa trước hiệu lực và chấm dứt trước hạn đối với hợp đồng lao động trong UC 4.22 và 4.43 đến 4.45.
+> Boundary phục vụ tạo mới, xem danh sách, xem chi tiết, sửa trước hiệu lực và chấm dứt trước hạn đối với hợp đồng lao động trong UC 4.25 đến 4.28.
 
 **Bảng thuộc tính:**
 
@@ -806,7 +806,7 @@
 
 ### 5.1.32. DanhGiaForm (Biểu mẫu đánh giá) — *«boundary»*
 
-> Boundary phục vụ ghi nhận, xem lịch sử, tìm kiếm và lọc danh sách khen thưởng/kỷ luật trong UC 4.29, 4.46 và 4.47.
+> Boundary phục vụ ghi nhận, xem lịch sử, tìm kiếm và lọc danh sách khen thưởng/kỷ luật trong UC 4.40 đến 4.42.
 
 **Bảng thuộc tính:**
 
@@ -827,7 +827,7 @@
 
 ### 5.1.33. KhoaDaoTaoPage (Trang khóa đào tạo) — *«boundary»*
 
-> Boundary phục vụ mở khóa đào tạo, sửa khóa, xem chi tiết, đăng ký đào tạo, cập nhật kết quả và xem danh sách khóa đã đăng ký trong UC 4.33 đến 4.36 và 4.40 đến 4.41.
+> Boundary phục vụ mở khóa đào tạo, sửa khóa, xem chi tiết, đăng ký đào tạo, cập nhật kết quả và xem danh sách khóa đã đăng ký trong UC 4.43 đến 4.46 và 4.49 đến 4.50.
 
 **Bảng thuộc tính:**
 
@@ -853,7 +853,7 @@
 
 ### 5.1.34. BaoCaoThongKePage (Trang báo cáo thống kê) — *«boundary»*
 
-> Boundary phục vụ UC 4.37 bằng cách hiển thị các nhóm báo cáo, biểu đồ, bảng tổng hợp và xuất báo cáo theo định dạng yêu cầu.
+> Boundary phục vụ UC 4.23 bằng cách hiển thị các nhóm báo cáo, biểu đồ, bảng tổng hợp và xuất báo cáo theo định dạng yêu cầu.
 
 **Bảng thuộc tính:**
 
@@ -873,7 +873,7 @@
 
 ### 5.1.35. NhatKyHeThongPage (Trang nhật ký hệ thống) — *«boundary»*
 
-> Boundary phục vụ quản trị viên xem danh sách log, lọc, xem chi tiết và xuất nhật ký hệ thống trong UC 4.42.
+> Boundary phục vụ quản trị viên xem danh sách log, lọc, xem chi tiết và xuất nhật ký hệ thống trong UC 4.24.
 
 **Bảng thuộc tính:**
 
@@ -893,7 +893,7 @@
 
 ### 5.1.36. CauHinhHeThongPage (Trang cấu hình hệ thống) — *«boundary»*
 
-> Boundary phục vụ UC 4.48 để hiển thị danh sách cấu hình và nhận thao tác thay đổi giá trị cấu hình hiển thị hồ sơ theo vai trò.
+> Boundary phục vụ UC 4.37 để hiển thị danh sách cấu hình và nhận thao tác thay đổi giá trị cấu hình hiển thị hồ sơ theo vai trò.
 
 **Bảng thuộc tính:**
 
@@ -1115,7 +1115,7 @@
 
 ### 5.1.46. ThongKeController (Bộ điều phối thống kê) — *«controller»*
 
-> Controller tổng hợp dữ liệu từ nhiều lớp entity để tạo ra báo cáo thống kê và xuất báo cáo phục vụ UC 4.37.
+> Controller tổng hợp dữ liệu từ nhiều lớp entity để tạo ra báo cáo thống kê và xuất báo cáo phục vụ UC 4.23.
 
 **Bảng thuộc tính:**
 
@@ -2555,66 +2555,66 @@ classDiagram
 
 | STT | Tên lớp | Loại | Mô tả ngắn | UC được truy vết tới |
 |-----|---------|------|------------|-----------------------|
-| 1 | TaiKhoan | Entity | Quản lý xác thực, phân quyền và trạng thái tài khoản người dùng | UC 4.1-4.8, 4.27 |
-| 2 | HoSoNhanSu | Entity | Hồ sơ nhân sự trung tâm của toàn hệ thống | UC 4.22-4.29, 4.38 |
-| 3 | ThongTinNguoiNuocNgoai | Entity | Lưu giấy tờ cư trú/lao động của nhân sự nước ngoài | UC 4.25-4.28, 4.38 |
-| 4 | ThongTinGiaDinh | Entity | Lưu thành viên gia đình và người phụ thuộc của nhân sự | UC 4.25-4.28, 4.38 |
-| 5 | ThongTinNganHang | Entity | Lưu tài khoản ngân hàng phục vụ trả lương | UC 4.25-4.28, 4.38 |
-| 6 | QuaTrinhCongTac | Entity | Lưu lịch sử công tác của nhân sự | UC 4.25-4.28, 4.38 |
-| 7 | BangCap | Entity | Lưu bằng cấp và minh chứng học vấn | UC 4.25-4.28, 4.38 |
-| 8 | ChungChi | Entity | Lưu chứng chỉ chuyên môn và chứng chỉ đào tạo | UC 4.25-4.28, 4.36, 4.38 |
-| 9 | DonViToChuc | Entity | Mô hình cây cơ cấu tổ chức và thông tin đơn vị | UC 4.9-4.11, 4.30-4.32, 4.39 |
-| 10 | HopDongLaoDong | Entity | Quản lý vòng đời hợp đồng lao động của nhân sự | UC 4.22, 4.27, 4.43-4.45 |
-| 11 | BoNhiem | Entity | Lưu lịch sử bổ nhiệm, điều chuyển và bãi nhiệm | UC 4.30-4.32 |
-| 12 | DanhGia | Entity (abstract) | Phần thông tin chung của các quyết định đánh giá | UC 4.29, 4.46-4.47 |
-| 13 | KhenThuong | Entity | Lớp con ghi nhận quyết định khen thưởng | UC 4.29, 4.46-4.47 |
-| 14 | KyLuat | Entity | Lớp con ghi nhận quyết định kỷ luật | UC 4.29, 4.46-4.47 |
-| 15 | KhoaDaoTao | Entity | Quản lý khóa đào tạo và trạng thái tổ chức khóa học | UC 4.33-4.36, 4.40-4.41 |
-| 16 | DangKyDaoTao | Entity | Quản lý quan hệ tham gia đào tạo giữa nhân sự và khóa học | UC 4.35-4.41 |
-| 17 | NhatKyHeThong | Entity | Ghi vết các thao tác quan trọng để kiểm toán hệ thống | UC 4.42 và các UC có thao tác ghi log |
-| 18 | CauHinhHeThong | Entity | Lưu cấu hình ẩn/hiện mục đánh giá trong hồ sơ theo vai trò | UC 4.48 |
-| 19 | HeSoLuong | Entity | Danh mục hệ số lương theo ngạch và bậc | UC 4.12-4.15, 4.25-4.28 |
-| 20 | LoaiPhuCap | Entity | Danh mục loại phụ cấp áp dụng cho nhân sự | UC 4.16-4.18, 4.25-4.28 |
-| 21 | LoaiHopDong | Entity | Danh mục loại hợp đồng và các ràng buộc gia hạn | UC 4.19-4.22, 4.43-4.45 |
-| 22 | PhuCapNhanSu | Entity | Liên kết loại phụ cấp với nhân sự và giá trị áp dụng | UC 4.25-4.28, 4.38 |
+| 1 | TaiKhoan | Entity | Quản lý xác thực, phân quyền và trạng thái tài khoản người dùng | UC 4.1-4.8, 4.33-4.34 |
+| 2 | HoSoNhanSu | Entity | Hồ sơ nhân sự trung tâm của toàn hệ thống | UC 4.25-4.37, 4.38-4.50 |
+| 3 | ThongTinNguoiNuocNgoai | Entity | Lưu giấy tờ cư trú/lao động của nhân sự nước ngoài | UC 4.31-4.32, 4.35-4.36, 4.47 |
+| 4 | ThongTinGiaDinh | Entity | Lưu thành viên gia đình và người phụ thuộc của nhân sự | UC 4.31-4.32, 4.35-4.36, 4.47 |
+| 5 | ThongTinNganHang | Entity | Lưu tài khoản ngân hàng phục vụ trả lương | UC 4.31-4.32, 4.35-4.36, 4.47 |
+| 6 | QuaTrinhCongTac | Entity | Lưu lịch sử công tác của nhân sự | UC 4.31-4.32, 4.35-4.36, 4.47 |
+| 7 | BangCap | Entity | Lưu bằng cấp và minh chứng học vấn | UC 4.31-4.32, 4.35-4.36, 4.47 |
+| 8 | ChungChi | Entity | Lưu chứng chỉ chuyên môn và chứng chỉ đào tạo | UC 4.31-4.32, 4.35-4.36, 4.46-4.47 |
+| 9 | DonViToChuc | Entity | Mô hình cây cơ cấu tổ chức và thông tin đơn vị | UC 4.9-4.12, 4.38-4.39, 4.47-4.48 |
+| 10 | HopDongLaoDong | Entity | Quản lý vòng đời hợp đồng lao động của nhân sự | UC 4.25-4.28, 4.33-4.34, 4.35, 4.47 |
+| 11 | BoNhiem | Entity | Lưu lịch sử bổ nhiệm, điều chuyển và bãi nhiệm | UC 4.12, 4.38-4.39, 4.48 |
+| 12 | DanhGia | Entity (abstract) | Phần thông tin chung của các quyết định đánh giá | UC 4.23, 4.37, 4.40-4.42, 4.47 |
+| 13 | KhenThuong | Entity | Lớp con ghi nhận quyết định khen thưởng | UC 4.23, 4.37, 4.40-4.42, 4.47 |
+| 14 | KyLuat | Entity | Lớp con ghi nhận quyết định kỷ luật | UC 4.23, 4.37, 4.40-4.42, 4.47 |
+| 15 | KhoaDaoTao | Entity | Quản lý khóa đào tạo và trạng thái tổ chức khóa học | UC 4.23, 4.43-4.46, 4.49-4.50 |
+| 16 | DangKyDaoTao | Entity | Quản lý quan hệ tham gia đào tạo giữa nhân sự và khóa học | UC 4.23, 4.44-4.46, 4.49-4.50 |
+| 17 | NhatKyHeThong | Entity | Ghi vết các thao tác quan trọng để kiểm toán hệ thống | UC 4.24 và các UC có thao tác ghi log |
+| 18 | CauHinhHeThong | Entity | Lưu cấu hình ẩn/hiện mục đánh giá trong hồ sơ theo vai trò | UC 4.37, 4.47 |
+| 19 | HeSoLuong | Entity | Danh mục hệ số lương theo ngạch và bậc | UC 4.13-4.16, 4.31-4.32, 4.35-4.36, 4.47 |
+| 20 | LoaiPhuCap | Entity | Danh mục loại phụ cấp áp dụng cho nhân sự | UC 4.17-4.19, 4.31-4.32, 4.35-4.36, 4.47 |
+| 21 | LoaiHopDong | Entity | Danh mục loại hợp đồng và các ràng buộc gia hạn | UC 4.20-4.22, 4.25-4.28, 4.33-4.34 |
+| 22 | PhuCapNhanSu | Entity | Liên kết loại phụ cấp với nhân sự và giá trị áp dụng | UC 4.31-4.32, 4.35-4.36, 4.47 |
 | 23 | DangNhapForm | Boundary | Màn hình đăng nhập, đổi mật khẩu và đăng xuất | UC 4.1-4.3 |
 | 24 | QuanLyTaiKhoanPage | Boundary | Trang quản lý danh sách tài khoản và phân quyền | UC 4.4-4.8 |
-| 25 | CoCauToChucPage | Boundary | Trang cây tổ chức, đơn vị và bổ nhiệm/điều chuyển/bãi nhiệm | UC 4.9-4.11, 4.30-4.32, 4.39 |
-| 26 | DanhMucHeSoLuongPage | Boundary | Trang danh mục hệ số lương | UC 4.12-4.15 |
-| 27 | DanhMucPhuCapPage | Boundary | Trang danh mục loại phụ cấp | UC 4.16-4.18 |
-| 28 | DanhMucHopDongPage | Boundary | Trang danh mục loại hợp đồng | UC 4.19-4.21 |
-| 29 | DanhSachNhanSuPage | Boundary | Trang danh sách, tìm kiếm và lọc hồ sơ nhân sự | UC 4.23-4.24 |
-| 30 | HoSoNhanSuForm | Boundary | Biểu mẫu thêm/sửa/xem/thôi việc/in/xuất hồ sơ nhân sự | UC 4.25-4.28, 4.38 |
-| 31 | HopDongLaoDongForm | Boundary | Biểu mẫu hợp đồng lao động | UC 4.22, 4.43-4.45 |
-| 32 | DanhGiaForm | Boundary | Biểu mẫu ghi nhận, tra cứu và lọc đánh giá | UC 4.29, 4.46-4.47 |
-| 33 | KhoaDaoTaoPage | Boundary | Trang quản lý khóa đào tạo và đăng ký đào tạo | UC 4.33-4.36, 4.40-4.41 |
-| 34 | BaoCaoThongKePage | Boundary | Trang xem biểu đồ, bảng thống kê và xuất báo cáo | UC 4.37 |
-| 35 | NhatKyHeThongPage | Boundary | Trang xem và xuất nhật ký hệ thống | UC 4.42 |
-| 36 | CauHinhHeThongPage | Boundary | Trang cấu hình hiển thị hồ sơ theo vai trò | UC 4.48 |
+| 25 | CoCauToChucPage | Boundary | Trang cây tổ chức, đơn vị và bổ nhiệm/điều chuyển/bãi nhiệm | UC 4.9-4.12, 4.38-4.39, 4.48 |
+| 26 | DanhMucHeSoLuongPage | Boundary | Trang danh mục hệ số lương | UC 4.13-4.16 |
+| 27 | DanhMucPhuCapPage | Boundary | Trang danh mục loại phụ cấp | UC 4.17-4.19 |
+| 28 | DanhMucHopDongPage | Boundary | Trang danh mục loại hợp đồng | UC 4.20-4.22 |
+| 29 | DanhSachNhanSuPage | Boundary | Trang danh sách, tìm kiếm và lọc hồ sơ nhân sự | UC 4.29-4.30 |
+| 30 | HoSoNhanSuForm | Boundary | Biểu mẫu thêm/sửa/xem/thôi việc/in/xuất hồ sơ nhân sự | UC 4.31-4.37, 4.47 |
+| 31 | HopDongLaoDongForm | Boundary | Biểu mẫu hợp đồng lao động | UC 4.25-4.28 |
+| 32 | DanhGiaForm | Boundary | Biểu mẫu ghi nhận, tra cứu và lọc đánh giá | UC 4.40-4.42 |
+| 33 | KhoaDaoTaoPage | Boundary | Trang quản lý khóa đào tạo và đăng ký đào tạo | UC 4.43-4.46, 4.49-4.50 |
+| 34 | BaoCaoThongKePage | Boundary | Trang xem biểu đồ, bảng thống kê và xuất báo cáo | UC 4.23 |
+| 35 | NhatKyHeThongPage | Boundary | Trang xem và xuất nhật ký hệ thống | UC 4.24 |
+| 36 | CauHinhHeThongPage | Boundary | Trang cấu hình hiển thị hồ sơ theo vai trò | UC 4.37 |
 | 37 | AuthController | Controller | Điều phối đăng nhập, đăng xuất và đổi mật khẩu | UC 4.1-4.3 |
-| 38 | TaiKhoanController | Controller | Điều phối tạo/sửa/xóa/phân quyền/đổi trạng thái tài khoản | UC 4.4-4.8 |
-| 39 | ToChucController | Controller | Điều phối tạo/sửa/xem/cập nhật trạng thái đơn vị | UC 4.9-4.11, 4.32, 4.39 |
-| 40 | BoNhiemController | Controller | Điều phối bổ nhiệm, điều chuyển, bãi nhiệm | UC 4.30-4.32 |
-| 41 | DanhMucController | Controller | Điều phối cấu hình danh mục hệ số lương, phụ cấp, hợp đồng | UC 4.12-4.21 |
-| 42 | HoSoNhanSuController | Controller | Điều phối hồ sơ nhân sự, tìm kiếm/lọc, thôi việc và xuất hồ sơ | UC 4.23-4.28, 4.38 |
-| 43 | HopDongController | Controller | Điều phối hợp đồng lao động và đồng bộ trạng thái hợp đồng | UC 4.22, 4.43-4.45 |
-| 44 | DanhGiaController | Controller | Điều phối đánh giá khen thưởng/kỷ luật | UC 4.29, 4.46-4.47 |
-| 45 | DaoTaoController | Controller | Điều phối mở khóa, đăng ký và ghi nhận kết quả đào tạo | UC 4.33-4.36, 4.40-4.41 |
-| 46 | ThongKeController | Controller | Điều phối tổng hợp dữ liệu thống kê và xuất báo cáo | UC 4.37 |
-| 47 | NhatKyController | Controller | Điều phối ghi log, tra cứu và xuất nhật ký | UC 4.42 và logging của các UC khác |
-| 48 | CauHinhController | Controller | Điều phối cập nhật cấu hình hiển thị hồ sơ theo vai trò | UC 4.48 |
-| 49 | VaiTro | Enumeration | Nhóm vai trò truy cập của người dùng | UC 4.1, 4.4-4.7, 4.42, 4.48 |
-| 50 | TrangThaiTaiKhoan | Enumeration | Trạng thái hoạt động hoặc bị khóa của tài khoản | UC 4.1, 4.4, 4.8, 4.27 |
-| 51 | TrangThaiDonVi | Enumeration | Trạng thái nghiệp vụ của đơn vị tổ chức | UC 4.9-4.11, 4.32, 4.39 |
-| 52 | LoaiDonVi | Enumeration | Phân loại đơn vị trong cơ cấu tổ chức | UC 4.9-4.11, 4.32, 4.39 |
-| 53 | TrangThaiHopDong | Enumeration | Trạng thái vòng đời của từng hợp đồng lao động | UC 4.22, 4.27, 4.43-4.45 |
-| 54 | TrangThaiLamViec | Enumeration | Trạng thái làm việc tổng quát của nhân sự | UC 4.23-4.27, 4.38 |
-| 55 | TrangThaiHopDongNhanSu | Enumeration | Trạng thái hợp đồng tổng quát ở cấp hồ sơ nhân sự | UC 4.22-4.28, 4.38 |
-| 56 | TrangThaiKhoaDaoTao | Enumeration | Trạng thái tổ chức của khóa đào tạo | UC 4.33-4.36, 4.40-4.41 |
-| 57 | TrangThaiThamGia | Enumeration | Trạng thái tham gia đào tạo của nhân sự | UC 4.34-4.36, 4.40-4.41 |
-| 58 | LoaiHanhDong | Enumeration | Phân loại hành động được ghi vào audit log | UC 4.42 và các UC ghi log |
-| 59 | TrangThaiDanhMuc | Enumeration | Trạng thái sử dụng của danh mục cấu hình | UC 4.12-4.21 |
-| 60 | GioiTinh | Enumeration | Giá trị giới tính dùng trong hồ sơ và bộ lọc | UC 4.23-4.26, 4.38 |
+| 38 | TaiKhoanController | Controller | Điều phối tạo/sửa/xóa/phân quyền/đổi trạng thái tài khoản | UC 4.4-4.8, 4.33-4.34 |
+| 39 | ToChucController | Controller | Điều phối tạo/sửa/xem/cập nhật trạng thái đơn vị | UC 4.9-4.12, 4.48 |
+| 40 | BoNhiemController | Controller | Điều phối bổ nhiệm, điều chuyển, bãi nhiệm | UC 4.38-4.39 |
+| 41 | DanhMucController | Controller | Điều phối cấu hình danh mục hệ số lương, phụ cấp, hợp đồng | UC 4.13-4.22 |
+| 42 | HoSoNhanSuController | Controller | Điều phối hồ sơ nhân sự, tìm kiếm/lọc, thôi việc và xuất hồ sơ | UC 4.29-4.37, 4.47 |
+| 43 | HopDongController | Controller | Điều phối hợp đồng lao động và đồng bộ trạng thái hợp đồng | UC 4.25-4.28, 4.33-4.34 |
+| 44 | DanhGiaController | Controller | Điều phối đánh giá khen thưởng/kỷ luật | UC 4.40-4.42, 4.47 |
+| 45 | DaoTaoController | Controller | Điều phối mở khóa, đăng ký và ghi nhận kết quả đào tạo | UC 4.43-4.46, 4.49-4.50 |
+| 46 | ThongKeController | Controller | Điều phối tổng hợp dữ liệu thống kê và xuất báo cáo | UC 4.23 |
+| 47 | NhatKyController | Controller | Điều phối ghi log, tra cứu và xuất nhật ký | UC 4.24 và logging của các UC khác |
+| 48 | CauHinhController | Controller | Điều phối cập nhật cấu hình hiển thị hồ sơ theo vai trò | UC 4.37, 4.47 |
+| 49 | VaiTro | Enumeration | Nhóm vai trò truy cập của người dùng | UC 4.1, 4.4-4.8, 4.24, 4.37 |
+| 50 | TrangThaiTaiKhoan | Enumeration | Trạng thái hoạt động hoặc bị khóa của tài khoản | UC 4.1, 4.5-4.8, 4.33-4.34 |
+| 51 | TrangThaiDonVi | Enumeration | Trạng thái nghiệp vụ của đơn vị tổ chức | UC 4.9-4.12, 4.38-4.39, 4.48 |
+| 52 | LoaiDonVi | Enumeration | Phân loại đơn vị trong cơ cấu tổ chức | UC 4.9-4.12, 4.38-4.39, 4.48 |
+| 53 | TrangThaiHopDong | Enumeration | Trạng thái vòng đời của từng hợp đồng lao động | UC 4.25-4.28, 4.33-4.34 |
+| 54 | TrangThaiLamViec | Enumeration | Trạng thái làm việc tổng quát của nhân sự | UC 4.29-4.37, 4.38-4.39, 4.47-4.48 |
+| 55 | TrangThaiHopDongNhanSu | Enumeration | Trạng thái hợp đồng tổng quát ở cấp hồ sơ nhân sự | UC 4.25-4.37, 4.47 |
+| 56 | TrangThaiKhoaDaoTao | Enumeration | Trạng thái tổ chức của khóa đào tạo | UC 4.43-4.46, 4.49-4.50 |
+| 57 | TrangThaiThamGia | Enumeration | Trạng thái tham gia đào tạo của nhân sự | UC 4.44-4.46, 4.49-4.50 |
+| 58 | LoaiHanhDong | Enumeration | Phân loại hành động được ghi vào audit log | UC 4.24 và các UC ghi log |
+| 59 | TrangThaiDanhMuc | Enumeration | Trạng thái sử dụng của danh mục cấu hình | UC 4.13-4.22 |
+| 60 | GioiTinh | Enumeration | Giá trị giới tính dùng trong hồ sơ và bộ lọc | UC 4.29-4.32, 4.35-4.36, 4.47 |
 
 ## 5.5. Ma trận truy vết UC → Design
 
@@ -2631,40 +2631,42 @@ classDiagram
 | UC 4.9 | `CoCauToChucPage` | `ToChucController`, `NhatKyController` | `DonViToChuc`, `LoaiDonVi`, `TrangThaiDonVi`, `LoaiHanhDong` | Tạo đơn vị mới trong cây tổ chức. |
 | UC 4.10 | `CoCauToChucPage` | `ToChucController`, `NhatKyController` | `DonViToChuc`, `LoaiDonVi`, `LoaiHanhDong` | Sửa thông tin đơn vị và cập nhật cây tổ chức. |
 | UC 4.11 | `CoCauToChucPage` | `ToChucController`, `NhatKyController` | `DonViToChuc`, `HoSoNhanSu`, `HopDongLaoDong`, `TrangThaiDonVi`, `LoaiHanhDong` | Cập nhật trạng thái đơn vị kéo theo đồng bộ nhân sự/hợp đồng. |
-| UC 4.12 | `DanhMucHeSoLuongPage` | `DanhMucController`, `NhatKyController` | `HeSoLuong`, `TrangThaiDanhMuc`, `LoaiHanhDong` | Thêm mới hệ số lương. |
-| UC 4.13 | `DanhMucHeSoLuongPage` | `DanhMucController`, `NhatKyController` | `HeSoLuong`, `TrangThaiDanhMuc`, `LoaiHanhDong` | Sửa danh mục hệ số lương. |
-| UC 4.14 | `DanhMucHeSoLuongPage` | `DanhMucController`, `NhatKyController` | `HeSoLuong`, `LoaiHanhDong` | Xóa logic hệ số lương được tách ở controller thay vì entity. |
-| UC 4.15 | `DanhMucHeSoLuongPage` | `DanhMucController`, `NhatKyController` | `HeSoLuong`, `TrangThaiDanhMuc`, `LoaiHanhDong` | Đổi trạng thái sử dụng của hệ số lương. |
-| UC 4.16 | `DanhMucPhuCapPage` | `DanhMucController`, `NhatKyController` | `LoaiPhuCap`, `TrangThaiDanhMuc`, `LoaiHanhDong` | Thêm mới loại phụ cấp. |
-| UC 4.17 | `DanhMucPhuCapPage` | `DanhMucController`, `NhatKyController` | `LoaiPhuCap`, `TrangThaiDanhMuc`, `LoaiHanhDong` | Sửa loại phụ cấp. |
-| UC 4.18 | `DanhMucPhuCapPage` | `DanhMucController`, `NhatKyController` | `LoaiPhuCap`, `TrangThaiDanhMuc`, `LoaiHanhDong` | Đổi trạng thái loại phụ cấp. |
-| UC 4.19 | `DanhMucHopDongPage` | `DanhMucController`, `NhatKyController` | `LoaiHopDong`, `TrangThaiDanhMuc`, `LoaiHanhDong` | Thêm mới loại hợp đồng. |
-| UC 4.20 | `DanhMucHopDongPage` | `DanhMucController`, `NhatKyController` | `LoaiHopDong`, `TrangThaiDanhMuc`, `LoaiHanhDong` | Sửa loại hợp đồng. |
-| UC 4.21 | `DanhMucHopDongPage` | `DanhMucController`, `NhatKyController` | `LoaiHopDong`, `TrangThaiDanhMuc`, `LoaiHanhDong` | Đổi trạng thái loại hợp đồng. |
-| UC 4.22 | `HopDongLaoDongForm` | `HopDongController`, `NhatKyController` | `HopDongLaoDong`, `HoSoNhanSu`, `LoaiHopDong`, `TrangThaiHopDong`, `TrangThaiHopDongNhanSu`, `LoaiHanhDong` | Tạo hợp đồng mới và đồng bộ trạng thái hợp đồng của nhân sự. |
-| UC 4.23 | `DanhSachNhanSuPage` | `HoSoNhanSuController` | `HoSoNhanSu`, `GioiTinh`, `TrangThaiLamViec`, `TrangThaiHopDongNhanSu` | Tìm kiếm hồ sơ nhân sự theo từ khóa. |
-| UC 4.24 | `DanhSachNhanSuPage` | `HoSoNhanSuController` | `HoSoNhanSu`, `GioiTinh`, `TrangThaiLamViec`, `TrangThaiHopDongNhanSu` | Lọc danh sách hồ sơ theo nhiều tiêu chí. |
-| UC 4.25 | `HoSoNhanSuForm` | `HoSoNhanSuController`, `NhatKyController` | `HoSoNhanSu`, `ThongTinNguoiNuocNgoai`, `ThongTinGiaDinh`, `ThongTinNganHang`, `QuaTrinhCongTac`, `BangCap`, `ChungChi`, `HeSoLuong`, `PhuCapNhanSu`, `LoaiHanhDong` | Thêm mới hồ sơ nhân sự và các thành phần cấu thành hồ sơ. |
-| UC 4.26 | `HoSoNhanSuForm` | `HoSoNhanSuController`, `NhatKyController` | `HoSoNhanSu`, `ThongTinNguoiNuocNgoai`, `ThongTinGiaDinh`, `ThongTinNganHang`, `QuaTrinhCongTac`, `BangCap`, `ChungChi`, `HeSoLuong`, `PhuCapNhanSu`, `LoaiHanhDong` | Cập nhật chi tiết hồ sơ nhân sự. |
-| UC 4.27 | `HoSoNhanSuForm` | `HoSoNhanSuController`, `TaiKhoanController`, `HopDongController`, `NhatKyController` | `HoSoNhanSu`, `TaiKhoan`, `HopDongLaoDong`, `TrangThaiLamViec`, `TrangThaiHopDongNhanSu`, `TrangThaiTaiKhoan`, `LoaiHanhDong` | Thôi việc kéo theo khóa tài khoản và đồng bộ hợp đồng. |
-| UC 4.28 | `HoSoNhanSuForm` | `HoSoNhanSuController` | `HoSoNhanSu`, `ThongTinGiaDinh`, `ThongTinNganHang`, `QuaTrinhCongTac`, `BangCap`, `ChungChi`, `HeSoLuong`, `PhuCapNhanSu` | Xem chi tiết hồ sơ nhân sự ở chế độ chỉ đọc. |
-| UC 4.29 | `DanhGiaForm` | `DanhGiaController`, `NhatKyController` | `DanhGia`, `KhenThuong`, `KyLuat`, `HoSoNhanSu`, `LoaiHanhDong` | Ghi nhận đánh giá dùng kế thừa thay cho enum loại đánh giá. |
-| UC 4.30 | `CoCauToChucPage` | `BoNhiemController`, `NhatKyController` | `BoNhiem`, `HoSoNhanSu`, `DonViToChuc`, `LoaiHanhDong` | Bổ nhiệm/điều chuyển nhân sự cho đơn vị. |
-| UC 4.31 | `CoCauToChucPage` | `BoNhiemController`, `NhatKyController` | `BoNhiem`, `HoSoNhanSu`, `DonViToChuc`, `LoaiHanhDong` | Bãi nhiệm nhân sự khỏi đơn vị tổ chức. |
-| UC 4.32 | `CoCauToChucPage` | `ToChucController`, `BoNhiemController` | `DonViToChuc`, `BoNhiem`, `HoSoNhanSu`, `TrangThaiDonVi` | Xem chi tiết đơn vị và lịch sử nhân sự của đơn vị. |
-| UC 4.33 | `KhoaDaoTaoPage` | `DaoTaoController`, `NhatKyController` | `KhoaDaoTao`, `TrangThaiKhoaDaoTao`, `LoaiHanhDong` | Mở khóa đào tạo mới. |
-| UC 4.34 | `KhoaDaoTaoPage` | `DaoTaoController`, `NhatKyController` | `KhoaDaoTao`, `DangKyDaoTao`, `TrangThaiKhoaDaoTao`, `LoaiHanhDong` | Sửa thông tin khóa đào tạo đã mở. |
-| UC 4.35 | `KhoaDaoTaoPage` | `DaoTaoController` | `KhoaDaoTao`, `DangKyDaoTao`, `TrangThaiKhoaDaoTao`, `TrangThaiThamGia` | Xem chi tiết khóa đào tạo và danh sách học viên. |
-| UC 4.36 | `KhoaDaoTaoPage` | `DaoTaoController`, `NhatKyController` | `DangKyDaoTao`, `KhoaDaoTao`, `ChungChi`, `TrangThaiThamGia`, `LoaiHanhDong` | Ghi nhận kết quả đào tạo và lưu chứng chỉ vào hồ sơ. |
-| UC 4.37 | `BaoCaoThongKePage` | `ThongKeController` | `HoSoNhanSu`, `DonViToChuc`, `HopDongLaoDong`, `DanhGia`, `KhoaDaoTao`, `DangKyDaoTao` | Thống kê tổng hợp dữ liệu từ nhiều entity lõi. |
-| UC 4.38 | `HoSoNhanSuForm` | `HoSoNhanSuController`, `CauHinhController` | `HoSoNhanSu`, `HopDongLaoDong`, `DanhGia`, `CauHinhHeThong` | Self-service hồ sơ cá nhân vẫn tuân thủ chuỗi BCE và chịu tác động cấu hình hiển thị. |
-| UC 4.39 | `CoCauToChucPage` | `ToChucController` | `DonViToChuc`, `BoNhiem`, `HoSoNhanSu` | Xem thông tin chi tiết đơn vị đang công tác của CBGV. |
-| UC 4.40 | `KhoaDaoTaoPage` | `DaoTaoController`, `NhatKyController` | `DangKyDaoTao`, `KhoaDaoTao`, `TrangThaiThamGia`, `LoaiHanhDong` | Đăng ký/hủy đăng ký khóa đào tạo; trạng thái `DA_HUY` hỗ trợ trường hợp hủy. |
-| UC 4.41 | `KhoaDaoTaoPage` | `DaoTaoController` | `DangKyDaoTao`, `KhoaDaoTao`, `TrangThaiThamGia` | Xem danh sách các khóa đào tạo đã đăng ký. |
-| UC 4.42 | `NhatKyHeThongPage` | `NhatKyController` | `NhatKyHeThong`, `TaiKhoan`, `LoaiHanhDong`, `VaiTro` | Bao phủ xem, lọc, xem chi tiết và xuất audit log. |
-| UC 4.43 | `HopDongLaoDongForm` | `HopDongController` | `HopDongLaoDong`, `HoSoNhanSu`, `LoaiHopDong`, `TrangThaiHopDong` | Xem danh sách và chi tiết hợp đồng lao động. |
-| UC 4.44 | `HopDongLaoDongForm` | `HopDongController`, `NhatKyController` | `HopDongLaoDong`, `LoaiHopDong`, `TrangThaiHopDong`, `LoaiHanhDong` | Chỉnh sửa hợp đồng chưa có hiệu lực. |
-| UC 4.45 | `HopDongLaoDongForm` | `HopDongController`, `NhatKyController` | `HopDongLaoDong`, `HoSoNhanSu`, `TrangThaiHopDong`, `TrangThaiHopDongNhanSu`, `LoaiHanhDong` | Chấm dứt hợp đồng lao động trước hạn. |
-| UC 4.46 | `DanhGiaForm` | `DanhGiaController` | `DanhGia`, `KhenThuong`, `KyLuat`, `HoSoNhanSu`, `CauHinhHeThong` | Xem lịch sử đánh giá theo mô hình kế thừa và cấu hình hiển thị. |
-| UC 4.47 | `DanhGiaForm` | `DanhGiaController` | `DanhGia`, `KhenThuong`, `KyLuat`, `HoSoNhanSu` | Tìm kiếm và lọc danh sách đánh giá. |
-| UC 4.48 | `CauHinhHeThongPage` | `CauHinhController`, `NhatKyController` | `CauHinhHeThong`, `VaiTro`, `LoaiHanhDong` | Cập nhật cấu hình ẩn/hiện mục khen thưởng/kỷ luật theo vai trò. |
+| UC 4.12 | `CoCauToChucPage` | `ToChucController`, `BoNhiemController` | `DonViToChuc`, `BoNhiem`, `HoSoNhanSu`, `TrangThaiDonVi` | Xem chi tiết đơn vị và lịch sử nhân sự của đơn vị. |
+| UC 4.13 | `DanhMucHeSoLuongPage` | `DanhMucController`, `NhatKyController` | `HeSoLuong`, `TrangThaiDanhMuc`, `LoaiHanhDong` | Thêm mới hệ số lương. |
+| UC 4.14 | `DanhMucHeSoLuongPage` | `DanhMucController`, `NhatKyController` | `HeSoLuong`, `TrangThaiDanhMuc`, `LoaiHanhDong` | Sửa danh mục hệ số lương. |
+| UC 4.15 | `DanhMucHeSoLuongPage` | `DanhMucController`, `NhatKyController` | `HeSoLuong`, `LoaiHanhDong` | Xóa logic hệ số lương được tách ở controller thay vì entity. |
+| UC 4.16 | `DanhMucHeSoLuongPage` | `DanhMucController`, `NhatKyController` | `HeSoLuong`, `TrangThaiDanhMuc`, `LoaiHanhDong` | Đổi trạng thái sử dụng của hệ số lương. |
+| UC 4.17 | `DanhMucPhuCapPage` | `DanhMucController`, `NhatKyController` | `LoaiPhuCap`, `TrangThaiDanhMuc`, `LoaiHanhDong` | Thêm mới loại phụ cấp. |
+| UC 4.18 | `DanhMucPhuCapPage` | `DanhMucController`, `NhatKyController` | `LoaiPhuCap`, `TrangThaiDanhMuc`, `LoaiHanhDong` | Sửa loại phụ cấp. |
+| UC 4.19 | `DanhMucPhuCapPage` | `DanhMucController`, `NhatKyController` | `LoaiPhuCap`, `TrangThaiDanhMuc`, `LoaiHanhDong` | Đổi trạng thái loại phụ cấp. |
+| UC 4.20 | `DanhMucHopDongPage` | `DanhMucController`, `NhatKyController` | `LoaiHopDong`, `TrangThaiDanhMuc`, `LoaiHanhDong` | Thêm mới loại hợp đồng. |
+| UC 4.21 | `DanhMucHopDongPage` | `DanhMucController`, `NhatKyController` | `LoaiHopDong`, `TrangThaiDanhMuc`, `LoaiHanhDong` | Sửa loại hợp đồng. |
+| UC 4.22 | `DanhMucHopDongPage` | `DanhMucController`, `NhatKyController` | `LoaiHopDong`, `TrangThaiDanhMuc`, `LoaiHanhDong` | Đổi trạng thái loại hợp đồng. |
+| UC 4.23 | `BaoCaoThongKePage` | `ThongKeController` | `HoSoNhanSu`, `DonViToChuc`, `HopDongLaoDong`, `DanhGia`, `KhoaDaoTao`, `DangKyDaoTao` | Thống kê tổng hợp dữ liệu từ nhiều entity lõi. |
+| UC 4.24 | `NhatKyHeThongPage` | `NhatKyController` | `NhatKyHeThong`, `TaiKhoan`, `LoaiHanhDong`, `VaiTro` | Bao phủ xem, lọc, xem chi tiết và xuất audit log. |
+| UC 4.25 | `HopDongLaoDongForm` | `HopDongController`, `NhatKyController` | `HopDongLaoDong`, `HoSoNhanSu`, `LoaiHopDong`, `TrangThaiHopDong`, `TrangThaiHopDongNhanSu`, `LoaiHanhDong` | Tạo hợp đồng mới và đồng bộ trạng thái hợp đồng của nhân sự. |
+| UC 4.26 | `HopDongLaoDongForm` | `HopDongController` | `HopDongLaoDong`, `HoSoNhanSu`, `LoaiHopDong`, `TrangThaiHopDong` | Xem danh sách và chi tiết hợp đồng lao động. |
+| UC 4.27 | `HopDongLaoDongForm` | `HopDongController`, `NhatKyController` | `HopDongLaoDong`, `LoaiHopDong`, `TrangThaiHopDong`, `LoaiHanhDong` | Chỉnh sửa hợp đồng chưa có hiệu lực. |
+| UC 4.28 | `HopDongLaoDongForm` | `HopDongController`, `NhatKyController` | `HopDongLaoDong`, `HoSoNhanSu`, `TrangThaiHopDong`, `TrangThaiHopDongNhanSu`, `LoaiHanhDong` | Chấm dứt hợp đồng lao động trước hạn. |
+| UC 4.29 | `DanhSachNhanSuPage` | `HoSoNhanSuController` | `HoSoNhanSu`, `GioiTinh`, `TrangThaiLamViec`, `TrangThaiHopDongNhanSu` | Tìm kiếm hồ sơ nhân sự theo từ khóa. |
+| UC 4.30 | `DanhSachNhanSuPage` | `HoSoNhanSuController` | `HoSoNhanSu`, `GioiTinh`, `TrangThaiLamViec`, `TrangThaiHopDongNhanSu` | Lọc danh sách hồ sơ theo nhiều tiêu chí. |
+| UC 4.31 | `HoSoNhanSuForm` | `HoSoNhanSuController`, `NhatKyController` | `HoSoNhanSu`, `ThongTinNguoiNuocNgoai`, `ThongTinGiaDinh`, `ThongTinNganHang`, `QuaTrinhCongTac`, `BangCap`, `ChungChi`, `HeSoLuong`, `PhuCapNhanSu`, `LoaiHanhDong` | Thêm mới hồ sơ nhân sự và các thành phần cấu thành hồ sơ. |
+| UC 4.32 | `HoSoNhanSuForm` | `HoSoNhanSuController`, `NhatKyController` | `HoSoNhanSu`, `ThongTinNguoiNuocNgoai`, `ThongTinGiaDinh`, `ThongTinNganHang`, `QuaTrinhCongTac`, `BangCap`, `ChungChi`, `HeSoLuong`, `PhuCapNhanSu`, `LoaiHanhDong` | Cập nhật chi tiết hồ sơ nhân sự. |
+| UC 4.33 | `HoSoNhanSuForm` | `HoSoNhanSuController`, `TaiKhoanController`, `HopDongController`, `NhatKyController` | `HoSoNhanSu`, `TaiKhoan`, `HopDongLaoDong`, `TrangThaiLamViec`, `TrangThaiHopDongNhanSu`, `TrangThaiTaiKhoan`, `LoaiHanhDong` | Thôi việc kéo theo khóa tài khoản và đồng bộ hợp đồng. |
+| UC 4.34 | `HoSoNhanSuForm` | `HoSoNhanSuController`, `TaiKhoanController`, `HopDongController` | `HoSoNhanSu`, `TaiKhoan`, `HopDongLaoDong`, `TrangThaiLamViec`, `TrangThaiHopDongNhanSu`, `TrangThaiTaiKhoan` | Tự động thôi việc chạy theo timer khi hợp đồng quá hạn gia hạn. |
+| UC 4.35 | `HoSoNhanSuForm` | `HoSoNhanSuController` | `HoSoNhanSu`, `ThongTinNguoiNuocNgoai`, `ThongTinGiaDinh`, `ThongTinNganHang`, `QuaTrinhCongTac`, `BangCap`, `ChungChi`, `HopDongLaoDong`, `DanhGia`, `CauHinhHeThong` | Xem chi tiết hồ sơ nhân sự ở chế độ chỉ đọc. |
+| UC 4.36 | `HoSoNhanSuForm` | `HoSoNhanSuController` | `HoSoNhanSu`, `BangCap`, `ChungChi`, `QuaTrinhCongTac`, `HopDongLaoDong` | In hồ sơ và xuất Excel sử dụng cùng tập dữ liệu hồ sơ chi tiết. |
+| UC 4.37 | `CauHinhHeThongPage` | `CauHinhController`, `NhatKyController` | `CauHinhHeThong`, `VaiTro`, `LoaiHanhDong` | Cập nhật cấu hình ẩn/hiện mục khen thưởng/kỷ luật theo vai trò. |
+| UC 4.38 | `CoCauToChucPage` | `BoNhiemController`, `NhatKyController` | `BoNhiem`, `HoSoNhanSu`, `DonViToChuc`, `LoaiHanhDong` | Bổ nhiệm/điều chuyển nhân sự cho đơn vị. |
+| UC 4.39 | `CoCauToChucPage` | `BoNhiemController`, `NhatKyController` | `BoNhiem`, `HoSoNhanSu`, `DonViToChuc`, `LoaiHanhDong` | Bãi nhiệm nhân sự khỏi đơn vị tổ chức. |
+| UC 4.40 | `DanhGiaForm` | `DanhGiaController`, `NhatKyController` | `DanhGia`, `KhenThuong`, `KyLuat`, `HoSoNhanSu`, `LoaiHanhDong` | Ghi nhận đánh giá dùng kế thừa thay cho enum loại đánh giá. |
+| UC 4.41 | `DanhGiaForm` | `DanhGiaController` | `DanhGia`, `KhenThuong`, `KyLuat`, `HoSoNhanSu`, `CauHinhHeThong` | Xem lịch sử đánh giá theo mô hình kế thừa và cấu hình hiển thị. |
+| UC 4.42 | `DanhGiaForm` | `DanhGiaController` | `DanhGia`, `KhenThuong`, `KyLuat`, `HoSoNhanSu`, `CauHinhHeThong` | Tìm kiếm và lọc danh sách đánh giá. |
+| UC 4.43 | `KhoaDaoTaoPage` | `DaoTaoController`, `NhatKyController` | `KhoaDaoTao`, `TrangThaiKhoaDaoTao`, `LoaiHanhDong` | Mở khóa đào tạo mới. |
+| UC 4.44 | `KhoaDaoTaoPage` | `DaoTaoController`, `NhatKyController` | `KhoaDaoTao`, `DangKyDaoTao`, `TrangThaiKhoaDaoTao`, `TrangThaiThamGia`, `LoaiHanhDong` | Sửa thông tin khóa đào tạo đã mở, bao gồm đổi trạng thái khóa. |
+| UC 4.45 | `KhoaDaoTaoPage` | `DaoTaoController` | `KhoaDaoTao`, `DangKyDaoTao`, `TrangThaiKhoaDaoTao`, `TrangThaiThamGia` | Xem chi tiết khóa đào tạo và danh sách học viên. |
+| UC 4.46 | `KhoaDaoTaoPage` | `DaoTaoController`, `NhatKyController` | `DangKyDaoTao`, `KhoaDaoTao`, `ChungChi`, `TrangThaiThamGia`, `LoaiHanhDong` | Ghi nhận kết quả đào tạo và lưu chứng chỉ vào hồ sơ. |
+| UC 4.47 | `HoSoNhanSuForm` | `HoSoNhanSuController`, `CauHinhController`, `DanhGiaController` | `HoSoNhanSu`, `HopDongLaoDong`, `DanhGia`, `CauHinhHeThong` | Self-service hồ sơ cá nhân vẫn tuân thủ chuỗi BCE và chịu tác động cấu hình hiển thị. |
+| UC 4.48 | `CoCauToChucPage` | `ToChucController`, `BoNhiemController` | `DonViToChuc`, `BoNhiem`, `HoSoNhanSu` | Xem thông tin chi tiết đơn vị đang công tác của CBGV. |
+| UC 4.49 | `KhoaDaoTaoPage` | `DaoTaoController`, `NhatKyController` | `DangKyDaoTao`, `KhoaDaoTao`, `TrangThaiThamGia`, `LoaiHanhDong` | Đăng ký/hủy đăng ký khóa đào tạo; trạng thái `DA_HUY` hỗ trợ trường hợp hủy. |
+| UC 4.50 | `KhoaDaoTaoPage` | `DaoTaoController` | `DangKyDaoTao`, `KhoaDaoTao`, `TrangThaiThamGia` | Xem danh sách các khóa đào tạo đã đăng ký. |
