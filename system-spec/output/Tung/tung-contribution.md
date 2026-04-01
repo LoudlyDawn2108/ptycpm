@@ -41,4 +41,4 @@
 
 ## Part D: UC Specifications (for Section IV)
 
-> Nội dung UC chi tiết của phần Ngô Quang Tùng được đồng bộ theo `final-report.md`, Section IV `4.3` (UC 4.25–4.35).
+> Nội dung UC chi tiết của phần Ngô Quang Tùng nằm tại file `uc-tung.md` (UC 4.25–4.35).
