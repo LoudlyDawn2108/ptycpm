@@ -175,14 +175,14 @@
 |  |  |
 | --- | --- |
 | **Tên use case** | **Thôi việc nhân sự tự động** |
-| Tác nhân chính | Hệ thống |
+| Tác nhân chính | System Timer |
 | Mục đích (mô tả) | Hệ thống tự động chuyển trạng thái hợp đồng sang "Chờ gia hạn" khi sắp hết hạn, và tự động đánh dấu thôi việc nhân sự khi hợp đồng hết hạn mà không được gia hạn trong thời gian cho phép theo cấu hình loại hợp đồng. |
 | Mức độ ưu tiên  (Priority) | Bắt buộc |
 | Điều kiện kích hoạt  (Trigger) | Hệ thống (System Timer) định kỳ kiểm tra trạng thái hợp đồng của nhân sự. |
 | Điều kiện tiên quyết  (Precondition) | Hệ thống đang hoạt động bình thường. Tồn tại hợp đồng lao động ở trạng thái "Chưa có hiệu lực", "Còn hiệu lực" hoặc "Chờ gia hạn". |
 | Điều kiện thành công  (Post-condition) | Hợp đồng ở trạng thái "Chưa có hiệu lực" được chuyển sang "Còn hiệu lực" khi đến ngày hiệu lực. Hợp đồng sắp hết hạn được chuyển sang trạng thái "Chờ gia hạn". Hoặc: Hợp đồng đã quá hạn gia hạn được chuyển sang "Hết hiệu lực", nhân sự được đánh dấu "Đã thôi việc", gỡ khỏi đơn vị công tác và tài khoản liên kết bị khóa. |
 | Điều kiện thất bại | Hệ thống không thể cập nhật trạng thái do lỗi hệ thống. |
-| Luồng sự kiện chính  (Basic Flow) | 1. Hệ thống (System Timer) định kỳ kiểm tra các hợp đồng đang ở trạng thái "Chưa có hiệu lực" và "Còn hiệu lực". 2. Với các hợp đồng ở trạng thái "Chưa có hiệu lực": nếu Ngày hiệu lực ≤ Ngày hiện tại, hệ thống tự động chuyển trạng thái hợp đồng sang "Còn hiệu lực" và cập nhật trạng thái hợp đồng của nhân sự thành "Còn hiệu lực". 3. Với các hợp đồng ở trạng thái "Còn hiệu lực": nếu thời gian còn lại của hợp đồng ≤ thời gian chờ gia hạn được cấu hình của loại hợp đồng tương ứng (tham chiếu thuộc tính `thoiGianChoGiaHan` tại UC 4.20): 4. Hệ thống tự động cập nhật trạng thái hợp đồng từ "Còn hiệu lực" sang "Chờ gia hạn". 5. Hệ thống tự động cập nhật trạng thái hợp đồng của nhân sự thành "Chờ gia hạn". |
+| Luồng sự kiện chính  (Basic Flow) | 1. Hệ thống (System Timer) định kỳ kiểm tra các hợp đồng đang ở trạng thái "Chưa có hiệu lực", "Còn hiệu lực" và "Chờ gia hạn". 2. Với các hợp đồng ở trạng thái "Chưa có hiệu lực": nếu Ngày hiệu lực ≤ Ngày hiện tại, hệ thống tự động chuyển trạng thái hợp đồng sang "Còn hiệu lực" và cập nhật trạng thái hợp đồng của nhân sự thành "Còn hiệu lực". 3. Với các hợp đồng ở trạng thái "Còn hiệu lực": nếu thời gian còn lại của hợp đồng ≤ thời gian chờ gia hạn được cấu hình của loại hợp đồng tương ứng (tham chiếu thuộc tính `thoiGianChoGiaHan` tại UC 4.20): 4. Hệ thống tự động cập nhật trạng thái hợp đồng từ "Còn hiệu lực" sang "Chờ gia hạn". 5. Hệ thống tự động cập nhật trạng thái hợp đồng của nhân sự thành "Chờ gia hạn". |
 | Luồng sự kiện thay thế  (Alternative Flow) | **A1: Tự động thôi việc khi hết hạn gia hạn**   1. Tại bước 1, khi hệ thống kiểm tra hợp đồng ở trạng thái "Chờ gia hạn" đã quá thời gian gia hạn được cấu hình và không có gia hạn trong thời gian cho phép theo cấu hình loại hợp đồng, hệ thống tự động cập nhật trạng thái hợp đồng thành "Hết hiệu lực". 2. Hệ thống tự động cập nhật trạng thái làm việc cho nhân sự vừa bị cập nhật trạng thái hợp đồng "Hết hiệu lực" thành "Đã thôi việc". 3. Hệ thống tự động gỡ nhân sự khỏi đơn vị công tác hiện tại. 4. Hệ thống tự động cập nhật trạng thái tài khoản liên kết thành "Bị khóa". |
 | Luồng sự kiện ngoại lệ  (Exception Flow) | Không có |
 
@@ -200,6 +200,7 @@
 | Điều kiện tiên quyết  (Precondition) | Phòng TCCB, phòng TCKT đã đăng nhập hệ thống. |
 | Điều kiện thành công  (Post-condition) | Thông tin chi tiết hồ sơ nhân sự được hiển thị đầy đủ, chính xác ở chế độ chỉ đọc. |
 | Điều kiện thất bại | Hệ thống không hiển thị được thông tin hồ sơ do lỗi hệ thống hoặc dữ liệu không tồn tại. |
+| Yêu cầu đặc biệt  (Special Requirements) | Màn hình chi tiết hồ sơ nhân sự phải được hiển thị hoàn chỉnh trong tối đa 5 giây tại mức không quá 10 người dùng đồng thời. |
 | Luồng sự kiện chính  (Basic Flow) | 1.  Tại danh sách, Phòng TCCB, phòng TCKT nhấn vào nhấn "Xem chi tiết" tại một nhân sự.  2.  Hệ thống hiển thị màn hình Chi tiết hồ sơ ở chế độ chỉ đọc.  3.  Hệ thống hiển thị đầy đủ thông tin theo các tab:   * **Tab "Thông tin chung":** Mã cán bộ,Lý lịch, liên hệ, gia đình, ảnh chân dung * **Tab "Trình độ & Chức danh":** Bằng cấp, chứng chỉ, chức danh khoa học, chức vụ, đơn vị công tác. * **Tab "Thông tin Đảng/ Đoàn":** Thông tin Đảng/ Đoàn đã được lưu. * **Tab "Lương & Phụ cấp":** Thông tin về ngạch, bậc, hệ số lương, thông tin ngân hàng * **Tab "Hợp đồng":** Thông tin về các loại hợp đồng đồng đã ký * **Tab "Khen thưởng/Kỷ luật":** Hệ thống hiển thị mục khen thưởng/kỷ luật tùy theo cấu hình ẩn/hiện (xem UC 4.37, FEAT 8.9) và vai trò người dùng hiện tại * **Tab "Công tác":** Quá trình công tác trước khi về trường đã được ghi |
 | Luồng sự kiện thay thế  (Alternative Flow) | Không có |
 | Luồng sự kiện ngoại lệ  (Exception Flow) | Không có |
@@ -218,6 +219,7 @@
 | Điều kiện tiên quyết  (Precondition) | Phòng TCCB hoặc phòng TCKT đã đăng nhập hệ thống. Hồ sơ nhân sự đã tồn tại trong hệ thống. Người dùng đang ở màn hình chi tiết hồ sơ nhân sự (tham chiếu UC 4.35). |
 | Điều kiện thành công  (Post-condition) | File PDF hoặc Excel chứa thông tin hồ sơ nhân sự được tạo và tải về thành công. Không làm thay đổi dữ liệu trong hệ thống (chỉ đọc). |
 | Điều kiện thất bại | Hệ thống không thể tạo file do lỗi hệ thống hoặc dữ liệu không tồn tại. |
+| Yêu cầu đặc biệt  (Special Requirements) | (1) Dữ liệu in hồ sơ nhân sự phải được chuẩn bị xong trong tối đa 10 giây tại mức không quá 10 người dùng đồng thời. (2) File Excel phải được tạo xong và sẵn sàng cho người dùng tải xuống trong tối đa 10 giây với tập dữ liệu không quá 1.000 bản ghi hoặc tối đa 30 giây với tập dữ liệu không quá 10.000 bản ghi, tại mức không quá 10 người dùng đồng thời. |
 | Luồng sự kiện chính  (Basic Flow) | 1. Phòng TCCB hoặc phòng TCKT đang ở màn hình chi tiết hồ sơ nhân sự (từ UC 4.35). 2. Người dùng chọn chức năng **"In hồ sơ"**. 3. Hệ thống tạo bản xem trước hồ sơ ở định dạng PDF bao gồm toàn bộ thông tin hồ sơ nhân sự. 4. Người dùng xác nhận in hoặc tải về file PDF. 5. Hệ thống thực hiện in hoặc tải file PDF về máy người dùng. |
 | Luồng sự kiện thay thế  (Alternative Flow) | **A1: Xuất ra Excel**   1. Tại bước 2, người dùng chọn chức năng **"Xuất Excel"** thay vì "In hồ sơ". 2. Hệ thống tạo file Excel chứa tất cả thông tin hồ sơ nhân sự. 3. Hệ thống tải file Excel về máy người dùng. Use case kết thúc. |
 | Luồng sự kiện ngoại lệ  (Exception Flow) | Không có |
