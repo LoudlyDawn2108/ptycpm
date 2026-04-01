@@ -9,8 +9,8 @@
 | Phần | Nội dung | File | Skill AI |
 |------|----------|------|----------|
 | II | STRQ 7, 8 → FEAT 7.x, 8.x | `tung-contribution.md` | `vision-document` |
-| III | UC 4.25–4.35, FEAT→UC mapping | `tung-contribution.md` | `use-case-specification` |
-| IV | Đặc tả UC 4.25–4.35 (11 UC) | `uc-tung.md` | `use-case-specification` |
+| III | UC 4.25–4.37, FEAT→UC mapping | `tung-contribution.md` | `use-case-specification` |
+| IV | Đặc tả UC 4.25–4.37 (13 UC) | `uc-tung.md` | `use-case-specification` |
 | VI | Performance (6.6) + Reliability (6.7) | `section-vi-tung.md` | `supplementary-specification` |
 | VII | Section 7.3.3 (NFR trong SRS) | `srs.md` | `requirement-evaluation` |
 
@@ -42,7 +42,7 @@ skill(name="vision-document")
 
 | File | Nội dung |
 |------|----------|
-| `tung-contribution.md` | Part B: UC 4.25–4.35 list |
+| `tung-contribution.md` | Part B: UC 4.25–4.37 list |
 | `tung-contribution.md` | Part C: FEAT→UC traceability |
 
 **Skill:** `use-case-specification`
@@ -59,7 +59,7 @@ skill(name="use-case-specification")
 
 | File | Nội dung |
 |------|----------|
-| `uc-tung.md` | UC 4.25–4.35 (11 UC đầy đủ) |
+| `uc-tung.md` | UC 4.25–4.37 (13 UC đầy đủ) |
 
 **Skill:** `use-case-specification`
 
@@ -81,8 +81,10 @@ skill(name="use-case-specification")
 | UC 4.31 | Thêm mới Hồ sơ nhân sự |
 | UC 4.32 | Chỉnh sửa trong chi tiết hồ sơ nhân sự |
 | UC 4.33 | Đánh dấu thôi việc nhân sự |
-| UC 4.34 | Xem Chi tiết thông tin hồ sơ nhân sự |
-| UC 4.35 | Cấu hình ẩn/hiện mục khen thưởng/kỷ luật |
+| UC 4.34 | Thôi việc nhân sự tự động |
+| UC 4.35 | Xem Chi tiết thông tin hồ sơ nhân sự |
+| UC 4.36 | In và xuất Excel hồ sơ nhân sự |
+| UC 4.37 | Cấu hình ẩn/hiện mục khen thưởng/kỷ luật |
 
 ---
 
@@ -149,7 +151,7 @@ skill(name="requirement-evaluation")
 | Sửa STRQ 7, 8 | `tung-contribution.md` | `vision-document` |
 | Sửa FEAT 7.x, 8.x | `tung-contribution.md` | `vision-document` |
 | Sửa UC list/mapping | `tung-contribution.md` | `use-case-specification` |
-| Sửa UC 4.25–4.35 | `uc-tung.md` | `use-case-specification` |
+| Sửa UC 4.25–4.37 | `uc-tung.md` | `use-case-specification` |
 | Sửa SUPL Performance | `section-vi-tung.md` (6.6) | `supplementary-specification` |
 | Sửa SUPL Reliability | `section-vi-tung.md` (6.7) | `supplementary-specification` |
 | Sửa SRS NFR section | `srs.md` (7.3.3) | `requirement-evaluation` |

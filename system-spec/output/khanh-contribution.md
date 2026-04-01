@@ -13,39 +13,39 @@
 
 ## Part B: UC Model Entries (for Section III)
 
-- UC 4.36: Bổ nhiệm và điều chuyển nhân sự cho đơn vị tổ chức nhân sự
-- UC 4.37: Bãi nhiệm nhân sự khỏi đơn vị tổ chức nhân sự
-- UC 4.38: Ghi nhận đánh giá cho nhân sự
-- UC 4.39: Xem lịch sử đánh giá khen thưởng/kỷ luật
-- UC 4.40: Tìm kiếm và lọc danh sách đánh giá
-- UC 4.41: Mở khóa đào tạo cho cán bộ giảng viên
-- UC 4.42: Sửa thông tin khóa đào tạo đã mở
-- UC 4.43: Xem chi tiết thông tin khóa đào tạo đã mở
-- UC 4.44: Ghi nhận kết quả đào tạo của cán bộ giảng viên
-- UC 4.45: Xem các thông tin trong hồ sơ cá nhân của nhân sự
-- UC 4.46: Xem thông tin chi tiết đơn vị đang công tác
-- UC 4.47: Thay đổi trạng thái đăng ký khóa đào tạo
-- UC 4.48: Xem danh sách các khóa đào tạo đã đăng ký
+- UC 4.38: Bổ nhiệm và điều chuyển nhân sự cho đơn vị tổ chức nhân sự
+- UC 4.39: Bãi nhiệm nhân sự khỏi đơn vị tổ chức nhân sự
+- UC 4.40: Ghi nhận đánh giá cho nhân sự
+- UC 4.41: Xem lịch sử đánh giá khen thưởng/kỷ luật
+- UC 4.42: Tìm kiếm và lọc danh sách đánh giá
+- UC 4.43: Mở khóa đào tạo cho cán bộ giảng viên
+- UC 4.44: Sửa thông tin khóa đào tạo đã mở
+- UC 4.45: Xem chi tiết thông tin khóa đào tạo đã mở
+- UC 4.46: Ghi nhận kết quả đào tạo của cán bộ giảng viên
+- UC 4.47: Xem các thông tin trong hồ sơ cá nhân của nhân sự
+- UC 4.48: Xem thông tin chi tiết đơn vị đang công tác
+- UC 4.49: Thay đổi trạng thái đăng ký khóa đào tạo
+- UC 4.50: Xem danh sách các khóa đào tạo đã đăng ký
 
 ## Part C: FEAT→UC Traceability (for Section III)
 
 | FEAT | UC tương ứng |
 |------|-------------|
-| FEAT 9.1 | UC 4.36 (Bổ nhiệm nhân sự vào đơn vị tổ chức nhân sự) |
-| FEAT 9.2 | UC 4.36 (Điều chuyển nhân sự sang đơn vị tổ chức nhân sự khác) |
-| FEAT 9.3 | UC 4.37 (Bãi nhiệm nhân sự khỏi đơn vị tổ chức nhân sự) |
-| FEAT 10.1 | UC 4.38 (Ghi nhận đánh giá cho nhân sự) |
-| FEAT 10.2 | UC 4.39 (Xem lịch sử đánh giá khen thưởng/kỷ luật) |
-| FEAT 10.3 | UC 4.40 (Tìm kiếm và lọc danh sách đánh giá) |
-| FEAT 11.1 | UC 4.41 (Mở khóa đào tạo cho cán bộ giảng viên) |
-| FEAT 11.2 | UC 4.42 (Sửa thông tin khóa đào tạo đã mở) |
-| FEAT 11.3 | UC 4.43 (Xem chi tiết thông tin khóa đào tạo đã mở) |
-| FEAT 11.4 | UC 4.44 (Ghi nhận kết quả đào tạo của cán bộ giảng viên) |
-| FEAT 12.1 | UC 4.45 (Xem các thông tin trong hồ sơ cá nhân của nhân sự) |
-| FEAT 12.2 | UC 4.46 (Xem thông tin chi tiết đơn vị đang công tác) |
-| FEAT 12.3 | UC 4.47 (Thay đổi trạng thái đăng ký khóa đào tạo) |
-| FEAT 12.4 | UC 4.48 (Xem danh sách các khóa đào tạo đã đăng ký) |
+| FEAT 9.1 | UC 4.38 (Bổ nhiệm nhân sự vào đơn vị tổ chức nhân sự) |
+| FEAT 9.2 | UC 4.38 (Điều chuyển nhân sự sang đơn vị tổ chức nhân sự khác) |
+| FEAT 9.3 | UC 4.39 (Bãi nhiệm nhân sự khỏi đơn vị tổ chức nhân sự) |
+| FEAT 10.1 | UC 4.40 (Ghi nhận đánh giá cho nhân sự) |
+| FEAT 10.2 | UC 4.41 (Xem lịch sử đánh giá khen thưởng/kỷ luật) |
+| FEAT 10.3 | UC 4.42 (Tìm kiếm và lọc danh sách đánh giá) |
+| FEAT 11.1 | UC 4.43 (Mở khóa đào tạo cho cán bộ giảng viên) |
+| FEAT 11.2 | UC 4.44 (Sửa thông tin khóa đào tạo đã mở) |
+| FEAT 11.3 | UC 4.45 (Xem chi tiết thông tin khóa đào tạo đã mở) |
+| FEAT 11.4 | UC 4.46 (Ghi nhận kết quả đào tạo của cán bộ giảng viên) |
+| FEAT 12.1 | UC 4.47 (Xem các thông tin trong hồ sơ cá nhân của nhân sự) |
+| FEAT 12.2 | UC 4.48 (Xem thông tin chi tiết đơn vị đang công tác) |
+| FEAT 12.3 | UC 4.49 (Thay đổi trạng thái đăng ký khóa đào tạo) |
+| FEAT 12.4 | UC 4.50 (Xem danh sách các khóa đào tạo đã đăng ký) |
 
 ## Part D: UC Specifications (for Section IV)
 
-> Nội dung UC chi tiết của phần Ngô Đức Nam Khánh được đồng bộ theo `final-report.md`, Section IV `4.4` (UC 4.36–4.48).
+> Nội dung UC chi tiết của phần Ngô Đức Nam Khánh được đồng bộ theo `final-report.md`, Section IV `4.4` (UC 4.38–4.50).
