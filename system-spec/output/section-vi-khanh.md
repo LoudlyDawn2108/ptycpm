@@ -1,6 +1,6 @@
 # Mục VI — Yêu cầu bổ sung / yêu cầu phi chức năng của Ngô Đức Nam Khánh
 
-> Cột **FEAT liên quan** dùng để ghi các FEAT mà mỗi SUPL truy vết tới.
+> Cột **FEAT liên quan** dùng để ghi các FEAT hoặc phạm vi chức năng mà mỗi SUPL truy vết tới.
 
 ## 6.8. Yêu cầu về bảo mật (Security)
 
@@ -10,13 +10,13 @@
 
 | STT | ID | Nội dung yêu cầu | FEAT liên quan |
 |-----|----|------------------|----------------|
-| 1 | SUPL-SE01 | Mọi truy cập vào hệ thống phải qua xác thực bằng tài khoản/mật khẩu; mật khẩu phải có tối thiểu 8 ký tự, bao gồm chữ hoa, chữ thường và chữ số. | FEAT 1.1, FEAT 2.4, FEAT 6.1, FEAT 6.2, FEAT 7.4, FEAT 8.9, FEAT 10.2, FEAT 10.3 |
-| 2 | SUPL-SE02 | Hệ thống phải phân quyền theo 4 vai trò (Admin, TCCB, TCKT, Nhân sự); mỗi chức năng và API chỉ cho phép truy cập bởi vai trò được cấp quyền. | FEAT 1.1, FEAT 2.4, FEAT 6.1, FEAT 6.2, FEAT 7.4, FEAT 8.9, FEAT 10.2, FEAT 10.3 |
-| 3 | SUPL-SE03 | Hệ thống phải khóa tài khoản tạm thời sau 5 lần đăng nhập sai liên tiếp, thời gian khóa tối thiểu 15 phút và có ghi cảnh báo bảo mật. | FEAT 1.1, FEAT 2.4, FEAT 6.1, FEAT 6.2, FEAT 7.4, FEAT 8.9, FEAT 10.2, FEAT 10.3 |
-| 4 | SUPL-SE04 | Toàn bộ giao tiếp giữa client và server phải dùng HTTPS với TLS 1.2 trở lên, đồng thời tự động chuyển hướng HTTP sang HTTPS. | FEAT 1.1, FEAT 2.4, FEAT 6.1, FEAT 6.2, FEAT 7.4, FEAT 8.9, FEAT 10.2, FEAT 10.3 |
-| 5 | SUPL-SE05 | Dữ liệu nhạy cảm (CCCD, BHXH, thông tin ngân hàng) chỉ hiển thị cho vai trò được phép và mọi truy cập phải được ghi audit log. | FEAT 1.1, FEAT 2.4, FEAT 6.1, FEAT 6.2, FEAT 7.4, FEAT 8.9, FEAT 10.2, FEAT 10.3 |
-| 6 | SUPL-SE06 | Hệ thống phải ngăn chặn tấn công web (CSRF, XSS) trên các chức năng nhập liệu và thao tác thay đổi dữ liệu. | FEAT 1.1, FEAT 2.4, FEAT 6.1, FEAT 6.2, FEAT 7.4, FEAT 8.9, FEAT 10.2, FEAT 10.3 |
-| 7 | SUPL-SE07 | Hệ thống phải ngăn chặn SQL Injection trên toàn bộ chức năng truy vấn và cập nhật dữ liệu bằng cơ chế truy vấn tham số hóa hoặc tương đương. | FEAT 1.1, FEAT 2.4, FEAT 6.1, FEAT 6.2, FEAT 7.4, FEAT 8.9, FEAT 10.2, FEAT 10.3 |
+| 1 | SUPL-SE01 | Mọi truy cập vào hệ thống phải qua xác thực bằng tài khoản/mật khẩu; mật khẩu phải có tối thiểu 8 ký tự, bao gồm chữ hoa, chữ thường và chữ số. | Toàn hệ thống |
+| 2 | SUPL-SE02 | Hệ thống phải phân quyền theo 4 vai trò (Admin, TCCB, TCKT, Người dùng); mỗi chức năng và API chỉ cho phép truy cập bởi vai trò được cấp quyền. | Toàn hệ thống |
+| 3 | SUPL-SE03 | Hệ thống phải khóa tài khoản tạm thời sau 5 lần đăng nhập sai liên tiếp, thời gian khóa tối thiểu 15 phút và có ghi cảnh báo bảo mật. | Toàn hệ thống |
+| 4 | SUPL-SE04 | Toàn bộ giao tiếp giữa client và server phải dùng HTTPS với TLS 1.2 trở lên, đồng thời tự động chuyển hướng HTTP sang HTTPS. | Toàn hệ thống |
+| 5 | SUPL-SE05 | Dữ liệu nhạy cảm (CCCD, BHXH, thông tin ngân hàng) chỉ hiển thị cho vai trò được phép và mọi truy cập phải được ghi audit log. | Toàn hệ thống |
+| 6 | SUPL-SE06 | Hệ thống phải ngăn chặn tấn công web (CSRF, XSS) trên các chức năng nhập liệu và thao tác thay đổi dữ liệu. | Toàn hệ thống |
+| 7 | SUPL-SE07 | Hệ thống phải ngăn chặn SQL Injection trên toàn bộ chức năng truy vấn và cập nhật dữ liệu bằng cơ chế truy vấn tham số hóa hoặc tương đương. | Toàn hệ thống |
 | 8 | SUPL-SE08 | Chỉ vai trò được ủy quyền mới được cấu hình ẩn/hiện mục khen thưởng/kỷ luật; mọi thay đổi phải lưu vết audit đầy đủ. | FEAT 8.9 |
 | 9 | SUPL-SE09 | Chỉ người dùng có quyền mới được chấm dứt hợp đồng trước hạn; mọi thao tác phải được ghi audit log đầy đủ thông tin nghiệp vụ. | FEAT 7.4 |
 
@@ -36,7 +36,7 @@
 |---|---|
 | **Yếu tố chất lượng** | Authorization (Phân quyền truy cập) |
 | **Độ đo yêu cầu** | (1) Số trường hợp truy cập trái phép qua kiểm thử phân quyền; (2) Tỷ lệ API endpoint có kiểm tra quyền; (3) Số vai trò được định nghĩa trong mô hình RBAC. |
-| **Tiêu chuẩn đáp ứng** | (1) 0 trường hợp truy cập trái phép vào chức năng hoặc API không được cấp quyền; (2) 100% API endpoint có cơ chế kiểm tra quyền trước khi xử lý; (3) Hệ thống có đúng 4 vai trò: Admin, TCCB, TCKT, Nhân sự. |
+| **Tiêu chuẩn đáp ứng** | (1) 0 trường hợp truy cập trái phép vào chức năng hoặc API không được cấp quyền; (2) 100% API endpoint có cơ chế kiểm tra quyền trước khi xử lý; (3) Hệ thống có đúng 4 vai trò: Admin, TCCB, TCKT, Người dùng. |
 
 #### SUPL-SE03
 
