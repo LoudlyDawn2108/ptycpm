@@ -4,6 +4,17 @@
 
 ---
 
+> **⚠️ BẢNG PHÂN CÔNG (XÓA TRƯỚC KHI NỘP)**
+>
+> | Thành viên | Section | Nội dung |
+> |------------|---------|----------|
+> | Nguyễn Hồng Phúc | 7.1 + 7.2 | Giới thiệu + Mô tả chung |
+> | Nguyễn Hải Ninh | 7.3.1 + 7.3.2 | Yêu cầu giao diện + Yêu cầu chức năng |
+> | Ngô Quang Tùng | 7.3.3 | Yêu cầu bổ sung (NFR) |
+> | Ngô Đức Nam Khánh | 7.3.4 + 7.4 | Yêu cầu khác + Kết luận |
+
+---
+
 ## 7.1. Giới thiệu
 
 > **Người thực hiện: Nguyễn Hồng Phúc**
