@@ -15,8 +15,8 @@
 | 3 | SUPL-P02 | Hệ thống phải hỗ trợ tối thiểu 100 người dùng đồng thời trong giờ cao điểm mà thời gian phản hồi của các thao tác xem danh sách, xem chi tiết, thêm mới và chỉnh sửa không tăng quá 50% so với tải một người dùng trong cùng điều kiện đo. | FEAT 7.1–8.9 |
 | 4 | SUPL-P04 | Hệ thống phải trả kết quả tìm kiếm và lọc hồ sơ nhân sự trong tối đa 2 giây với tập dữ liệu không quá 10.000 bản ghi hoặc tối đa 5 giây với tập dữ liệu không quá 50.000 bản ghi, tại mức không quá 50 người dùng đồng thời. | FEAT 8.1, FEAT 8.2 |
 | 5 | SUPL-P05 | Hệ thống phải hoàn thành upload tệp đính kèm trong tối đa 5 giây và download trong tối đa 3 giây với file không quá 5 MB, hoặc upload tối đa 10 giây và download tối đa 6 giây với file trên 5 MB đến 10 MB, trên mạng LAN 1 Gbps và ở mức không quá 10 người dùng đồng thời. | FEAT 7.1, FEAT 7.2, FEAT 7.3, FEAT 8.3, FEAT 8.4, FEAT 8.7 |
-| 6 | SUPL-P07a | Hệ thống phải phục hồi khả năng phục vụ sau sự cố crash hoặc gián đoạn ngoài kế hoạch trong tối đa 15 phút. | FEAT 7.1–8.9 |
-| 7 | SUPL-P07b | Hệ thống phải khởi động lại toàn bộ stack trong tối đa 10 phút sau lệnh restart có chủ đích. | FEAT 7.1–8.9 |
+| 6 | SUPL-P07a | Hệ thống phải khôi phục dịch vụ để phục vụ lại request đầu tiên thành công trong tối đa 15 phút sau sự cố crash hoặc mất dịch vụ ngoài kế hoạch của hệ thống mà không yêu cầu phục hồi từ bản sao lưu gần nhất. | FEAT 7.1–8.9 |
+| 7 | SUPL-P07b | Hệ thống phải đưa toàn bộ stack về trạng thái sẵn sàng phục vụ trong tối đa 10 phút sau lệnh restart có chủ đích. | FEAT 7.1–8.9 |
 
 ### 6.6.2. Độ đo và tiêu chuẩn đáp ứng
 
@@ -58,16 +58,16 @@
 #### SUPL-P07a
 | Thuộc tính | Nội dung |
 |---|---|
-| **Yếu tố chất lượng** | Hiệu năng – Thời gian phục hồi dịch vụ |
-| **Độ đo yêu cầu** | Thời gian từ lúc hệ thống gặp sự cố crash hoặc gián đoạn ngoài kế hoạch đến khi phục vụ lại được request đầu tiên thành công. |
-| **Tiêu chuẩn đáp ứng** | Hệ thống phục hồi khả năng phục vụ trong tối đa 15 phút sau sự cố crash hoặc gián đoạn ngoài kế hoạch. |
+| **Yếu tố chất lượng** | Hiệu năng – Thời gian khôi phục dịch vụ |
+| **Độ đo yêu cầu** | Thời gian từ lúc hệ thống gặp sự cố crash hoặc mất dịch vụ ngoài kế hoạch của hệ thống mà không yêu cầu phục hồi từ bản sao lưu gần nhất đến khi hệ thống phục vụ lại được request đầu tiên thành công. |
+| **Tiêu chuẩn đáp ứng** | Hệ thống phục vụ lại được request đầu tiên thành công trong tối đa 15 phút sau sự cố crash hoặc mất dịch vụ ngoài kế hoạch của hệ thống mà không yêu cầu phục hồi từ bản sao lưu gần nhất. |
 
 #### SUPL-P07b
 | Thuộc tính | Nội dung |
 |---|---|
-| **Yếu tố chất lượng** | Hiệu năng – Thời gian khởi động lại |
-| **Độ đo yêu cầu** | Thời gian từ lúc phát lệnh restart có chủ đích đến khi toàn bộ stack khởi động thành công theo health check kỹ thuật. |
-| **Tiêu chuẩn đáp ứng** | Toàn bộ stack khởi động lại trong tối đa 10 phút sau lệnh restart có chủ đích. |
+| **Yếu tố chất lượng** | Hiệu năng – Thời gian khởi động lại hệ thống |
+| **Độ đo yêu cầu** | Thời gian từ lúc phát lệnh restart có chủ đích đến khi toàn bộ stack khởi động thành công và sẵn sàng phục vụ request theo health check kỹ thuật. |
+| **Tiêu chuẩn đáp ứng** | Toàn bộ stack sẵn sàng phục vụ trong tối đa 10 phút sau lệnh restart có chủ đích. |
 
 ### 6.6.3. Ghi chú phạm vi trong nhóm Performance
 
@@ -91,7 +91,7 @@
 | 4 | SUPL-R03c | Hệ thống phải lưu giữ bản sao lưu tối thiểu 30 ngày. | FEAT 7.1–8.9 |
 | 5 | SUPL-R03d | Hệ thống phải đạt tỷ lệ backup thành công tối thiểu 99%. | FEAT 7.1–8.9 |
 | 6 | SUPL-R04 | Hệ thống phải bảo đảm các thao tác tạo/chỉnh sửa hồ sơ nhân sự, tạo/chỉnh sửa/chấm dứt hợp đồng và cập nhật trạng thái thôi việc không để lại dữ liệu dở dang hoặc bất nhất khi có lỗi. | FEAT 7.1, FEAT 7.3, FEAT 7.4, FEAT 8.3, FEAT 8.4, FEAT 8.5, FEAT 8.6 |
-| 7 | SUPL-R05a | Hệ thống phải cảnh báo tối thiểu 5 phút trước khi phiên tự động hết hạn trên 100% phiên được kiểm thử để người dùng có cơ hội lưu lại dữ liệu đang nhập. | FEAT 7.1–8.9 |
+| 7 | SUPL-R05a | Hệ thống phải hiển thị cảnh báo tối thiểu 5 phút trước khi phiên tự động hết hạn trong 100% phiên được kiểm thử đối với các form có dữ liệu đã nhập nhưng chưa lưu. | FEAT 7.1–8.9 |
 | 8 | SUPL-R05b | Hệ thống phải khôi phục dữ liệu nháp sau khi người dùng đăng nhập lại trong ít nhất 95% trường hợp kiểm thử. | FEAT 7.1–8.9 |
 
 > `SUPL-R03` gốc được tách thành cụm `SUPL-R03a`, `SUPL-R03b`, `SUPL-R03c`, `SUPL-R03d` để phần sao lưu/phục hồi được trình bày liền mạch trong cùng một cụm requirement. Trong đó `SUPL-R03b` được giữ trong cụm này vì gắn trực tiếp với kịch bản phục hồi từ bản sao lưu gần nhất, dù độ đo chính là thời gian phục hồi.
@@ -115,7 +115,7 @@
 #### SUPL-R03b
 | Thuộc tính | Nội dung |
 |---|---|
-| **Yếu tố chất lượng** | Hiệu năng – Thời gian phục hồi từ bản sao lưu |
+| **Yếu tố chất lượng** | Độ tin cậy – Thời gian phục hồi từ bản sao lưu |
 | **Độ đo yêu cầu** | RTO (Recovery Time Objective) khi phục hồi từ bản sao lưu gần nhất. |
 | **Tiêu chuẩn đáp ứng** | Hệ thống sẵn sàng phục vụ trở lại trong tối đa 4 giờ sau khi thực hiện phục hồi từ bản sao lưu gần nhất. |
 
@@ -144,8 +144,8 @@
 | Thuộc tính | Nội dung |
 |---|---|
 | **Yếu tố chất lượng** | Độ tin cậy – Khả năng phục hồi |
-| **Độ đo yêu cầu** | (1) Tỷ lệ phiên được hiển thị cảnh báo trước khi hết hạn; (2) Thời gian cảnh báo trước khi tự động đăng xuất; (3) Khả năng để người dùng nhận biết và thực hiện thao tác lưu trước khi phiên hết hạn. |
-| **Tiêu chuẩn đáp ứng** | (1) 100% phiên được kiểm thử có cảnh báo trước khi hết hạn; (2) Cảnh báo xuất hiện tối thiểu 5 phút trước khi tự động đăng xuất; (3) Cảnh báo được hiển thị đủ rõ để người dùng có cơ hội thực hiện thao tác lưu trước khi phiên hết hạn. |
+| **Độ đo yêu cầu** | (1) Tỷ lệ phiên được hiển thị cảnh báo trước khi hết hạn đối với form có dữ liệu đã nhập nhưng chưa lưu; (2) Thời gian cảnh báo trước khi tự động đăng xuất. |
+| **Tiêu chuẩn đáp ứng** | (1) 100% phiên được kiểm thử có hiển thị cảnh báo trước khi hết hạn đối với form có dữ liệu đã nhập nhưng chưa lưu; (2) Cảnh báo xuất hiện tối thiểu 5 phút trước khi tự động đăng xuất. |
 
 #### SUPL-R05b
 | Thuộc tính | Nội dung |
