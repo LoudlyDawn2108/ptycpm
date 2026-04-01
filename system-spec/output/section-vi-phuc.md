@@ -22,69 +22,17 @@
 
 ### Độ đo và tiêu chuẩn đáp ứng
 
-#### SUPL-F01
-| Thuộc tính | Nội dung |
-|---|---|
-| **Yếu tố chất lượng** | Tính đúng đắn – Khả năng kiểm toán |
-| **Độ đo yêu cầu** | (1) Tỷ lệ thao tác thuộc phạm vi yêu cầu có bản ghi log; (2) Tỷ lệ bản ghi có đủ 9 trường bắt buộc. |
-| **Tiêu chuẩn đáp ứng** | (1) 100% thao tác thuộc phạm vi yêu cầu có bản ghi log; (2) 100% bản ghi có đủ 9/9 trường bắt buộc. |
-
-#### SUPL-F02
-| Thuộc tính | Nội dung |
-|---|---|
-| **Yếu tố chất lượng** | Tính đúng đắn |
-| **Độ đo yêu cầu** | (1) Tỷ lệ mã cán bộ bị trùng; (2) Tỷ lệ mã được sinh đúng mẫu; (3) Tỷ lệ hồ sơ mới được cấp mã ngay khi tạo. |
-| **Tiêu chuẩn đáp ứng** | (1) 0% mã cán bộ bị trùng; (2) 100% mã được sinh đúng mẫu đang áp dụng; (3) 100% hồ sơ mới được cấp mã ngay khi tạo thành công. |
-
-#### SUPL-F03
-| Thuộc tính | Nội dung |
-|---|---|
-| **Yếu tố chất lượng** | Tính đúng đắn – Tự động hóa |
-| **Độ đo yêu cầu** | Thời gian từ lần tương tác cuối cùng của người dùng đến khi hệ thống đăng xuất phiên làm việc. |
-| **Tiêu chuẩn đáp ứng** | Hệ thống tự động đăng xuất sau 30 phút không có tương tác của người dùng trên giao diện, với sai số không quá ±30 giây. |
-
-#### SUPL-F04
-| Thuộc tính | Nội dung |
-|---|---|
-| **Yếu tố chất lượng** | Tính đúng đắn – Tự động hóa |
-| **Độ đo yêu cầu** | (1) Thời gian từ khi nhân sự được đánh dấu thôi việc đến khi tài khoản bị khóa; (2) Tỷ lệ tài khoản liên kết được khóa tự động đúng quy tắc. |
-| **Tiêu chuẩn đáp ứng** | (1) Tài khoản bị khóa trong không quá 1 phút; (2) 100% tài khoản liên kết của nhân sự thôi việc bị khóa tự động. |
-
-#### SUPL-F05
-| Thuộc tính | Nội dung |
-|---|---|
-| **Yếu tố chất lượng** | Tính đúng đắn – Tự động hóa |
-| **Độ đo yêu cầu** | (1) Tỷ lệ hợp đồng đủ điều kiện được chuyển sang trạng thái "Chờ gia hạn"; (2) Độ trễ từ thời điểm hợp đồng chạm ngưỡng đến khi trạng thái được cập nhật. |
-| **Tiêu chuẩn đáp ứng** | (1) 100% hợp đồng đủ điều kiện được chuyển đúng trạng thái; (2) Việc cập nhật hoàn tất trong không quá 24 giờ kể từ thời điểm đủ điều kiện. |
-
-#### SUPL-F06
-| Thuộc tính | Nội dung |
-|---|---|
-| **Yếu tố chất lượng** | Tính đúng đắn – Tự động hóa |
-| **Độ đo yêu cầu** | (1) Tỷ lệ đăng ký của khóa đang ở trạng thái "Đã đăng ký" được cập nhật đúng trạng thái khi khóa đào tạo chuyển từ trạng thái "Đang mở đăng ký" sang "Đang đào tạo"; (2) Độ trễ từ thời điểm khóa đào tạo đổi trạng thái đến khi cập nhật xong toàn bộ đăng ký. |
-| **Tiêu chuẩn đáp ứng** | (1) 100% đăng ký của khóa đang ở trạng thái "Đã đăng ký" được chuyển sang "Đang học"; (2) Hoàn tất cập nhật trong không quá 1 phút. |
-
-#### SUPL-F07
-| Thuộc tính | Nội dung |
-|---|---|
-| **Yếu tố chất lượng** | Tính toàn vẹn |
-| **Độ đo yêu cầu** | (1) Tỷ lệ loại phụ cấp đã được tham chiếu vẫn bảo toàn liên kết dữ liệu lịch sử sau khi ngừng sử dụng hoặc kích hoạt lại; (2) Số loại phụ cấp đã được tham chiếu nhưng vẫn bị xóa. |
-| **Tiêu chuẩn đáp ứng** | (1) 100% loại phụ cấp đã được tham chiếu bảo toàn liên kết dữ liệu lịch sử sau khi ngừng sử dụng hoặc kích hoạt lại; (2) 0 loại phụ cấp đã được tham chiếu bị xóa. |
-
-#### SUPL-F08
-| Thuộc tính | Nội dung |
-|---|---|
-| **Yếu tố chất lượng** | Bảo mật – Tính bí mật |
-| **Độ đo yêu cầu** | (1) Tỷ lệ mật khẩu được lưu ở dạng không thể khôi phục nguyên văn; (2) Số mật khẩu được lưu ở dạng văn bản thuần. |
-| **Tiêu chuẩn đáp ứng** | (1) 100% mật khẩu được lưu ở dạng không thể khôi phục nguyên văn; (2) 0 mật khẩu được lưu ở dạng văn bản thuần. |
-
-#### SUPL-F09
-| Thuộc tính | Nội dung |
-|---|---|
-| **Yếu tố chất lượng** | Tính toàn vẹn |
-| **Độ đo yêu cầu** | (1) Tỷ lệ loại hợp đồng đã được tham chiếu vẫn bảo toàn liên kết dữ liệu lịch sử sau khi ngừng sử dụng hoặc kích hoạt lại; (2) Số loại hợp đồng đã được tham chiếu nhưng vẫn bị xóa. |
-| **Tiêu chuẩn đáp ứng** | (1) 100% loại hợp đồng đã được tham chiếu bảo toàn liên kết dữ liệu lịch sử sau khi ngừng sử dụng hoặc kích hoạt lại; (2) 0 loại hợp đồng đã được tham chiếu bị xóa. |
-
+| SUPL | Yếu tố chất lượng | Độ đo yêu cầu | Tiêu chuẩn đáp ứng |
+|------|-------------------|----------------|---------------------|
+| **SUPL-F01** | Tính đúng đắn – Khả năng kiểm toán | (1) Tỷ lệ thao tác thuộc phạm vi yêu cầu có bản ghi log; (2) Tỷ lệ bản ghi có đủ 9 trường bắt buộc. | (1) 100% thao tác thuộc phạm vi yêu cầu có bản ghi log; (2) 100% bản ghi có đủ 9/9 trường bắt buộc. |
+| **SUPL-F02** | Tính đúng đắn | (1) Tỷ lệ mã cán bộ bị trùng; (2) Tỷ lệ mã được sinh đúng mẫu; (3) Tỷ lệ hồ sơ mới được cấp mã ngay khi tạo. | (1) 0% mã cán bộ bị trùng; (2) 100% mã được sinh đúng mẫu đang áp dụng; (3) 100% hồ sơ mới được cấp mã ngay khi tạo thành công. |
+| **SUPL-F03** | Tính đúng đắn – Tự động hóa | Thời gian từ lần tương tác cuối cùng của người dùng đến khi hệ thống đăng xuất phiên làm việc. | Hệ thống tự động đăng xuất sau 30 phút không có tương tác của người dùng trên giao diện, với sai số không quá ±30 giây. |
+| **SUPL-F04** | Tính đúng đắn – Tự động hóa | (1) Thời gian từ khi nhân sự được đánh dấu thôi việc đến khi tài khoản bị khóa; (2) Tỷ lệ tài khoản liên kết được khóa tự động đúng quy tắc. | (1) Tài khoản bị khóa trong không quá 1 phút; (2) 100% tài khoản liên kết của nhân sự thôi việc bị khóa tự động. |
+| **SUPL-F05** | Tính đúng đắn – Tự động hóa | (1) Tỷ lệ hợp đồng đủ điều kiện được chuyển sang trạng thái "Chờ gia hạn"; (2) Độ trễ từ thời điểm hợp đồng chạm ngưỡng đến khi trạng thái được cập nhật. | (1) 100% hợp đồng đủ điều kiện được chuyển đúng trạng thái; (2) Việc cập nhật hoàn tất trong không quá 24 giờ kể từ thời điểm đủ điều kiện. |
+| **SUPL-F06** | Tính đúng đắn – Tự động hóa | (1) Tỷ lệ đăng ký của khóa đang ở trạng thái "Đã đăng ký" được cập nhật đúng trạng thái khi khóa đào tạo chuyển từ trạng thái "Đang mở đăng ký" sang "Đang đào tạo"; (2) Độ trễ từ thời điểm khóa đào tạo đổi trạng thái đến khi cập nhật xong toàn bộ đăng ký. | (1) 100% đăng ký của khóa đang ở trạng thái "Đã đăng ký" được chuyển sang "Đang học"; (2) Hoàn tất cập nhật trong không quá 1 phút. |
+| **SUPL-F07** | Tính toàn vẹn | (1) Tỷ lệ loại phụ cấp đã được tham chiếu vẫn bảo toàn liên kết dữ liệu lịch sử sau khi ngừng sử dụng hoặc kích hoạt lại; (2) Số loại phụ cấp đã được tham chiếu nhưng vẫn bị xóa. | (1) 100% loại phụ cấp đã được tham chiếu bảo toàn liên kết dữ liệu lịch sử sau khi ngừng sử dụng hoặc kích hoạt lại; (2) 0 loại phụ cấp đã được tham chiếu bị xóa. |
+| **SUPL-F08** | Bảo mật – Tính bí mật | (1) Tỷ lệ mật khẩu được lưu ở dạng không thể khôi phục nguyên văn; (2) Số mật khẩu được lưu ở dạng văn bản thuần. | (1) 100% mật khẩu được lưu ở dạng không thể khôi phục nguyên văn; (2) 0 mật khẩu được lưu ở dạng văn bản thuần. |
+| **SUPL-F09** | Tính toàn vẹn | (1) Tỷ lệ loại hợp đồng đã được tham chiếu vẫn bảo toàn liên kết dữ liệu lịch sử sau khi ngừng sử dụng hoặc kích hoạt lại; (2) Số loại hợp đồng đã được tham chiếu nhưng vẫn bị xóa. | (1) 100% loại hợp đồng đã được tham chiếu bảo toàn liên kết dữ liệu lịch sử sau khi ngừng sử dụng hoặc kích hoạt lại; (2) 0 loại hợp đồng đã được tham chiếu bị xóa. |
 ## 6.2. Ràng buộc thiết kế (Design Constraints)
 
 > Người thực hiện: Nguyễn Hồng Phúc
@@ -99,27 +47,11 @@
 
 ### Độ đo và tiêu chuẩn đáp ứng
 
-#### SUPL-DC01
-| Thuộc tính | Nội dung |
-|---|---|
-| **Yếu tố chất lượng** | Portability – Kiến trúc |
-| **Độ đo yêu cầu** | (1) Số endpoint giao tiếp client-server không sử dụng RESTful API; (2) Số trang frontend yêu cầu full-page reload (ngoại trừ lần tải đầu tiên). |
-| **Tiêu chuẩn đáp ứng** | (1) 0 endpoint giao tiếp client-server ngoài RESTful API (JSON); (2) 0 trang frontend yêu cầu full-page reload (ngoại trừ lần tải đầu tiên). |
-
-#### SUPL-DC02
-| Thuộc tính | Nội dung |
-|---|---|
-| **Yếu tố chất lượng** | Ràng buộc thiết kế – Mô hình dữ liệu |
-| **Độ đo yêu cầu** | (1) Số nút gốc trong cây tổ chức; (2) Số chu trình trong quan hệ cha-con; (3) Tỷ lệ đơn vị có liên kết cha-con hợp lệ. |
-| **Tiêu chuẩn đáp ứng** | (1) Có đúng 1 nút gốc là Trường Đại học Thủy Lợi; (2) 0 chu trình; (3) 100% đơn vị có liên kết cha-con hợp lệ. |
-
-#### SUPL-DC03
-| Thuộc tính | Nội dung |
-|---|---|
-| **Yếu tố chất lượng** | Ràng buộc thiết kế – Phân quyền |
-| **Độ đo yêu cầu** | (1) Số vai trò được định nghĩa trong mô hình phân quyền; (2) Tỷ lệ chức năng và API có ma trận quyền rõ ràng; (3) Số trường hợp truy cập trái quyền. |
-| **Tiêu chuẩn đáp ứng** | (1) Định nghĩa đúng 4 vai trò: Quản trị viên, TCCB, TCKT, Nhân sự; (2) 100% chức năng và API có ma trận quyền rõ ràng; (3) 0 trường hợp truy cập trái quyền. |
-
+| SUPL | Yếu tố chất lượng | Độ đo yêu cầu | Tiêu chuẩn đáp ứng |
+|------|-------------------|----------------|---------------------|
+| **SUPL-DC01** | Ràng buộc thiết kế – Kiến trúc | (1) Số endpoint giao tiếp client-server không sử dụng RESTful API; (2) Số trang frontend yêu cầu full-page reload (ngoại trừ lần tải đầu tiên). | (1) 0 endpoint giao tiếp client-server ngoài RESTful API (JSON); (2) 0 trang frontend yêu cầu full-page reload (ngoại trừ lần tải đầu tiên). |
+| **SUPL-DC02** | Ràng buộc thiết kế – Mô hình dữ liệu | (1) Số nút gốc trong cây tổ chức; (2) Số chu trình trong quan hệ cha-con; (3) Tỷ lệ đơn vị có liên kết cha-con hợp lệ. | (1) Có đúng 1 nút gốc là Trường Đại học Thủy Lợi; (2) 0 chu trình; (3) 100% đơn vị có liên kết cha-con hợp lệ. |
+| **SUPL-DC03** | Ràng buộc thiết kế – Phân quyền | (1) Số vai trò được định nghĩa trong mô hình phân quyền; (2) Tỷ lệ chức năng và API có ma trận quyền rõ ràng; (3) Số trường hợp truy cập trái quyền. | (1) Định nghĩa đúng 4 vai trò: Quản trị viên, Phòng TCCB, Phòng TCKT, Cán bộ nhân sự; (2) 100% chức năng và API có ma trận quyền rõ ràng; (3) 0 trường hợp truy cập trái quyền. |
 ## 6.3. Ràng buộc pháp lý (Legal/Regulatory)
 
 > Người thực hiện: Nguyễn Hồng Phúc
@@ -138,51 +70,12 @@
 
 ### Độ đo và tiêu chuẩn đáp ứng
 
-#### SUPL-LR01
-| Thuộc tính | Nội dung |
-|---|---|
-| **Yếu tố chất lượng** | Ràng buộc pháp lý – Bảo vệ dữ liệu |
-| **Độ đo yêu cầu** | (1) Tỷ lệ hồ sơ nhân sự có bản ghi đồng ý hợp lệ trước khi thu thập dữ liệu cá nhân; (2) Số thao tác ghi nhận, xem lịch sử, thu hồi đồng ý không khả dụng trên giao diện. |
-| **Tiêu chuẩn đáp ứng** | (1) 100% hồ sơ nhân sự có bản ghi đồng ý hợp lệ trước khi thu thập dữ liệu cá nhân; (2) 0 thao tác ghi nhận, xem lịch sử, thu hồi đồng ý bị thiếu trên giao diện. |
-
-#### SUPL-LR02
-| Thuộc tính | Nội dung |
-|---|---|
-| **Yếu tố chất lượng** | Ràng buộc pháp lý – Danh mục nghiệp vụ |
-| **Độ đo yêu cầu** | (1) Tỷ lệ loại hợp đồng trong danh mục được phê duyệt có thể cấu hình và sử dụng trên hệ thống; (2) Số loại hợp đồng ngoài danh mục được phê duyệt nhưng vẫn được phép sử dụng. |
-| **Tiêu chuẩn đáp ứng** | (1) 100% loại hợp đồng trong danh mục được phê duyệt có thể cấu hình và sử dụng; (2) 0 loại hợp đồng ngoài danh mục được phê duyệt được phép sử dụng. |
-
-#### SUPL-LR03
-| Thuộc tính | Nội dung |
-|---|---|
-| **Yếu tố chất lượng** | Ràng buộc pháp lý – Lưu trữ |
-| **Độ đo yêu cầu** | (1) Số hồ sơ nhân sự bị xóa hoặc mất trước 75 năm kể từ ngày tạo; (2) Số thao tác xóa hồ sơ nhân sự chưa hết thời hạn lưu trữ không bị hệ thống chặn. |
-| **Tiêu chuẩn đáp ứng** | (1) 0 hồ sơ nhân sự bị xóa hoặc mất trước 75 năm; (2) 0 thao tác xóa hồ sơ nhân sự chưa hết thời hạn lưu trữ mà không bị hệ thống chặn. |
-
-#### SUPL-LR04
-| Thuộc tính | Nội dung |
-|---|---|
-| **Yếu tố chất lượng** | Ràng buộc pháp lý – Bảo vệ dữ liệu |
-| **Độ đo yêu cầu** | (1) Tỷ lệ yêu cầu ẩn danh hóa dữ liệu hợp lệ từ chủ thể dữ liệu hoặc quản trị viên được thực hiện thành công và có lưu vết xử lý; (2) Số trường hợp thông tin định danh chưa được thay thế bằng dữ liệu ẩn danh sau khi yêu cầu hợp lệ đã được xử lý. |
-| **Tiêu chuẩn đáp ứng** | (1) 100% yêu cầu ẩn danh hóa hợp lệ được thực hiện thành công và lưu vết xử lý; (2) 0 trường hợp thông tin định danh chưa được thay thế sau khi yêu cầu hợp lệ đã được xử lý. |
-
-#### SUPL-LR05
-| Thuộc tính | Nội dung |
-|---|---|
-| **Yếu tố chất lượng** | Ràng buộc pháp lý – Danh mục nghiệp vụ |
-| **Độ đo yêu cầu** | (1) Tỷ lệ loại phụ cấp trong danh mục được phê duyệt có thể cấu hình và sử dụng trên hệ thống; (2) Số loại phụ cấp ngoài danh mục được phê duyệt nhưng vẫn được phép sử dụng. |
-| **Tiêu chuẩn đáp ứng** | (1) 100% loại phụ cấp trong danh mục được phê duyệt có thể cấu hình và sử dụng; (2) 0 loại phụ cấp ngoài danh mục được phê duyệt được phép sử dụng. |
-
-#### SUPL-LR06
-| Thuộc tính | Nội dung |
-|---|---|
-| **Yếu tố chất lượng** | Ràng buộc pháp lý – Lưu trữ |
-| **Độ đo yêu cầu** | (1) Số hợp đồng lao động bị xóa hoặc mất trước 10 năm kể từ ngày chấm dứt hợp đồng; (2) Số thao tác xóa hợp đồng chưa hết thời hạn lưu trữ không bị hệ thống chặn. |
-| **Tiêu chuẩn đáp ứng** | (1) 0 hợp đồng lao động bị xóa hoặc mất trước 10 năm kể từ ngày chấm dứt; (2) 0 thao tác xóa hợp đồng chưa hết thời hạn lưu trữ mà không bị hệ thống chặn. |
-
-#### SUPL-LR07
-| Thuộc tính | Nội dung |
-|---|---|
-| **Yếu tố chất lượng** | Ràng buộc pháp lý – Lưu trữ |
-| **Độ đo yêu cầu** | (1) Số bản ghi đánh giá khen thưởng/kỷ luật bị xóa hoặc mất trước 10 năm kể từ bản ghi đánh giá cuối cùng; (2) Số thao tác xóa bản ghi đánh giá chưa hết thời hạn lưu trữ không bị hệ thống chặn. |
-| **Tiêu chuẩn đáp ứng** | (1) 0 bản ghi đánh giá bị xóa hoặc mất trước 10 năm; (2) 0 thao tác xóa bản ghi đánh giá chưa hết thời hạn lưu trữ mà không bị hệ thống chặn. |
+| SUPL | Yếu tố chất lượng | Độ đo yêu cầu | Tiêu chuẩn đáp ứng |
+|------|-------------------|----------------|---------------------|
+| **SUPL-LR01** | Ràng buộc pháp lý – Bảo vệ dữ liệu | (1) Tỷ lệ hồ sơ nhân sự có bản ghi đồng ý hợp lệ trước khi thu thập dữ liệu cá nhân; (2) Số thao tác ghi nhận, xem lịch sử, thu hồi đồng ý không khả dụng trên giao diện. | (1) 100% hồ sơ nhân sự có bản ghi đồng ý hợp lệ trước khi thu thập dữ liệu cá nhân; (2) 0 thao tác ghi nhận, xem lịch sử, thu hồi đồng ý bị thiếu trên giao diện. |
+| **SUPL-LR02** | Ràng buộc pháp lý – Danh mục nghiệp vụ | (1) Tỷ lệ loại hợp đồng trong danh mục được phê duyệt có thể cấu hình và sử dụng trên hệ thống; (2) Số loại hợp đồng ngoài danh mục được phê duyệt nhưng vẫn được phép sử dụng. | (1) 100% loại hợp đồng trong danh mục được phê duyệt có thể cấu hình và sử dụng; (2) 0 loại hợp đồng ngoài danh mục được phê duyệt được phép sử dụng. |
+| **SUPL-LR03** | Ràng buộc pháp lý – Lưu trữ | (1) Số hồ sơ nhân sự bị xóa hoặc mất trước 75 năm kể từ ngày tạo; (2) Số thao tác xóa hồ sơ nhân sự chưa hết thời hạn lưu trữ không bị hệ thống chặn. | (1) 0 hồ sơ nhân sự bị xóa hoặc mất trước 75 năm; (2) 0 thao tác xóa hồ sơ nhân sự chưa hết thời hạn lưu trữ mà không bị hệ thống chặn. |
+| **SUPL-LR04** | Ràng buộc pháp lý – Bảo vệ dữ liệu | (1) Tỷ lệ yêu cầu ẩn danh hóa dữ liệu hợp lệ từ chủ thể dữ liệu hoặc quản trị viên được thực hiện thành công và có lưu vết xử lý; (2) Số trường hợp thông tin định danh chưa được thay thế bằng dữ liệu ẩn danh sau khi yêu cầu hợp lệ đã được xử lý. | (1) 100% yêu cầu ẩn danh hóa hợp lệ được thực hiện thành công và lưu vết xử lý; (2) 0 trường hợp thông tin định danh chưa được thay thế sau khi yêu cầu hợp lệ đã được xử lý. |
+| **SUPL-LR05** | Ràng buộc pháp lý – Danh mục nghiệp vụ | (1) Tỷ lệ loại phụ cấp trong danh mục được phê duyệt có thể cấu hình và sử dụng trên hệ thống; (2) Số loại phụ cấp ngoài danh mục được phê duyệt nhưng vẫn được phép sử dụng. | (1) 100% loại phụ cấp trong danh mục được phê duyệt có thể cấu hình và sử dụng; (2) 0 loại phụ cấp ngoài danh mục được phê duyệt được phép sử dụng. |
+| **SUPL-LR06** | Ràng buộc pháp lý – Lưu trữ | (1) Số hợp đồng lao động bị xóa hoặc mất trước 10 năm kể từ ngày chấm dứt hợp đồng; (2) Số thao tác xóa hợp đồng chưa hết thời hạn lưu trữ không bị hệ thống chặn. | (1) 0 hợp đồng lao động bị xóa hoặc mất trước 10 năm kể từ ngày chấm dứt; (2) 0 thao tác xóa hợp đồng chưa hết thời hạn lưu trữ mà không bị hệ thống chặn. |
+| **SUPL-LR07** | Ràng buộc pháp lý – Lưu trữ | (1) Số bản ghi đánh giá khen thưởng/kỷ luật bị xóa hoặc mất trước 10 năm kể từ bản ghi đánh giá cuối cùng; (2) Số thao tác xóa bản ghi đánh giá chưa hết thời hạn lưu trữ không bị hệ thống chặn. | (1) 0 bản ghi đánh giá bị xóa hoặc mất trước 10 năm; (2) 0 thao tác xóa bản ghi đánh giá chưa hết thời hạn lưu trữ mà không bị hệ thống chặn. |
