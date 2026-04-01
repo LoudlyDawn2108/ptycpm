@@ -74,7 +74,7 @@ FURPS+ Classification
 | **SUPL-F04** | Tự động khóa tài khoản nhân sự thôi việc | Khi nhân sự được đánh dấu thôi việc (FEAT 7.5/7.6), hệ thống tự động chuyển tài khoản của nhân sự đó sang trạng thái khóa. Tham chiếu FEAT 2.6. | **M** |
 | **SUPL-F05** | Tự động chuyển trạng thái hợp đồng | Hệ thống tự động chuyển trạng thái hợp đồng từ "Còn hiệu lực" sang "Chờ gia hạn" khi thời hạn còn lại nhỏ hơn hoặc bằng ngưỡng chờ gia hạn được cấu hình. | **M** |
 | **SUPL-F06** | Tự động cập nhật trạng thái tham gia đào tạo | Khi khóa đào tạo chuyển từ trạng thái "Đang mở đăng ký" sang trạng thái "Đang đào tạo", hệ thống tự động cập nhật tất cả đăng ký tương ứng từ trạng thái "Đã đăng ký" sang trạng thái "Đang học". | **M** |
-| **SUPL-F07** | Quy tắc nghiệp vụ chung về thay đổi trạng thái | Danh mục loại phụ cấp và loại hợp đồng chỉ hỗ trợ thao tác thay đổi trạng thái theo quy tắc nghiệp vụ để đảm bảo tính toàn vẹn dữ liệu và phục vụ kiểm toán. | **M** |
+| **SUPL-F07** | Quy tắc nghiệp vụ chung về thay đổi trạng thái | Danh mục loại phụ cấp và loại hợp đồng chỉ hỗ trợ thao tác thay đổi trạng thái giữa "Đang sử dụng" và "Ngừng sử dụng"; không hỗ trợ xóa các mục đã được tham chiếu trong dữ liệu nghiệp vụ, nhằm đảm bảo tính toàn vẹn dữ liệu và phục vụ kiểm toán. | **M** |
 | **SUPL-F08** | Bảo vệ mật khẩu lưu trữ | Hệ thống phải lưu trữ mật khẩu người dùng dưới dạng không thể khôi phục nguyên văn và không được lưu mật khẩu ở dạng văn bản thuần. | **M** |
 
 ### 2.2. Usability – Tính dễ sử dụng
@@ -155,9 +155,9 @@ FURPS+ Classification
 
 | Mã | Yêu cầu | Mô tả chi tiết | Ưu tiên |
 |----|----------|-----------------|---------|
-| **SUPL-LR01** | Tuân thủ quy định bảo vệ dữ liệu cá nhân | Hệ thống phải hỗ trợ quản lý sự đồng ý thu thập dữ liệu cá nhân và xử lý yêu cầu hợp lệ về ẩn dữ liệu cá nhân theo Nghị định 13/2023/NĐ-CP. | **M** |
+| **SUPL-LR01** | Tuân thủ Nghị định 13/2023/NĐ-CP về bảo vệ dữ liệu cá nhân | Hệ thống phải hỗ trợ quản lý sự đồng ý thu thập dữ liệu cá nhân và xử lý yêu cầu hợp lệ về ẩn dữ liệu cá nhân theo Nghị định 13/2023/NĐ-CP. | **M** |
 | **SUPL-LR02** | Tuân thủ quy chế quản lý nhân sự | Hệ thống phải cho phép cấu hình và sử dụng bộ danh mục loại hợp đồng, phụ cấp và chức danh theo danh mục nhân sự do Trường Đại học Thủy Lợi phê duyệt trên cơ sở quy định hiện hành của Bộ GD&ĐT và Bộ NN&PTNT. | **M** |
-| **SUPL-LR03** | Lưu trữ hồ sơ theo quy định | Hồ sơ nhân sự, hợp đồng lao động và lịch sử đánh giá khen thưởng/kỷ luật phải được lưu trữ tối thiểu theo thời gian quy định của pháp luật lao động Việt Nam và quy chế lưu trữ hiện hành. | **M** |
+| **SUPL-LR03** | Lưu trữ hồ sơ theo thời hạn tối thiểu bắt buộc | Hồ sơ nhân sự phải được lưu trữ tối thiểu 75 năm; hợp đồng lao động và lịch sử đánh giá khen thưởng/kỷ luật phải được lưu trữ tối thiểu 10 năm sau khi hợp đồng chấm dứt hoặc sau bản ghi đánh giá cuối cùng. | **M** |
 
 ---
 
@@ -172,8 +172,8 @@ FURPS+ Classification
 | **SUPL-F03** | Correctness (Tính đúng đắn) – Tự động hóa | Thời gian phát hiện phiên không hoạt động | Hệ thống phát hiện và đăng xuất chính xác sau 30 phút (±30 giây) không hoạt động. |
 | **SUPL-F04** | Correctness (Tính đúng đắn) – Tự động hóa | Thời gian khóa tài khoản sau khi đánh dấu thôi việc | Tài khoản bị khóa tự động trong ≤ 1 phút sau khi nhân sự được đánh dấu thôi việc. |
 | **SUPL-F05** | Correctness (Tính đúng đắn) – Tự động hóa | Tỷ lệ hợp đồng đủ điều kiện được chuyển sang trạng thái Chờ gia hạn đúng hạn | 100% hợp đồng đủ điều kiện được chuyển trạng thái trong ≤ 24 giờ kể từ thời điểm đủ điều kiện. |
-| **SUPL-F06** | Correctness (Tính đúng đắn) – Tự động hóa | Tỷ lệ bản ghi đăng ký được cập nhật đúng khi khóa đào tạo chuyển trạng thái | 100% bản ghi đăng ký thuộc khóa đào tạo đó được chuyển từ trạng thái "Đã đăng ký" sang "Đang học" trong ≤ 1 phút kể từ khi khóa đào tạo chuyển sang trạng thái "Đang đào tạo". |
-| **SUPL-F07** | Integrity (Tính toàn vẹn) | Tỷ lệ thao tác thay đổi trạng thái của danh mục loại phụ cấp/loại hợp đồng tuân thủ đúng quy tắc; Số trường hợp thay đổi trạng thái làm sai lệch dữ liệu tham chiếu lịch sử | 100% thao tác thay đổi trạng thái của danh mục loại phụ cấp/loại hợp đồng tuân thủ đúng quy tắc nghiệp vụ. 0 trường hợp thay đổi trạng thái làm sai lệch dữ liệu tham chiếu lịch sử. |
+| **SUPL-F06** | Correctness (Tính đúng đắn) – Tự động hóa | Tỷ lệ bản ghi đăng ký được cập nhật đúng khi khóa đào tạo chuyển từ trạng thái "Đang mở đăng ký" sang "Đang đào tạo" | 100% bản ghi đăng ký thuộc khóa đào tạo đó được chuyển từ trạng thái "Đã đăng ký" sang "Đang học" trong ≤ 1 phút kể từ khi khóa đào tạo chuyển sang trạng thái "Đang đào tạo". |
+| **SUPL-F07** | Integrity (Tính toàn vẹn) | Tỷ lệ thao tác thay đổi trạng thái của danh mục loại phụ cấp/loại hợp đồng tuân thủ đúng quy tắc; Số danh mục đã được tham chiếu nhưng vẫn bị xóa | 100% thao tác thay đổi trạng thái của danh mục loại phụ cấp/loại hợp đồng tuân thủ đúng quy tắc nghiệp vụ. 0 danh mục đã được tham chiếu bị xóa. |
 | **SUPL-F08** | Security (Bảo mật) | Tỷ lệ mật khẩu được lưu ở dạng không thể khôi phục nguyên văn; Số mật khẩu lưu dạng plaintext | 100% mật khẩu được lưu ở dạng không thể khôi phục nguyên văn. 0 mật khẩu lưu dạng plaintext. |
 
 ### 3.2. Usability — Tính dễ sử dụng
@@ -246,7 +246,7 @@ FURPS+ Classification
 | **SUPL-IC04** | Correctness – File | Định dạng và kích thước file hỗ trợ | PDF và Excel. Kích thước tối đa: 10MB/file. Thông báo lỗi nếu vượt quá. |
 | **SUPL-LR01** | Legal – Bảo vệ dữ liệu | Tỷ lệ trường hợp xử lý dữ liệu có bản ghi đồng ý hợp lệ; Tỷ lệ yêu cầu ẩn dữ liệu được xử lý đúng | 100% trường hợp thuộc diện phải xin đồng ý có bản ghi đồng ý hợp lệ trước khi xử lý dữ liệu. 100% yêu cầu hợp lệ về ẩn dữ liệu cá nhân được thực hiện và lưu vết xử lý. |
 | **SUPL-LR02** | Legal – Quy chế nhân sự | Tỷ lệ mục trong bộ danh mục phê duyệt được cấu hình và sử dụng được; Số mục trái danh mục phê duyệt | 100% loại hợp đồng, phụ cấp và chức danh trong bộ danh mục nhân sự phê duyệt được cấu hình và sử dụng được trên hệ thống. 0 mục trái bộ danh mục phê duyệt được đưa vào nghiệm thu. |
-| **SUPL-LR03** | Legal – Lưu trữ | Thời gian lưu trữ tối thiểu | Hồ sơ nhân sự lưu ≥ 75 năm (theo Luật Lưu trữ). Hợp đồng lao động và lịch sử đánh giá khen thưởng/kỷ luật lưu ≥ 10 năm sau khi kết thúc hoặc sau bản ghi cuối cùng. |
+| **SUPL-LR03** | Legal – Lưu trữ | Thời gian lưu trữ tối thiểu | Hồ sơ nhân sự lưu ≥ 75 năm. Hợp đồng lao động và lịch sử đánh giá khen thưởng/kỷ luật lưu ≥ 10 năm sau khi kết thúc hoặc sau bản ghi cuối cùng. |
 
 ---
 
@@ -258,10 +258,10 @@ FURPS+ Classification
 | | SUPL-F02 | FEAT 7.3, UC 4.25 | TCCB |
 | | SUPL-F03 | FEAT 1.3, UC 4.2 A1 | System Timer |
 | | SUPL-F04 | FEAT 2.6, UC 4.8 A2 | System Timer |
-| | SUPL-F05 | FEAT 5.1–5.4, FEAT 7.6; UC 4.22, UC 4.43–4.45 | System Timer, TCCB |
+| | SUPL-F05 | FEAT 5.1, FEAT 7.6, FEAT 9.5; UC 4.22, UC 4.43–4.45 | System Timer, TCCB |
 | | SUPL-F06 | FEAT 8.2, UC 4.34 | System Timer, TCCB |
-| | SUPL-F07 | FEAT 9.4, 9.5 | TCCB |
-| | SUPL-F08 | FEAT 1.1, UC 4.1 | Tất cả |
+| | SUPL-F07 | FEAT 9.4, FEAT 9.5; UC 4.18, UC 4.21 | TCCB |
+| | SUPL-F08 | FEAT 1.4, UC 4.3 | Tất cả |
 | **Usability** | SUPL-U01 → U07 | Toàn bộ FEAT/UC | Tất cả |
 | **Reliability** | SUPL-R01 → R05 | Toàn bộ hệ thống | Phòng CNTT |
 | **Performance** | SUPL-P01 | Toàn bộ FEAT/UC; FEAT 5.2, 5.3, 6.2; UC 4.43, 4.44, 4.46 | Tất cả |
@@ -272,7 +272,9 @@ FURPS+ Classification
 | | SUPL-P06 | FEAT 7.8, UC 4.28 A2 | TCCB, TCKT |
 | **Security** | SUPL-SE01 → SE09 | FEAT 1.1, 2.4, 5.4, 6.2, 6.3, 7.9, 12.1, 12.2; UC 4.45–4.48 | Admin, TCCB, TCKT, System |
 | **Supportability** | SUPL-S01 → S05 | Toàn bộ hệ thống | Nhóm phát triển |
-| **Constraints** | SUPL-DC01 → IC04, LR01 → LR03 | Toàn bộ hệ thống; FEAT 6.2, UC 4.46 | Tất cả stakeholders |
+| **Constraints** | SUPL-DC01 | FEAT 1.5 | Tất cả stakeholders |
+| | SUPL-DC02, SUPL-DC03, SUPL-IC01 → IC04, SUPL-LR01, SUPL-LR03 | Toàn bộ hệ thống | Tất cả stakeholders |
+| | SUPL-LR02 | FEAT 9.4, FEAT 9.5; UC 4.16, UC 4.17, UC 4.18, UC 4.19, UC 4.20, UC 4.21 | TCCB |
 
 ---
 

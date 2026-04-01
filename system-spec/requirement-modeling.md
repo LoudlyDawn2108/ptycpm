@@ -134,6 +134,7 @@ Từ các FEAT đã được phân tách và xác định, chi tiết thành cá
 | FEAT 1.2 | UC 4.2 (Đăng xuất) |
 | FEAT 1.3 | UC 4.2 A1 (Đăng xuất tự động) |
 | FEAT 1.4 | UC 4.3 (Đổi mật khẩu) |
+| FEAT 1.5 | SUPL-DC01 |
 | FEAT 2.1 | UC 4.4 (Tìm kiếm tài khoản người dùng) |
 | FEAT 2.2 | UC 4.5 (Thêm mới tài khoản người dùng) |
 | FEAT 2.3 | UC 4.6 (Sửa thông tin tài khoản người dùng) |
