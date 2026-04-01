@@ -1,3 +1,620 @@
+# I. BẢN KẾ HOẠCH QUẢN LÝ YÊU CẦU
+
+## 1.1. Giới thiệu
+
+### 1.1.1. Mục đích
+
+Tài liệu Kế hoạch Quản lý Yêu cầu (Requirements Management Plan – RMP) này được xây dựng nhằm xác định các phương pháp, quy trình và công cụ được sử dụng để quản lý các yêu cầu của Hệ thống Quản lý Nhân sự (Human Resource Management System – HRMS) phục vụ Trường Đại học Thủy Lợi.
+
+Tài liệu đóng vai trò là cơ sở để:
+
+* Định hướng hoạt động thu thập, phân tích, đặc tả và quản lý yêu cầu hệ thống;
+* Đảm bảo các yêu cầu được xác định rõ ràng, nhất quán và có khả năng truy xuất nguồn gốc;
+* Hỗ trợ kiểm soát và quản lý các thay đổi yêu cầu trong suốt vòng đời phát triển hệ thống;
+* Làm tài liệu tham chiếu cho các giai đoạn thiết kế, phát triển, kiểm thử và nghiệm thu hệ thống.
+
+### 1.1.2. Phạm vi áp dụng
+
+Bản RMP này áp dụng cho toàn bộ các yêu cầu của hệ thống HRMS được phát triển nhằm phục vụ công tác quản lý nhân sự tại Trường Đại học Thủy Lợi, bao gồm các đơn vị đào tạo, đơn vị nghiên cứu khoa học, các phòng ban chức năng và các cơ sở trực thuộc nhà trường.
+
+## 1.2. Các kiểu yêu cầu và tài liệu
+
+### 1.2.1. Các kiểu yêu cầu cho dự án
+
+| Loại yêu cầu | Viết tắt | Loại tài liệu | Mô tả |
+| --- | --- | --- | --- |
+| Yêu cầu của các bên liên quan | STRQ | Yêu cầu của các bên liên quan (STR) | Mô tả các nhu cầu, mong đợi và mục tiêu chính của người dùng và các bên liên quan đối với hệ thống. |
+| Yêu cầu tính năng | FEAT | Tài liệu tầm nhìn (VIS) | Mô tả các điều kiện, khả năng và các tính năng tổng quát mà hệ thống cần cung cấp. |
+| Ca sử dụng | UC | Đặc tả ca sử dụng (UCS) | Mô tả chi tiết các ca sử dụng dưới dạng tương tác giữa tác nhân và hệ thống, phản ánh các yêu cầu chức năng. Mỗi UC có một tài liệu đặc tả riêng. |
+| Kịch bản | SCEN | Đặc tả ca sử dụng (UCS) | Mô tả các đường đi hợp lệ qua một ca sử dụng (luồng cơ bản và luồng thay thế). |
+| Yêu cầu bổ sung | SUPL | Đặc tả bổ sung (SS) | Mô tả các yêu cầu phi chức năng và các ràng buộc của hệ thống không được thể hiện trong mô hình ca sử dụng. |
+
+### 1.2.2. Loại tài liệu yêu cầu cho dự án
+
+| Loại tài liệu | Viết tắt | Mô tả | Loại yêu cầu mặc định |
+| --- | --- | --- | --- |
+| Kế hoạch quản lý yêu cầu | RMP | Tài liệu mô tả phương pháp, quy trình và công cụ quản lý yêu cầu của dự án. | Không áp dụng |
+| Yêu cầu của các bên liên quan | STRQ | Tập hợp các yêu cầu nghiệp vụ và mong đợi chính từ các bên liên quan. | Yêu cầu bên liên quan (STRQ) |
+| Tài liệu tầm nhìn | VIS | Mô tả tổng quan hệ thống, phạm vi và các mục tiêu chính của dự án. | Yêu cầu tính năng (FEAT) |
+| Đặc tả ca sử dụng | UCS | Mô tả chi tiết các ca sử dụng và cách người dùng tương tác với hệ thống. Mỗi UC có một tài liệu UCS riêng. | Ca sử dụng (UC) |
+| Đặc tả bổ sung | SS | Mô tả các yêu cầu phi chức năng và các ràng buộc của hệ thống. | Yêu cầu bổ sung (SUPL) |
+
+## 1.3. Bảng liên lạc với các nhân tố chính (Stakeholder)
+
+### 1.3.1. Các nhân tố chính
+
+| STT | Nhân tố chính | Vai trò trong dự án | Đơn vị | Trách nhiệm chính | Hình thức liên lạc |
+| --- | --- | --- | --- | --- | --- |
+| 1 | Ban Giám hiệu | Nhà tài trợ / Phê duyệt | Ban Giám hiệu | Phê duyệt yêu cầu, xem xét báo cáo tổng hợp | Họp định kỳ, báo cáo |
+| 2 | Phòng Tổ chức – Cán bộ | Người sử dụng chính | Phòng TCCB | Cung cấp yêu cầu quản lý hồ sơ nhân sự | Họp, email |
+| 3 | Phòng Tài chính – Kế toán | Người sử dụng chính | Phòng TCKT | Cung cấp yêu cầu về lương, phụ cấp | Họp, trao đổi trực tiếp |
+| 4 | Phòng CNTT | Đơn vị kỹ thuật | Phòng CNTT | Tư vấn kỹ thuật, hạ tầng, bảo mật | Họp kỹ thuật |
+| 5 | Cán bộ viên chức | Người sử dụng chính | Toàn bộ nhân sự trường Đại học Thủy Lợi | Góp ý, xác nhận yêu cầu quản lý hồ sơ cá nhân | Họp, khảo sát |
+| 6 | Nhóm phát triển | Thực hiện dự án | Nhóm dự án | Phân tích, thiết kế và triển khai hệ thống | Họp nhóm, công cụ trực tuyến |
+
+### 1.3.2. Các bên liên quan khác
+
+| STT | Bên liên quan | Vai trò / Mối liên hệ |
+| --- | --- | --- |
+| 1 | Bộ Nông nghiệp và Phát triển Nông thôn | Cơ quan quản lý nhà nước, ban hành quy định nhân sự, chế độ |
+| 2 | Bộ Giáo dục và Đào tạo | Cơ quan quản lý chuyên ngành, quy định tiêu chuẩn cán bộ |
+| 3 | Cơ quan Bảo hiểm xã hội | Đơn vị phối hợp quản lý bảo hiểm, chế độ người lao động |
+| 4 | Cơ quan Thuế | Đơn vị phối hợp quản lý nghĩa vụ thuế thu nhập cá nhân |
+
+## 1.4. Cấu trúc truy vết yêu cầu
+
+### 1.4.1. Sơ đồ truy vết
+
+Cấu trúc truy vết giữa các kiểu yêu cầu trong dự án được định nghĩa như sau:
+
+STRQ ──→ FEAT ──→ UC ──→ SCEN
+ │ │
+ │ └──→ SUPL
+ └──→ SUPL
+
+Trong đó:
+
+- **STRQ → FEAT**: Yêu cầu bên liên quan được chuyển đổi thành các tính năng hệ thống.
+
+- **STRQ → SUPL**: Yêu cầu bên liên quan có thể truy vết trực tiếp tới yêu cầu bổ sung (phi chức năng).
+
+- **FEAT → UC**: Tính năng được hiện thực hóa thông qua các ca sử dụng.
+
+- **FEAT → SUPL**: Tính năng được hỗ trợ bởi các yêu cầu bổ sung.
+
+- **UC → SCEN**: Ca sử dụng được phân tách thành các kịch bản (luồng cơ bản và luồng thay thế).
+
+### 1.4.2. Chi tiết các đường truy vết
+
+| Từ | Đến | Quan hệ | Ràng buộc bắt buộc |
+| --- | --- | --- | --- |
+| STRQ | FEAT | Nhiều-nhiều (thông thường 1 STRQ → nhiều FEAT) | Mỗi STRQ ở trạng thái **Approved** phải truy vết tới ít nhất một FEAT hoặc SUPL. |
+| STRQ | SUPL | Nhiều-nhiều | (Nằm trong ràng buộc bao phủ STRQ ở trên) |
+| FEAT | UC | Nhiều-nhiều | Mỗi FEAT ở trạng thái **Approved** phải truy vết tới ít nhất một UC hoặc SUPL. |
+| FEAT | SUPL | Nhiều-nhiều | (Nằm trong ràng buộc bao phủ FEAT ở trên) |
+| UC | FEAT | Truy vết ngược | UC truy vết ngược về FEAT mà nó hiện thực hóa. |
+| SUPL | FEAT | Truy vết ngược | SUPL truy vết ngược về FEAT mà nó hỗ trợ. |
+| UC | SCEN | Một-nhiều | Mỗi UC có ít nhất một SCEN (luồng cơ bản). |
+
+## 1.5. Thuộc tính yêu cầu
+
+Phần này định nghĩa các thuộc tính cho từng kiểu yêu cầu, bao gồm tập giá trị cho phép và ý nghĩa cụ thể trong ngữ cảnh dự án HRMS.
+
+### 1.5.1. Thuộc tính cho FEAT (Yêu cầu tính năng)
+
+#### Trạng thái (Status)
+
+Theo dõi vòng đời của yêu cầu tính năng:
+
+| Giá trị | Mô tả |
+| --- | --- |
+| **Proposed** (Đề xuất) | Tính năng đang được thảo luận, chưa được nhóm dự án xem xét và chấp nhận. |
+| **Approved** (Đã phê duyệt) | Tính năng đã được xem xét và phê duyệt để tiến hành thiết kế và triển khai. |
+| **Realized** (Đã hiện thực hóa trong thiết kế) | Tính năng đã được tích hợp vào thiết kế. Các sản phẩm thiết kế (sơ đồ, mô hình) phản ánh tính năng này. |
+| **Incorporated** (Đã tích hợp vào sản phẩm) | Tính năng đã được triển khai trong mã nguồn. |
+| **Validated** (Đã kiểm thử xác nhận) | Tính năng đã được kiểm thử và xác minh hoạt động đúng. |
+
+#### Độ ưu tiên (Priority)
+
+Xác định mức độ ưu tiên phân bổ nguồn lực phát triển:
+
+| Giá trị | Mô tả |
+| --- | --- |
+| **High** (Cao) | Phải được triển khai không muộn hơn iteration đầu tiên của giai đoạn Xây dựng (Construction). |
+| **Medium** (Trung bình) | Phải được triển khai không muộn hơn khi kết thúc giai đoạn Xây dựng (Construction). |
+| **Low** (Thấp) | Có thể triển khai nếu còn thời gian. Ít quan trọng hơn và có thể được lùi sang các iteration hoặc phiên bản tiếp theo. |
+
+#### Lợi ích (Benefit)
+
+Mức độ quan trọng của tính năng đối với người dùng cuối và khách hàng:
+
+| Giá trị | Mô tả |
+| --- | --- |
+| **Critical** (Thiết yếu) | Tính năng thiết yếu. Nếu không triển khai, hệ thống sẽ không đáp ứng nhu cầu khách hàng. Tất cả tính năng Critical phải có trong bản phát hành, nếu không lịch trình sẽ bị trễ. |
+| **Important** (Quan trọng) | Tính năng quan trọng cho tính hiệu quả của hệ thống trong hầu hết các trường hợp sử dụng. Không thể dễ dàng cung cấp bằng cách khác. |
+| **Useful** (Hữu ích) | Tính năng sẽ được sử dụng ít thường xuyên hơn, hoặc có thể có giải pháp thay thế hợp lý. Không ảnh hưởng đáng kể nếu không có trong bản phát hành. |
+
+#### Công sức (Effort)
+
+Ước lượng khối lượng công việc tính theo **ngày-người (person-days)**. Giá trị được xác định bởi đội phát triển (Team 3) phối hợp với Team SA/Design (Team 2).
+
+#### Rủi ro (Risk)
+
+Xác suất kết hợp với mức độ tác động của các sự kiện bất lợi khi triển khai:
+
+| Giá trị | Mô tả |
+| --- | --- |
+| **High** (Cao) | Tác động của rủi ro kết hợp với xác suất xảy ra là cao. Ví dụ: sử dụng công nghệ mới mà nhóm chưa có kinh nghiệm, hoặc tính năng phụ thuộc hệ thống bên ngoài chưa ổn định. |
+| **Medium** (Trung bình) | Tác động của rủi ro ít nghiêm trọng hơn và xác suất xảy ra nhỏ hơn. |
+| **Low** (Thấp) | Tác động rủi ro tối thiểu và xác suất xảy ra thấp. |
+
+#### Độ khó (Difficulty)
+
+Ước lượng độ khó phân tích/thiết kế/triển khai của FEAT, được dùng để hỗ trợ lập kế hoạch iteration và đánh giá độ phức tạp kỹ thuật:
+
+| Giá trị | Mô tả |
+| --- | --- |
+| **High** (Cao) | Tính năng có độ phức tạp cao, có nhiều ràng buộc nghiệp vụ hoặc kỹ thuật, hoặc phụ thuộc tích hợp/chuyển trạng thái phức tạp. |
+| **Medium** (Trung bình) | Tính năng có độ phức tạp trung bình, phạm vi đủ rõ nhưng vẫn cần phân tích/thiết kế chi tiết trước khi triển khai. |
+| **Low** (Thấp) | Tính năng đơn giản, ít rủi ro kỹ thuật, có thể triển khai theo mẫu quen thuộc của hệ thống. |
+
+#### Độ ổn định (Stability)
+
+Xác suất yêu cầu sẽ thay đổi hoặc hiểu biết của nhóm về yêu cầu sẽ thay đổi:
+
+| Giá trị | Mô tả |
+| --- | --- |
+| **High** (Cao — ổn định) | Xác suất thay đổi thấp. Yêu cầu đã được hiểu rõ và thống nhất. |
+| **Medium** (Trung bình) | Xác suất thay đổi vừa phải. |
+| **Low** (Thấp — dễ biến động) | Xác suất thay đổi cao. Yêu cầu cần được thu thập thêm thông tin (elicitation bổ sung). Các mục có Stability = Low nên được ưu tiên làm rõ sớm. |
+
+#### Bản phát hành mục tiêu (Target Release)
+
+Tên hoặc số hiệu của iteration mà tính năng dự kiến được tích hợp vào sản phẩm. Kiểu dữ liệu: **Văn bản** (ví dụ: “Iteration 1”, “Construction-2”).
+
+#### Người phụ trách (Assigned To)
+
+Người chịu trách nhiệm thu thập thêm thông tin, viết đặc tả yêu cầu phần mềm và theo dõi triển khai. Kiểu dữ liệu: **Văn bản** (tên người).
+
+#### Lý do (Reason)
+
+Giải thích nguồn gốc hoặc lý do của yêu cầu tính năng — tham chiếu tới STRQ hoặc giải thích cụ thể. Kiểu dữ liệu: **Văn bản tự do**.
+
+#### Kỹ thuật biến đổi (Transformation)
+
+Ghi nhận kỹ thuật được sử dụng để chuyển đổi STRQ thành FEAT. Thuộc tính này hỗ trợ truy nguyên lý do hình thành FEAT và giải thích vì sao FEAT được tách/gộp/làm rõ theo cách hiện tại.
+
+| Giá trị cho phép | Mô tả |
+| --- | --- |
+| **Phân tách** | Tách một STRQ thành nhiều FEAT nhỏ hơn, dễ quản lý và truy vết hơn. |
+| **Làm cho đầy đủ** | Bổ sung phần còn thiếu để FEAT đủ điều kiện đặc tả/triển khai. |
+| **Làm rõ** | Làm rõ ý nghĩa mơ hồ, giới hạn phạm vi hoặc điều kiện áp dụng của STRQ. |
+| **Thêm chi tiết** | Bổ sung chi tiết nghiệp vụ hoặc chi tiết giải pháp để FEAT khả thi hơn. |
+| **Tổng quát hóa** | Trừu tượng hóa yêu cầu để áp dụng cho nhiều trường hợp thay vì một tình huống đơn lẻ. |
+| **Kết hợp / Hợp nhất** | Gộp nhiều ý nhỏ hoặc nhiều nguồn yêu cầu thành một FEAT thống nhất. |
+| **Hủy bỏ / Sửa lỗi** | Loại bỏ hoặc sửa lại nội dung FEAT/STRQ khi phát hiện mâu thuẫn hoặc sai sót. |
+
+Thuộc tính này cho phép gán **một hoặc nhiều giá trị** cho cùng một FEAT. Nếu sử dụng kỹ thuật biến đổi ngoài danh sách trên, nhóm BA/PM phải ghi chú giải thích rõ trong trường Reason hoặc phần chú thích ma trận FEAT.
+
+### 1.5.2. Thuộc tính cho STRQ (Yêu cầu của các bên liên quan)
+
+Tương tự FEAT, **ngoại trừ** không có thuộc tính **Bản phát hành mục tiêu (Target Release)** và **Người phụ trách (Assigned To)** — vì STRQ thuộc miền vấn đề và không được lên lịch trực tiếp vào iteration:
+
+| Thuộc tính | Kiểu dữ liệu | Giá trị cho phép |
+| --- | --- | --- |
+| Trạng thái (Status) | Liệt kê | Proposed / Approved / Realized / Incorporated / Validated |
+| Độ ưu tiên (Priority) | Liệt kê | High / Medium / Low |
+| Lợi ích (Benefit) | Liệt kê | Critical / Important / Useful |
+| Công sức (Effort) | Số | Ngày-người (person-days) |
+| Rủi ro (Risk) | Liệt kê | High / Medium / Low |
+| Độ ổn định (Stability) | Liệt kê | High / Medium / Low |
+| Lý do (Reason) | Văn bản | Tự do — ghi nhận nguồn gốc nhu cầu (ví dụ: “Phòng TCCB yêu cầu trong buổi phỏng vấn ngày 10/01”) |
+
+Ý nghĩa của từng giá trị tương tự như định nghĩa tại Mục 1.5.1.
+
+### 1.5.3. Thuộc tính cho UC (Ca sử dụng)
+
+Tương tự FEAT, **bổ sung thêm** thuộc tính **Tác nhân (Actor)**:
+
+| Thuộc tính | Kiểu dữ liệu | Giá trị cho phép |
+| --- | --- | --- |
+| Trạng thái (Status) | Liệt kê | Proposed / Approved / Realized / Incorporated / Validated |
+| Độ ưu tiên (Priority) | Liệt kê | High / Medium / Low |
+| Lợi ích (Benefit) | Liệt kê | Critical / Important / Useful |
+| Công sức (Effort) | Số | Ngày-người (person-days) |
+| Rủi ro (Risk) | Liệt kê | High / Medium / Low |
+| Độ ổn định (Stability) | Liệt kê | High / Medium / Low |
+| Bản phát hành mục tiêu (Target Release) | Văn bản | Tên/số iteration |
+| Lý do (Reason) | Văn bản | Tự do — tham chiếu tới FEAT nguồn |
+| **Tác nhân (Actor)** | Văn bản | Tên tác nhân khởi tạo UC (ví dụ: “Quản trị viên”, “Phòng TCCB”, “Người dùng”, “Hệ thống”) |
+
+Ý nghĩa của từng giá trị tương tự như định nghĩa tại Mục 1.5.1.
+
+### 1.5.4. Thuộc tính cho SUPL (Yêu cầu bổ sung)
+
+Tương tự FEAT (không có Assigned To trong tập chuẩn):
+
+| Thuộc tính | Kiểu dữ liệu | Giá trị cho phép |
+| --- | --- | --- |
+| Trạng thái (Status) | Liệt kê | Proposed / Approved / Realized / Incorporated / Validated |
+| Độ ưu tiên (Priority) | Liệt kê | High / Medium / Low |
+| Lợi ích (Benefit) | Liệt kê | Critical / Important / Useful |
+| Công sức (Effort) | Số | Ngày-người (person-days) |
+| Rủi ro (Risk) | Liệt kê | High / Medium / Low |
+| Độ ổn định (Stability) | Liệt kê | High / Medium / Low |
+| Bản phát hành mục tiêu (Target Release) | Văn bản | Tên/số iteration |
+| Lý do (Reason) | Văn bản | Tự do — tham chiếu tới FEAT hoặc STRQ nguồn |
+
+Ý nghĩa của từng giá trị tương tự như định nghĩa tại Mục 1.5.1.
+
+### 1.5.5. Bảng tổng hợp thuộc tính theo kiểu yêu cầu
+
+| Thuộc tính | STRQ | FEAT | UC | SUPL |
+| --- | --- | --- | --- | --- |
+| Trạng thái (Status) | x | x | x | x |
+| Độ ưu tiên (Priority) | x | x | x | x |
+| Lợi ích (Benefit) | x | x | x | x |
+| Công sức (Effort) | x | x | x | x |
+| Rủi ro (Risk) | x | x | x | x |
+| Độ ổn định (Stability) | x | x | x | x |
+| Độ khó (Difficulty) | - | x | - | - |
+| Bản phát hành mục tiêu (Target Release) | - | x | x | x |
+| Người phụ trách (Assigned To) | - | x | - | - |
+| Lý do (Reason) | x | x | x | x |
+| Kỹ thuật biến đổi (Transformation) | - | x | - | - |
+| Tác nhân (Actor) | - | - | x | —- |
+
+## 1.6. Báo cáo và chế độ xem
+
+Phần này xác định các báo cáo sẽ được tạo ra để giám sát độ bao phủ và trạng thái của yêu cầu trong suốt vòng đời dự án.
+
+### 1.6.1. Ma trận thuộc tính (Attribute Matrices)
+
+Mỗi kiểu yêu cầu có một ma trận thuộc tính liệt kê toàn bộ yêu cầu thuộc kiểu đó kèm giá trị các thuộc tính:
+
+| Ma trận | Nội dung |
+| --- | --- |
+| Ma trận thuộc tính STRQ | Tất cả STRQ kèm Status, Priority, Benefit, Effort, Risk, Stability, Reason |
+| Ma trận thuộc tính FEAT | Tất cả FEAT kèm Status, Priority, Benefit, Risk, Stability, Difficulty, Effort, Target Release, Assigned To, Reason, Transformation |
+| Ma trận thuộc tính UC | Tất cả UC kèm Status, Priority, Benefit, Effort, Risk, Stability, Target Release, Reason, Actor |
+| Ma trận thuộc tính SUPL | Tất cả SUPL kèm Status, Priority, Benefit, Effort, Risk, Stability, Target Release, Reason |
+
+### 1.6.2. Ma trận truy vết (Traceability Matrices)
+
+Thể hiện ánh xạ giữa các yêu cầu thuộc các kiểu khác nhau:
+
+| Ma trận | Nội dung |
+| --- | --- |
+| Ma trận STRQ → FEAT | Mỗi STRQ ánh xạ tới (các) FEAT mà nó dẫn xuất |
+| Ma trận STRQ → SUPL | Mỗi STRQ ánh xạ tới (các) SUPL phi chức năng/ràng buộc mà nó dẫn xuất trực tiếp |
+| Ma trận FEAT → UC | Mỗi FEAT ánh xạ tới (các) UC hiện thực hóa tính năng đó |
+| Ma trận FEAT → SUPL | Mỗi FEAT ánh xạ tới (các) SUPL hỗ trợ tính năng đó |
+| Ma trận UC → Design | Mỗi UC ánh xạ tới (các) artefact thiết kế tương ứng; trong baseline hiện tại neo chính là class-diagram.md |
+
+# II. PHỎNG VẤN BÊN LIÊN QUAN
+
+## 2.1. Bảng phân công thành viên
+
+| Thành viên | STRQs | FEATs |
+| --- | --- | --- |
+| Nguyễn Hồng Phúc | 1–3 | 1.1–3.5 (15) |
+| Nguyễn Hải Ninh | 4–6 | 4.1–6.2 (11) |
+| Ngô Quang Tùng | 7–8 | 7.1–8.9 (13) |
+| Ngô Đức Nam Khánh | 9–12 | 9.1–12.4 (14) |
+
+## 2.2. Nội dung tổng hợp STRQ và FEAT theo thành viên
+
+### 2.2.1. Phần đóng góp của Nguyễn Hồng Phúc (STRQ 1–3, 13–16)
+
+| Yêu cầu (STRQ) | Kỹ thuật xác định FEAT | Tính năng (FEAT) |
+| --- | --- | --- |
+| **STRQ 1:** Cần hệ thống cho phép đăng nhập, đăng xuất, đổi mật khẩu tương tự các hệ thống phần mềm nhân sự khác, với tài khoản có phân quyền cho nhiều người dùng. | * Phân tách * Làm cho đầy đủ * Thêm chi tiết | * **FEAT 1.1:** Hệ thống cho phép người dùng đăng nhập bằng tài khoản. * **FEAT 1.2:** Hệ thống cho phép người dùng đăng xuất khỏi tài khoản đang sử dụng. * **FEAT 1.3:** Hệ thống tự động đăng xuất khỏi phiên làm việc nếu người dùng không có tương tác giao diện (nhấn chuột, nhập liệu, điều hướng) với trang web trong 30 phút. * **FEAT 1.4:** Hệ thống cho phép người dùng đổi mật khẩu tài khoản đang sử dụng. |
+| **STRQ 2:** Quản trị viên là người có thể quản lý tài khoản như thêm, sửa, khóa hoặc phân quyền người dùng. | * Phân tách * Thêm chi tiết * Làm cho đầy đủ | * **FEAT 2.1:** Hệ thống cho phép quản trị viên tìm kiếm tài khoản người dùng. * **FEAT 2.2:** Hệ thống cho phép quản trị viên thêm mới tài khoản người dùng. * **FEAT 2.3:** Hệ thống cho phép quản trị viên sửa tài khoản người dùng. * **FEAT 2.4:** Hệ thống cho phép quản trị viên phân quyền cho tài khoản thành viên hệ thống theo các vai trò chức năng được định nghĩa sẵn: Quản trị viên, Phòng TCCB, Phòng TCKT, Cán bộ nhân sự (Cán bộ/Giảng viên/Nhân viên). * **FEAT 2.5:** Hệ thống cho phép quản trị viên thay đổi trạng thái của tài khoản người dùng (Trạng thái: Đang hoạt động/Bị khóa). * **FEAT 2.6:** Hệ thống tự động khóa tài khoản của nhân sự đã được đánh dấu thôi việc. |
+| **STRQ 3:** Quản trị viên và phòng TCCB có thể quản lý cơ cấu tổ chức, thêm vào các đơn vị mới, chỉnh sửa thông tin hoặc thông báo giải thể, sáp nhập đơn vị. | * Phân tách * Làm cho đầy đủ | * **FEAT 3.1:** Hệ thống cho phép quản trị viên và phòng TCCB thêm mới đơn vị tổ chức nhân sự. * **FEAT 3.2:** Hệ thống cho phép quản trị viên và phòng TCCB sửa thông tin đơn vị tổ chức nhân sự. * **FEAT 3.3:** Hệ thống cho phép quản trị viên và phòng TCCB giải thể đơn vị tổ chức nhân sự; khi giải thể, hệ thống chuyển hợp đồng đang hiệu lực sang trạng thái Hết hiệu lực, trạng thái hợp đồng nhân sự sang Chưa hợp đồng, trạng thái làm việc sang Đang chờ xét và xóa liên kết đơn vị công tác khỏi hồ sơ nhân sự. * **FEAT 3.4:** Hệ thống cho phép quản trị viên và phòng TCCB xem chi tiết thông tin đơn vị tổ chức nhân sự. * **FEAT 3.5:** Hệ thống cho phép quản trị viên và phòng TCCB sáp nhập đơn vị tổ chức nhân sự vào đơn vị nhận sáp nhập; hệ thống chuyển nhân sự và đơn vị con sang đơn vị nhận sáp nhập với trạng thái hợp đồng và trạng thái làm việc giữ nguyên. |
+| **STRQ 13:** Hệ thống phải tuân thủ các quy định về bảo vệ dữ liệu cá nhân theo Nghị định 13/2023/NĐ-CP, bao gồm quản lý sự đồng ý thu thập dữ liệu và xử lý yêu cầu ẩn danh hóa dữ liệu khi có yêu cầu hợp lệ. | * Làm cho đầy đủ * Phân tách | * **FEAT 13.1:** Hệ thống cho phép ghi nhận, xem lịch sử và thu hồi sự đồng ý thu thập dữ liệu cá nhân cho từng cán bộ, theo Nghị định 13/2023/NĐ-CP. * **FEAT 13.2:** Hệ thống phải xử lý yêu cầu ẩn danh hóa dữ liệu cá nhân (thay thế thông tin định danh bằng dữ liệu ẩn danh) khi có yêu cầu hợp lệ từ chủ thể dữ liệu hoặc quản trị viên, theo Nghị định 13/2023/NĐ-CP. |
+| **STRQ 14:** Hệ thống cần được triển khai dưới dạng ứng dụng web để toàn bộ cán bộ, nhân viên có thể truy cập từ trình duyệt trên máy tính văn phòng mà không cần cài đặt phần mềm riêng. | * Thêm chi tiết | * **FEAT 14.1:** Hệ thống được cung cấp dưới dạng ứng dụng web nhiều người dùng; frontend dạng SPA giao tiếp với backend thông qua RESTful API của hệ thống. |
+| **STRQ 15:** Cơ cấu tổ chức của trường cần được thể hiện theo cấu trúc phân cấp từ cấp trường xuống các đơn vị trực thuộc, phản ánh đúng mối quan hệ quản lý giữa các đơn vị. | * Thêm chi tiết | * **FEAT 15.1:** Hệ thống cung cấp cơ cấu tổ chức phân cấp đơn vị theo dạng cha-con có gốc là trường Đại học Thủy Lợi. |
+| **STRQ 16:** Mật khẩu người dùng phải được bảo vệ an toàn khi lưu trữ, không cho phép khôi phục nguyên văn nhằm ngăn ngừa rò rỉ dữ liệu xác thực khi cơ sở dữ liệu bị xâm nhập. | * Thêm chi tiết | * **FEAT 16.1:** Hệ thống phải lưu trữ mọi mật khẩu người dùng dưới dạng không thể khôi phục nguyên văn và không được lưu ở dạng văn bản thuần. |
+
+### 2.2.2. Phần đóng góp của Nguyễn Hải Ninh (STRQ 4–6)
+
+| Yêu cầu (STRQ) | Kỹ thuật xác định FEAT | Tính năng (FEAT) |
+| --- | --- | --- |
+| **STRQ 4:** Phòng TCCB có thể cấu hình lương, loại phụ cấp, loại hợp đồng. | * Phân tách * Làm cho đầy đủ | * **FEAT 4.1:** Hệ thống cho phép phòng TCCB thêm mới hệ số lương (Hệ số lương được thêm sẽ được dùng làm thông tin cho hồ sơ). * **FEAT 4.2:** Hệ thống cho phép phòng TCCB sửa thông tin đối với hệ số lương chưa được hồ sơ nào sử dụng, phục vụ sửa chữa nhập liệu lỗi. * **FEAT 4.3:** Hệ thống cho phép phòng TCCB xóa hệ số lương khi không được hồ sơ nào sử dụng, hoặc thay đổi trạng thái (đưa vào trạng thái ngừng sử dụng hoặc kích hoạt lại) nếu đã được sử dụng. * **FEAT 4.4:** Hệ thống cho phép phòng TCCB thêm mới, sửa và thay đổi trạng thái danh mục loại phụ cấp theo bộ danh mục nhân sự do Trường Đại học Thủy Lợi phê duyệt; các mục đã được tham chiếu trong dữ liệu nghiệp vụ không được xóa mà chỉ được chuyển giữa trạng thái "Đang sử dụng" và "Ngừng sử dụng". * **FEAT 4.5:** Hệ thống cho phép phòng TCCB thêm mới, sửa và thay đổi trạng thái danh mục loại hợp đồng theo bộ danh mục nhân sự do Trường Đại học Thủy Lợi phê duyệt; các mục đã được tham chiếu trong dữ liệu nghiệp vụ không được xóa mà chỉ được chuyển giữa trạng thái "Đang sử dụng" và "Ngừng sử dụng". |
+| **STRQ 5:** Phòng TCKT và TCCB muốn thống kê chi tiết về nhân sự. | * Phân tách * Thêm chi tiết | * **FEAT 5.1:** Hệ thống cho phép phòng TCCB và phòng TCKT xem và xuất thống kê tổng quan nhân sự và biến động nhân sự. * **FEAT 5.2:** Hệ thống cho phép phòng TCCB và phòng TCKT xem và xuất cơ cấu nhân sự theo đơn vị, trình độ, học hàm, chức danh. * **FEAT 5.3:** Hệ thống cho phép phòng TCCB và phòng TCKT xem và xuất thống kê hợp đồng, tình trạng làm việc, đánh giá cán bộ. * **FEAT 5.4:** Hệ thống cho phép phòng TCCB và phòng TCKT xem và xuất thống kê đào tạo, phát triển, bổ nhiệm nhân sự. |
+| **STRQ 6:** Hệ thống yêu cầu tự động log dấu vết hoạt động người dùng (System Logging). | * Phân tách * Thêm chi tiết | * **FEAT 6.1:** Hệ thống tự động ghi vết tất cả các tác vụ truy cập tài khoản, thay đổi/cập nhật hệ thống hoặc dữ liệu. * **FEAT 6.2:** Hệ thống cho phép quản trị viên truy xuất xem và xuất Audit log (Nhật ký hệ thống) nhằm truy vết hoạt động. |
+
+### 2.2.3. Phần đóng góp của Ngô Quang Tùng (STRQ 7–8)
+
+| Yêu cầu (STRQ) | Kỹ thuật xác định FEAT | Tính năng (FEAT) |
+| --- | --- | --- |
+| **STRQ 7:** Phòng TCCB có thể tạo hợp đồng lao động của nhân sự. | * Làm rõ * Thêm chi tiết * Làm cho đầy đủ | * **FEAT 7.1:** Hệ thống cho phép phòng TCCB tạo hợp đồng cho nhân sự không có hợp đồng hoặc cần gia hạn hợp đồng. * **FEAT 7.2:** Hệ thống cho phép phòng TCCB xem danh sách và chi tiết hợp đồng lao động của nhân sự. * **FEAT 7.3:** Hệ thống cho phép phòng TCCB chỉnh sửa hợp đồng lao động của nhân sự khi hợp đồng chưa có hiệu lực. * **FEAT 7.4:** Hệ thống cho phép phòng TCCB chấm dứt hợp đồng lao động trước hạn của nhân sự. |
+| **STRQ 8:** Phòng TCCB muốn quản lý hồ sơ nhân sự như thêm, sửa hồ sơ và cho phép đánh dấu thôi việc nếu nhân sự không còn làm việc, có thêm phương pháp tìm kiếm và lọc để tiện quản lý. | * Phân tách * Làm rõ * Thêm chi tiết * Làm cho đầy đủ | * **FEAT 8.1:** Hệ thống cho phép phòng TCCB và phòng TCKT tìm kiếm hồ sơ nhân sự bằng nhiều từ khóa. * **FEAT 8.2:** Hệ thống cho phép phòng TCCB và phòng TCKT lọc đa tiêu chí hồ sơ nhân sự. * **FEAT 8.3:** Hệ thống cho phép phòng TCCB thêm mới hồ sơ nhân sự (gồm nhập tay hoặc upload từ Excel) và tự động cấp mã cán bộ duy nhất theo mẫu mã đang được cấu hình áp dụng tại thời điểm tạo hồ sơ. * **FEAT 8.4:** Hệ thống cho phép phòng TCCB chỉnh sửa hồ sơ nhân sự (thông tin cá nhân, trình độ học vấn, khen thưởng/kỷ luật, quá trình công tác, thông tin hợp đồng). * **FEAT 8.5:** Hệ thống cho phép phòng TCCB đánh dấu thôi việc nhân sự. * **FEAT 8.6:** Hệ thống tự động đánh dấu thôi việc nhân sự khi hợp đồng hết hạn và không có gia hạn trong thời gian cho phép theo cấu hình loại hợp đồng. * **FEAT 8.7:** Hệ thống cho phép phòng TCCB và phòng TCKT xem chi tiết hồ sơ nhân sự theo từng chế độ xem. * **FEAT 8.8:** Hệ thống cho phép phòng TCCB và phòng TCKT in hoặc xuất Excel hồ sơ nhân sự. * **FEAT 8.9:** Hệ thống cho phép phòng TCCB cấu hình ẩn/hiện các mục khen thưởng, kỷ luật trong hồ sơ nhân sự đối với các vai trò không thuộc phòng TCCB. |
+
+### 2.2.4. Phần đóng góp của Ngô Đức Nam Khánh (STRQ 9–12)
+
+| Yêu cầu (STRQ) | Kỹ thuật xác định FEAT | Tính năng (FEAT) |
+| --- | --- | --- |
+| **STRQ 9:** Phòng TCCB có thể điều chuyển và bổ nhiệm nhân sự vào các đơn vị. | * Phân tách * Thêm chi tiết * Làm cho đầy đủ | * **FEAT 9.1:** Hệ thống cho phép phòng TCCB bổ nhiệm nhân sự vào một đơn vị tổ chức nhân sự. * **FEAT 9.2:** Hệ thống cho phép phòng TCCB điều chuyển nhân sự sang đơn vị tổ chức nhân sự khác. * **FEAT 9.3:** Hệ thống cho phép phòng TCCB bãi nhiệm nhân sự khỏi đơn vị tổ chức đó. |
+| **STRQ 10:** Phòng TCCB có thể ghi nhận đánh giá nhân sự. | * Phân tách * Thêm chi tiết * Làm cho đầy đủ | * **FEAT 10.1:** Hệ thống cho phép phòng TCCB ghi đánh giá cho nhân sự (Loại đánh giá: Khen thưởng/Kỷ luật). * **FEAT 10.2:** Hệ thống cho phép phòng TCCB xem lịch sử đánh giá khen thưởng và kỷ luật của nhân sự. * **FEAT 10.3:** Hệ thống cho phép phòng TCCB tìm kiếm và lọc danh sách đánh giá khen thưởng/kỷ luật theo nhân sự, loại đánh giá, hoặc khoảng thời gian. |
+| **STRQ 11:** Phòng TCCB cần hệ thống cho phép mở khóa đào tạo, quản lý khóa đào tạo cho nhân sự. | * Phân tách * Làm cho đầy đủ * Thêm chi tiết | * **FEAT 11.1:** Hệ thống cho phép phòng TCCB mở khóa đào tạo (cấu hình chuyên sâu về thời gian, địa điểm, chứng chỉ) cho cán bộ. * **FEAT 11.2:** Hệ thống cho phép phòng TCCB chỉnh sửa khóa đào tạo đã mở cho cán bộ tùy theo trạng thái chưa diễn ra hay đang diễn ra, bao gồm thay đổi trạng thái khóa đào tạo (Đang mở đăng ký → Đang đào tạo → Đã hoàn thành); khi khóa đào tạo được chuyển sang trạng thái "Đang đào tạo", hệ thống phải tự động cập nhật tất cả đăng ký tương ứng từ trạng thái "Đã đăng ký" sang "Đang học". * **FEAT 11.3:** Hệ thống cho phép phòng TCCB xem thông tin khóa đào tạo đã mở cho cán bộ kèm danh sách người đã đăng ký. * **FEAT 11.4:** Hệ thống cho phép phòng TCCB ghi nhận kết quả đào tạo cho cán bộ đã tham gia và lưu trực tiếp chứng chỉ vào hồ sơ nhân sự. |
+| **STRQ 12:** Người dùng phần mềm có thể xem hồ sơ cá nhân, xem thông tin đơn vị đang công tác và thực hiện các luồng tác vụ cá nhân. | * Phân tách * Làm rõ * Thêm chi tiết | * **FEAT 12.1:** Hệ thống cho phép người dùng xem thông tin cá nhân của bản thân. * **FEAT 12.2:** Hệ thống cho phép người dùng xem thông tin đơn vị mình đang công tác và cơ cấu các thành phần đơn vị trực thuộc. * **FEAT 12.3:** Hệ thống cho phép người dùng đăng ký hoặc hủy đăng ký tham gia khóa học/đào tạo được nhà trường phê duyệt mở. * **FEAT 12.4:** Hệ thống cho phép người dùng xem danh sách các khóa đào tạo đã đăng ký và lịch sử đào tạo đã tham gia. |
+
+# III. MÔ HÌNH HOÁ YÊU CẦU
+
+## 3.1. Xác định các Tác nhân (Actors)
+
+Dựa vào các yêu cầu thu thập (STRQ và FEAT), phân tích xác định được các tác nhân (Actors) tham gia vào hệ thống như sau:
+
+1. **Người dùng (Cán bộ / Giảng viên / Nhân viên)**: Là tác nhân sử dụng các chức năng tự phục vụ trong hệ thống như đăng ký học, đổi mật khẩu, xem hồ sơ, xem thông tin đơn vị.
+2. **Quản trị viên (Admin)**: Là tác nhân đảm nhiệm quản trị kỹ thuật của hệ thống, thực hiện quản lý tài khoản người dùng, phân quyền truy cập, thiết lập cơ cấu đơn vị tổ chức nhà trường và xem giám sát nhật ký (Audit Log).
+3. **Phòng Tổ chức - Cán bộ (TCCB)**: Là tác nhân thực hiện các nghiệp vụ quản lý lõi của hệ thống bao gồm quản lý hồ sơ nhân sự, hợp đồng lao động, bổ nhiệm/điều chuyển, đánh giá khen thưởng/kỷ luật, thiết lập và đánh giá đào tạo, kết hợp việc thiết lập các cấu hình tham chiếu (lương, phụ cấp, hợp đồng).
+4. **Phòng Tài chính - Kế toán (TCKT)**: Là tác nhân có nhu cầu tra cứu thông tin nhân sự và xuất các báo cáo, thống kê liên quan đến cơ cấu và biến động nhân sự, hợp đồng, đào tạo.
+5. **Hệ thống (System Timer / Auto-Job)**: Tác nhân hệ thống tự động chạy ngầm thực hiện các quy trình động như tự động đăng xuất, tạo mã, khóa tài khoản tự động, đánh dấu hết hiệu lực.
+
+## 3.2. Xác định các Use Case (UCs)
+
+Từ các FEAT đã được phân tách và xác định, chi tiết thành các Use Case (UC) chính cho hệ thống:
+
+**Ghi chú:** Tổng cộng hệ thống bao gồm **49 Use Case** (UC 4.1 – UC 4.50, bỏ qua UC 4.15), được phân nhóm theo chức năng như sau:
+
+**► Nhóm UC Hệ thống & Tài khoản:**
+
+* UC Đăng nhập
+* UC Đăng xuất
+* UC Đổi mật khẩu
+* UC Tìm kiếm tài khoản người dùng
+* UC Thêm mới tài khoản người dùng
+* UC Sửa thông tin tài khoản người dùng
+* UC Thay đổi trạng thái cho tài khoản người dùng
+* UC Xem nhật ký hệ thống (Audit Log)
+
+**► Nhóm UC Quản lý Cơ cấu tổ chức:**
+
+* UC Tạo mới đơn vị tổ chức nhân sự
+* UC Sửa thông tin đơn vị tổ chức nhân sự
+* UC Giải thể đơn vị tổ chức nhân sự
+* UC Xem chi tiết thông tin đơn vị tổ chức nhân sự
+* UC Sáp nhập đơn vị tổ chức nhân sự
+* UC Bổ nhiệm và điều chuyển nhân sự cho đơn vị tổ chức nhân sự
+* UC Bãi nhiệm nhân sự khỏi đơn vị tổ chức nhân sự
+
+**► Nhóm UC Danh mục Cấu hình:**
+
+* UC Thêm mới danh mục hệ số lương
+* UC Sửa danh mục hệ số lương
+* UC Thay đổi trạng thái danh mục hệ số lương
+* UC Thêm mới danh mục loại phụ cấp
+* UC Sửa danh mục loại phụ cấp
+* UC Thay đổi trạng thái danh mục loại phụ cấp
+* UC Thêm mới danh mục loại hợp đồng
+* UC Sửa danh mục loại hợp đồng
+* UC Thay đổi trạng thái danh mục loại hợp đồng
+
+**► Nhóm UC Báo cáo & Nhật ký hệ thống:**
+
+* UC Xem chi tiết các thống kê
+* UC Xem nhật ký hệ thống (Audit Log)
+
+**► Nhóm UC Quản lý Hồ sơ nhân sự:**
+
+* UC Thêm mới Hợp đồng lao động
+* UC Xem danh sách và chi tiết hợp đồng lao động
+* UC Chỉnh sửa hợp đồng lao động chưa có hiệu lực
+* UC Chấm dứt hợp đồng lao động trước hạn
+* UC Tìm kiếm hồ sơ nhân sự
+* UC Lọc danh sách hồ sơ nhân sự
+* UC Thêm mới Hồ sơ nhân sự
+* UC Chỉnh sửa trong chi tiết hồ sơ nhân sự
+* UC Đánh dấu thôi việc nhân sự
+* UC Thôi việc nhân sự tự động
+* UC Xem Chi tiết thông tin hồ sơ nhân sự
+* UC In và xuất Excel hồ sơ nhân sự
+* UC Cấu hình ẩn/hiện mục khen thưởng/kỷ luật
+* UC Ghi nhận đánh giá cho nhân sự
+* UC Xem lịch sử đánh giá khen thưởng/kỷ luật
+* UC Tìm kiếm và lọc danh sách đánh giá
+
+**► Nhóm UC Quản lý Đào tạo:**
+
+* UC Mở khóa đào tạo cho cán bộ giảng viên
+* UC Sửa thông tin khóa đào tạo đã mở
+* UC Xem chi tiết thông tin khóa đào tạo đã mở
+* UC Ghi nhận kết quả đào tạo của cán bộ giảng viên
+
+**► Nhóm UC Cá nhân (Self-service):**
+
+* UC Xem các thông tin trong hồ sơ cá nhân của nhân sự
+* UC Xem thông tin chi tiết đơn vị đang công tác
+* UC Thay đổi trạng thái đăng ký khóa đào tạo
+* UC Xem danh sách các khóa đào tạo đã đăng ký
+
+## 3.3. Vẽ biểu đồ UCs (UC tổng quát, UC phân rã theo các tác nhân)
+
+### 3.3.1. Biểu đồ Use Case tổng quát (Nguyễn Hồng Phúc)
+
+**Ghi chú quan hệ giữa các UC:** UC 4.5 (Thêm tài khoản) và UC 4.6 (Sửa tài khoản) **<>** UC 4.7 (Phân quyền) để thực hiện phân quyền vai trò cho tài khoản trong cùng luồng tạo/sửa.
+
+### 3.3.2. Biểu đồ Use Case phân rã theo tác nhân
+
+**a. Phân rã cho Quản trị viên (Admin)**
+
+* **Tác nhân**: Quản trị viên
+* **Các Use Case liên kết**:
+  + Đăng nhập / Đăng xuất / Đổi mật khẩu
+  + Quản lý tài khoản người dùng
+  + Phân quyền tài khoản
+  + Thay đổi trạng thái tài khoản
+  + Nhóm UC Quản lý Đơn vị tổ chức
+  + Xem nhật ký hệ thống (Audit Log)
+
+![Image: image_002](./report_images/image_002.png)
+
+**b. Phân rã cho Phòng Tổ chức - Cán bộ**
+
+* **Tác nhân**: Phòng Tổ chức - Cán bộ
+* **Các Use Case liên kết**:
+  + Đăng nhập / Đăng xuất / Đổi mật khẩu
+  + Nhóm UC Quản lý hồ sơ nhân sự (Thêm/Sửa/Đánh dấu thôi việc/Lọc tìm)
+  + Nhóm UC Quản lý hợp đồng (Thêm/Xem/Sửa/Chấm dứt)
+  + Điều chuyển nhân sự (Bổ nhiệm/Điều chuyển/Bãi nhiệm)
+  + Nhóm UC Đánh giá (Ghi nhận/Xem lịch sử/Tìm kiếm lọc)
+  + Cấu hình ẩn/hiện khen thưởng/kỷ luật trong hồ sơ
+  + Nhóm UC Quản lý khóa đào tạo & kết quả
+  + Nhóm UC Cấu hình danh mục (lương, phụ cấp, HD)
+  + Nhóm UC Quản lý Đơn vị tổ chức (Thêm mới, Sửa thông tin, Thay đổi trạng thái, Xem chi tiết)
+  + Xem báo cáo thống kê
+  + Nhóm UC Cá nhân (Self-service): Xem hồ sơ cá nhân, Xem đơn vị công tác, Thay đổi trạng thái đăng ký đào tạo, Xem khóa đào tạo đã đăng ký *(kế thừa quyền Người dùng)*
+
+=![Image: image_003](./report_images/image_003.png)
+
+**c. Phân rã cho Phòng Tài chính - Kế toán**
+
+* **Tác nhân**: Phòng Tài chính - Kế toán
+* **Các Use Case liên kết**:
+  + Đăng nhập / Đăng xuất / Đổi mật khẩu
+  + Chế độ xem: Tìm kiếm, Xem và Lọc chi tiết hồ sơ nhân sự
+  + Xem chi tiết các thống kê
+  + Nhóm UC Cá nhân (Self-service): Xem hồ sơ cá nhân, Xem đơn vị công tác, Thay đổi trạng thái đăng ký đào tạo, Xem khóa đào tạo đã đăng ký *(kế thừa quyền Người dùng)*
+
+![Image: image_004](./report_images/image_004.png)
+
+**d. Phân rã cho Người dùng (Cán bộ/Giảng viên/Nhân viên)**
+
+* **Tác nhân**: Người dùng
+* **Các Use Case liên kết**:
+  + Đăng nhập / Đăng xuất / Đổi mật khẩu
+  + Xem hồ sơ cá nhân
+  + Xem thông tin chi tiết đơn vị công tác
+  + Thay đổi trạng thái đăng ký đào tạo
+  + Xem danh sách các khóa đào tạo đã đăng ký
+
+![Image: image_005](./report_images/image_005.png)
+
+### 3.3.3. Bảng phân công thành viên cho Use Case
+
+| Thành viên | UCs |
+| --- | --- |
+| Nguyễn Hồng Phúc | 4.1–4.12 (12) |
+| Nguyễn Hải Ninh | 4.13–4.24 (12) |
+| Ngô Quang Tùng | 4.25–4.37 (13) |
+| Ngô Đức Nam Khánh | 4.38–4.50 (13) |
+
+### 3.3.4. Danh mục Use Case đã đánh số lại
+
+* UC 4.1: Đăng nhập
+* UC 4.2: Đăng xuất
+* UC 4.3: Đổi mật khẩu
+* UC 4.4: Tìm kiếm tài khoản người dùng
+* UC 4.5: Thêm mới tài khoản người dùng
+* UC 4.6: Sửa thông tin tài khoản người dùng
+* UC 4.7: Thay đổi trạng thái cho tài khoản người dùng
+* UC 4.8: Tạo mới đơn vị tổ chức nhân sự
+* UC 4.9: Sửa thông tin đơn vị tổ chức nhân sự
+* UC 4.10: Giải thể đơn vị tổ chức nhân sự
+* UC 4.11: Xem chi tiết thông tin đơn vị tổ chức nhân sự
+* UC 4.12: Sáp nhập đơn vị tổ chức nhân sự
+* UC 4.13: Thêm mới danh mục hệ số lương
+* UC 4.14: Sửa danh mục hệ số lương
+* UC 4.16: Thay đổi trạng thái danh mục hệ số lương
+* UC 4.17: Thêm mới danh mục loại phụ cấp
+* UC 4.18: Sửa danh mục loại phụ cấp
+* UC 4.19: Thay đổi trạng thái danh mục loại phụ cấp
+* UC 4.20: Thêm mới danh mục loại hợp đồng
+* UC 4.21: Sửa danh mục loại hợp đồng
+* UC 4.22: Thay đổi trạng thái danh mục loại hợp đồng
+* UC 4.23: Xem chi tiết các thống kê
+* UC 4.24: Xem nhật ký hệ thống (Audit Log)
+* UC 4.25: Thêm mới Hợp đồng lao động
+* UC 4.26: Xem danh sách và chi tiết hợp đồng lao động
+* UC 4.27: Chỉnh sửa hợp đồng lao động chưa có hiệu lực
+* UC 4.28: Chấm dứt hợp đồng lao động trước hạn
+* UC 4.29: Tìm kiếm hồ sơ nhân sự
+* UC 4.30: Lọc danh sách hồ sơ nhân sự
+* UC 4.31: Thêm mới Hồ sơ nhân sự
+* UC 4.32: Chỉnh sửa trong chi tiết hồ sơ nhân sự
+* UC 4.33: Đánh dấu thôi việc nhân sự
+* UC 4.34: Thôi việc nhân sự tự động
+* UC 4.35: Xem Chi tiết thông tin hồ sơ nhân sự
+* UC 4.36: In và xuất Excel hồ sơ nhân sự
+* UC 4.37: Cấu hình ẩn/hiện mục khen thưởng/kỷ luật
+* UC 4.38: Bổ nhiệm và điều chuyển nhân sự cho đơn vị tổ chức nhân sự
+* UC 4.39: Bãi nhiệm nhân sự khỏi đơn vị tổ chức nhân sự
+* UC 4.40: Ghi nhận đánh giá cho nhân sự
+* UC 4.41: Xem lịch sử đánh giá khen thưởng/kỷ luật
+* UC 4.42: Tìm kiếm và lọc danh sách đánh giá
+* UC 4.43: Mở khóa đào tạo cho cán bộ giảng viên
+* UC 4.44: Sửa thông tin khóa đào tạo đã mở
+* UC 4.45: Xem chi tiết thông tin khóa đào tạo đã mở
+* UC 4.46: Ghi nhận kết quả đào tạo của cán bộ giảng viên
+* UC 4.47: Xem các thông tin trong hồ sơ cá nhân của nhân sự
+* UC 4.48: Xem thông tin chi tiết đơn vị đang công tác
+* UC 4.49: Thay đổi trạng thái đăng ký khóa đào tạo
+* UC 4.50: Xem danh sách các khóa đào tạo đã đăng ký
+
+## 3.4. Ma trận truy vết yêu cầu (Traceability Matrix)
+
+| FEAT | UC tương ứng |
+| --- | --- |
+| FEAT 1.1 | UC 4.1 (Đăng nhập) |
+| FEAT 1.2 | UC 4.2 (Đăng xuất) |
+| FEAT 1.3 | Ràng buộc hệ thống — hiện thực hóa bởi SUPL-F03 (không tách UC riêng) |
+| FEAT 1.4 | UC 4.3 (Đổi mật khẩu) |
+| FEAT 2.1 | UC 4.4 (Tìm kiếm tài khoản người dùng) |
+| FEAT 2.2 | UC 4.5 (Thêm mới tài khoản người dùng) |
+| FEAT 2.3 | UC 4.6 (Sửa thông tin tài khoản người dùng) |
+| FEAT 2.4 | Ràng buộc thiết kế — hiện thực hóa bởi SUPL-DC03 (không tách UC riêng); gán vai trò tích hợp trong UC 4.5 và UC 4.6 |
+| FEAT 2.5 | UC 4.7 (Thay đổi trạng thái cho tài khoản người dùng) |
+| FEAT 2.6 | Ràng buộc hệ thống — hiện thực hóa bởi SUPL-F04 (không tách UC riêng) |
+| FEAT 3.1 | UC 4.8 (Tạo mới đơn vị tổ chức nhân sự) |
+| FEAT 3.2 | UC 4.9 (Sửa thông tin đơn vị tổ chức nhân sự) |
+| FEAT 3.3 | UC 4.10 (Giải thể đơn vị tổ chức nhân sự) |
+| FEAT 3.4 | UC 4.11 (Xem chi tiết thông tin đơn vị tổ chức nhân sự) |
+| FEAT 3.5 | UC 4.12 (Sáp nhập đơn vị tổ chức nhân sự) |
+| FEAT 4.1 | UC 4.13 (Thêm mới danh mục hệ số lương) |
+| FEAT 4.2 | UC 4.14 (Sửa danh mục hệ số lương) |
+| FEAT 4.3 | UC 4.16 (Thay đổi trạng thái danh mục hệ số lương) |
+| FEAT 4.4 | UC 4.17 (Thêm mới danh mục loại phụ cấp), UC 4.18 (Sửa danh mục loại phụ cấp), UC 4.19 (Thay đổi trạng thái danh mục loại phụ cấp) |
+| FEAT 4.5 | UC 4.20 (Thêm mới danh mục loại hợp đồng), UC 4.21 (Sửa danh mục loại hợp đồng), UC 4.22 (Thay đổi trạng thái danh mục loại hợp đồng) |
+| FEAT 5.1 | UC 4.23 (Thống kê tổng quan nhân sự và biến động nhân sự) |
+| FEAT 5.2 | UC 4.23 (Cơ cấu nhân sự theo đơn vị, trình độ, học hàm, chức danh) |
+| FEAT 5.3 | UC 4.23 (Hợp đồng, tình trạng làm việc, đánh giá cán bộ) |
+| FEAT 5.4 | UC 4.23 (Đào tạo, phát triển, bổ nhiệm nhân sự) |
+| FEAT 6.1 | SUPL Ghi nhật ký (auto logging) |
+| FEAT 6.2 | UC 4.24 (Xem nhật ký hệ thống — Audit Log) — truy xuất |
+| FEAT 7.1 | UC 4.25 (Thêm mới Hợp đồng lao động) |
+| FEAT 7.2 | UC 4.26 (Xem danh sách và chi tiết hợp đồng lao động) |
+| FEAT 7.3 | UC 4.27 (Chỉnh sửa hợp đồng lao động chưa có hiệu lực) |
+| FEAT 7.4 | UC 4.28 (Chấm dứt hợp đồng lao động trước hạn) |
+| FEAT 8.1 | UC 4.29 (Tìm kiếm hồ sơ nhân sự) |
+| FEAT 8.2 | UC 4.30 (Lọc danh sách hồ sơ nhân sự) |
+| FEAT 8.3 | UC 4.31 (Thêm mới Hồ sơ nhân sự) |
+| FEAT 8.4 | UC 4.32 (Chỉnh sửa trong chi tiết hồ sơ nhân sự) |
+| FEAT 8.5 | UC 4.33 (Đánh dấu thôi việc nhân sự) |
+| FEAT 8.6 | UC 4.34 (Thôi việc nhân sự tự động) |
+| FEAT 8.7 | UC 4.35 (Xem Chi tiết thông tin hồ sơ nhân sự) |
+| FEAT 8.8 | UC 4.36 (In và xuất Excel hồ sơ nhân sự) |
+| FEAT 8.9 | UC 4.37 (Cấu hình ẩn/hiện mục khen thưởng/kỷ luật) |
+| FEAT 9.1 | UC 4.38 (Bổ nhiệm nhân sự vào đơn vị tổ chức nhân sự) |
+| FEAT 9.2 | UC 4.38 (Điều chuyển nhân sự sang đơn vị tổ chức nhân sự khác) |
+| FEAT 9.3 | UC 4.39 (Bãi nhiệm nhân sự khỏi đơn vị tổ chức nhân sự) |
+| FEAT 10.1 | UC 4.40 (Ghi nhận đánh giá cho nhân sự) |
+| FEAT 10.2 | UC 4.41 (Xem lịch sử đánh giá khen thưởng/kỷ luật) |
+| FEAT 10.3 | UC 4.42 (Tìm kiếm và lọc danh sách đánh giá) |
+| FEAT 11.1 | UC 4.43 (Mở khóa đào tạo cho cán bộ giảng viên) |
+| FEAT 11.2 | UC 4.44 (Sửa thông tin khóa đào tạo đã mở) |
+| FEAT 11.3 | UC 4.45 (Xem chi tiết thông tin khóa đào tạo đã mở) |
+| FEAT 11.4 | UC 4.46 (Ghi nhận kết quả đào tạo của cán bộ giảng viên) |
+| FEAT 12.1 | UC 4.47 (Xem các thông tin trong hồ sơ cá nhân của nhân sự) |
+| FEAT 12.2 | UC 4.48 (Xem thông tin chi tiết đơn vị đang công tác) |
+| FEAT 12.3 | UC 4.49 (Thay đổi trạng thái đăng ký khóa đào tạo) |
+| FEAT 12.4 | UC 4.50 (Xem danh sách các khóa đào tạo đã đăng ký) |
+| FEAT 13.1 | Ràng buộc pháp lý — được hiện thực hóa bởi SUPL-LR01 (không tách UC riêng) |
+| FEAT 13.2 | Ràng buộc pháp lý — được hiện thực hóa bởi SUPL-LR04 (không tách UC riêng) |
+| FEAT 14.1 | Ràng buộc thiết kế — hiện thực hóa bởi SUPL-DC01 (không tách UC riêng) |
+| FEAT 15.1 | Ràng buộc thiết kế — hiện thực hóa bởi SUPL-DC02 (không tách UC riêng) |
+| FEAT 16.1 | Ràng buộc bảo mật — hiện thực hóa bởi SUPL-F08 (không tách UC riêng); áp dụng tại UC 4.3 và UC 4.5 |
+
 # VI. CÁC YÊU CẦU BỔ SUNG
 
 ## 6.1 Functionality — Phúc

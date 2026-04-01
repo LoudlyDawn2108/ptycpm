@@ -14,62 +14,78 @@ Dựa vào các yêu cầu thu thập (STRQ và FEAT), phân tích xác định 
 
 Từ các FEAT đã được phân tách và xác định, chi tiết thành các Use Case (UC) chính cho hệ thống:
 
-**Ghi chú:** Tổng cộng hệ thống bao gồm **47 Use Case** (UC 4.1 – UC 4.48), được phân nhóm theo chức năng như sau:
+**Ghi chú:** Tổng cộng hệ thống bao gồm **49 Use Case** (UC 4.1 – UC 4.50, bỏ qua UC 4.15), được phân nhóm theo chức năng như sau:
 
 **► Nhóm UC Hệ thống & Tài khoản:**
 
 * UC Đăng nhập
 * UC Đăng xuất
 * UC Đổi mật khẩu
-* UC Quản lý tài khoản (Tìm kiếm, Thêm, Sửa, Đổi trạng thái khóa/mở)
-* UC Phân quyền tài khoản
+* UC Tìm kiếm tài khoản người dùng
+* UC Thêm mới tài khoản người dùng
+* UC Sửa thông tin tài khoản người dùng
+* UC Thay đổi trạng thái cho tài khoản người dùng
 * UC Xem nhật ký hệ thống (Audit Log)
 
 **► Nhóm UC Quản lý Cơ cấu tổ chức:**
 
-* UC Quản lý đơn vị tổ chức (Thêm mới đơn vị, Sửa thông tin, Cập nhật trạng thái giải thể/sáp nhập, Xem chi tiết đơn vị)
-* UC Điều chuyển nhân sự (Bổ nhiệm nhân sự vào đơn vị, Điều chuyển nhân sự sang đơn vị khác, Bãi nhiệm nhân sự khỏi đơn vị)
+* UC Tạo mới đơn vị tổ chức nhân sự
+* UC Sửa thông tin đơn vị tổ chức nhân sự
+* UC Giải thể đơn vị tổ chức nhân sự
+* UC Xem chi tiết thông tin đơn vị tổ chức nhân sự
+* UC Sáp nhập đơn vị tổ chức nhân sự
+* UC Bổ nhiệm và điều chuyển nhân sự cho đơn vị tổ chức nhân sự
+* UC Bãi nhiệm nhân sự khỏi đơn vị tổ chức nhân sự
 
 **► Nhóm UC Danh mục Cấu hình:**
 
-* UC Quản lý danh mục Hệ số lương (Thêm mới, Sửa, Thay đổi trạng thái)
-* UC Quản lý danh mục Loại phụ cấp (Thêm mới, Sửa, Thay đổi trạng thái)
-* UC Quản lý danh mục Loại hợp đồng (Thêm mới, Sửa, Thay đổi trạng thái)
+* UC Thêm mới danh mục hệ số lương
+* UC Sửa danh mục hệ số lương
+* UC Thay đổi trạng thái danh mục hệ số lương
+* UC Thêm mới danh mục loại phụ cấp
+* UC Sửa danh mục loại phụ cấp
+* UC Thay đổi trạng thái danh mục loại phụ cấp
+* UC Thêm mới danh mục loại hợp đồng
+* UC Sửa danh mục loại hợp đồng
+* UC Thay đổi trạng thái danh mục loại hợp đồng
 
-**► Nhóm UC Quản lý Hồ sơ & Nhân sự:**
+**► Nhóm UC Báo cáo & Nhật ký hệ thống:**
 
+* UC Xem chi tiết các thống kê
+* UC Xem nhật ký hệ thống (Audit Log)
+
+**► Nhóm UC Quản lý Hồ sơ nhân sự:**
+
+* UC Thêm mới Hợp đồng lao động
+* UC Xem danh sách và chi tiết hợp đồng lao động
+* UC Chỉnh sửa hợp đồng lao động chưa có hiệu lực
+* UC Chấm dứt hợp đồng lao động trước hạn
 * UC Tìm kiếm hồ sơ nhân sự
 * UC Lọc danh sách hồ sơ nhân sự
 * UC Thêm mới Hồ sơ nhân sự
 * UC Chỉnh sửa trong chi tiết hồ sơ nhân sự
-* UC Xem Chi tiết thông tin hồ sơ nhân sự / In hồ sơ / Xuất Excel
 * UC Đánh dấu thôi việc nhân sự
-* UC Thêm mới Hợp đồng lao động
-* UC Ghi nhận đánh giá khen thưởng/kỷ luật nhân sự
-* UC chi tiết hợp đồng lao động
-* UC Chỉnh sửa hợp đồng lao động chưa có hiệu lực
-* UC Chấm dứt hợp đồng lao động trước hạn
+* UC Thôi việc nhân sự tự động
+* UC Xem Chi tiết thông tin hồ sơ nhân sự
+* UC In và xuất Excel hồ sơ nhân sự
+* UC Cấu hình ẩn/hiện mục khen thưởng/kỷ luật
+* UC Ghi nhận đánh giá cho nhân sự
 * UC Xem lịch sử đánh giá khen thưởng/kỷ luật
 * UC Tìm kiếm và lọc danh sách đánh giá
-* UC Cấu hình ẩn/hiện mục khen thưởng/kỷ luật
 
 **► Nhóm UC Quản lý Đào tạo:**
 
 * UC Mở khóa đào tạo cho cán bộ giảng viên
 * UC Sửa thông tin khóa đào tạo đã mở
 * UC Xem chi tiết thông tin khóa đào tạo đã mở
-* UC Ghi nhận kết quả đào tạo cho cán bộ giảng viên
+* UC Ghi nhận kết quả đào tạo của cán bộ giảng viên
 
 **► Nhóm UC Cá nhân (Self-service):**
 
-* UC Xem thông tin trong hồ sơ cá nhân
+* UC Xem các thông tin trong hồ sơ cá nhân của nhân sự
 * UC Xem thông tin chi tiết đơn vị đang công tác
 * UC Thay đổi trạng thái đăng ký khóa đào tạo
 * UC Xem danh sách các khóa đào tạo đã đăng ký
-
-**► Nhóm UC Báo cáo & Thống kê:**
-
-* UC Xem chi tiết các thống kê nhân sự và báo cáo
 
 ## 3.3. Vẽ biểu đồ UCs (UC tổng quát, UC phân rã theo các tác nhân)
 
@@ -139,8 +155,8 @@ Từ các FEAT đã được phân tách và xác định, chi tiết thành cá
 | --- | --- |
 | Nguyễn Hồng Phúc | 4.1–4.12 (12) |
 | Nguyễn Hải Ninh | 4.13–4.24 (12) |
-| Ngô Quang Tùng | 4.25–4.35 (11) |
-| Ngô Đức Nam Khánh | 4.36–4.48 (13) |
+| Ngô Quang Tùng | 4.25–4.37 (13) |
+| Ngô Đức Nam Khánh | 4.38–4.50 (13) |
 
 ### 3.3.4. Danh mục Use Case đã đánh số lại
 
@@ -150,12 +166,12 @@ Từ các FEAT đã được phân tách và xác định, chi tiết thành cá
 * UC 4.4: Tìm kiếm tài khoản người dùng
 * UC 4.5: Thêm mới tài khoản người dùng
 * UC 4.6: Sửa thông tin tài khoản người dùng
-* UC 4.7: Phân quyền tài khoản người dùng
-* UC 4.8: Thay đổi trạng thái cho tài khoản người dùng
-* UC 4.9: Tạo mới đơn vị tổ chức nhân sự
-* UC 4.10: Sửa thông tin đơn vị tổ chức nhân sự
-* UC 4.11: Cập nhật trạng thái cho đơn vị tổ chức nhân sự
-* UC 4.12: Xem chi tiết thông tin đơn vị tổ chức nhân sự
+* UC 4.7: Thay đổi trạng thái cho tài khoản người dùng
+* UC 4.8: Tạo mới đơn vị tổ chức nhân sự
+* UC 4.9: Sửa thông tin đơn vị tổ chức nhân sự
+* UC 4.10: Giải thể đơn vị tổ chức nhân sự
+* UC 4.11: Xem chi tiết thông tin đơn vị tổ chức nhân sự
+* UC 4.12: Sáp nhập đơn vị tổ chức nhân sự
 * UC 4.13: Thêm mới danh mục hệ số lương
 * UC 4.14: Sửa danh mục hệ số lương
 * UC 4.16: Thay đổi trạng thái danh mục hệ số lương
@@ -168,7 +184,7 @@ Từ các FEAT đã được phân tách và xác định, chi tiết thành cá
 * UC 4.23: Xem chi tiết các thống kê
 * UC 4.24: Xem nhật ký hệ thống (Audit Log)
 * UC 4.25: Thêm mới Hợp đồng lao động
-* UC 4.26: Xem chi tiết hợp đồng lao động
+* UC 4.26: Xem danh sách và chi tiết hợp đồng lao động
 * UC 4.27: Chỉnh sửa hợp đồng lao động chưa có hiệu lực
 * UC 4.28: Chấm dứt hợp đồng lao động trước hạn
 * UC 4.29: Tìm kiếm hồ sơ nhân sự
@@ -176,21 +192,23 @@ Từ các FEAT đã được phân tách và xác định, chi tiết thành cá
 * UC 4.31: Thêm mới Hồ sơ nhân sự
 * UC 4.32: Chỉnh sửa trong chi tiết hồ sơ nhân sự
 * UC 4.33: Đánh dấu thôi việc nhân sự
-* UC 4.34: Xem Chi tiết thông tin hồ sơ nhân sự
-* UC 4.35: Cấu hình ẩn/hiện mục khen thưởng/kỷ luật
-* UC 4.36: Bổ nhiệm và điều chuyển nhân sự cho đơn vị tổ chức nhân sự
-* UC 4.37: Bãi nhiệm nhân sự khỏi đơn vị tổ chức nhân sự
-* UC 4.38: Ghi nhận đánh giá cho nhân sự
-* UC 4.39: Xem lịch sử đánh giá khen thưởng/kỷ luật
-* UC 4.40: Tìm kiếm và lọc danh sách đánh giá
-* UC 4.41: Mở khóa đào tạo cho cán bộ giảng viên
-* UC 4.42: Sửa thông tin khóa đào tạo đã mở
-* UC 4.43: Xem chi tiết thông tin khóa đào tạo đã mở
-* UC 4.44: Ghi nhận kết quả đào tạo của cán bộ giảng viên
-* UC 4.45: Xem các thông tin trong hồ sơ cá nhân của nhân sự
-* UC 4.46: Xem thông tin chi tiết đơn vị đang công tác
-* UC 4.47: Thay đổi trạng thái đăng ký khóa đào tạo
-* UC 4.48: Xem danh sách các khóa đào tạo đã đăng ký
+* UC 4.34: Thôi việc nhân sự tự động
+* UC 4.35: Xem Chi tiết thông tin hồ sơ nhân sự
+* UC 4.36: In và xuất Excel hồ sơ nhân sự
+* UC 4.37: Cấu hình ẩn/hiện mục khen thưởng/kỷ luật
+* UC 4.38: Bổ nhiệm và điều chuyển nhân sự cho đơn vị tổ chức nhân sự
+* UC 4.39: Bãi nhiệm nhân sự khỏi đơn vị tổ chức nhân sự
+* UC 4.40: Ghi nhận đánh giá cho nhân sự
+* UC 4.41: Xem lịch sử đánh giá khen thưởng/kỷ luật
+* UC 4.42: Tìm kiếm và lọc danh sách đánh giá
+* UC 4.43: Mở khóa đào tạo cho cán bộ giảng viên
+* UC 4.44: Sửa thông tin khóa đào tạo đã mở
+* UC 4.45: Xem chi tiết thông tin khóa đào tạo đã mở
+* UC 4.46: Ghi nhận kết quả đào tạo của cán bộ giảng viên
+* UC 4.47: Xem các thông tin trong hồ sơ cá nhân của nhân sự
+* UC 4.48: Xem thông tin chi tiết đơn vị đang công tác
+* UC 4.49: Thay đổi trạng thái đăng ký khóa đào tạo
+* UC 4.50: Xem danh sách các khóa đào tạo đã đăng ký
 
 ## 3.4. Ma trận truy vết yêu cầu (Traceability Matrix)
 
@@ -198,18 +216,19 @@ Từ các FEAT đã được phân tách và xác định, chi tiết thành cá
 | --- | --- |
 | FEAT 1.1 | UC 4.1 (Đăng nhập) |
 | FEAT 1.2 | UC 4.2 (Đăng xuất) |
-| FEAT 1.3 | UC 4.2 A1 (Đăng xuất tự động) |
+| FEAT 1.3 | Ràng buộc hệ thống — hiện thực hóa bởi SUPL-F03 (không tách UC riêng) |
 | FEAT 1.4 | UC 4.3 (Đổi mật khẩu) |
 | FEAT 2.1 | UC 4.4 (Tìm kiếm tài khoản người dùng) |
 | FEAT 2.2 | UC 4.5 (Thêm mới tài khoản người dùng) |
 | FEAT 2.3 | UC 4.6 (Sửa thông tin tài khoản người dùng) |
-| FEAT 2.5 | UC 4.8 (Thay đổi trạng thái cho tài khoản người dùng) |
-| FEAT 2.6 | UC 4.8 A2 (Tự động khóa tài khoản) |
-| FEAT 3.1 | UC 4.9 (Tạo mới đơn vị tổ chức nhân sự) — cấu trúc cây |
-| FEAT 3.2 | UC 4.9 (Tạo mới đơn vị tổ chức nhân sự) |
-| FEAT 3.3 | UC 4.10 (Sửa thông tin đơn vị tổ chức nhân sự) |
-| FEAT 3.4 | UC 4.11 (Cập nhật trạng thái cho đơn vị tổ chức nhân sự) |
-| FEAT 3.5 | UC 4.12 (Xem chi tiết thông tin đơn vị tổ chức nhân sự) |
+| FEAT 2.4 | Ràng buộc thiết kế — hiện thực hóa bởi SUPL-DC03 (không tách UC riêng); gán vai trò tích hợp trong UC 4.5 và UC 4.6 |
+| FEAT 2.5 | UC 4.7 (Thay đổi trạng thái cho tài khoản người dùng) |
+| FEAT 2.6 | Ràng buộc hệ thống — hiện thực hóa bởi SUPL-F04 (không tách UC riêng) |
+| FEAT 3.1 | UC 4.8 (Tạo mới đơn vị tổ chức nhân sự) |
+| FEAT 3.2 | UC 4.9 (Sửa thông tin đơn vị tổ chức nhân sự) |
+| FEAT 3.3 | UC 4.10 (Giải thể đơn vị tổ chức nhân sự) |
+| FEAT 3.4 | UC 4.11 (Xem chi tiết thông tin đơn vị tổ chức nhân sự) |
+| FEAT 3.5 | UC 4.12 (Sáp nhập đơn vị tổ chức nhân sự) |
 | FEAT 4.1 | UC 4.13 (Thêm mới danh mục hệ số lương) |
 | FEAT 4.2 | UC 4.14 (Sửa danh mục hệ số lương) |
 | FEAT 4.3 | UC 4.16 (Thay đổi trạng thái danh mục hệ số lương) |
@@ -222,7 +241,7 @@ Từ các FEAT đã được phân tách và xác định, chi tiết thành cá
 | FEAT 6.1 | SUPL Ghi nhật ký (auto logging) |
 | FEAT 6.2 | UC 4.24 (Xem nhật ký hệ thống — Audit Log) — truy xuất |
 | FEAT 7.1 | UC 4.25 (Thêm mới Hợp đồng lao động) |
-| FEAT 7.2 | UC 4.26 (Xem chi tiết hợp đồng lao động) |
+| FEAT 7.2 | UC 4.26 (Xem danh sách và chi tiết hợp đồng lao động) |
 | FEAT 7.3 | UC 4.27 (Chỉnh sửa hợp đồng lao động chưa có hiệu lực) |
 | FEAT 7.4 | UC 4.28 (Chấm dứt hợp đồng lao động trước hạn) |
 | FEAT 8.1 | UC 4.29 (Tìm kiếm hồ sơ nhân sự) |
@@ -230,21 +249,26 @@ Từ các FEAT đã được phân tách và xác định, chi tiết thành cá
 | FEAT 8.3 | UC 4.31 (Thêm mới Hồ sơ nhân sự) |
 | FEAT 8.4 | UC 4.32 (Chỉnh sửa trong chi tiết hồ sơ nhân sự) |
 | FEAT 8.5 | UC 4.33 (Đánh dấu thôi việc nhân sự) |
-| FEAT 8.6 | UC 4.33 A1 (Thôi việc nhân sự tự động) |
-| FEAT 8.7 | UC 4.34 (Xem Chi tiết thông tin hồ sơ nhân sự) |
-| FEAT 8.8 | UC 4.34 A1/A2 (In hồ sơ / Xuất Excel) |
-| FEAT 8.9 | UC 4.35 (Cấu hình ẩn/hiện mục khen thưởng/kỷ luật) |
-| FEAT 9.1 | UC 4.36 (Bổ nhiệm nhân sự vào đơn vị tổ chức nhân sự) |
-| FEAT 9.2 | UC 4.36 (Điều chuyển nhân sự sang đơn vị tổ chức nhân sự khác) |
-| FEAT 9.3 | UC 4.37 (Bãi nhiệm nhân sự khỏi đơn vị tổ chức nhân sự) |
-| FEAT 10.1 | UC 4.38 (Ghi nhận đánh giá cho nhân sự) |
-| FEAT 10.2 | UC 4.39 (Xem lịch sử đánh giá khen thưởng/kỷ luật) |
-| FEAT 10.3 | UC 4.40 (Tìm kiếm và lọc danh sách đánh giá) |
-| FEAT 11.1 | UC 4.41 (Mở khóa đào tạo cho cán bộ giảng viên) |
-| FEAT 11.2 | UC 4.42 (Sửa thông tin khóa đào tạo đã mở) |
-| FEAT 11.3 | UC 4.43 (Xem chi tiết thông tin khóa đào tạo đã mở) |
-| FEAT 11.4 | UC 4.44 (Ghi nhận kết quả đào tạo của cán bộ giảng viên) |
-| FEAT 12.1 | UC 4.45 (Xem các thông tin trong hồ sơ cá nhân của nhân sự) |
-| FEAT 12.2 | UC 4.46 (Xem thông tin chi tiết đơn vị đang công tác) |
-| FEAT 12.3 | UC 4.47 (Thay đổi trạng thái đăng ký khóa đào tạo) |
-| FEAT 12.4 | UC 4.48 (Xem danh sách các khóa đào tạo đã đăng ký) |
+| FEAT 8.6 | UC 4.34 (Thôi việc nhân sự tự động) |
+| FEAT 8.7 | UC 4.35 (Xem Chi tiết thông tin hồ sơ nhân sự) |
+| FEAT 8.8 | UC 4.36 (In và xuất Excel hồ sơ nhân sự) |
+| FEAT 8.9 | UC 4.37 (Cấu hình ẩn/hiện mục khen thưởng/kỷ luật) |
+| FEAT 9.1 | UC 4.38 (Bổ nhiệm nhân sự vào đơn vị tổ chức nhân sự) |
+| FEAT 9.2 | UC 4.38 (Điều chuyển nhân sự sang đơn vị tổ chức nhân sự khác) |
+| FEAT 9.3 | UC 4.39 (Bãi nhiệm nhân sự khỏi đơn vị tổ chức nhân sự) |
+| FEAT 10.1 | UC 4.40 (Ghi nhận đánh giá cho nhân sự) |
+| FEAT 10.2 | UC 4.41 (Xem lịch sử đánh giá khen thưởng/kỷ luật) |
+| FEAT 10.3 | UC 4.42 (Tìm kiếm và lọc danh sách đánh giá) |
+| FEAT 11.1 | UC 4.43 (Mở khóa đào tạo cho cán bộ giảng viên) |
+| FEAT 11.2 | UC 4.44 (Sửa thông tin khóa đào tạo đã mở) |
+| FEAT 11.3 | UC 4.45 (Xem chi tiết thông tin khóa đào tạo đã mở) |
+| FEAT 11.4 | UC 4.46 (Ghi nhận kết quả đào tạo của cán bộ giảng viên) |
+| FEAT 12.1 | UC 4.47 (Xem các thông tin trong hồ sơ cá nhân của nhân sự) |
+| FEAT 12.2 | UC 4.48 (Xem thông tin chi tiết đơn vị đang công tác) |
+| FEAT 12.3 | UC 4.49 (Thay đổi trạng thái đăng ký khóa đào tạo) |
+| FEAT 12.4 | UC 4.50 (Xem danh sách các khóa đào tạo đã đăng ký) |
+| FEAT 13.1 | Ràng buộc pháp lý — được hiện thực hóa bởi SUPL-LR01 (không tách UC riêng) |
+| FEAT 13.2 | Ràng buộc pháp lý — được hiện thực hóa bởi SUPL-LR04 (không tách UC riêng) |
+| FEAT 14.1 | Ràng buộc thiết kế — hiện thực hóa bởi SUPL-DC01 (không tách UC riêng) |
+| FEAT 15.1 | Ràng buộc thiết kế — hiện thực hóa bởi SUPL-DC02 (không tách UC riêng) |
+| FEAT 16.1 | Ràng buộc bảo mật — hiện thực hóa bởi SUPL-F08 (không tách UC riêng); áp dụng tại UC 4.3 và UC 4.5 |
