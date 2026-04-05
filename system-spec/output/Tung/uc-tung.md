@@ -1,4 +1,4 @@
-# IV. ĐẶC TẢ CA SỬ DỤNG — Phần của Ngô Quang Tùng
+# IV. Quản lý hợp đồng lao động và hồ sơ nhân sự (UC 4.25–4.37)
 
 > **Người thực hiện: Ngô Quang Tùng**
 > 
