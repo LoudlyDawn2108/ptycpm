@@ -448,7 +448,6 @@ Từ các FEAT đã được phân tách và xác định, chi tiết thành cá
   + Nhóm UC Quản lý Đơn vị tổ chức
   + Xem nhật ký hệ thống (Audit Log)
 
-![Image: image_002](./report_images/image_002.png)
 
 **b. Phân rã cho Phòng Tổ chức - Cán bộ**
 
@@ -466,7 +465,6 @@ Từ các FEAT đã được phân tách và xác định, chi tiết thành cá
   + Xem báo cáo thống kê
   + Nhóm UC Cá nhân (Self-service): Xem hồ sơ cá nhân, Xem đơn vị công tác, Thay đổi trạng thái đăng ký đào tạo, Xem khóa đào tạo đã đăng ký *(kế thừa quyền Người dùng)*
 
-=![Image: image_003](./report_images/image_003.png)
 
 **c. Phân rã cho Phòng Tài chính - Kế toán**
 
@@ -477,7 +475,6 @@ Từ các FEAT đã được phân tách và xác định, chi tiết thành cá
   + Xem chi tiết các thống kê
   + Nhóm UC Cá nhân (Self-service): Xem hồ sơ cá nhân, Xem đơn vị công tác, Thay đổi trạng thái đăng ký đào tạo, Xem khóa đào tạo đã đăng ký *(kế thừa quyền Người dùng)*
 
-![Image: image_004](./report_images/image_004.png)
 
 **d. Phân rã cho Người dùng (Cán bộ/Giảng viên/Nhân viên)**
 
@@ -489,7 +486,6 @@ Từ các FEAT đã được phân tách và xác định, chi tiết thành cá
   + Thay đổi trạng thái đăng ký đào tạo
   + Xem danh sách các khóa đào tạo đã đăng ký
 
-![Image: image_005](./report_images/image_005.png)
 
 ### 3.3.3. Bảng phân công thành viên cho Use Case
 
